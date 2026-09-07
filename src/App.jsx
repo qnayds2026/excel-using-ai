@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+
 const features = [
   {
     icon: "⚡",
@@ -117,6 +119,17 @@ const faqs = [
 ];
 
 function App() {
+  const [showEnrollment, setShowEnrollment] = useState(false);
+
+  const openEnrollment = (e) => {
+    e.preventDefault();
+    setShowEnrollment(true);
+  };
+
+  const closeEnrollment = () => {
+    setShowEnrollment(false);
+  };
+
   return (
     <div className="app">
 
@@ -127,7 +140,9 @@ function App() {
 
           <a href="#home" className="logo">
             <span className="logo-icon">✦</span>
-            <span>Excel <b>AI</b></span>
+            <span>
+              Excel <b>AI</b>
+            </span>
           </a>
 
           <nav className="nav-links">
@@ -137,8 +152,12 @@ function App() {
             <a href="#faq">ചോദ്യങ്ങൾ</a>
           </nav>
 
-          <a href="#enroll" className="nav-button">
-            ഇപ്പോൾ ചേരാം →
+          <a
+            href="#enroll"
+            className="nav-button"
+            onClick={openEnrollment}
+          >
+            Enroll Now →
           </a>
 
         </div>
@@ -175,14 +194,20 @@ function App() {
               </p>
 
               <div className="hero-actions">
-                <a href="#enroll" className="primary-button">
-                  പഠനം ഇപ്പോൾ ആരംഭിക്കൂ
+
+                <a
+                  href="#enroll"
+                  className="primary-button"
+                  onClick={openEnrollment}
+                >
+                  Enroll Now
                   <span>→</span>
                 </a>
 
                 <a href="#learn" className="secondary-button">
                   കൂടുതൽ അറിയാം
                 </a>
+
               </div>
 
               <div className="hero-points">
@@ -201,6 +226,7 @@ function App() {
               <div className="excel-window">
 
                 <div className="excel-top">
+
                   <div className="window-dots">
                     <span></span>
                     <span></span>
@@ -214,6 +240,7 @@ function App() {
                   <div className="ai-badge">
                     ✦ AI
                   </div>
+
                 </div>
 
                 <div className="excel-toolbar">
@@ -276,6 +303,7 @@ function App() {
 
                 <div>
                   <strong>AI സഹായം</strong>
+
                   <p>
                     “ഈ data-യിൽ ഏറ്റവും കൂടുതൽ വളർച്ച
                     ഏത് product-നാണ്?”
@@ -288,96 +316,177 @@ function App() {
 
           </div>
         </section>
-      {/* ================= VIDEO SECTION ================= */}
 
-<section className="video-section">
-  <div className="container">
 
-    <div className="video-heading">
+        {/* ================= VIDEO SECTION ================= */}
 
-      <div className="section-tag">
-        കോഴ്സിനെക്കുറിച്ച് അറിയാം
-      </div>
+        <section className="video-section">
 
-      <h2>
-        Excel + AI
-        <br />
-        <span>എങ്ങനെ പഠിക്കാം എന്ന് കാണാം.</span>
-      </h2>
+          <div className="container">
 
-      <p>
-        Excel + AI പഠനത്തിന്റെ പ്രധാന ഭാഗങ്ങളും
-        പ്രായോഗിക പരിശീലനവും ഈ വീഡിയോയിലൂടെ പരിചയപ്പെടാം.
-      </p>
+            <div className="video-heading">
 
-    </div>
+              <div className="section-tag">
+                കോഴ്സിനെക്കുറിച്ച് അറിയാം
+              </div>
 
-    <div className="course-video">
+              <h2>
+                Excel + AI
+                <br />
+                <span>എങ്ങനെ പഠിക്കാം എന്ന് കാണാം.</span>
+              </h2>
 
-      <div className="video-frame">
+              <p>
+                Excel + AI പഠനത്തിന്റെ പ്രധാന ഭാഗങ്ങളും
+                പ്രായോഗിക പരിശീലനവും ഈ വീഡിയോയിലൂടെ പരിചയപ്പെടാം.
+              </p>
 
-        <div
-          style={{
-            width: "100%",
-            height: "100%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            flexDirection: "column",
-            color: "white",
-            textAlign: "center"
-          }}
-        >
+            </div>
 
-          <h3 style={{ margin: "0 0 8px" }}>
-            കോഴ്സ് വീഡിയോ
-          </h3>
 
-          <p style={{ margin: 0, opacity: 0.75 }}>
-            വീഡിയോ ഉടൻ ഇവിടെ ലഭ്യമാകും
-          </p>
+            <div className="course-video">
 
-        </div>
+              <div className="video-frame">
 
-        <div className="video-overlay">
-          <div className="play-button">
-            ▶
+                <div
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    flexDirection: "column",
+                    color: "white",
+                    textAlign: "center",
+                  }}
+                >
+
+                  <h3 style={{ margin: "0 0 8px" }}>
+                    കോഴ്സ് വീഡിയോ
+                  </h3>
+
+                  <p style={{ margin: 0, opacity: 0.75 }}>
+                    വീഡിയോ ഉടൻ ഇവിടെ ലഭ്യമാകും
+                  </p>
+
+                </div>
+
+                <div className="video-overlay">
+
+                  <div className="play-button">
+                    ▶
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <div className="video-points">
+
+                <div>
+                  <span>✓</span>
+                  Excel പ്രായോഗിക പരിശീലനം
+                </div>
+
+                <div>
+                  <span>✓</span>
+                  AI ഉപയോഗിച്ചുള്ള പഠനം
+                </div>
+
+                <div>
+                  <span>✓</span>
+                  Real-world Projects
+                </div>
+
+              </div>
+
+            </div>
+
           </div>
-        </div>
 
-      </div>
+        </section>
 
-      <div className="video-points">
 
-        <div>
-          <span>✓</span>
-          Excel പ്രായോഗിക പരിശീലനം
-        </div>
+        {/* ================= COURSE VALUE STACK ================= */}
 
-        <div>
-          <span>✓</span>
-          AI ഉപയോഗിച്ചുള്ള പഠനം
-        </div>
+        <section className="value-section">
 
-        <div>
-          <span>✓</span>
-          Real-world Projects
-        </div>
+          <div className="value-card">
 
-      </div>
+            <div className="save-badge">
+              SAVE ₹3,501
+            </div>
 
-    </div>
+            <h2>
+              Course Value Stack:
+            </h2>
 
-  </div>
-</section>
+            <div className="value-list">
+
+              <div>✓ Excel + AI Practical Learning</div>
+              <div>✓ Real-world Excel Projects</div>
+              <div>✓ AI-assisted Excel Workflows</div>
+              <div>✓ Data Analysis & Dashboards</div>
+              <div>✓ Job-oriented Excel Skills</div>
+              <div>✓ Certification</div>
+
+            </div>
+
+
+            <div className="value-price">
+
+              <span>
+                TODAY
+              </span>
+
+              <div className="regular-price">
+                REGULAR PRICE <del>₹5,000</del>
+              </div>
+
+              <strong>
+                ₹1,499
+              </strong>
+
+            </div>
+
+
+            {/* MAIN ENROLL BUTTON */}
+
+            <a
+              href="#enroll"
+              className="value-button"
+              onClick={openEnrollment}
+            >
+              START LEARNING EXCEL + AI TODAY
+              <span>→</span>
+            </a>
+
+
+            <div className="value-trust">
+
+              <span>✓ Instant Access</span>
+              <span>✓ Practical Learning</span>
+              <span>✓ Beginner Friendly</span>
+
+            </div>
+
+          </div>
+
+        </section>
+
 
         {/* ================= TRUST ================= */}
 
         <section className="trust-section">
+
           <div className="container trust-inner">
 
             <div>
-              <span className="trust-number">2,000+</span>
+              <span className="trust-number">
+                2,000+
+              </span>
+
               <span className="trust-label">
                 ടീമുകൾ Excel ഉപയോഗിക്കുന്ന മേഖലകൾ
               </span>
@@ -391,6 +500,7 @@ function App() {
             </p>
 
           </div>
+
         </section>
 
 
@@ -429,7 +539,10 @@ function App() {
           <div className="container">
 
             <div className="section-heading">
-              <div className="section-tag">ആർക്കുവേണ്ടി?</div>
+
+              <div className="section-tag">
+                ആർക്കുവേണ്ടി?
+              </div>
 
               <h2>
                 ഈ പഠനം
@@ -441,26 +554,38 @@ function App() {
                 Excel ഉപയോഗിച്ച് നിങ്ങളുടെ ജോലി skills
                 മെച്ചപ്പെടുത്താൻ ആഗ്രഹിക്കുന്നവർക്ക്.
               </p>
+
             </div>
 
 
             <div className="audience-grid">
 
               {learners.map((learner, index) => (
-                <div className="audience-card" key={learner}>
+
+                <div
+                  className="audience-card"
+                  key={learner}
+                >
+
                   <span className="card-number">
                     0{index + 1}
                   </span>
 
-                  <span className="check-icon">✓</span>
+                  <span className="check-icon">
+                    ✓
+                  </span>
 
-                  <h3>{learner}</h3>
+                  <h3>
+                    {learner}
+                  </h3>
 
                   <p>
                     നിങ്ങളുടെ ജോലി ആവശ്യങ്ങൾക്ക്
                     Excel skills കൂടുതൽ ശക്തമാക്കാം.
                   </p>
+
                 </div>
+
               ))}
 
             </div>
@@ -549,7 +674,10 @@ function App() {
 
         {/* ================= FEATURES ================= */}
 
-        <section className="section features-section" id="features">
+        <section
+          className="section features-section"
+          id="features"
+        >
 
           <div className="container">
 
@@ -576,19 +704,30 @@ function App() {
             <div className="features-grid">
 
               {features.map((feature) => (
-                <div className="feature-card" key={feature.title}>
+
+                <div
+                  className="feature-card"
+                  key={feature.title}
+                >
 
                   <div className="feature-icon">
                     {feature.icon}
                   </div>
 
-                  <h3>{feature.title}</h3>
+                  <h3>
+                    {feature.title}
+                  </h3>
 
-                  <p>{feature.text}</p>
+                  <p>
+                    {feature.text}
+                  </p>
 
-                  <span className="feature-arrow">↗</span>
+                  <span className="feature-arrow">
+                    ↗
+                  </span>
 
                 </div>
+
               ))}
 
             </div>
@@ -600,7 +739,10 @@ function App() {
 
         {/* ================= SKILLS ================= */}
 
-        <section className="section skills-section" id="learn">
+        <section
+          className="section skills-section"
+          id="learn"
+        >
 
           <div className="container skills-grid">
 
@@ -626,17 +768,26 @@ function App() {
             <div className="skills-list">
 
               {skills.map((skill, index) => (
-                <div className="skill-item" key={skill}>
+
+                <div
+                  className="skill-item"
+                  key={skill}
+                >
 
                   <span>
                     {String(index + 1).padStart(2, "0")}
                   </span>
 
-                  <strong>{skill}</strong>
+                  <strong>
+                    {skill}
+                  </strong>
 
-                  <i>✓</i>
+                  <i>
+                    ✓
+                  </i>
 
                 </div>
+
               ))}
 
             </div>
@@ -767,7 +918,10 @@ function App() {
                 learning experience.
               </p>
 
-              <a href="#projects" className="text-link">
+              <a
+                href="#projects"
+                className="text-link"
+              >
                 Projects കാണാം →
               </a>
 
@@ -780,7 +934,10 @@ function App() {
 
         {/* ================= PROJECTS ================= */}
 
-        <section className="section projects-section" id="projects">
+        <section
+          className="section projects-section"
+          id="projects"
+        >
 
           <div className="container">
 
@@ -807,7 +964,11 @@ function App() {
             <div className="projects-grid">
 
               {projects.map((project) => (
-                <div className="project-card" key={project.number}>
+
+                <div
+                  className="project-card"
+                  key={project.number}
+                >
 
                   <span className="project-number">
                     {project.number}
@@ -817,15 +978,20 @@ function App() {
                     ▦
                   </div>
 
-                  <h3>{project.title}</h3>
+                  <h3>
+                    {project.title}
+                  </h3>
 
-                  <p>{project.text}</p>
+                  <p>
+                    {project.text}
+                  </p>
 
                   <span className="project-link">
                     Project →
                   </span>
 
                 </div>
+
               ))}
 
             </div>
@@ -859,19 +1025,28 @@ function App() {
             <div className="workflow">
 
               {workflow.map((item, index) => (
-                <div className="workflow-item" key={item}>
+
+                <div
+                  className="workflow-item"
+                  key={item}
+                >
 
                   <div className="workflow-number">
                     {index + 1}
                   </div>
 
-                  <strong>{item}</strong>
+                  <strong>
+                    {item}
+                  </strong>
 
                   {index !== workflow.length - 1 && (
-                    <span className="workflow-arrow">→</span>
+                    <span className="workflow-arrow">
+                      →
+                    </span>
                   )}
 
                 </div>
+
               ))}
 
             </div>
@@ -908,15 +1083,26 @@ function App() {
               <div className="roles-grid">
 
                 {roles.map((role, index) => (
-                  <div className="role-card" key={role}>
 
-                    <span>0{index + 1}</span>
+                  <div
+                    className="role-card"
+                    key={role}
+                  >
 
-                    <strong>{role}</strong>
+                    <span>
+                      0{index + 1}
+                    </span>
 
-                    <i>↗</i>
+                    <strong>
+                      {role}
+                    </strong>
+
+                    <i>
+                      ↗
+                    </i>
 
                   </div>
+
                 ))}
 
               </div>
@@ -1013,31 +1199,50 @@ function App() {
 
               <div className="different-card">
                 <span>01</span>
-                <h3>പ്രായോഗിക സമീപനം</h3>
+
+                <h3>
+                  പ്രായോഗിക സമീപനം
+                </h3>
+
                 <p>
                   Real-world Excel tasks-നോട് ബന്ധിപ്പിച്ചുള്ള പഠനം.
                 </p>
               </div>
 
+
               <div className="different-card">
                 <span>02</span>
-                <h3>AI Integration</h3>
+
+                <h3>
+                  AI Integration
+                </h3>
+
                 <p>
                   Excel workflow-ൽ AI എങ്ങനെ ഉപയോഗിക്കാം എന്ന് പഠിക്കുക.
                 </p>
               </div>
 
+
               <div className="different-card">
                 <span>03</span>
-                <h3>Projects</h3>
+
+                <h3>
+                  Projects
+                </h3>
+
                 <p>
                   പഠിച്ച skills practical projects വഴി ഉപയോഗിക്കുക.
                 </p>
               </div>
 
+
               <div className="different-card">
                 <span>04</span>
-                <h3>Career Focus</h3>
+
+                <h3>
+                  Career Focus
+                </h3>
+
                 <p>
                   Job-related skills വികസിപ്പിക്കുന്നതിൽ ശ്രദ്ധ.
                 </p>
@@ -1116,8 +1321,12 @@ function App() {
                 ലഭിക്കുന്ന രീതിയിലാണ് ഈ section ഒരുക്കിയിരിക്കുന്നത്.
               </p>
 
-              <a href="#enroll" className="primary-button">
-                Program-ൽ ചേരാം →
+              <a
+                href="#enroll"
+                className="primary-button"
+                onClick={openEnrollment}
+              >
+                Enroll Now →
               </a>
 
             </div>
@@ -1127,11 +1336,17 @@ function App() {
 
               <div className="certificate-inner">
 
-                <span className="certificate-star">✦</span>
+                <span className="certificate-star">
+                  ✦
+                </span>
 
-                <small>CERTIFICATE OF COMPLETION</small>
+                <small>
+                  CERTIFICATE OF COMPLETION
+                </small>
 
-                <h3>Excel + AI</h3>
+                <h3>
+                  Excel + AI
+                </h3>
 
                 <p>
                   പ്രായോഗിക Excel & AI പഠനം
@@ -1139,7 +1354,9 @@ function App() {
 
                 <div className="certificate-line"></div>
 
-                <span>വിദ്യാർത്ഥിയുടെ പേര്</span>
+                <span>
+                  വിദ്യാർത്ഥിയുടെ പേര്
+                </span>
 
               </div>
 
@@ -1175,25 +1392,33 @@ function App() {
               <div>
                 <span>01</span>
                 <h3>പഠിക്കുക</h3>
-                <p>Concepts ലളിതമായി മനസ്സിലാക്കുക.</p>
+                <p>
+                  Concepts ലളിതമായി മനസ്സിലാക്കുക.
+                </p>
               </div>
 
               <div>
                 <span>02</span>
                 <h3>Practice ചെയ്യുക</h3>
-                <p>Hands-on tasks ഉപയോഗിച്ച് പരിശീലിക്കുക.</p>
+                <p>
+                  Hands-on tasks ഉപയോഗിച്ച് പരിശീലിക്കുക.
+                </p>
               </div>
 
               <div>
                 <span>03</span>
                 <h3>Project നിർമ്മിക്കുക</h3>
-                <p>പഠിച്ച skills ഉപയോഗിച്ച് project ചെയ്യുക.</p>
+                <p>
+                  പഠിച്ച skills ഉപയോഗിച്ച് project ചെയ്യുക.
+                </p>
               </div>
 
               <div>
                 <span>04</span>
                 <h3>Career-ന് തയ്യാറാകുക</h3>
-                <p>Interview-നും workplace tasks-നും തയ്യാറാകുക.</p>
+                <p>
+                  Interview-നും workplace tasks-നും തയ്യാറാകുക.
+                </p>
               </div>
 
             </div>
@@ -1225,7 +1450,9 @@ function App() {
 
             <div className="testimonial-card">
 
-              <div className="quote-mark">“</div>
+              <div className="quote-mark">
+                “
+              </div>
 
               <p>
                 Excel concepts മാത്രം പഠിക്കുന്നതിനേക്കാൾ,
@@ -1234,12 +1461,21 @@ function App() {
               </p>
 
               <div className="testimonial-person">
-                <div className="avatar">A</div>
+
+                <div className="avatar">
+                  A
+                </div>
 
                 <div>
-                  <strong>Program Learner</strong>
-                  <span>Excel + AI Training</span>
+                  <strong>
+                    Program Learner
+                  </strong>
+
+                  <span>
+                    Excel + AI Training
+                  </span>
                 </div>
+
               </div>
 
             </div>
@@ -1251,7 +1487,10 @@ function App() {
 
         {/* ================= FAQ ================= */}
 
-        <section className="section faq-section" id="faq">
+        <section
+          className="section faq-section"
+          id="faq"
+        >
 
           <div className="container faq-grid">
 
@@ -1262,8 +1501,8 @@ function App() {
               </div>
 
               <h2>
-                പതിവായി
-                <span> ചോദിക്കുന്ന ചോദ്യങ്ങൾ.</span>
+                
+                <span> Frequently Asked Questions</span>
               </h2>
 
               <p>
@@ -1276,9 +1515,14 @@ function App() {
             <div className="faq-list">
 
               {faqs.map((faq, index) => (
-                <details className="faq-item" key={faq.question}>
+
+                <details
+                  className="faq-item"
+                  key={faq.question}
+                >
 
                   <summary>
+
                     <span>
                       0{index + 1}
                     </span>
@@ -1287,7 +1531,10 @@ function App() {
                       {faq.question}
                     </strong>
 
-                    <i>+</i>
+                    <i>
+                      +
+                    </i>
+
                   </summary>
 
                   <p>
@@ -1295,6 +1542,7 @@ function App() {
                   </p>
 
                 </details>
+
               ))}
 
             </div>
@@ -1306,7 +1554,10 @@ function App() {
 
         {/* ================= FINAL CTA ================= */}
 
-        <section className="final-cta" id="enroll">
+        <section
+          className="final-cta"
+          id="enroll"
+        >
 
           <div className="final-glow"></div>
 
@@ -1327,7 +1578,11 @@ function App() {
               നിങ്ങളുടെ career-ന് കൂടുതൽ ശക്തമായ skillset നിർമ്മിക്കൂ.
             </p>
 
-            <a href="#checkout" className="final-button">
+            <a
+              href="#checkout"
+              className="final-button"
+              onClick={openEnrollment}
+            >
               ഇപ്പോൾ പഠനം ആരംഭിക്കൂ
               <span>→</span>
             </a>
@@ -1345,7 +1600,10 @@ function App() {
 
         {/* ================= CHECKOUT ================= */}
 
-        <section className="checkout-section" id="checkout">
+        <section
+          className="checkout-section"
+          id="checkout"
+        >
 
           <div className="container checkout-grid">
 
@@ -1356,8 +1614,8 @@ function App() {
               </div>
 
               <h2>
-                പഠനം
-                <span> ഇപ്പോൾ തന്നെ ആരംഭിക്കാം.</span>
+                
+                <span> Your learning journey starts today.</span>
               </h2>
 
               <p>
@@ -1380,21 +1638,39 @@ function App() {
             <div className="checkout-card">
 
               <div className="checkout-top">
-                <span>Excel + AI Program</span>
-                <span className="secure">🔒 Secure</span>
+
+                <span>
+                  Excel + AI Program
+                </span>
+
+                <span className="secure">
+                  🔒 Secure
+                </span>
+
               </div>
 
               <div className="price">
-                <small>Program Access</small>
-                <strong>ഇപ്പോൾ ചേരാം</strong>
+
+                <small>
+                  Program Access
+                </small>
+
+                <strong>
+                  ₹1,499
+                </strong>
+
               </div>
 
-              <a href="#home" className="checkout-button">
-                Enrollment ആരംഭിക്കുക →
+              <a
+                href="#enroll"
+                className="checkout-button"
+                onClick={openEnrollment}
+              >
+                Enroll Now →
               </a>
 
               <p className="checkout-note">
-                നിങ്ങളുടെ learning journey ഇന്ന് തന്നെ ആരംഭിക്കൂ.
+                Your learning journey starts today.
               </p>
 
             </div>
@@ -1414,9 +1690,18 @@ function App() {
 
           <div className="footer-brand">
 
-            <a href="#home" className="logo">
-              <span className="logo-icon">✦</span>
-              <span>Excel <b>AI</b></span>
+            <a
+              href="#home"
+              className="logo"
+            >
+              <span className="logo-icon">
+                ✦
+              </span>
+
+              <span>
+                Excel <b>AI</b>
+              </span>
+
             </a>
 
             <p>
@@ -1429,10 +1714,21 @@ function App() {
 
           <div className="footer-links">
 
-            <a href="#features">സവിശേഷതകൾ</a>
-            <a href="#learn">പഠിക്കാം</a>
-            <a href="#projects">Projects</a>
-            <a href="#faq">FAQ</a>
+            <a href="#features">
+              Features
+            </a>
+
+            <a href="#learn">
+              Learn
+            </a>
+
+            <a href="#projects">
+              Projects
+            </a>
+
+            <a href="#faq">
+              FAQ
+            </a>
 
           </div>
 
@@ -1459,15 +1755,199 @@ function App() {
       <div className="sticky-cta">
 
         <div>
-          <strong>Excel + AI പഠിക്കാം</strong>
-          <span>ഇന്ന് തന്നെ ആരംഭിക്കൂ</span>
+          <strong>
+            Your Excel + AI Journey 
+          </strong>
+
+          <span>
+            Starts today
+          </span>
         </div>
 
-        <a href="#enroll">
-          ചേരാം →
+        <a
+          href="#enroll"
+          onClick={openEnrollment}
+        >
+          Enroll Now →
         </a>
 
       </div>
+
+
+      {/* =========================================================
+          ENROLLMENT MODAL
+          ========================================================= */}
+
+      {showEnrollment && (
+
+        <div
+          className="enrollment-overlay"
+          onClick={closeEnrollment}
+        >
+
+          <div
+            className="enrollment-modal"
+            onClick={(e) => e.stopPropagation()}
+          >
+
+            {/* MODAL HEADER */}
+
+            <div className="enrollment-header">
+
+              <div>
+
+                <h2>
+                  Complete Your Enrollment
+                </h2>
+
+                <p>
+                  Enter your details to continue securely.
+                </p>
+
+              </div>
+
+              <button
+                type="button"
+                className="enrollment-close"
+                onClick={closeEnrollment}
+                aria-label="Close"
+              >
+                ×
+              </button>
+
+            </div>
+
+
+            {/* MODAL BODY */}
+
+            <div className="enrollment-body">
+
+
+              {/* COURSE PRICE BOX */}
+
+              <div className="enrollment-product">
+
+                <div>
+
+                  <strong>
+                    Excel + AI Practical Program
+                  </strong>
+
+                  <del>
+                    ₹5,000
+                  </del>
+
+                  <div className="enrollment-price">
+                    ₹1,499
+                  </div>
+
+                </div>
+
+                <span className="enrollment-save">
+                  Save ₹3,501
+                </span>
+
+              </div>
+
+
+              {/* FORM */}
+
+              <form
+                className="enrollment-form"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  alert("Payment page will open here.");
+                }}
+              >
+
+                <div className="input-wrap">
+
+                  <span>♙</span>
+
+                  <input
+                    type="text"
+                    placeholder="Full Name"
+                    required
+                  />
+
+                </div>
+
+
+                <div className="input-wrap">
+
+                  <span>✉</span>
+
+                  <input
+                    type="email"
+                    placeholder="Email Address"
+                    required
+                  />
+
+                </div>
+
+
+                <div className="input-wrap">
+
+                  <span>⌕</span>
+
+                  <input
+                    type="tel"
+                    placeholder="Phone Number"
+                    required
+                  />
+
+                </div>
+
+
+                {/* SECURE CHECKOUT */}
+
+                <div className="secure-box">
+
+                  <div className="secure-title">
+                    🛡️
+                    <strong>
+                      Secure Checkout
+                    </strong>
+                  </div>
+
+                  <p>
+                    Secure payment via Razorpay. After payment,
+                    we'll send an activation email to your inbox.
+                  </p>
+
+                </div>
+
+
+                {/* ACTION BUTTONS */}
+
+                <div className="enrollment-actions">
+
+                  <button
+                    type="button"
+                    className="cancel-button"
+                    onClick={closeEnrollment}
+                  >
+                    Cancel
+                  </button>
+
+                  <button
+                    type="submit"
+                    className="payment-button"
+                  >
+                    Continue to Payment
+                  </button>
+
+                </div>
+
+              </form>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      )}
 
     </div>
   );

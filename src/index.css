@@ -2166,4 +2166,1079 @@ select {
     font-size: 20px;
   }
 }
- 
+/* ================= PROJECT CARD ALIGNMENT FIX ================= */
+
+.projects-grid {
+  align-items: stretch !important;
+}
+
+.project-card {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  min-height: 300px !important;
+}
+
+.project-card h3 {
+  margin-bottom: 12px !important;
+}
+
+.project-card p {
+  margin-bottom: 20px !important;
+  flex: 1 !important;
+}
+
+.project-link {
+  margin-top: auto !important;
+  align-self: flex-start !important;
+}
+/* ================= COURSE VALUE STACK ================= */
+
+.value-section {
+  padding: 70px 20px;
+  background: #f8fafc;
+}
+
+.value-card {
+  position: relative;
+  width: min(100%, 520px);
+  margin: 0 auto;
+  padding: 42px 34px;
+  background: #fff;
+  border: 2px solid #2878ff;
+  border-radius: 28px;
+  box-shadow: 0 20px 50px rgba(20, 50, 100, 0.12);
+}
+
+.value-card h2 {
+  margin: 0 0 25px;
+  font-size: 27px;
+  text-align: left;
+  color: #142b55;
+}
+
+.save-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px 18px;
+  background: #ff3344;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+  border-radius: 0 26px 0 18px;
+}
+
+.value-list {
+  border-top: 1px solid #e5eaf2;
+  border-bottom: 1px solid #e5eaf2;
+  padding: 18px 0;
+}
+
+.value-list div {
+  margin: 12px 0;
+  font-size: 16px;
+  color: #344866;
+}
+
+.value-price {
+  text-align: center;
+  padding: 25px 0 20px;
+}
+
+.value-price span {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #2878ff;
+  margin-bottom: 7px;
+}
+
+.value-price strong {
+  display: block;
+  font-size: 30px;
+  color: #142b55;
+}
+
+.value-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  width: 100%;
+  padding: 20px 24px;
+  box-sizing: border-box;
+  background: #1769ff;
+  color: #fff;
+  border-radius: 14px;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 800;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(23, 105, 255, 0.25);
+}
+
+.value-button span {
+  font-size: 25px;
+}
+
+.value-trust {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 20px;
+}
+
+.value-trust span {
+  font-size: 13px;
+  font-weight: 600;
+  color: #60728e;
+}
+
+@media (max-width: 800px) {
+
+  .value-section {
+    padding: 50px 15px;
+  }
+
+  .value-card {
+    padding: 35px 22px;
+    border-radius: 22px;
+  }
+
+  .value-card h2 {
+    font-size: 24px;
+  }
+
+  .value-list div {
+    font-size: 15px;
+  }
+
+  .value-button {
+    font-size: 14px;
+    padding: 17px;
+  }
+
+}
+.value-price {
+  text-align: center;
+  padding: 25px 0 20px;
+}
+
+.value-price > span {
+  display: block;
+  font-size: 14px;
+  font-weight: 800;
+  color: #1769ff;
+  margin-bottom: 5px;
+}
+
+.regular-price {
+  font-size: 13px;
+  font-weight: 700;
+  color: #60728e;
+  margin-bottom: 2px;
+}
+
+.regular-price del {
+  font-size: 18px;
+  margin-left: 8px;
+}
+
+.value-price strong {
+  display: block;
+  font-size: 48px;
+  line-height: 1;
+  font-weight: 800;
+  color: #142b55;
+}
+/* =========================================================
+   ENROLLMENT MODAL
+   ========================================================= */
+
+.enrollment-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(0, 0, 0, 0.72);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.enrollment-modal {
+  width: min(510px, 100%);
+  background: #fff;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+  animation: enrollmentPop 0.2s ease-out;
+}
+
+@keyframes enrollmentPop {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.enrollment-header {
+  background: #2161f5;
+  color: #fff;
+  padding: 26px 24px 22px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.enrollment-header h2 {
+  margin: 0 0 5px;
+  font-size: 24px;
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+.enrollment-header p {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.enrollment-close {
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.enrollment-close:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.enrollment-body {
+  padding: 24px;
+}
+
+.enrollment-product {
+  background: #eef5ff;
+  border: 1px solid #d9e7ff;
+  border-radius: 16px;
+  padding: 20px 18px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.enrollment-product strong {
+  display: block;
+  color: #24385d;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.enrollment-product del {
+  display: block;
+  color: #75849b;
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+
+.enrollment-price {
+  color: #2161f5;
+  font-size: 29px;
+  line-height: 1;
+  font-weight: 900;
+}
+
+.enrollment-save {
+  background: #d9f9e5;
+  color: #079447;
+  padding: 8px 13px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.enrollment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.input-wrap {
+  height: 46px;
+  border: 1px solid #dce5f2;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px;
+  background: #fff;
+}
+
+.input-wrap span {
+  color: #91a5c4;
+  font-size: 18px;
+  width: 20px;
+  text-align: center;
+}
+
+.input-wrap input {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #263957;
+  font-family: inherit;
+  font-size: 15px;
+}
+
+.input-wrap input::placeholder {
+  color: #a4adba;
+}
+
+.input-wrap:focus-within {
+  border-color: #2161f5;
+  box-shadow: 0 0 0 3px rgba(33, 97, 245, 0.08);
+}
+
+.secure-box {
+  background: #effcf4;
+  border: 1px solid #d5f4df;
+  border-radius: 14px;
+  padding: 15px;
+  margin-top: 4px;
+}
+
+.secure-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #079447;
+  font-size: 15px;
+  margin-bottom: 7px;
+}
+
+.secure-box p {
+  margin: 0;
+  color: #159653;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.enrollment-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.cancel-button,
+.payment-button {
+  min-height: 50px;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.cancel-button {
+  background: #fff;
+  border: 1px solid #dce5f2;
+  color: #33415a;
+}
+
+.cancel-button:hover {
+  background: #f7f9fc;
+}
+
+.payment-button {
+  background: #2161f5;
+  border: 1px solid #2161f5;
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(33, 97, 245, 0.2);
+}
+
+.payment-button:hover {
+  background: #1554e5;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  .enrollment-overlay {
+    padding: 12px;
+    align-items: center;
+  }
+
+  .enrollment-modal {
+    border-radius: 20px;
+  }
+
+  .enrollment-header {
+    padding: 22px 18px 18px;
+  }
+
+  .enrollment-header h2 {
+    font-size: 21px;
+  }
+
+  .enrollment-body {
+    padding: 18px;
+  }
+
+  .enrollment-product {
+    padding: 16px;
+  }
+
+  .enrollment-price {
+    font-size: 27px;
+  }
+
+  .enrollment-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .cancel-button {
+    order: 2;
+  }
+
+  .payment-button {
+    order: 1;
+  }
+}
+/* =========================================================
+   MOBILE RESPONSIVE FIX
+   Desktop design unchanged
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+  /* Main container */
+  .container {
+    width: min(100% - 28px, 100%);
+    margin-inline: auto;
+  }
+
+  /* ================= HERO ================= */
+
+  .hero {
+    padding: 70px 0 45px;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 35px !important;
+  }
+
+  .hero-content {
+    width: 100%;
+    text-align: center !important;
+  }
+
+  .hero-content h1 {
+    font-size: 32px !important;
+    line-height: 1.2 !important;
+    text-align: center !important;
+  }
+
+  .hero-text {
+    font-size: 15px !important;
+    line-height: 1.7 !important;
+    text-align: center !important;
+  }
+
+  .hero-actions {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 12px !important;
+  }
+
+  .primary-button,
+  .secondary-button {
+    width: 100%;
+    max-width: 340px;
+    justify-content: center;
+  }
+
+  .hero-points {
+    flex-wrap: wrap;
+    justify-content: center !important;
+    gap: 10px 15px !important;
+  }
+
+  /* Excel preview */
+  .hero-visual {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .excel-window {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .ai-card {
+    width: calc(100% - 20px);
+    margin-inline: auto;
+  }
+
+
+  /* ================= VIDEO ================= */
+
+  .video-section {
+    padding: 50px 0;
+  }
+
+  .video-heading {
+    text-align: center !important;
+  }
+
+  .video-heading h2 {
+    font-size: 27px !important;
+    line-height: 1.25 !important;
+  }
+
+  .video-heading p {
+    font-size: 14px !important;
+    line-height: 1.7 !important;
+  }
+
+  .course-video {
+    width: 100%;
+  }
+
+  .video-frame {
+    width: 100%;
+    min-height: 220px;
+  }
+
+  .video-points {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 10px !important;
+  }
+
+
+  /* ================= VALUE CARD ================= */
+
+  .value-card {
+    width: calc(100% - 28px);
+    margin: 30px auto;
+    padding: 28px 20px !important;
+    box-sizing: border-box;
+  }
+
+  .value-card h2 {
+    font-size: 22px !important;
+    text-align: center !important;
+  }
+
+  .value-list {
+    text-align: left !important;
+  }
+
+  .value-list div {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
+
+  .value-price {
+    text-align: center !important;
+  }
+
+  .value-price strong {
+    font-size: 48px !important;
+  }
+
+  .value-button {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center !important;
+    padding: 17px 15px !important;
+    font-size: 16px !important;
+  }
+
+  .value-trust {
+    flex-wrap: wrap;
+    justify-content: center !important;
+    gap: 10px !important;
+  }
+
+
+  /* ================= TRUST ================= */
+
+  .trust-inner {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 20px !important;
+  }
+
+  .trust-divider {
+    width: 60px;
+    height: 1px;
+  }
+
+
+  /* ================= GENERAL SECTIONS ================= */
+
+  .section {
+    padding: 60px 0 !important;
+  }
+
+  .section-heading,
+  .section-heading.centered,
+  .skills-heading,
+  .office-content,
+  .career-box,
+  .certificate-content,
+  .faq-heading,
+  .final-content,
+  .checkout-info {
+    text-align: center !important;
+  }
+
+  .section-heading h2,
+  .skills-heading h2,
+  .office-content h2,
+  .career-box h2,
+  .certificate-content h2,
+  .faq-heading h2,
+  .final-content h2,
+  .checkout-info h2 {
+    font-size: 27px !important;
+    line-height: 1.3 !important;
+  }
+
+  .section-heading p,
+  .skills-heading p,
+  .office-content p,
+  .career-box p,
+  .certificate-content p,
+  .faq-heading p,
+  .final-content p,
+  .checkout-info p {
+    font-size: 14px !important;
+    line-height: 1.7 !important;
+  }
+
+
+  /* ================= AUDIENCE ================= */
+
+  .audience-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  .audience-card {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center !important;
+  }
+
+
+  /* ================= PROBLEM ================= */
+
+  .problem-grid {
+    grid-template-columns: 1fr !important;
+    gap: 35px !important;
+  }
+
+  .problem-content {
+    text-align: center !important;
+  }
+
+  .problem-content h2 {
+    font-size: 27px !important;
+  }
+
+  .problem-list {
+    text-align: left !important;
+  }
+
+  .problem-visual {
+    width: 100%;
+  }
+
+
+  /* ================= FEATURES ================= */
+
+  .features-grid {
+    grid-template-columns: 1fr !important;
+    gap: 15px !important;
+  }
+
+  .feature-card {
+    text-align: center !important;
+  }
+
+
+  /* ================= SKILLS ================= */
+
+  .skills-grid {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+  }
+
+  .skills-list {
+    width: 100%;
+  }
+
+  .skill-item {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+
+  /* ================= LEARNING PATH ================= */
+
+  .path {
+    flex-direction: column !important;
+    gap: 25px !important;
+  }
+
+  .path-line {
+    display: none !important;
+  }
+
+  .path-item {
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+
+  /* ================= OFFICE ================= */
+
+  .office-grid {
+    grid-template-columns: 1fr !important;
+    gap: 35px !important;
+  }
+
+  .office-content {
+    text-align: center !important;
+  }
+
+  .office-visual {
+    width: 100%;
+  }
+
+
+  /* ================= PROJECTS ================= */
+
+  .projects-grid {
+    grid-template-columns: 1fr !important;
+    gap: 15px !important;
+  }
+
+  .project-card {
+    text-align: center !important;
+  }
+
+
+  /* ================= WORKFLOW ================= */
+
+  .workflow {
+    flex-direction: column !important;
+    gap: 15px !important;
+  }
+
+  .workflow-item {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  .workflow-arrow {
+    display: none !important;
+  }
+
+
+  /* ================= CAREER ================= */
+
+  .career-box {
+    text-align: center !important;
+  }
+
+  .roles-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .role-card {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+
+  /* ================= INTERVIEW ================= */
+
+  .interview-grid {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+    text-align: center !important;
+  }
+
+  .interview-list {
+    text-align: left !important;
+  }
+
+
+  /* ================= DIFFERENT ================= */
+
+  .different-grid {
+    grid-template-columns: 1fr !important;
+    gap: 15px !important;
+  }
+
+  .different-card {
+    text-align: center !important;
+  }
+
+
+  /* ================= OUTCOMES ================= */
+
+  .outcomes-grid {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+    text-align: center !important;
+  }
+
+  .outcomes-list {
+    text-align: left !important;
+  }
+
+
+  /* ================= CERTIFICATE ================= */
+
+  .certificate-box {
+    grid-template-columns: 1fr !important;
+    gap: 35px !important;
+  }
+
+  .certificate-content {
+    text-align: center !important;
+  }
+
+  .certificate-preview {
+    width: 100%;
+  }
+
+
+  /* ================= HOW ================= */
+
+  .how-grid {
+    grid-template-columns: 1fr !important;
+    gap: 15px !important;
+  }
+
+  .how-grid > div {
+    text-align: center !important;
+  }
+
+
+  /* ================= TESTIMONIAL ================= */
+
+  .testimonial-card {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center !important;
+    padding: 30px 20px !important;
+  }
+
+
+  /* ================= FAQ ================= */
+
+  .faq-grid {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+  }
+
+  .faq-heading {
+    text-align: center !important;
+  }
+
+  .faq-item summary {
+    gap: 10px !important;
+  }
+
+  .faq-item summary strong {
+    font-size: 14px !important;
+  }
+
+
+  /* ================= FINAL CTA ================= */
+
+  .final-cta {
+    padding: 65px 0 !important;
+  }
+
+  .final-content {
+    text-align: center !important;
+  }
+
+  .final-content h2 {
+    font-size: 30px !important;
+  }
+
+  .final-button {
+    width: 100%;
+    max-width: 340px;
+    margin-inline: auto;
+    justify-content: center;
+  }
+
+  .final-points {
+    flex-wrap: wrap;
+    justify-content: center !important;
+  }
+
+
+  /* ================= CHECKOUT ================= */
+
+  .checkout-grid {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+  }
+
+  .checkout-info {
+    text-align: center !important;
+  }
+
+  .checkout-card {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+
+  /* ================= FOOTER ================= */
+
+  .footer-inner {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 30px !important;
+  }
+
+  .footer-links {
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+  }
+
+  .footer-bottom {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 8px !important;
+  }
+
+
+  /* ================= STICKY CTA ================= */
+
+  .sticky-cta {
+    left: 12px !important;
+    right: 12px !important;
+    bottom: 12px !important;
+    width: auto !important;
+    box-sizing: border-box;
+    padding: 12px 14px !important;
+    gap: 10px !important;
+  }
+
+  .sticky-cta strong {
+    font-size: 13px !important;
+  }
+
+  .sticky-cta span {
+    font-size: 11px !important;
+  }
+
+  .sticky-cta a {
+    padding: 10px 14px !important;
+    font-size: 12px !important;
+    white-space: nowrap;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .container {
+    width: calc(100% - 24px);
+  }
+
+  .navbar {
+    padding: 12px 0 !important;
+  }
+
+  .nav-links {
+    display: none !important;
+  }
+
+  .nav-inner {
+    justify-content: space-between !important;
+  }
+
+  .nav-button {
+    padding: 9px 12px !important;
+    font-size: 12px !important;
+  }
+
+  .hero {
+    padding-top: 45px !important;
+  }
+
+  .hero-content h1 {
+    font-size: 28px !important;
+  }
+
+  .section-heading h2,
+  .skills-heading h2,
+  .office-content h2,
+  .career-box h2,
+  .certificate-content h2,
+  .faq-heading h2 {
+    font-size: 25px !important;
+  }
+
+  .value-card {
+    padding: 25px 16px !important;
+  }
+
+  .value-price strong {
+    font-size: 43px !important;
+  }
+
+  .sticky-cta {
+    padding: 10px !important;
+  }
+
+  .sticky-cta a {
+    padding: 9px 11px !important;
+  }
+}
