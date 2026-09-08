@@ -4427,27 +4427,94 @@ select {
 }
 /* ENROLL BUTTON — BLUE BLINK */
 
+.cta-button,
 .enroll-blink,
 .nav-button,
 .primary-button,
 .value-button,
 .middle-enroll-button,
 .final-button,
-.checkout-button {
-  animation: blueEnrollGlow 1.2s ease-in-out infinite;
+.checkout-button,
+.payment-button,
+.sticky-cta a {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  animation: blueEnrollGlow 1.8s ease-in-out infinite;
+}
+
+.cta-button::before,
+.enroll-blink::before,
+.nav-button::before,
+.primary-button::before,
+.value-button::before,
+.middle-enroll-button::before,
+.final-button::before,
+.checkout-button::before,
+.payment-button::before,
+.sticky-cta a::before {
+  content: "";
+  position: absolute;
+  inset: -120% -30%;
+  transform: rotate(18deg);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 22%,
+    rgba(255, 255, 255, 0.62) 50%,
+    rgba(255, 255, 255, 0.08) 78%,
+    transparent 100%
+  );
+  animation: shineSweep 3.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.cta-button {
+  background: linear-gradient(135deg, #2f4dff 0%, #1d3fdc 100%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 14px 28px rgba(37, 99, 235, 0.28);
+}
+
+.cta-button:hover {
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12), 0 0 26px rgba(37, 99, 235, 0.6), 0 12px 26px rgba(37, 99, 235, 0.35);
+  filter: saturate(1.15);
 }
 
 @keyframes blueEnrollGlow {
   0%,
   100% {
-    box-shadow: 0 4px 12px rgba(33, 103, 245, 0.18);
+    box-shadow: 0 4px 14px rgba(33, 103, 245, 0.18), 0 0 0 rgba(33, 103, 245, 0);
+    filter: saturate(1);
   }
 
   50% {
     box-shadow:
       0 0 0 4px rgba(33, 103, 245, 0.12),
-      0 0 20px rgba(33, 103, 245, 0.55),
-      0 0 35px rgba(33, 103, 245, 0.30);
+      0 0 24px rgba(33, 103, 245, 0.58),
+      0 0 42px rgba(33, 103, 245, 0.34),
+      0 12px 28px rgba(33, 103, 245, 0.28);
+    filter: saturate(1.2);
+  }
+}
+
+@keyframes shineSweep {
+  0% {
+    transform: translateX(-120%) rotate(18deg);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateX(120%) rotate(18deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(140%) rotate(18deg);
+    opacity: 0;
   }
 }
 /* =====================================================
@@ -4474,7 +4541,7 @@ select {
 .sticky-cta,
 .sticky-cta button,
 .sticky-cta a {
-  animation: stickyBlueBlink 1.2s ease-in-out infinite;
+  animation: stickyBlueBlink 1.8s ease-in-out infinite;
 }
 
 @keyframes stickyBlueBlink {
@@ -4484,8 +4551,9 @@ select {
 
   50% {
     box-shadow:
-      0 0 8px rgba(33, 103, 245, 0.55),
-      0 0 22px rgba(33, 103, 245, 0.45);
+      0 0 10px rgba(33, 103, 245, 0.58),
+      0 0 26px rgba(33, 103, 245, 0.42),
+      0 10px 18px rgba(33, 103, 245, 0.22);
   }
 }
 

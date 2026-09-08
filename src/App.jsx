@@ -273,7 +273,7 @@ function App() {
             <a
               href="#enroll"
               onClick={openEnrollment}
-              className="group flex shrink-0 items-center gap-2 rounded-full bg-indigo-700 px-6 py-3 text-base font-semibold !text-white shadow-md transition-all duration-200 hover:bg-indigo-800 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              className="cta-button group flex shrink-0 items-center gap-2 rounded-full bg-indigo-700 px-6 py-3 text-base font-semibold !text-white shadow-md transition-all duration-200 hover:bg-indigo-800 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
             >
               <span className="!text-white">Enroll Now</span>
 
@@ -311,17 +311,23 @@ function App() {
                 പഠിച്ച് ജോലി ചെയ്യാൻ തയ്യാറാകൂ.
               </p>
 
-              <div className="hero-actions">
+              <div className="mt-8 flex flex-wrap items-center gap-4">
                 <a
                   href="#enroll"
-                  className="primary-button"
                   onClick={openEnrollment}
+                  className="cta-button group inline-flex items-center gap-2 rounded-full bg-indigo-700 px-7 py-3.5 text-base font-bold !text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-indigo-800 hover:shadow-xl"
                 >
-                  Enroll Now
-                  <span>→</span>
+                  <span className="!text-white">Enroll Now</span>
+
+                  <span className="!text-white text-xl transition-transform duration-300 group-hover:translate-x-1">
+                    →
+                  </span>
                 </a>
 
-                <a href="#learn" className="secondary-button">
+                <a
+                  href="#learn"
+                  className="inline-flex items-center justify-center rounded-full border border-gray-300 bg-white px-7 py-3.5 text-base font-semibold !text-gray-900 transition-all duration-300 hover:border-gray-900 hover:bg-gray-50"
+                >
                   കൂടുതൽ അറിയാം
                 </a>
               </div>
@@ -1037,9 +1043,16 @@ function App() {
               Excel + AI
               <span> പഠനം ഇന്ന് തന്നെ ആരംഭിക്കൂ.</span>
             </h2>
-            <button className="middle-enroll-button" onClick={openEnrollment}>
-              ENROLL NOW — ₹1,499
-              <span>→</span>
+            <button
+              type="button"
+              onClick={openEnrollment}
+              className="cta-button group inline-flex items-center gap-3 rounded-full bg-indigo-700 px-7 py-4 text-base font-bold !text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-indigo-800 hover:shadow-xl sm:px-9"
+            >
+              <span className="!text-white">ENROLL NOW — ₹1,499</span>
+
+              <span className="!text-white text-xl transition-transform duration-300 group-hover:translate-x-1">
+                →
+              </span>
             </button>
 
             <p>Practical Learning • Real Projects • Career-focused Skills</p>
@@ -1226,10 +1239,14 @@ function App() {
 
               <a
                 href="#enroll"
-                className="primary-button"
                 onClick={openEnrollment}
+                className="cta-button group inline-flex  items-center gap-2 rounded-full bg-indigo-700 px-7 py-3.5 text-base font-bold !text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-indigo-800 hover:shadow-xl"
               >
-                Enroll Now →
+                <span className="!text-white">Enroll Now</span>
+
+                <span className="!text-white text-xl transition-transform duration-300 group-hover:translate-x-1">
+                  →
+                </span>
               </a>
             </div>
 
@@ -1428,11 +1445,11 @@ function App() {
 
             <a
               href="#checkout"
-              className="final-button"
+              className="cta-button final-button inline-flex items-center justify-center gap-3 rounded-full bg-indigo-700 px-7 py-4 text-base font-bold !text-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:bg-indigo-800 hover:shadow-2xl"
               onClick={openEnrollment}
             >
-              ഇപ്പോൾ പഠനം ആരംഭിക്കൂ
-              <span>→</span>
+              <span className="!text-white">ഇപ്പോൾ പഠനം ആരംഭിക്കൂ</span>
+              <span className="!text-white text-xl transition-transform duration-300 group-hover:translate-x-1">→</span>
             </a>
 
             <div className="final-points">
@@ -1481,11 +1498,15 @@ function App() {
               </div>
 
               <a
-                href="#enroll"
-                className="checkout-button"
+                href="#checkout"
                 onClick={openEnrollment}
+                className="cta-button group inline-flex items-center gap-3 rounded-full bg-indigo-700 px-8 py-4 text-base font-bold !text-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:bg-indigo-800 hover:shadow-2xl"
               >
-                Enroll Now →
+                <span className="!text-white">ഇപ്പോൾ പഠനം ആരംഭിക്കൂ</span>
+
+                <span className="!text-gray-900 text-xl transition-transform duration-300 group-hover:translate-x-1">
+                  →
+                </span>
               </a>
 
               <p className="checkout-note">
@@ -1541,7 +1562,7 @@ function App() {
           <span>Starts today</span>
         </div>
 
-        <a href="#enroll" onClick={openEnrollment}>
+        <a href="#enroll" onClick={openEnrollment} className="cta-button">
           Enroll Now →
         </a>
       </div>
