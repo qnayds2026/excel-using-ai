@@ -4425,3 +4425,73 @@ select {
   }
 
 }
+/* ENROLL BUTTON — BLUE BLINK */
+
+.enroll-blink,
+.nav-button,
+.primary-button,
+.value-button,
+.middle-enroll-button,
+.final-button,
+.checkout-button {
+  animation: blueEnrollGlow 1.2s ease-in-out infinite;
+}
+
+@keyframes blueEnrollGlow {
+  0%,
+  100% {
+    box-shadow: 0 4px 12px rgba(33, 103, 245, 0.18);
+  }
+
+  50% {
+    box-shadow:
+      0 0 0 4px rgba(33, 103, 245, 0.12),
+      0 0 20px rgba(33, 103, 245, 0.55),
+      0 0 35px rgba(33, 103, 245, 0.30);
+  }
+}
+/* =====================================================
+   STICKY CTA — CENTER ALIGNMENT
+===================================================== */
+
+.sticky-cta {
+  position: fixed !important;
+  left: 50% !important;
+  right: auto !important;
+  bottom: 20px !important;
+
+  transform: translateX(-50%) !important;
+
+  width: min(720px, calc(100% - 32px)) !important;
+  max-width: 720px !important;
+
+  margin: 0 !important;
+  box-sizing: border-box;
+  z-index: 9999;
+}
+
+/* Keep the blink effect without breaking center position */
+.sticky-cta,
+.sticky-cta button,
+.sticky-cta a {
+  animation: stickyBlueBlink 1.2s ease-in-out infinite;
+}
+
+@keyframes stickyBlueBlink {
+  0%, 100% {
+    box-shadow: 0 4px 14px rgba(33, 103, 245, 0.18);
+  }
+
+  50% {
+    box-shadow:
+      0 0 8px rgba(33, 103, 245, 0.55),
+      0 0 22px rgba(33, 103, 245, 0.45);
+  }
+}
+
+@media (max-width: 600px) {
+  .sticky-cta {
+    width: calc(100% - 20px) !important;
+    bottom: 10px !important;
+  }
+}
