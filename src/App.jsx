@@ -72,6 +72,129 @@ const projects = [
   },
 ];
 
+const modules = [
+  {
+    number: "01",
+    title: "Excel Fundamentals",
+    duration: "3 Hours",
+    items: [
+      "Excel Interface & Navigation",
+      "Workbook & Worksheet Structure",
+      "Cells & Cell Referencing",
+      "Data Types (Text, Number, Date)",
+      "Formatting & Styles",
+      "Essential Keyboard Shortcuts",
+    ],
+    outcome: "Strong Excel foundation",
+  },
+  {
+    number: "03",
+    title: "Data Handling & Analysis",
+    duration: "4 Hours",
+    items: [
+      "Sorting & Filtering Data",
+      "Data Validation (Dropdown Lists)",
+      "Remove Duplicates",
+      "Text Functions (LEFT, RIGHT, MID, LEN)",
+      "Pivot Tables",
+      "Pivot Charts",
+    ],
+    outcome: "Used in Real-Time Office Work",
+  },
+  {
+    number: "04",
+    title: "Reports & Dashboards",
+    duration: "3 Hours",
+    items: [
+      "Chart Types (Column, Bar, Line, Pie)",
+      "Dynamic Charts",
+      "KPI Reports",
+      "Dashboard Design Principles",
+      "Professional Report Presentation",
+    ],
+    outcome: "Management-Level Reporting Skills",
+  },
+  {
+    number: "05",
+    title: "AI Tools with Excel",
+    duration: "5 Hours",
+    items: [
+      "Introduction to AI in Excel",
+      "ChatGPT for Excel",
+      "Formula generation",
+      "Error fixing",
+      "Data explanation",
+      "AI-assisted data cleaning",
+      "Smart analysis & insights",
+      "Prompt writing for Excel tasks",
+    ],
+    outcome: "Work Faster & Smarter Using AI",
+  },
+  {
+    number: "06",
+    title: "Automation & Job Preparation",
+    duration: "1 Hour",
+    items: [
+      "AI-assisted Excel automation",
+      "Monthly report automation",
+      "Resume Excel projects",
+      "Excel interview questions",
+      "Practical Excel test preparation",
+    ],
+    outcome: "Job-Ready Skill Development",
+  },
+  {
+    number: "08",
+    title: "Excel for MIS & Management Reporting",
+    duration: "",
+    items: [
+      "MIS report structure",
+      "Daily / Weekly / Monthly reports",
+      "Performance tracking sheets",
+      "KPI & scorecard creation",
+      "Management-ready report formats",
+    ],
+    outcome: "",
+  },
+  {
+    number: "09",
+    title: "Excel for HR & Accounts",
+    duration: "",
+    items: [
+      "HR attendance & leave tracker",
+      "Payroll basics using Excel",
+      "Incentive & salary calculation",
+      "Expense & budget tracking",
+      "Accounts summary sheets",
+    ],
+    outcome: "",
+  },
+  {
+    number: "10",
+    title: "Excel Automation with AI",
+    duration: "",
+    items: [
+      "Automating repetitive Excel tasks",
+      "AI-assisted formula automation",
+      "Monthly report auto-generation",
+      "Workflow optimization using AI prompts",
+    ],
+    outcome: "",
+  },
+  {
+    number: "12",
+    title: "Industry Projects & Case Studies",
+    duration: "",
+    items: [
+      "Real company data projects",
+      "Sales & business analysis project",
+      "HR / finance-based case studies",
+      "End-to-end Excel + AI project",
+    ],
+    outcome: "",
+  },
+];
+
 const workflow = [
   "ജോലി / Task",
   "AI സഹായം",
@@ -474,7 +597,7 @@ function App() {
           </div>
 
         </section>
-
+        
 
         {/* ================= TRUST ================= */}
 
@@ -797,6 +920,196 @@ function App() {
         </section>
 
 
+        {/* ================= COURSE STRUCTURE / MODULES ================= */}
+
+        <section className="modules-section" id="modules">
+  <div className="modules-container">
+
+    <div className="modules-heading">
+
+      <div className="section-tag">
+        Course Structure
+      </div>
+
+      <h2>
+        What You'll <span>Learn</span>
+      </h2>
+
+      <p>
+        Excel + AI ഉപയോഗിച്ച് job-ready practical skills
+        step-by-step ആയി പഠിക്കാം.
+      </p>
+
+    </div>
+
+
+    <div className="modules-grid">
+
+      <div className="module-card">
+
+        <div className="module-icon">
+          📊
+        </div>
+
+        <span className="module-number">
+          MODULE 01
+        </span>
+
+        <h3>
+          Excel Fundamentals
+        </h3>
+
+        <ul className="module-topics">
+          <li>Excel Interface & Navigation</li>
+          <li>Workbook & Worksheet Structure</li>
+          <li>Cells & Cell Referencing</li>
+          <li>Data Types & Formatting</li>
+          <li>Essential Keyboard Shortcuts</li>
+        </ul>
+
+        <div className="module-outcome">
+          Outcome: <strong>Strong Excel foundation</strong>
+        </div>
+
+      </div>
+
+
+      <div className="module-card">
+
+        <div className="module-icon">
+          📈
+        </div>
+
+        <span className="module-number">
+          MODULE 02
+        </span>
+
+        <h3>
+          Data Handling & Analysis
+        </h3>
+
+        <ul className="module-topics">
+          <li>Sorting & Filtering Data</li>
+          <li>Data Validation</li>
+          <li>Remove Duplicates</li>
+          <li>Text Functions</li>
+          <li>Pivot Tables & Charts</li>
+        </ul>
+
+      </div>
+
+
+      <div className="module-card">
+
+        <div className="module-icon">
+          📊
+        </div>
+
+        <span className="module-number">
+          MODULE 03
+        </span>
+
+        <h3>
+          Reports & Dashboards
+        </h3>
+
+        <ul className="module-topics">
+          <li>Chart Types</li>
+          <li>Dynamic Charts</li>
+          <li>KPI Reports</li>
+          <li>Dashboard Design</li>
+          <li>Professional Reporting</li>
+        </ul>
+
+      </div>
+
+
+      <div className="module-card featured">
+
+        <div className="module-icon">
+          ✦
+        </div>
+
+        <span className="module-number">
+          MODULE 04
+        </span>
+
+        <h3>
+          AI Tools with Excel
+        </h3>
+
+        <ul className="module-topics">
+          <li>Introduction to AI in Excel</li>
+          <li>ChatGPT for Excel</li>
+          <li>Formula Generation</li>
+          <li>Error Fixing</li>
+          <li>AI-assisted Data Cleaning</li>
+          <li>Smart Analysis & Insights</li>
+        </ul>
+
+      </div>
+
+
+      <div className="module-card">
+
+        <div className="module-icon">
+          ⚙
+        </div>
+
+        <span className="module-number">
+          MODULE 05
+        </span>
+
+        <h3>
+          Automation with AI
+        </h3>
+
+        <ul className="module-topics">
+          <li>Automating Repetitive Tasks</li>
+          <li>AI-assisted Formula Automation</li>
+          <li>Monthly Report Generation</li>
+          <li>Workflow Optimization</li>
+        </ul>
+
+      </div>
+
+
+      <div className="module-card">
+
+        <div className="module-icon">
+          💼
+        </div>
+
+        <span className="module-number">
+          MODULE 06
+        </span>
+
+        <h3>
+          MIS, HR & Accounts
+        </h3>
+
+        <ul className="module-topics">
+          <li>MIS Report Structure</li>
+          <li>Daily / Weekly / Monthly Reports</li>
+          <li>HR Attendance & Leave Tracker</li>
+          <li>Payroll Basics</li>
+          <li>Expense & Budget Tracking</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+
+    <div className="modules-bottom">
+      <p>
+        <strong>Job-Ready Learning:</strong>{" "}
+        Real Office Tasks • Practical Projects • Excel + AI
+      </p>
+    </div>
+
+  </div>
+</section>
         {/* ================= LEARNING PATH ================= */}
 
         <section className="section path-section">
@@ -1055,7 +1368,32 @@ function App() {
 
         </section>
 
+{/* ================= MIDDLE ENROLL CTA ================= */}
 
+<section className="middle-enroll-section">
+  <div className="middle-enroll-content">
+    <span className="middle-enroll-label">
+      Ready to Start?
+    </span>
+
+    <h2>
+      Excel + AI
+      <span> പഠനം ഇന്ന് തന്നെ ആരംഭിക്കൂ.</span>
+    </h2>
+<button
+  className="middle-enroll-button"
+  onClick={openEnrollment}
+>
+  ENROLL NOW — ₹1,499
+  <span>→</span>
+</button>
+    
+
+    <p>
+      Practical Learning • Real Projects • Career-focused Skills
+    </p>
+  </div>
+</section>
         {/* ================= CAREER ================= */}
 
         <section className="section career-section">
@@ -1428,61 +1766,121 @@ function App() {
         </section>
 
 
-        {/* ================= TESTIMONIAL ================= */}
+        {/* ================= REVIEWS ================= */}
 
-        <section className="section testimonial-section">
+<section className="section reviews-section" id="reviews">
+  <div className="container">
 
-          <div className="container">
+    <div className="section-heading centered">
 
-            <div className="section-heading centered">
+      <div className="section-tag">
+        Learner Feedback
+      </div>
 
-              <div className="section-tag">
-                Learner Experience
-              </div>
+      <h2>
+        Excel + AI
+        <br />
+        <span>പഠനത്തെക്കുറിച്ചുള്ള അഭിപ്രായങ്ങൾ.</span>
+      </h2>
 
-              <h2>
-                പഠനം
-                <span> എങ്ങനെ അനുഭവപ്പെടും?</span>
-              </h2>
+      <p>
+        Practical learning experience-നെ അടിസ്ഥാനമാക്കിയുള്ള sample feedback.
+      </p>
 
-            </div>
+    </div>
 
 
-            <div className="testimonial-card">
+    <div className="reviews-grid">
 
-              <div className="quote-mark">
-                “
-              </div>
+      <div className="review-card">
 
-              <p>
-                Excel concepts മാത്രം പഠിക്കുന്നതിനേക്കാൾ,
-                അത് യഥാർത്ഥ ജോലിയിൽ എങ്ങനെ ഉപയോഗിക്കാം എന്ന്
-                മനസ്സിലാക്കാൻ practical approach സഹായിക്കുന്നു.
-              </p>
-
-              <div className="testimonial-person">
-
-                <div className="avatar">
-                  A
-                </div>
-
-                <div>
-                  <strong>
-                    Program Learner
-                  </strong>
-
-                  <span>
-                    Excel + AI Training
-                  </span>
-                </div>
-
-              </div>
-
-            </div>
-
+        <div className="review-top">
+          <div className="review-avatar">
+            A
           </div>
 
-        </section>
+          <div>
+            <strong>Arun K.</strong>
+            <span>Sample Learner</span>
+          </div>
+        </div>
+
+        <div className="review-stars">
+          ★★★★★
+        </div>
+
+        <p>
+          “Excel formulas മാത്രം പഠിക്കുന്നതിന് പകരം AI ഉപയോഗിച്ച്
+          എങ്ങനെ faster ആയി work ചെയ്യാം എന്നത് മനസ്സിലാക്കാൻ
+          ഈ learning approach സഹായിക്കുന്നു.”
+        </p>
+
+        <span className="review-label">
+        </span>
+
+      </div>
+
+
+      <div className="review-card">
+
+        <div className="review-top">
+          <div className="review-avatar">
+            S
+          </div>
+
+          <div>
+            <strong>Shahana M.</strong>
+          </div>
+        </div>
+
+        <div className="review-stars">
+          ★★★★★
+        </div>
+
+        <p>
+          “Reports, dashboards, data analysis എന്നിവ practical ആയി
+          പഠിക്കാമെന്നത് വളരെ useful ആയി തോന്നി. Office work-ന്
+          directly apply ചെയ്യാൻ കഴിയുന്ന രീതിയിലാണ്.”
+        </p>
+
+        <span className="review-label">
+        </span>
+
+      </div>
+
+
+      <div className="review-card">
+
+        <div className="review-top">
+          <div className="review-avatar">
+            R
+          </div>
+
+          <div>
+            <strong>Rahul P.</strong>
+          </div>
+        </div>
+
+        <div className="review-stars">
+          ★★★★★
+        </div>
+
+        <p>
+          “ChatGPT ഉപയോഗിച്ച് Excel formulas കണ്ടെത്താനും
+          repetitive tasks എളുപ്പമാക്കാനും പഠിച്ചത് വളരെ
+          interesting ആയിരുന്നു.”
+        </p>
+
+        <span className="review-label">
+          
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
 
 
         {/* ================= FAQ ================= */}
@@ -1681,8 +2079,7 @@ function App() {
 
       </main>
 
-
-      {/* ================= FOOTER ================= */}
+{/* ================= FOOTER ================= */}
 
       <footer className="footer">
 
