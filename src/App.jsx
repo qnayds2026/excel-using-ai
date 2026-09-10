@@ -247,7 +247,7 @@ const faqs = [
 
 function App() {
   const [showEnrollment, setShowEnrollment] = useState(false);
-  const [showPaymentSuccess, setShowPaymentSuccess] = useState(false);
+
   const openEnrollment = (e) => {
     e.preventDefault();
     setShowEnrollment(true);
