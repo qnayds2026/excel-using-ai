@@ -1,5 +1,5 @@
-@import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap");
+@import "tailwindcss";
 
 :root {
   font-family: "Noto Sans Malayalam", "Nirmala UI", Inter, Arial, sans-serif;
@@ -4444,6 +4444,7 @@ select {
 }
 
 .cta-button::before,
+.cta-pulse::before,
 .enroll-blink::before,
 .nav-button::before,
 .primary-button::before,
@@ -4469,13 +4470,19 @@ select {
   pointer-events: none;
 }
 
-.cta-button {
+.cta-button,
+.cta-pulse {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   background: linear-gradient(135deg, #2f4dff 0%, #1d3fdc 100%);
   border: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow: 0 14px 28px rgba(37, 99, 235, 0.28);
+  animation: blueEnrollGlow 1.8s ease-in-out infinite;
 }
 
-.cta-button:hover {
+.cta-button:hover,
+.cta-pulse:hover {
   box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12), 0 0 26px rgba(37, 99, 235, 0.6), 0 12px 26px rgba(37, 99, 235, 0.35);
   filter: saturate(1.15);
 }

@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import logo from "./assets/QNAYDS_LOGO.png";
+
 const EXCEL_COURSE_ID = 13;
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 console.log("API_URL =", API_URL);
@@ -254,52 +256,87 @@ function App() {
   const closeEnrollment = () => {
     setShowEnrollment(false);
   };
+  if (showPaymentSuccess) {
+    return (
+      <div className="payment-success-page">
+        <div className="payment-success-card">
+          <div className="success-icon">✓</div>
 
+          <h1>Payment Successful!</h1>
+
+          <p className="success-message">
+            Thank you for enrolling in the Excel Using AI Course.
+          </p>
+
+          <div className="email-box">
+            <div className="email-icon">✉</div>
+
+            <div>
+              <h3>Check your email</h3>
+              <p>
+                Please check your email for the activation link and course
+                access details.
+              </p>
+            </div>
+          </div>
+
+          <button
+            className="whatsapp-button"
+            onClick={() => {
+              window.open(
+                "https://chat.whatsapp.com/E9J1e6cdldY4mOyoX6gbzn",
+                "_blank",
+              );
+            }}
+          >
+            💬 Join WhatsApp Group
+          </button>
+
+          <button
+            className="back-button"
+            onClick={() => setShowPaymentSuccess(false)}
+          >
+            ← Back to Landing Page
+          </button>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="app">
-
       {/* ================= NAVBAR ================= */}
 
-      <header className="navbar">
-        <div className="container nav-inner">
-
-          <a href="#home" className="logo">
-            <span className="logo-icon">✦</span>
-            <span>
-              Excel <b>AI</b>
-            </span>
+      <header className="fixed inset-x-0 top-0 z-[9999] px-4 pt-4 sm:px-6">
+        <nav className="mx-auto flex h-[72px] max-w-7xl items-center justify-between rounded-2xl border border-slate-200 bg-white/90 px-5 shadow-xl backdrop-blur-md sm:px-7">
+          <a href="#home" className="flex shrink-0 items-center">
+            <img
+              src={logo}
+              alt="QNAYDS"
+              className="block h-11 w-auto max-w-[150px] object-contain sm:h-12"
+            />
           </a>
 
-          <nav className="nav-links">
-            <a href="#features">പ്രധാന സവിശേഷതകൾ</a>
-            <a href="#learn">എന്താണ് പഠിക്കുന്നത്?</a>
-            <a href="#projects">Projects</a>
-            <a href="#faq">ചോദ്യങ്ങൾ</a>
-          </nav>
-
-          <a
-            href="#enroll"
-            className="nav-button"
+          <button
+            type="button"
             onClick={openEnrollment}
+            className="cta-pulse group inline-flex items-center gap-2 rounded-full bg-blue-600 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-xl sm:px-6 sm:text-base"
           >
-            Enroll Now →
-          </a>
-
-        </div>
+            Enroll Now
+            <span className="text-base transition-transform duration-300 group-hover:translate-x-1">
+              →
+            </span>
+          </button>
+        </nav>
       </header>
-
 
       {/* ================= HERO ================= */}
 
       <main>
-
         <section className="hero" id="home">
           <div className="hero-glow"></div>
 
           <div className="container hero-grid">
-
             <div className="hero-content">
-
               <div className="eyebrow">
                 ✦ ജോലി നേടാൻ സഹായിക്കുന്ന പ്രായോഗിക Excel + AI പഠനം
               </div>
@@ -314,25 +351,28 @@ function App() {
 
               <p className="hero-text">
                 Excel വെറും ഒരു spreadsheet skill ആയി മാത്രം പഠിക്കേണ്ടതില്ല.
-                Data, Reports, Dashboards, AI, Automation എന്നിവ
-                പ്രായോഗികമായി പഠിച്ച് ജോലി ചെയ്യാൻ തയ്യാറാകൂ.
+                Data, Reports, Dashboards, AI, Automation എന്നിവ പ്രായോഗികമായി
+                പഠിച്ച് ജോലി ചെയ്യാൻ തയ്യാറാകൂ.
               </p>
 
               <div className="hero-actions">
-
-                <a
-                  href="#enroll"
-                  className="primary-button"
+                <button
+                  type="button"
                   onClick={openEnrollment}
+                  className="cta-pulse group inline-flex items-center gap-2 rounded-full bg-blue-600 px-7 py-3.5 text-base font-bold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 hover:shadow-xl"
                 >
                   Enroll Now
-                  <span>→</span>
-                </a>
+                  <span className="text-xl transition-transform duration-300 group-hover:translate-x-1">
+                    →
+                  </span>
+                </button>
 
-                <a href="#learn" className="secondary-button">
+                <a
+                  href="#learn"
+                  className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-7 py-3.5 text-base font-semibold text-slate-800 transition-all duration-300 hover:border-slate-400 hover:bg-slate-50"
+                >
                   കൂടുതൽ അറിയാം
                 </a>
-
               </div>
 
               <div className="hero-points">
@@ -340,32 +380,22 @@ function App() {
                 <span>✓ Job-oriented</span>
                 <span>✓ AI ഉപയോഗിച്ച് Excel</span>
               </div>
-
             </div>
-
 
             {/* Excel Preview */}
 
             <div className="hero-visual">
-
               <div className="excel-window">
-
                 <div className="excel-top">
-
                   <div className="window-dots">
                     <span></span>
                     <span></span>
                     <span></span>
                   </div>
 
-                  <div className="excel-title">
-                    Sales_Report.xlsx
-                  </div>
+                  <div className="excel-title">Sales_Report.xlsx</div>
 
-                  <div className="ai-badge">
-                    ✦ AI
-                  </div>
-
+                  <div className="ai-badge">✦ AI</div>
                 </div>
 
                 <div className="excel-toolbar">
@@ -381,7 +411,6 @@ function App() {
                 </div>
 
                 <div className="spreadsheet">
-
                   <div className="sheet-row sheet-header">
                     <div>Product</div>
                     <div>Units</div>
@@ -416,44 +445,28 @@ function App() {
                     <div>₹28,050</div>
                     <div>+9.7%</div>
                   </div>
-
                 </div>
-
               </div>
 
-
               <div className="ai-card">
-
                 <div className="ai-card-icon">✦</div>
 
                 <div>
                   <strong>AI സഹായം</strong>
 
-                  <p>
-                    “ഈ data-യിൽ ഏറ്റവും കൂടുതൽ വളർച്ച
-                    ഏത് product-നാണ്?”
-                  </p>
+                  <p>“ഈ data-യിൽ ഏറ്റവും കൂടുതൽ വളർച്ച ഏത് product-നാണ്?”</p>
                 </div>
-
               </div>
-
             </div>
-
           </div>
         </section>
-
 
         {/* ================= VIDEO SECTION ================= */}
 
         <section className="video-section">
-
           <div className="container">
-
             <div className="video-heading">
-
-              <div className="section-tag">
-                കോഴ്സിനെക്കുറിച്ച് അറിയാം
-              </div>
+              <div className="section-tag">കോഴ്സിനെക്കുറിച്ച് അറിയാം</div>
 
               <h2>
                 Excel + AI
@@ -462,17 +475,13 @@ function App() {
               </h2>
 
               <p>
-                Excel + AI പഠനത്തിന്റെ പ്രധാന ഭാഗങ്ങളും
-                പ്രായോഗിക പരിശീലനവും ഈ വീഡിയോയിലൂടെ പരിചയപ്പെടാം.
+                Excel + AI പഠനത്തിന്റെ പ്രധാന ഭാഗങ്ങളും പ്രായോഗിക പരിശീലനവും ഈ
+                വീഡിയോയിലൂടെ പരിചയപ്പെടാം.
               </p>
-
             </div>
 
-
             <div className="course-video">
-
               <div className="video-frame">
-
                 <div
                   style={{
                     width: "100%",
@@ -485,30 +494,19 @@ function App() {
                     textAlign: "center",
                   }}
                 >
-
-                  <h3 style={{ margin: "0 0 8px" }}>
-                    കോഴ്സ് വീഡിയോ
-                  </h3>
+                  <h3 style={{ margin: "0 0 8px" }}>കോഴ്സ് വീഡിയോ</h3>
 
                   <p style={{ margin: 0, opacity: 0.75 }}>
                     വീഡിയോ ഉടൻ ഇവിടെ ലഭ്യമാകും
                   </p>
-
                 </div>
 
                 <div className="video-overlay">
-
-                  <div className="play-button">
-                    ▶
-                  </div>
-
+                  <div className="play-button">▶</div>
                 </div>
-
               </div>
 
-
               <div className="video-points">
-
                 <div>
                   <span>✓</span>
                   Excel പ്രായോഗിക പരിശീലനം
@@ -523,94 +521,65 @@ function App() {
                   <span>✓</span>
                   Real-world Projects
                 </div>
-
               </div>
-
             </div>
-
           </div>
-
         </section>
-
 
         {/* ================= COURSE VALUE STACK ================= */}
 
         <section className="value-section">
-
           <div className="value-card">
+            <div className="save-badge">SAVE ₹3,501</div>
 
-            <div className="save-badge">
-              SAVE ₹3,501
-            </div>
-
-            <h2>
-              Course Value Stack:
-            </h2>
+            <h2>Course Value Stack:</h2>
 
             <div className="value-list">
-
               <div>✓ Excel + AI Practical Learning</div>
               <div>✓ Real-world Excel Projects</div>
               <div>✓ AI-assisted Excel Workflows</div>
               <div>✓ Data Analysis & Dashboards</div>
               <div>✓ Job-oriented Excel Skills</div>
               <div>✓ Certification</div>
-
             </div>
 
-
             <div className="value-price">
-
-              <span>
-                TODAY
-              </span>
+              <span>TODAY</span>
 
               <div className="regular-price">
                 REGULAR PRICE <del>₹5,000</del>
               </div>
 
-              <strong>
-                ₹1,499
-              </strong>
-
+              <strong>₹1,499</strong>
             </div>
-
 
             {/* MAIN ENROLL BUTTON */}
 
-            <a
-              href="#enroll"
-              className="value-button"
+            <button
+              type="button"
               onClick={openEnrollment}
+              className="cta-pulse group inline-flex w-full items-center justify-between gap-4 rounded-full bg-blue-600 px-6 py-4 text-left text-base font-extrabold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-xl"
             >
-              START LEARNING EXCEL + AI TODAY
-              <span>→</span>
-            </a>
-
+              <span>START LEARNING EXCEL + AI TODAY</span>
+              <span className="text-2xl transition-transform duration-300 group-hover:translate-x-1">
+                →
+              </span>
+            </button>
 
             <div className="value-trust">
-
               <span>✓ Instant Access</span>
               <span>✓ Practical Learning</span>
               <span>✓ Beginner Friendly</span>
-
             </div>
-
           </div>
-
         </section>
-        
 
         {/* ================= TRUST ================= */}
 
         <section className="trust-section">
-
           <div className="container trust-inner">
-
             <div>
-              <span className="trust-number">
-                2,000+
-              </span>
+              <span className="trust-number">2,000+</span>
 
               <span className="trust-label">
                 ടീമുകൾ Excel ഉപയോഗിക്കുന്ന മേഖലകൾ
@@ -620,24 +589,17 @@ function App() {
             <div className="trust-divider"></div>
 
             <p>
-              Office-ൽ ദിവസേന ഉപയോഗിക്കുന്ന spreadsheet
-              skills കൂടുതൽ കാര്യക്ഷമമായി പഠിക്കാം.
+              Office-ൽ ദിവസേന ഉപയോഗിക്കുന്ന spreadsheet skills കൂടുതൽ
+              കാര്യക്ഷമമായി പഠിക്കാം.
             </p>
-
           </div>
-
         </section>
-
 
         {/* ================= INTRO ================= */}
 
         <section className="section intro-section">
-
           <div className="container narrow">
-
-            <div className="section-tag">
-              എന്തുകൊണ്ട് Excel?
-            </div>
+            <div className="section-tag">എന്തുകൊണ്ട് Excel?</div>
 
             <h2>
               Excel ഒരു
@@ -646,28 +608,19 @@ function App() {
             </h2>
 
             <p className="section-lead">
-              Reports തയ്യാറാക്കുന്നതിൽ നിന്ന് data വിശകലനം ചെയ്യുന്നതുവരെ,
-              പല ജോലികളുടെയും പ്രധാന ഭാഗമാണ് Excel.
-              അതിനൊപ്പം AI ഉപയോഗിക്കുമ്പോൾ repetitive work കുറയ്ക്കാനും
-              productivity വർധിപ്പിക്കാനും കഴിയും.
+              Reports തയ്യാറാക്കുന്നതിൽ നിന്ന് data വിശകലനം ചെയ്യുന്നതുവരെ, പല
+              ജോലികളുടെയും പ്രധാന ഭാഗമാണ് Excel. അതിനൊപ്പം AI ഉപയോഗിക്കുമ്പോൾ
+              repetitive work കുറയ്ക്കാനും productivity വർധിപ്പിക്കാനും കഴിയും.
             </p>
-
           </div>
-
         </section>
-
 
         {/* ================= WHO IS THIS FOR ================= */}
 
         <section className="section audience-section">
-
           <div className="container">
-
             <div className="section-heading">
-
-              <div className="section-tag">
-                ആർക്കുവേണ്ടി?
-              </div>
+              <div className="section-tag">ആർക്കുവേണ്ടി?</div>
 
               <h2>
                 ഈ പഠനം
@@ -676,61 +629,36 @@ function App() {
               </h2>
 
               <p>
-                Excel ഉപയോഗിച്ച് നിങ്ങളുടെ ജോലി skills
-                മെച്ചപ്പെടുത്താൻ ആഗ്രഹിക്കുന്നവർക്ക്.
+                Excel ഉപയോഗിച്ച് നിങ്ങളുടെ ജോലി skills മെച്ചപ്പെടുത്താൻ
+                ആഗ്രഹിക്കുന്നവർക്ക്.
               </p>
-
             </div>
-
 
             <div className="audience-grid">
-
               {learners.map((learner, index) => (
+                <div className="audience-card" key={learner}>
+                  <span className="card-number">0{index + 1}</span>
 
-                <div
-                  className="audience-card"
-                  key={learner}
-                >
+                  <span className="check-icon">✓</span>
 
-                  <span className="card-number">
-                    0{index + 1}
-                  </span>
-
-                  <span className="check-icon">
-                    ✓
-                  </span>
-
-                  <h3>
-                    {learner}
-                  </h3>
+                  <h3>{learner}</h3>
 
                   <p>
-                    നിങ്ങളുടെ ജോലി ആവശ്യങ്ങൾക്ക്
-                    Excel skills കൂടുതൽ ശക്തമാക്കാം.
+                    നിങ്ങളുടെ ജോലി ആവശ്യങ്ങൾക്ക് Excel skills കൂടുതൽ
+                    ശക്തമാക്കാം.
                   </p>
-
                 </div>
-
               ))}
-
             </div>
-
           </div>
-
         </section>
-
 
         {/* ================= PROBLEM ================= */}
 
         <section className="section problem-section">
-
           <div className="container problem-grid">
-
             <div className="problem-content">
-
-              <div className="section-tag">
-                ഇന്നത്തെ വെല്ലുവിളി
-              </div>
+              <div className="section-tag">ഇന്നത്തെ വെല്ലുവിളി</div>
 
               <h2>
                 Basic Excel മാത്രം
@@ -739,12 +667,11 @@ function App() {
               </h2>
 
               <p>
-                Data കൂടുമ്പോഴും reports കൂടുതൽ complex ആകുമ്പോഴും
-                spreadsheet-ൽ കൂടുതൽ സമയം ചെലവഴിക്കേണ്ടി വരാം.
+                Data കൂടുമ്പോഴും reports കൂടുതൽ complex ആകുമ്പോഴും spreadsheet-ൽ
+                കൂടുതൽ സമയം ചെലവഴിക്കേണ്ടി വരാം.
               </p>
 
               <div className="problem-list">
-
                 <div>
                   <span>01</span>
                   Reports തയ്യാറാക്കാൻ കൂടുതൽ സമയം
@@ -764,14 +691,10 @@ function App() {
                   <span>04</span>
                   Interview-ready skills കുറവ്
                 </div>
-
               </div>
-
             </div>
 
-
             <div className="problem-visual">
-
               <div className="stat-card">
                 <span>Data</span>
                 <strong>12,840</strong>
@@ -789,28 +712,16 @@ function App() {
                 <strong>68%</strong>
                 <small>Repeated Work</small>
               </div>
-
             </div>
-
           </div>
-
         </section>
-
 
         {/* ================= FEATURES ================= */}
 
-        <section
-          className="section features-section"
-          id="features"
-        >
-
+        <section className="section features-section" id="features">
           <div className="container">
-
             <div className="section-heading centered">
-
-              <div className="section-tag">
-                നിങ്ങൾ പഠിക്കുന്നത്
-              </div>
+              <div className="section-tag">നിങ്ങൾ പഠിക്കുന്നത്</div>
 
               <h2>
                 Excel-നെ
@@ -819,63 +730,33 @@ function App() {
               </h2>
 
               <p>
-                Excel + AI ഉപയോഗിച്ച് modern workplace-ന് ആവശ്യമായ
-                skills step-by-step ആയി പഠിക്കാം.
+                Excel + AI ഉപയോഗിച്ച് modern workplace-ന് ആവശ്യമായ skills
+                step-by-step ആയി പഠിക്കാം.
               </p>
-
             </div>
-
 
             <div className="features-grid">
-
               {features.map((feature) => (
+                <div className="feature-card" key={feature.title}>
+                  <div className="feature-icon">{feature.icon}</div>
 
-                <div
-                  className="feature-card"
-                  key={feature.title}
-                >
+                  <h3>{feature.title}</h3>
 
-                  <div className="feature-icon">
-                    {feature.icon}
-                  </div>
+                  <p>{feature.text}</p>
 
-                  <h3>
-                    {feature.title}
-                  </h3>
-
-                  <p>
-                    {feature.text}
-                  </p>
-
-                  <span className="feature-arrow">
-                    ↗
-                  </span>
-
+                  <span className="feature-arrow">↗</span>
                 </div>
-
               ))}
-
             </div>
-
           </div>
-
         </section>
-
 
         {/* ================= SKILLS ================= */}
 
-        <section
-          className="section skills-section"
-          id="learn"
-        >
-
+        <section className="section skills-section" id="learn">
           <div className="container skills-grid">
-
             <div className="skills-heading">
-
-              <div className="section-tag">
-                Course Skills
-              </div>
+              <div className="section-tag">Course Skills</div>
 
               <h2>
                 ഒരു
@@ -883,246 +764,158 @@ function App() {
               </h2>
 
               <p>
-                Basic മുതൽ advanced practical workflows വരെ
-                പഠിക്കാൻ കഴിയുന്ന രീതിയിലാണ് learning path.
+                Basic മുതൽ advanced practical workflows വരെ പഠിക്കാൻ കഴിയുന്ന
+                രീതിയിലാണ് learning path.
               </p>
-
             </div>
-
 
             <div className="skills-list">
-
               {skills.map((skill, index) => (
+                <div className="skill-item" key={skill}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
 
-                <div
-                  className="skill-item"
-                  key={skill}
-                >
+                  <strong>{skill}</strong>
 
-                  <span>
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-
-                  <strong>
-                    {skill}
-                  </strong>
-
-                  <i>
-                    ✓
-                  </i>
-
+                  <i>✓</i>
                 </div>
-
               ))}
-
             </div>
-
           </div>
-
         </section>
-
 
         {/* ================= COURSE STRUCTURE / MODULES ================= */}
 
         <section className="modules-section" id="modules">
-  <div className="modules-container">
+          <div className="modules-container">
+            <div className="modules-heading">
+              <div className="section-tag">Course Structure</div>
 
-    <div className="modules-heading">
+              <h2>
+                What You'll <span>Learn</span>
+              </h2>
 
-      <div className="section-tag">
-        Course Structure
-      </div>
+              <p>
+                Excel + AI ഉപയോഗിച്ച് job-ready practical skills step-by-step
+                ആയി പഠിക്കാം.
+              </p>
+            </div>
 
-      <h2>
-        What You'll <span>Learn</span>
-      </h2>
+            <div className="modules-grid">
+              <div className="module-card">
+                <div className="module-icon">📊</div>
 
-      <p>
-        Excel + AI ഉപയോഗിച്ച് job-ready practical skills
-        step-by-step ആയി പഠിക്കാം.
-      </p>
+                <span className="module-number">MODULE 01</span>
 
-    </div>
+                <h3>Excel Fundamentals</h3>
 
+                <ul className="module-topics">
+                  <li>Excel Interface & Navigation</li>
+                  <li>Workbook & Worksheet Structure</li>
+                  <li>Cells & Cell Referencing</li>
+                  <li>Data Types & Formatting</li>
+                  <li>Essential Keyboard Shortcuts</li>
+                </ul>
 
-    <div className="modules-grid">
+                <div className="module-outcome">
+                  Outcome: <strong>Strong Excel foundation</strong>
+                </div>
+              </div>
 
-      <div className="module-card">
+              <div className="module-card">
+                <div className="module-icon">📈</div>
 
-        <div className="module-icon">
-          📊
-        </div>
+                <span className="module-number">MODULE 02</span>
 
-        <span className="module-number">
-          MODULE 01
-        </span>
+                <h3>Data Handling & Analysis</h3>
 
-        <h3>
-          Excel Fundamentals
-        </h3>
+                <ul className="module-topics">
+                  <li>Sorting & Filtering Data</li>
+                  <li>Data Validation</li>
+                  <li>Remove Duplicates</li>
+                  <li>Text Functions</li>
+                  <li>Pivot Tables & Charts</li>
+                </ul>
+              </div>
 
-        <ul className="module-topics">
-          <li>Excel Interface & Navigation</li>
-          <li>Workbook & Worksheet Structure</li>
-          <li>Cells & Cell Referencing</li>
-          <li>Data Types & Formatting</li>
-          <li>Essential Keyboard Shortcuts</li>
-        </ul>
+              <div className="module-card">
+                <div className="module-icon">📊</div>
 
-        <div className="module-outcome">
-          Outcome: <strong>Strong Excel foundation</strong>
-        </div>
+                <span className="module-number">MODULE 03</span>
 
-      </div>
+                <h3>Reports & Dashboards</h3>
 
+                <ul className="module-topics">
+                  <li>Chart Types</li>
+                  <li>Dynamic Charts</li>
+                  <li>KPI Reports</li>
+                  <li>Dashboard Design</li>
+                  <li>Professional Reporting</li>
+                </ul>
+              </div>
 
-      <div className="module-card">
+              <div className="module-card featured">
+                <div className="module-icon">✦</div>
 
-        <div className="module-icon">
-          📈
-        </div>
+                <span className="module-number">MODULE 04</span>
 
-        <span className="module-number">
-          MODULE 02
-        </span>
+                <h3>AI Tools with Excel</h3>
 
-        <h3>
-          Data Handling & Analysis
-        </h3>
+                <ul className="module-topics">
+                  <li>Introduction to AI in Excel</li>
+                  <li>ChatGPT for Excel</li>
+                  <li>Formula Generation</li>
+                  <li>Error Fixing</li>
+                  <li>AI-assisted Data Cleaning</li>
+                  <li>Smart Analysis & Insights</li>
+                </ul>
+              </div>
 
-        <ul className="module-topics">
-          <li>Sorting & Filtering Data</li>
-          <li>Data Validation</li>
-          <li>Remove Duplicates</li>
-          <li>Text Functions</li>
-          <li>Pivot Tables & Charts</li>
-        </ul>
+              <div className="module-card">
+                <div className="module-icon">⚙</div>
 
-      </div>
+                <span className="module-number">MODULE 05</span>
 
+                <h3>Automation with AI</h3>
 
-      <div className="module-card">
+                <ul className="module-topics">
+                  <li>Automating Repetitive Tasks</li>
+                  <li>AI-assisted Formula Automation</li>
+                  <li>Monthly Report Generation</li>
+                  <li>Workflow Optimization</li>
+                </ul>
+              </div>
 
-        <div className="module-icon">
-          📊
-        </div>
+              <div className="module-card">
+                <div className="module-icon">💼</div>
 
-        <span className="module-number">
-          MODULE 03
-        </span>
+                <span className="module-number">MODULE 06</span>
 
-        <h3>
-          Reports & Dashboards
-        </h3>
+                <h3>MIS, HR & Accounts</h3>
 
-        <ul className="module-topics">
-          <li>Chart Types</li>
-          <li>Dynamic Charts</li>
-          <li>KPI Reports</li>
-          <li>Dashboard Design</li>
-          <li>Professional Reporting</li>
-        </ul>
+                <ul className="module-topics">
+                  <li>MIS Report Structure</li>
+                  <li>Daily / Weekly / Monthly Reports</li>
+                  <li>HR Attendance & Leave Tracker</li>
+                  <li>Payroll Basics</li>
+                  <li>Expense & Budget Tracking</li>
+                </ul>
+              </div>
+            </div>
 
-      </div>
-
-
-      <div className="module-card featured">
-
-        <div className="module-icon">
-          ✦
-        </div>
-
-        <span className="module-number">
-          MODULE 04
-        </span>
-
-        <h3>
-          AI Tools with Excel
-        </h3>
-
-        <ul className="module-topics">
-          <li>Introduction to AI in Excel</li>
-          <li>ChatGPT for Excel</li>
-          <li>Formula Generation</li>
-          <li>Error Fixing</li>
-          <li>AI-assisted Data Cleaning</li>
-          <li>Smart Analysis & Insights</li>
-        </ul>
-
-      </div>
-
-
-      <div className="module-card">
-
-        <div className="module-icon">
-          ⚙
-        </div>
-
-        <span className="module-number">
-          MODULE 05
-        </span>
-
-        <h3>
-          Automation with AI
-        </h3>
-
-        <ul className="module-topics">
-          <li>Automating Repetitive Tasks</li>
-          <li>AI-assisted Formula Automation</li>
-          <li>Monthly Report Generation</li>
-          <li>Workflow Optimization</li>
-        </ul>
-
-      </div>
-
-
-      <div className="module-card">
-
-        <div className="module-icon">
-          💼
-        </div>
-
-        <span className="module-number">
-          MODULE 06
-        </span>
-
-        <h3>
-          MIS, HR & Accounts
-        </h3>
-
-        <ul className="module-topics">
-          <li>MIS Report Structure</li>
-          <li>Daily / Weekly / Monthly Reports</li>
-          <li>HR Attendance & Leave Tracker</li>
-          <li>Payroll Basics</li>
-          <li>Expense & Budget Tracking</li>
-        </ul>
-
-      </div>
-
-    </div>
-
-
-    <div className="modules-bottom">
-      <p>
-        <strong>Job-Ready Learning:</strong>{" "}
-        Real Office Tasks • Practical Projects • Excel + AI
-      </p>
-    </div>
-
-  </div>
-</section>
+            <div className="modules-bottom">
+              <p>
+                <strong>Job-Ready Learning:</strong> Real Office Tasks •
+                Practical Projects • Excel + AI
+              </p>
+            </div>
+          </div>
+        </section>
         {/* ================= LEARNING PATH ================= */}
 
         <section className="section path-section">
-
           <div className="container">
-
             <div className="section-heading centered">
-
-              <div className="section-tag">
-                Job-ready Skill Path
-              </div>
+              <div className="section-tag">Job-ready Skill Path</div>
 
               <h2>
                 പഠിക്കുക.
@@ -1130,12 +923,9 @@ function App() {
                 <br />
                 Build ചെയ്യുക.
               </h2>
-
             </div>
 
-
             <div className="path">
-
               <div className="path-line"></div>
 
               <div className="path-item">
@@ -1167,24 +957,16 @@ function App() {
                 <strong>Demonstrate ചെയ്യുക</strong>
                 <p>നിങ്ങളുടെ skills തെളിയിക്കുക</p>
               </div>
-
             </div>
-
           </div>
-
         </section>
-
 
         {/* ================= OFFICE SKILLS ================= */}
 
         <section className="section office-section">
-
           <div className="container office-grid">
-
             <div className="office-visual">
-
               <div className="office-card">
-
                 <div className="office-header">
                   <span>Today's Work</span>
                   <span>Excel + AI</span>
@@ -1209,17 +991,11 @@ function App() {
                   <span>✓</span>
                   MIS Report തയ്യാറാക്കുക
                 </div>
-
               </div>
-
             </div>
 
-
             <div className="office-content">
-
-              <div className="section-tag">
-                Real Office Skills
-              </div>
+              <div className="section-tag">Real Office Skills</div>
 
               <h2>
                 പഠിക്കുന്നത്
@@ -1228,39 +1004,23 @@ function App() {
               </h2>
 
               <p>
-                Course-ൽ പഠിക്കുന്ന concepts practical office
-                tasks-ലേക്ക് connect ചെയ്യാൻ കഴിയുന്ന രീതിയിലാണ്
-                learning experience.
+                Course-ൽ പഠിക്കുന്ന concepts practical office tasks-ലേക്ക്
+                connect ചെയ്യാൻ കഴിയുന്ന രീതിയിലാണ് learning experience.
               </p>
 
-              <a
-                href="#projects"
-                className="text-link"
-              >
+              <a href="#projects" className="text-link">
                 Projects കാണാം →
               </a>
-
             </div>
-
           </div>
-
         </section>
-
 
         {/* ================= PROJECTS ================= */}
 
-        <section
-          className="section projects-section"
-          id="projects"
-        >
-
+        <section className="section projects-section" id="projects">
           <div className="container">
-
             <div className="section-heading">
-
-              <div className="section-tag">
-                Practical Projects
-              </div>
+              <div className="section-tag">Practical Projects</div>
 
               <h2>
                 പഠിച്ചതെല്ലാം
@@ -1269,144 +1029,89 @@ function App() {
               </h2>
 
               <p>
-                Theory മാത്രം അല്ല. നിങ്ങളുടെ skills ഉപയോഗിച്ച്
-                practical spreadsheet projects നിർമ്മിക്കാം.
+                Theory മാത്രം അല്ല. നിങ്ങളുടെ skills ഉപയോഗിച്ച് practical
+                spreadsheet projects നിർമ്മിക്കാം.
               </p>
-
             </div>
-
 
             <div className="projects-grid">
-
               {projects.map((project) => (
+                <div className="project-card" key={project.number}>
+                  <span className="project-number">{project.number}</span>
 
-                <div
-                  className="project-card"
-                  key={project.number}
-                >
+                  <div className="project-icon">▦</div>
 
-                  <span className="project-number">
-                    {project.number}
-                  </span>
+                  <h3>{project.title}</h3>
 
-                  <div className="project-icon">
-                    ▦
-                  </div>
+                  <p>{project.text}</p>
 
-                  <h3>
-                    {project.title}
-                  </h3>
-
-                  <p>
-                    {project.text}
-                  </p>
-
-                  <span className="project-link">
-                    Project →
-                  </span>
-
+                  <span className="project-link">Project →</span>
                 </div>
-
               ))}
-
             </div>
-
           </div>
-
         </section>
-
 
         {/* ================= AI WORKFLOW ================= */}
 
         <section className="section workflow-section">
-
           <div className="container">
-
             <div className="section-heading centered">
-
-              <div className="section-tag">
-                Excel + AI Workflow
-              </div>
+              <div className="section-tag">Excel + AI Workflow</div>
 
               <h2>
                 AI-യെ നിങ്ങളുടെ
                 <br />
                 <span>Excel workflow-ന്റെ ഭാഗമാക്കൂ.</span>
               </h2>
-
             </div>
-
 
             <div className="workflow">
-
               {workflow.map((item, index) => (
+                <div className="workflow-item" key={item}>
+                  <div className="workflow-number">{index + 1}</div>
 
-                <div
-                  className="workflow-item"
-                  key={item}
-                >
-
-                  <div className="workflow-number">
-                    {index + 1}
-                  </div>
-
-                  <strong>
-                    {item}
-                  </strong>
+                  <strong>{item}</strong>
 
                   {index !== workflow.length - 1 && (
-                    <span className="workflow-arrow">
-                      →
-                    </span>
+                    <span className="workflow-arrow">→</span>
                   )}
-
                 </div>
-
               ))}
-
             </div>
-
           </div>
-
         </section>
 
-{/* ================= MIDDLE ENROLL CTA ================= */}
+        {/* ================= MIDDLE ENROLL CTA ================= */}
 
-<section className="middle-enroll-section">
-  <div className="middle-enroll-content">
-    <span className="middle-enroll-label">
-      Ready to Start?
-    </span>
+        <section className="middle-enroll-section">
+          <div className="middle-enroll-content">
+            <span className="middle-enroll-label">Ready to Start?</span>
 
-    <h2>
-      Excel + AI
-      <span> പഠനം ഇന്ന് തന്നെ ആരംഭിക്കൂ.</span>
-    </h2>
-<button
-  className="middle-enroll-button"
-  onClick={openEnrollment}
->
-  ENROLL NOW — ₹1,499
-  <span>→</span>
-</button>
-    
+            <h2>
+              Excel + AI
+              <span> പഠനം ഇന്ന് തന്നെ ആരംഭിക്കൂ.</span>
+            </h2>
+            <button
+              type="button"
+              className="cta-pulse group inline-flex items-center gap-3 rounded-full bg-blue-600 px-6 py-4 text-base font-extrabold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-xl sm:px-8"
+              onClick={openEnrollment}
+            >
+              <span>ENROLL NOW — ₹1,499</span>
+              <span className="text-xl transition-transform duration-300 group-hover:translate-x-1">
+                →
+              </span>
+            </button>
 
-    <p>
-      Practical Learning • Real Projects • Career-focused Skills
-    </p>
-  </div>
-</section>
+            <p>Practical Learning • Real Projects • Career-focused Skills</p>
+          </div>
+        </section>
         {/* ================= CAREER ================= */}
 
         <section className="section career-section">
-
           <div className="container">
-
             <div className="career-box">
-
-              <div className="section-tag">
-                Career Connection
-              </div>
+              <div className="section-tag">Career Connection</div>
 
               <h2>
                 Excel skills
@@ -1415,56 +1120,31 @@ function App() {
               </h2>
 
               <p>
-                വിവിധ office, operations, HR, accounts,
-                MIS, data-related roles-ൽ Excel ഒരു പ്രധാന skill ആണ്.
+                വിവിധ office, operations, HR, accounts, MIS, data-related
+                roles-ൽ Excel ഒരു പ്രധാന skill ആണ്.
               </p>
 
-
               <div className="roles-grid">
-
                 {roles.map((role, index) => (
+                  <div className="role-card" key={role}>
+                    <span>0{index + 1}</span>
 
-                  <div
-                    className="role-card"
-                    key={role}
-                  >
+                    <strong>{role}</strong>
 
-                    <span>
-                      0{index + 1}
-                    </span>
-
-                    <strong>
-                      {role}
-                    </strong>
-
-                    <i>
-                      ↗
-                    </i>
-
+                    <i>↗</i>
                   </div>
-
                 ))}
-
               </div>
-
             </div>
-
           </div>
-
         </section>
-
 
         {/* ================= INTERVIEW ================= */}
 
         <section className="section interview-section">
-
           <div className="container interview-grid">
-
             <div>
-
-              <div className="section-tag">
-                Interview Preparation
-              </div>
+              <div className="section-tag">Interview Preparation</div>
 
               <h2>
                 Skill പഠിക്കുന്നതിനൊപ്പം
@@ -1472,16 +1152,12 @@ function App() {
               </h2>
 
               <p>
-                Excel-related interview questions,
-                practical tasks, data handling എന്നിവയെ
-                നേരിടാൻ ആവശ്യമായ confidence വികസിപ്പിക്കാം.
+                Excel-related interview questions, practical tasks, data
+                handling എന്നിവയെ നേരിടാൻ ആവശ്യമായ confidence വികസിപ്പിക്കാം.
               </p>
-
             </div>
 
-
             <div className="interview-list">
-
               <div>
                 <span>✓</span>
                 Excel Practical Questions
@@ -1506,106 +1182,66 @@ function App() {
                 <span>✓</span>
                 Workplace Scenarios
               </div>
-
             </div>
-
           </div>
-
         </section>
-
 
         {/* ================= WHY DIFFERENT ================= */}
 
         <section className="section different-section">
-
           <div className="container">
-
             <div className="section-heading centered">
-
-              <div className="section-tag">
-                എന്തുകൊണ്ട് ഈ Program?
-              </div>
+              <div className="section-tag">എന്തുകൊണ്ട് ഈ Program?</div>
 
               <h2>
                 പഠനം മാത്രമല്ല.
                 <br />
                 <span>പ്രായോഗിക Skill Building.</span>
               </h2>
-
             </div>
 
-
             <div className="different-grid">
-
               <div className="different-card">
                 <span>01</span>
 
-                <h3>
-                  പ്രായോഗിക സമീപനം
-                </h3>
+                <h3>പ്രായോഗിക സമീപനം</h3>
 
-                <p>
-                  Real-world Excel tasks-നോട് ബന്ധിപ്പിച്ചുള്ള പഠനം.
-                </p>
+                <p>Real-world Excel tasks-നോട് ബന്ധിപ്പിച്ചുള്ള പഠനം.</p>
               </div>
-
 
               <div className="different-card">
                 <span>02</span>
 
-                <h3>
-                  AI Integration
-                </h3>
+                <h3>AI Integration</h3>
 
-                <p>
-                  Excel workflow-ൽ AI എങ്ങനെ ഉപയോഗിക്കാം എന്ന് പഠിക്കുക.
-                </p>
+                <p>Excel workflow-ൽ AI എങ്ങനെ ഉപയോഗിക്കാം എന്ന് പഠിക്കുക.</p>
               </div>
-
 
               <div className="different-card">
                 <span>03</span>
 
-                <h3>
-                  Projects
-                </h3>
+                <h3>Projects</h3>
 
-                <p>
-                  പഠിച്ച skills practical projects വഴി ഉപയോഗിക്കുക.
-                </p>
+                <p>പഠിച്ച skills practical projects വഴി ഉപയോഗിക്കുക.</p>
               </div>
-
 
               <div className="different-card">
                 <span>04</span>
 
-                <h3>
-                  Career Focus
-                </h3>
+                <h3>Career Focus</h3>
 
-                <p>
-                  Job-related skills വികസിപ്പിക്കുന്നതിൽ ശ്രദ്ധ.
-                </p>
+                <p>Job-related skills വികസിപ്പിക്കുന്നതിൽ ശ്രദ്ധ.</p>
               </div>
-
             </div>
-
           </div>
-
         </section>
-
 
         {/* ================= OUTCOMES ================= */}
 
         <section className="section outcomes-section">
-
           <div className="container outcomes-grid">
-
             <div>
-
-              <div className="section-tag">
-                Course Outcomes
-              </div>
+              <div className="section-tag">Course Outcomes</div>
 
               <h2>
                 Course കഴിഞ്ഞാൽ
@@ -1613,16 +1249,13 @@ function App() {
               </h2>
 
               <p>
-                Excel ഉപയോഗിച്ച് കൂടുതൽ confidence-ോടെ
-                data, reports, dashboards, AI-assisted workflows
-                എന്നിവ കൈകാര്യം ചെയ്യാൻ കഴിയുന്ന രീതിയിലേക്ക് വളരുക.
+                Excel ഉപയോഗിച്ച് കൂടുതൽ confidence-ോടെ data, reports,
+                dashboards, AI-assisted workflows എന്നിവ കൈകാര്യം ചെയ്യാൻ
+                കഴിയുന്ന രീതിയിലേക്ക് വളരുക.
               </p>
-
             </div>
 
-
             <div className="outcomes-list">
-
               <div>✓ Excel data ക്രമീകരിക്കുക</div>
               <div>✓ Formulas ഉപയോഗിക്കുക</div>
               <div>✓ Data വിശകലനം ചെയ്യുക</div>
@@ -1631,25 +1264,16 @@ function App() {
               <div>✓ AI സഹായം ഉപയോഗിക്കുക</div>
               <div>✓ Repetitive work കുറയ്ക്കുക</div>
               <div>✓ Practical projects നിർമ്മിക്കുക</div>
-
             </div>
-
           </div>
-
         </section>
-
 
         {/* ================= CERTIFICATE ================= */}
 
         <section className="section certificate-section">
-
           <div className="container certificate-box">
-
             <div className="certificate-content">
-
-              <div className="section-tag">
-                Certification
-              </div>
+              <div className="section-tag">Certification</div>
 
               <h2>
                 പഠനം പൂർത്തിയാക്കിയതിന്
@@ -1657,315 +1281,203 @@ function App() {
               </h2>
 
               <p>
-                Program പൂർത്തിയാക്കിയ ശേഷം certification
-                ലഭിക്കുന്ന രീതിയിലാണ് ഈ section ഒരുക്കിയിരിക്കുന്നത്.
+                Program പൂർത്തിയാക്കിയ ശേഷം certification ലഭിക്കുന്ന രീതിയിലാണ്
+                ഈ section ഒരുക്കിയിരിക്കുന്നത്.
               </p>
 
-              <a
-                href="#enroll"
-                className="primary-button"
+              <button
+                type="button"
                 onClick={openEnrollment}
+                className="cta-pulse group inline-flex items-center gap-2 rounded-full bg-blue-600 px-7 py-3.5 text-base font-bold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 hover:shadow-xl"
               >
-                Enroll Now →
-              </a>
-
+                Enroll Now
+                <span className="text-xl transition-transform duration-300 group-hover:translate-x-1">
+                  →
+                </span>
+              </button>
             </div>
 
-
             <div className="certificate-preview">
-
               <div className="certificate-inner">
+                <span className="certificate-star">✦</span>
 
-                <span className="certificate-star">
-                  ✦
-                </span>
+                <small>CERTIFICATE OF COMPLETION</small>
 
-                <small>
-                  CERTIFICATE OF COMPLETION
-                </small>
+                <h3>Excel + AI</h3>
 
-                <h3>
-                  Excel + AI
-                </h3>
-
-                <p>
-                  പ്രായോഗിക Excel & AI പഠനം
-                </p>
+                <p>പ്രായോഗിക Excel & AI പഠനം</p>
 
                 <div className="certificate-line"></div>
 
-                <span>
-                  വിദ്യാർത്ഥിയുടെ പേര്
-                </span>
-
+                <span>വിദ്യാർത്ഥിയുടെ പേര്</span>
               </div>
-
             </div>
-
           </div>
-
         </section>
-
 
         {/* ================= HOW IT WORKS ================= */}
 
         <section className="section how-section">
-
           <div className="container">
-
             <div className="section-heading centered">
-
-              <div className="section-tag">
-                How the Program Works
-              </div>
+              <div className="section-tag">How the Program Works</div>
 
               <h2>
                 പഠനം
                 <span> എങ്ങനെ നടക്കും?</span>
               </h2>
-
             </div>
 
-
             <div className="how-grid">
-
               <div>
                 <span>01</span>
                 <h3>പഠിക്കുക</h3>
-                <p>
-                  Concepts ലളിതമായി മനസ്സിലാക്കുക.
-                </p>
+                <p>Concepts ലളിതമായി മനസ്സിലാക്കുക.</p>
               </div>
 
               <div>
                 <span>02</span>
                 <h3>Practice ചെയ്യുക</h3>
-                <p>
-                  Hands-on tasks ഉപയോഗിച്ച് പരിശീലിക്കുക.
-                </p>
+                <p>Hands-on tasks ഉപയോഗിച്ച് പരിശീലിക്കുക.</p>
               </div>
 
               <div>
                 <span>03</span>
                 <h3>Project നിർമ്മിക്കുക</h3>
-                <p>
-                  പഠിച്ച skills ഉപയോഗിച്ച് project ചെയ്യുക.
-                </p>
+                <p>പഠിച്ച skills ഉപയോഗിച്ച് project ചെയ്യുക.</p>
               </div>
 
               <div>
                 <span>04</span>
                 <h3>Career-ന് തയ്യാറാകുക</h3>
-                <p>
-                  Interview-നും workplace tasks-നും തയ്യാറാകുക.
-                </p>
+                <p>Interview-നും workplace tasks-നും തയ്യാറാകുക.</p>
               </div>
-
             </div>
-
           </div>
-
         </section>
-
 
         {/* ================= REVIEWS ================= */}
 
-<section className="section reviews-section" id="reviews">
-  <div className="container">
-
-    <div className="section-heading centered">
-
-      <div className="section-tag">
-        Learner Feedback
-      </div>
-
-      <h2>
-        Excel + AI
-        <br />
-        <span>പഠനത്തെക്കുറിച്ചുള്ള അഭിപ്രായങ്ങൾ.</span>
-      </h2>
-
-      <p>
-        Practical learning experience-നെ അടിസ്ഥാനമാക്കിയുള്ള sample feedback.
-      </p>
-
-    </div>
-
-
-    <div className="reviews-grid">
-
-      <div className="review-card">
-
-        <div className="review-top">
-          <div className="review-avatar">
-            A
-          </div>
-
-          <div>
-            <strong>Arun K.</strong>
-            <span>Sample Learner</span>
-          </div>
-        </div>
-
-        <div className="review-stars">
-          ★★★★★
-        </div>
-
-        <p>
-          “Excel formulas മാത്രം പഠിക്കുന്നതിന് പകരം AI ഉപയോഗിച്ച്
-          എങ്ങനെ faster ആയി work ചെയ്യാം എന്നത് മനസ്സിലാക്കാൻ
-          ഈ learning approach സഹായിക്കുന്നു.”
-        </p>
-
-        <span className="review-label">
-        </span>
-
-      </div>
-
-
-      <div className="review-card">
-
-        <div className="review-top">
-          <div className="review-avatar">
-            S
-          </div>
-
-          <div>
-            <strong>Shahana M.</strong>
-          </div>
-        </div>
-
-        <div className="review-stars">
-          ★★★★★
-        </div>
-
-        <p>
-          “Reports, dashboards, data analysis എന്നിവ practical ആയി
-          പഠിക്കാമെന്നത് വളരെ useful ആയി തോന്നി. Office work-ന്
-          directly apply ചെയ്യാൻ കഴിയുന്ന രീതിയിലാണ്.”
-        </p>
-
-        <span className="review-label">
-        </span>
-
-      </div>
-
-
-      <div className="review-card">
-
-        <div className="review-top">
-          <div className="review-avatar">
-            R
-          </div>
-
-          <div>
-            <strong>Rahul P.</strong>
-          </div>
-        </div>
-
-        <div className="review-stars">
-          ★★★★★
-        </div>
-
-        <p>
-          “ChatGPT ഉപയോഗിച്ച് Excel formulas കണ്ടെത്താനും
-          repetitive tasks എളുപ്പമാക്കാനും പഠിച്ചത് വളരെ
-          interesting ആയിരുന്നു.”
-        </p>
-
-        <span className="review-label">
-          
-        </span>
-
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-
-        {/* ================= FAQ ================= */}
-
-        <section
-          className="section faq-section"
-          id="faq"
-        >
-
-          <div className="container faq-grid">
-
-            <div className="faq-heading">
-
-              <div className="section-tag">
-                FAQ
-              </div>
+        <section className="section reviews-section" id="reviews">
+          <div className="container">
+            <div className="section-heading centered">
+              <div className="section-tag">Learner Feedback</div>
 
               <h2>
-                
-                <span> Frequently Asked Questions</span>
+                Excel + AI
+                <br />
+                <span>പഠനത്തെക്കുറിച്ചുള്ള അഭിപ്രായങ്ങൾ.</span>
               </h2>
 
               <p>
-                Program-നെക്കുറിച്ച് അറിയേണ്ട പ്രധാന കാര്യങ്ങൾ.
+                Practical learning experience-നെ അടിസ്ഥാനമാക്കിയുള്ള sample
+                feedback.
               </p>
-
             </div>
 
+            <div className="reviews-grid">
+              <div className="review-card">
+                <div className="review-top">
+                  <div className="review-avatar">A</div>
 
-            <div className="faq-list">
+                  <div>
+                    <strong>Arun K.</strong>
+                    <span>Sample Learner</span>
+                  </div>
+                </div>
 
-              {faqs.map((faq, index) => (
+                <div className="review-stars">★★★★★</div>
 
-                <details
-                  className="faq-item"
-                  key={faq.question}
-                >
+                <p>
+                  “Excel formulas മാത്രം പഠിക്കുന്നതിന് പകരം AI ഉപയോഗിച്ച്
+                  എങ്ങനെ faster ആയി work ചെയ്യാം എന്നത് മനസ്സിലാക്കാൻ ഈ learning
+                  approach സഹായിക്കുന്നു.”
+                </p>
 
-                  <summary>
+                <span className="review-label"></span>
+              </div>
 
-                    <span>
-                      0{index + 1}
-                    </span>
+              <div className="review-card">
+                <div className="review-top">
+                  <div className="review-avatar">S</div>
 
-                    <strong>
-                      {faq.question}
-                    </strong>
+                  <div>
+                    <strong>Shahana M.</strong>
+                  </div>
+                </div>
 
-                    <i>
-                      +
-                    </i>
+                <div className="review-stars">★★★★★</div>
 
-                  </summary>
+                <p>
+                  “Reports, dashboards, data analysis എന്നിവ practical ആയി
+                  പഠിക്കാമെന്നത് വളരെ useful ആയി തോന്നി. Office work-ന് directly
+                  apply ചെയ്യാൻ കഴിയുന്ന രീതിയിലാണ്.”
+                </p>
 
-                  <p>
-                    {faq.answer}
-                  </p>
+                <span className="review-label"></span>
+              </div>
 
-                </details>
+              <div className="review-card">
+                <div className="review-top">
+                  <div className="review-avatar">R</div>
 
-              ))}
+                  <div>
+                    <strong>Rahul P.</strong>
+                  </div>
+                </div>
 
+                <div className="review-stars">★★★★★</div>
+
+                <p>
+                  “ChatGPT ഉപയോഗിച്ച് Excel formulas കണ്ടെത്താനും repetitive
+                  tasks എളുപ്പമാക്കാനും പഠിച്ചത് വളരെ interesting ആയിരുന്നു.”
+                </p>
+
+                <span className="review-label"></span>
+              </div>
             </div>
-
           </div>
-
         </section>
 
+        {/* ================= FAQ ================= */}
+
+        <section className="section faq-section" id="faq">
+          <div className="container faq-grid">
+            <div className="faq-heading">
+              <div className="section-tag">FAQ</div>
+
+              <h2>
+                <span> Frequently Asked Questions</span>
+              </h2>
+
+              <p>Program-നെക്കുറിച്ച് അറിയേണ്ട പ്രധാന കാര്യങ്ങൾ.</p>
+            </div>
+
+            <div className="faq-list">
+              {faqs.map((faq, index) => (
+                <details className="faq-item" key={faq.question}>
+                  <summary>
+                    <span>0{index + 1}</span>
+
+                    <strong>{faq.question}</strong>
+
+                    <i>+</i>
+                  </summary>
+
+                  <p>{faq.answer}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
 
         {/* ================= FINAL CTA ================= */}
 
-        <section
-          className="final-cta"
-          id="enroll"
-        >
-
+        <section className="final-cta" id="enroll">
           <div className="final-glow"></div>
 
           <div className="container final-content">
-
-            <div className="section-tag">
-              നിങ്ങളുടെ അടുത്ത ഘട്ടം
-            </div>
+            <div className="section-tag">നിങ്ങളുടെ അടുത്ത ഘട്ടം</div>
 
             <h2>
               Excel Skill
@@ -1974,235 +1486,157 @@ function App() {
             </h2>
 
             <p>
-              Excel + AI skills പ്രായോഗികമായി പഠിച്ച്
-              നിങ്ങളുടെ career-ന് കൂടുതൽ ശക്തമായ skillset നിർമ്മിക്കൂ.
+              Excel + AI skills പ്രായോഗികമായി പഠിച്ച് നിങ്ങളുടെ career-ന് കൂടുതൽ
+              ശക്തമായ skillset നിർമ്മിക്കൂ.
             </p>
 
-            <a
-              href="#checkout"
-              className="final-button"
+            <button
+              type="button"
               onClick={openEnrollment}
+              className="cta-pulse group inline-flex items-center justify-center gap-3 rounded-full bg-blue-600 px-7 py-4 text-base font-bold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 hover:shadow-xl"
             >
-              ഇപ്പോൾ പഠനം ആരംഭിക്കൂ
-              <span>→</span>
-            </a>
+              <span>ഇപ്പോൾ പഠനം ആരംഭിക്കൂ</span>
+              <span className="text-xl transition-transform duration-300 group-hover:translate-x-1">
+                →
+              </span>
+            </button>
 
             <div className="final-points">
               <span>✓ Practical Learning</span>
               <span>✓ Excel + AI</span>
               <span>✓ Career-focused</span>
             </div>
-
           </div>
-
         </section>
-
 
         {/* ================= CHECKOUT ================= */}
 
-        <section
-          className="checkout-section"
-          id="checkout"
-        >
-
+        <section className="checkout-section" id="checkout">
           <div className="container checkout-grid">
-
             <div className="checkout-info">
-
-              <div className="section-tag">
-                Enrollment
-              </div>
+              <div className="section-tag">Enrollment</div>
 
               <h2>
-                
                 <span> Your learning journey starts today.</span>
               </h2>
 
               <p>
-                Excel + AI practical learning program-ൽ
-                ചേരാൻ താഴെയുള്ള option ഉപയോഗിക്കുക.
+                Excel + AI practical learning program-ൽ ചേരാൻ താഴെയുള്ള option
+                ഉപയോഗിക്കുക.
               </p>
 
               <div className="checkout-benefits">
-
                 <div>✓ Excel + AI Learning</div>
                 <div>✓ Practical Projects</div>
                 <div>✓ Job-oriented Skills</div>
                 <div>✓ Certification</div>
-
               </div>
-
             </div>
 
-
             <div className="checkout-card">
-
               <div className="checkout-top">
+                <span>Excel + AI Program</span>
 
-                <span>
-                  Excel + AI Program
-                </span>
-
-                <span className="secure">
-                  🔒 Secure
-                </span>
-
+                <span className="secure">🔒 Secure</span>
               </div>
 
               <div className="price">
+                <small>Program Access</small>
 
-                <small>
-                  Program Access
-                </small>
-
-                <strong>
-                  ₹1,499
-                </strong>
-
+                <strong>₹1,499</strong>
               </div>
 
-              <a
-                href="#enroll"
-                className="checkout-button"
+              <button
+                type="button"
                 onClick={openEnrollment}
+                className="cta-pulse group inline-flex items-center justify-center gap-3 rounded-full bg-blue-600 px-7 py-3.5 text-base font-bold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 hover:shadow-xl"
               >
-                Enroll Now →
-              </a>
+                Enroll Now
+                <span className="text-xl transition-transform duration-300 group-hover:translate-x-1">
+                  →
+                </span>
+              </button>
 
               <p className="checkout-note">
                 Your learning journey starts today.
               </p>
-
             </div>
-
           </div>
-
         </section>
-
       </main>
 
-{/* ================= FOOTER ================= */}
+      {/* ================= FOOTER ================= */}
 
       <footer className="footer">
-
         <div className="container footer-inner">
-
           <div className="footer-brand">
-
-            <a
-              href="#home"
-              className="logo"
-            >
-              <span className="logo-icon">
-                ✦
-              </span>
-
-              <span>
-                Excel <b>AI</b>
-              </span>
-
+            <a href="#home" className="flex items-center">
+              <img
+                src={logo}
+                alt="QNAYDS"
+                className="block h-10 w-auto max-w-[130px] object-contain"
+              />
             </a>
 
             <p>
-              Excel + AI ഉപയോഗിച്ച് practical,
-              career-focused skills പഠിക്കാം.
+              Excel + AI ഉപയോഗിച്ച് practical, career-focused skills പഠിക്കാം.
             </p>
-
           </div>
-
 
           <div className="footer-links">
+            <a href="#features">Features</a>
 
-            <a href="#features">
-              Features
-            </a>
+            <a href="#learn">Learn</a>
 
-            <a href="#learn">
-              Learn
-            </a>
+            <a href="#projects">Projects</a>
 
-            <a href="#projects">
-              Projects
-            </a>
-
-            <a href="#faq">
-              FAQ
-            </a>
-
+            <a href="#faq">FAQ</a>
           </div>
-
         </div>
-
 
         <div className="container footer-bottom">
+          <span>© 2026 Excel AI. എല്ലാ അവകാശങ്ങളും സംരക്ഷിച്ചിരിക്കുന്നു.</span>
 
-          <span>
-            © 2026 Excel AI. എല്ലാ അവകാശങ്ങളും സംരക്ഷിച്ചിരിക്കുന്നു.
-          </span>
-
-          <span>
-            Excel + AI Learning Program
-          </span>
-
+          <span>Excel + AI Learning Program</span>
         </div>
-
       </footer>
-
 
       {/* ================= STICKY CTA ================= */}
 
       <div className="sticky-cta">
-
         <div>
-          <strong>
-            Your Excel + AI Journey 
-          </strong>
+          <strong>Your Excel + AI Journey</strong>
 
-          <span>
-            Starts today
-          </span>
+          <span>Starts today</span>
         </div>
 
-        <a
-          href="#enroll"
+        <button
+          type="button"
           onClick={openEnrollment}
+          className="cta-pulse inline-flex items-center justify-center gap-2 rounded-full bg-blue-600 px-4 py-2.5 text-xs font-bold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-xl sm:text-sm"
         >
-          Enroll Now →
-        </a>
-
+          Enroll Now
+          <span className="text-base">→</span>
+        </button>
       </div>
-
 
       {/* =========================================================
           ENROLLMENT MODAL
           ========================================================= */}
 
       {showEnrollment && (
-
-        <div
-          className="enrollment-overlay"
-          onClick={closeEnrollment}
-        >
-
+        <div className="enrollment-overlay" onClick={closeEnrollment}>
           <div
             className="enrollment-modal"
             onClick={(e) => e.stopPropagation()}
           >
-
             {/* MODAL HEADER */}
 
             <div className="enrollment-header">
-
               <div>
+                <h2>Complete Your Enrollment</h2>
 
-                <h2>
-                  Complete Your Enrollment
-                </h2>
-
-                <p>
-                  Enter your details to continue securely.
-                </p>
-
+                <p>Enter your details to continue securely.</p>
               </div>
 
               <button
@@ -2213,177 +1647,158 @@ function App() {
               >
                 ×
               </button>
-
             </div>
-
 
             {/* MODAL BODY */}
 
             <div className="enrollment-body">
-
-
               {/* COURSE PRICE BOX */}
 
               <div className="enrollment-product">
-
                 <div>
+                  <strong>Excel + AI Practical Program</strong>
 
-                  <strong>
-                    Excel + AI Practical Program
-                  </strong>
+                  <del>₹5,000</del>
 
-                  <del>
-                    ₹5,000
-                  </del>
-
-                  <div className="enrollment-price">
-                    ₹1,499
-                  </div>
-
+                  <div className="enrollment-price">₹1,499</div>
                 </div>
 
-                <span className="enrollment-save">
-                  Save ₹3,501
-                </span>
-
+                <span className="enrollment-save">Save ₹3,501</span>
               </div>
-
 
               {/* FORM */}
 
               <form
                 onSubmit={async (e) => {
-  e.preventDefault();
+                  e.preventDefault();
 
-  try {
-    const formData = new FormData(e.currentTarget);
+                  try {
+                    const formData = new FormData(e.currentTarget);
 
-    const name = formData.get("name");
-    const email = formData.get("email");
-    const phone = formData.get("phone");
+                    const name = formData.get("name");
+                    const email = formData.get("email");
+                    const phone = formData.get("phone");
 
-    if (!name || !email || !phone) {
-      alert("Please fill all details.");
-      return;
-    }
+                    if (!name || !email || !phone) {
+                      alert("Please fill all details.");
+                      return;
+                    }
 
-    // 1. Create Razorpay order
-    const response = await fetch(
-      `${API_URL}/api/landing/create-order`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          phone,
-          courseId: EXCEL_COURSE_ID,
-        }),
-      }
-    );
+                    // 1. Create Razorpay order
+                    const response = await fetch(
+                      `${API_URL}/api/landing/create-order`,
+                      {
+                        method: "POST",
+                        headers: {
+                          "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                          name,
+                          email,
+                          phone,
+                          courseId: EXCEL_COURSE_ID,
+                        }),
+                      },
+                    );
 
-    const result = await response.json();
+                    const result = await response.json();
 
-    if (!response.ok || !result.success) {
-      throw new Error(result.message || "Unable to create order");
-    }
+                    if (!response.ok || !result.success) {
+                      throw new Error(
+                        result.message || "Unable to create order",
+                      );
+                    }
 
-    const order = result.data.order;
-    const student = result.data.student;
+                    const order = result.data.order;
+                    const student = result.data.student;
 
-    // 2. Open Razorpay Checkout
-    const options = {
-      key: import.meta.env.VITE_RAZORPAY_KEY_ID,
+                    // 2. Open Razorpay Checkout
+                    const options = {
+                      key: import.meta.env.VITE_RAZORPAY_KEY_ID,
 
-      amount: order.amount,
-      currency: order.currency || "INR",
+                      amount: order.amount,
+                      currency: order.currency || "INR",
 
-      name: "Excel Using AI",
-      description: "Excel + AI Course",
+                      name: "Excel Using AI",
+                      description: "Excel + AI Course",
 
-      order_id: order.id,
+                      order_id: order.id,
 
-      prefill: {
-        name: student.name,
-        email: student.email,
-        contact: phone,
-      },
+                      prefill: {
+                        name: student.name,
+                        email: student.email,
+                        contact: phone,
+                      },
 
-      theme: {
-        color: "#2563eb",
-      },
+                      theme: {
+                        color: "#2563eb",
+                      },
 
-      handler: async function (paymentResponse) {
-        try {
-          // 3. Verify payment in backend
-          const verifyResponse = await fetch(
-            `${API_URL}/api/payments/verify`,
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                razorpay_order_id:
-                  paymentResponse.razorpay_order_id,
+                      handler: async function (paymentResponse) {
+                        try {
+                          // 3. Verify payment in backend
+                          const verifyResponse = await fetch(
+                            `${API_URL}/api/payments/verify`,
+                            {
+                              method: "POST",
+                              headers: {
+                                "Content-Type": "application/json",
+                              },
+                              body: JSON.stringify({
+                                razorpay_order_id:
+                                  paymentResponse.razorpay_order_id,
 
-                razorpay_payment_id:
-                  paymentResponse.razorpay_payment_id,
+                                razorpay_payment_id:
+                                  paymentResponse.razorpay_payment_id,
 
-                razorpay_signature:
-                  paymentResponse.razorpay_signature,
-              }),
-            }
-          );
+                                razorpay_signature:
+                                  paymentResponse.razorpay_signature,
+                              }),
+                            },
+                          );
 
-          const verifyResult = await verifyResponse.json();
+                          const verifyResult = await verifyResponse.json();
 
-          if (!verifyResponse.ok || !verifyResult.success) {
-            throw new Error(
-              verifyResult.message || "Payment verification failed"
-            );
-          }
+                          if (!verifyResponse.ok || !verifyResult.success) {
+                            throw new Error(
+                              verifyResult.message ||
+                                "Payment verification failed",
+                            );
+                          }
 
-          alert(
-            "Payment successful! Check your email for account activation."
-          );
+                          setShowEnrollment(false);
+                          setShowPaymentSuccess(true);
+                        } catch (error) {
+                          console.error("Payment Verification Error:", error);
+                          alert(error.message);
+                        }
+                      },
 
-          setShowEnrollment(false);
-        } catch (error) {
-          console.error("Payment Verification Error:", error);
-          alert(error.message);
-        }
-      },
+                      modal: {
+                        ondismiss: function () {
+                          console.log("Razorpay checkout closed");
+                        },
+                      },
+                    };
 
-      modal: {
-        ondismiss: function () {
-          console.log("Razorpay checkout closed");
-        },
-      },
-    };
+                    const razorpay = new window.Razorpay(options);
 
-    const razorpay = new window.Razorpay(options);
+                    razorpay.on("payment.failed", function (response) {
+                      console.error("Payment Failed:", response.error);
+                      alert(
+                        response.error?.description ||
+                          "Payment failed. Please try again.",
+                      );
+                    });
 
-    razorpay.on("payment.failed", function (response) {
-      console.error("Payment Failed:", response.error);
-      alert(
-        response.error?.description ||
-          "Payment failed. Please try again."
-      );
-    });
-
-    razorpay.open();
-  } catch (error) {
-    console.error("Payment Error:", error);
-    alert(error.message || "Something went wrong");
-  }
-}}
+                    razorpay.open();
+                  } catch (error) {
+                    console.error("Payment Error:", error);
+                    alert(error.message || "Something went wrong");
+                  }
+                }}
               >
-
                 <div className="input-wrap">
-
                   <span>♙</span>
 
                   <input
@@ -2392,12 +1807,9 @@ function App() {
                     placeholder="Full Name"
                     required
                   />
-
                 </div>
 
-
                 <div className="input-wrap">
-
                   <span>✉</span>
 
                   <input
@@ -2406,12 +1818,9 @@ function App() {
                     placeholder="Email Address"
                     required
                   />
-
                 </div>
 
-
                 <div className="input-wrap">
-
                   <span>⌕</span>
 
                   <input
@@ -2420,36 +1829,28 @@ function App() {
                     placeholder="Phone Number"
                     required
                   />
-
                 </div>
-
 
                 {/* SECURE CHECKOUT */}
 
                 <div className="secure-box">
-
                   <div className="secure-title">
                     🛡️
-                    <strong>
-                      Secure Checkout
-                    </strong>
+                    <strong>Secure Checkout</strong>
                   </div>
 
                   <p>
-                    Secure payment via Razorpay. After payment,
-                    we'll send an activation email to your inbox.
+                    Secure payment via Razorpay. After payment, we'll send an
+                    activation email to your inbox.
                   </p>
-
                 </div>
-
 
                 {/* ACTION BUTTONS */}
 
                 <div className="enrollment-actions">
-
                   <button
                     type="button"
-                    className="cancel-button"
+                    className="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm font-bold text-slate-700 transition-all duration-300 hover:bg-slate-50"
                     onClick={closeEnrollment}
                   >
                     Cancel
@@ -2457,23 +1858,16 @@ function App() {
 
                   <button
                     type="submit"
-                    className="payment-button"
+                    className="cta-pulse inline-flex items-center justify-center rounded-xl bg-blue-600 px-4 py-3 text-sm font-bold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:bg-blue-700"
                   >
                     Continue to Payment
                   </button>
-
                 </div>
-
               </form>
-
             </div>
-
           </div>
-
         </div>
-
       )}
-
     </div>
   );
 }
