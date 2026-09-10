@@ -245,7 +245,7 @@ const faqs = [
 
 function App() {
   const [showEnrollment, setShowEnrollment] = useState(false);
-  const [showPaymentSuccess, setShowPaymentSuccess] = useState(false);
+
   const openEnrollment = (e) => {
     e.preventDefault();
     setShowEnrollment(true);
@@ -254,56 +254,7 @@ function App() {
   const closeEnrollment = () => {
     setShowEnrollment(false);
   };
-  if (showPaymentSuccess) {
-  return (
-    <div className="payment-success-page">
-      <div className="payment-success-card">
 
-        <div className="success-icon">
-          ✓
-        </div>
-
-        <h1>Payment Successful!</h1>
-
-        <p className="success-message">
-          Thank you for enrolling in the Excel Using AI Course.
-        </p>
-
-        <div className="email-box">
-          <div className="email-icon">✉</div>
-
-          <div>
-            <h3>Check your email</h3>
-            <p>
-              Please check your email for the activation link
-              and course access details.
-            </p>
-          </div>
-        </div>
-
-        <button
-          className="whatsapp-button"
-          onClick={() => {
-            window.open(
-              "https://chat.whatsapp.com/E9J1e6cdldY4mOyoX6gbzn",
-              "_blank"
-            );
-          }}
-        >
-          💬 Join WhatsApp Group
-        </button>
-
-        <button
-          className="back-button"
-          onClick={() => setShowPaymentSuccess(false)}
-        >
-          ← Back to Landing Page
-        </button>
-
-      </div>
-    </div>
-  );
-}
   return (
     <div className="app">
 
@@ -2395,8 +2346,11 @@ function App() {
             );
           }
 
+          alert(
+            "Payment successful! Check your email for account activation."
+          );
+
           setShowEnrollment(false);
-          setShowPaymentSuccess(true);
         } catch (error) {
           console.error("Payment Verification Error:", error);
           alert(error.message);
