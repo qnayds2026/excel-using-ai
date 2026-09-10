@@ -4563,3 +4563,249 @@ select {
     bottom: 10px !important;
   }
 }
+/* =========================================================
+   PAYMENT SUCCESS PAGE
+   ========================================================= */
+
+.payment-success-page {
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 50px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #f7faff 100%
+  );
+}
+
+.payment-success-card {
+  width: 100%;
+  max-width: 560px;
+  box-sizing: border-box;
+
+  padding: 45px 42px;
+
+  background: #ffffff;
+  border: 1px solid #e2eaf3;
+  border-radius: 24px;
+
+  text-align: center;
+
+  box-shadow:
+    0 20px 60px rgba(24, 67, 110, 0.12);
+}
+
+/* ================= SUCCESS ICON ================= */
+
+.success-icon {
+  width: 76px;
+  height: 76px;
+
+  margin: 0 auto 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #eaf8ef;
+  color: #20a64a;
+
+  font-size: 44px;
+  font-weight: 800;
+
+  border: 5px solid #f4fcf6;
+}
+
+/* ================= HEADING ================= */
+
+.payment-success-card h1 {
+  margin: 0 0 14px;
+
+  color: #102b56;
+
+  font-size: 34px;
+  line-height: 1.2;
+  font-weight: 800;
+
+  letter-spacing: -0.5px;
+}
+
+/* ================= MESSAGE ================= */
+
+.success-message {
+  margin: 0 auto 28px;
+
+  max-width: 440px;
+
+  color: #64748b;
+
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* ================= EMAIL BOX ================= */
+
+.email-box {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 15px;
+
+  padding: 20px;
+
+  margin: 25px 0;
+
+  background: #f8fbff;
+
+  border: 1px solid #e1eaf4;
+
+  border-radius: 14px;
+
+  text-align: left;
+}
+
+.email-icon {
+  width: 38px;
+  height: 38px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #1769ff;
+
+  font-size: 23px;
+}
+
+.email-box h3 {
+  margin: 0 0 6px;
+
+  color: #263d58;
+
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.email-box p {
+  margin: 0;
+
+  color: #718095;
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* ================= WHATSAPP BUTTON ================= */
+
+.whatsapp-button {
+  width: 100%;
+  min-height: 54px;
+
+  margin-top: 8px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: #25d366;
+  color: #ffffff;
+
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 20px rgba(37, 211, 102, 0.22);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.whatsapp-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 25px rgba(37, 211, 102, 0.3);
+}
+
+/* ================= BACK BUTTON ================= */
+
+.back-button {
+  width: 100%;
+  min-height: 52px;
+
+  margin-top: 12px;
+
+  border: 1px solid #dce6f2;
+  border-radius: 12px;
+
+  background: #ffffff;
+  color: #40536c;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.back-button:hover {
+  background: #f7faff;
+  color: #1769ff;
+  border-color: #bfd7f2;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+
+  .payment-success-page {
+    min-height: 100vh;
+    padding: 30px 15px;
+  }
+
+  .payment-success-card {
+    padding: 35px 20px;
+    border-radius: 20px;
+  }
+
+  .success-icon {
+    width: 68px;
+    height: 68px;
+
+    font-size: 38px;
+  }
+
+  .payment-success-card h1 {
+    font-size: 28px;
+  }
+
+  .success-message {
+    font-size: 14px;
+  }
+
+  .email-box {
+    padding: 17px;
+  }
+
+  .email-box h3 {
+    font-size: 15px;
+  }
+
+  .email-box p {
+    font-size: 12px;
+  }
+}
