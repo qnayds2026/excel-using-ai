@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import logo from "./assets/QNAYDS_LOGO.png";
 
 const EXCEL_COURSE_ID = 13;
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+const API_URL = "http://localhost:3000";
 console.log("API_URL =", API_URL);
 const features = [
   {
@@ -13,7 +13,7 @@ const features = [
   {
     icon: "📊",
     title: "ഡാറ്റാ വിശകലനം",
-    text: "വലിയ അളവിലുള്ള ഡാറ്റ മനസ്സിലാക്കി ആവശ്യമായ വിവരങ്ങൾ കണ്ടെത്താൻ പഠിക്കാം.",
+    textss: "വലിയ അളവിലുള്ള ഡാറ്റ മനസ്സിലാക്കി ആവശ്യമായ വിവരങ്ങൾ കണ്ടെത്താൻ പഠിക്കാം.",
   },
   {
     icon: "📈",
