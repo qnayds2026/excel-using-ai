@@ -27,27 +27,63 @@ const features = [
   },
 ];
 const learners = [
-  "🌱 Excel Beginner — Zero മുതൽ പഠിക്കാൻ ആഗ്രഹിക്കുന്നവർ",
-  "📈 Excel Users — Existing skills next level-ലേക്ക് upgrade ചെയ്യാൻ ആഗ്രഹിക്കുന്നവർ",
-  "⚡ Advanced Learners — Advanced Excel + AI പഠിക്കാൻ ആഗ്രഹിക്കുന്നവർ",
-  "🎓 Freshers — Job-ready skills build ചെയ്യാൻ ആഗ്രഹിക്കുന്നവർ",
-  "💼 Office / MIS Professionals — Daily work faster & smarter ആക്കാൻ ആഗ്രഹിക്കുന്നവർ",
-  "📊 Data & Reporting Professionals — Reports & dashboards powerful ആക്കാൻ ആഗ്രഹിക്കുന്നവർ",
-  "👥 HR & Accounts Professionals — Repetitive work simplify ചെയ്യാൻ ആഗ്രഹിക്കുന്നവർ",
-  "🚀 Freelancers & Business Owners — Data & reporting സ്വന്തം കൈയ്യിൽ control ചെയ്യാൻ ആഗ്രഹിക്കുന്നവർ",
+  {
+    number: "01",
+    icon: "🌱",
+    title: "Excel Beginners",
+    text: "Zero മുതൽ Excel confidently പഠിച്ച് തുടങ്ങാം."
+  },
+  {
+    number: "02",
+    icon: "📈",
+    title: "Existing Excel Users",
+    text: "ഇപ്പോഴുള്ള Excel skills next level-ലേക്ക് എത്തിക്കാം."
+  },
+  {
+    number: "03",
+    icon: "⚡",
+    title: "Advanced Learners",
+    text: "Advanced Excel + AI ഉപയോഗിച്ച് smarter ആയി work ചെയ്യാം."
+  },
+  {
+    number: "04",
+    icon: "🎓",
+    title: "Freshers",
+    text: "Job-ready Excel + AI skills നേടി workplace-ready ആകാം."
+  },
+  {
+    number: "05",
+    icon: "💼",
+    title: "Office / MIS Professionals",
+    text: "Daily office work കൂടുതൽ fast & productive ആക്കാം."
+  },
+  {
+    number: "06",
+    icon: "📊",
+    title: "Data & Reporting Professionals",
+    text: "Data-യെ powerful reports & insights ആക്കി മാറ്റാം."
+  },
+  {
+    number: "07",
+    icon: "👥",
+    title: "HR & Accounts Professionals",
+    text: "Repetitive tasks Excel + AI ഉപയോഗിച്ച് smart ആക്കാം."
+  },
+  {
+    number: "08",
+    icon: "🚀",
+    title: "Freelancers & Business Owners",
+    text: "Data manage ചെയ്യാം, സമയം save ചെയ്യാം, smarter ആയി grow ചെയ്യാം."
+  }
 ];
-
 const skills = [
-  "Excel Basics — Zero മുതൽ Strong Foundation വരെ",
-  "Formulas & Functions — Smart calculations ചെയ്യാൻ",
-  "Data Analysis — Raw Data → Useful Insights",
-  "Reports & Dashboards — Professional-looking reports build ചെയ്യാൻ",
-  "Excel + AI — AI-യെ നിങ്ങളുടെ Excel Assistant ആക്കാൻ",
-  "Automation — Repetitive tasks കുറച്ച് time save ചെയ്യാൻ",
-  "MIS & Workplace Skills — Real office tasks confidently handle ചെയ്യാൻ",
-  "Advanced Excel Projects — പഠിച്ചതെല്ലാം real-world projects വഴി practice ചെയ്യാൻ",
+  "Excel Basics",
+  "Formulas & Functions",
+  "Data Analysis",
+  "Reports & Dashboards",
+  "Excel + AI",
+  "Automation",
 ];
-
 
 const projects = [
   {
@@ -360,14 +396,13 @@ function App() {
         </div>
 
         <h1>
-          Excel പഠിക്കൂ.
+          Excel പഠിക്കാൻ ബുദ്ധിമുട്ടാണോ?
           <br />
-          <span>AI ഉപയോഗിച്ച് Smart ആയി Work ചെയ്യൂ.</span>
+          <span>AI ഉപയോഗിച്ച് ഇനി Smart ആയി Work ചെയ്യാം!</span>
         </h1>
 
         <p className="hero-text">
-          Basics മുതൽ Advanced Excel, AI, Automation വരെ practical ആയി പഠിച്ച്
-          നിങ്ങളുടെ skills next level-ലേക്ക് upgrade ചെയ്യൂ.
+          Basics മുതൽ Advanced Excel + AI വരെ പഠിച്ച്, repetitive work കുറച്ച് productivity കൂട്ടാം. Real-world projects-ലൂടെ job-ready Excel skills സ്വന്തമാക്കാം.
         </p>
 
         <div className="hero-actions">
@@ -477,7 +512,7 @@ function App() {
     </div>
   </section>
 
-        {/* ================= VIDEO SECTION ================= */}
+{/* ================= VIDEO SECTION ================= */}
 
 <section className="video-section">
   <div className="container">
@@ -504,30 +539,15 @@ function App() {
     <div className="course-video">
 
       <div className="video-frame">
-        <div
-          style={{
-            width: "100%",
-            height: "100%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            flexDirection: "column",
-            color: "white",
-            textAlign: "center",
-          }}
+        <video
+          src="/Excel.mp4"
+          poster="/excel-thumbnail.jpg"
+          controls
+          playsInline
+          
         >
-          <h3 style={{ margin: "0 0 8px" }}>
-            കോഴ്സ് വീഡിയോ
-          </h3>
-
-          <p style={{ margin: 0, opacity: 0.75 }}>
-            വീഡിയോ ഉടൻ ഇവിടെ ലഭ്യമാകും
-          </p>
-        </div>
-
-        <div className="video-overlay">
-          <div className="play-button">▶</div>
-        </div>
+          Your browser does not support the video tag.
+        </video>
       </div>
 
       <div className="video-points">
@@ -552,7 +572,6 @@ function App() {
     </div>
   </div>
 </section>
-
 {/* ================= COURSE VALUE STACK ================= */}
 
 <section className="value-section">
@@ -753,48 +772,32 @@ function App() {
     </div>
 
     <div className="audience-grid">
-      {learners.map((learner, index) => (
-        <div className="audience-card" key={learner}>
+  {learners.map((learner) => (
+    <div className="audience-card" key={learner.number}>
 
-          <span className="card-number">
-            0{index + 1}
-          </span>
+      <span className="card-number">
+        {learner.number}
+      </span>
 
-          <span className="check-icon">✓</span>
+      <span className="check-icon">✓</span>
 
-          <h3>{learner}</h3>
+      <div className="audience-icon">
+        {learner.icon}
+      </div>
 
-          <p>
-            {index === 0 &&
-              "Excel ഒന്നും അറിയാത്തവർക്കും basics മുതൽ step-by-step ആയി strong foundation build ചെയ്യാം."}
+      <h3>
+        {learner.title}
+      </h3>
 
-            {index === 1 &&
-              "Existing Excel skills കൂടുതൽ powerful ആക്കാൻ advanced formulas, analysis, dashboards & AI പഠിക്കാം."}
+      <p>
+        {learner.text}
+      </p>
 
-            {index === 2 &&
-              "Advanced Excel knowledge ഉപയോഗിച്ച് AI, automation & smarter workflows പഠിച്ച് next level-ലേക്ക് പോകാം."}
-
-            {index === 3 &&
-              "Job-ready Excel + AI skills develop ചെയ്ത് interviews-ലും workplace tasks-ലും കൂടുതൽ confident ആകാം."}
-
-            {index === 4 &&
-              "Daily MIS, reporting & office tasks കൂടുതൽ fast, accurate & professional ആയി handle ചെയ്യാം."}
-
-            {index === 5 &&
-              "Raw data-യെ meaningful insights, reports & professional dashboards ആക്കി മാറ്റാൻ പഠിക്കാം."}
-
-            {index === 6 &&
-              "Attendance, payroll, expenses, reports തുടങ്ങിയ repetitive tasks Excel + AI ഉപയോഗിച്ച് smart ആക്കാം."}
-
-            {index === 7 &&
-              "Business, client reporting & everyday data work കൂടുതൽ efficiently manage ചെയ്യാൻ practical skills നേടാം."}
-          </p>
-
-        </div>
-      ))}
     </div>
+  ))}
+</div>
 
-  </div>
+</div>
 </section>
 {/* ================= PROBLEM ================= */}
 
@@ -1285,62 +1288,11 @@ function App() {
         </div>
       ))}
 
-      {/* ================= EXCEL + AI PROJECT VISUAL ================= */}
-
-      <div className="project-ai-visual">
-
-        <div className="project-ai-formula">
-          <span>fx</span>
-          <strong>=SUM(C2:C6)</strong>
-        </div>
-
-        <div className="project-ai-sheet">
-
-          <div className="sheet-mini-row">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-
-          <div className="sheet-mini-chart">
-            <i></i>
-            <i></i>
-            <i></i>
-            <i></i>
-          </div>
-
-          <div className="sheet-mini-pie"></div>
-
-        </div>
-
-        <div className="project-excel-icon">
-          X
-        </div>
-
-        <div className="project-ai-icon">
-          AI
-        </div>
-
-        <div className="project-ai-sparkle sparkle-one">
-          ✦
-        </div>
-
-        <div className="project-ai-sparkle sparkle-two">
-          ✦
-        </div>
-
-        <div className="project-ai-sparkle sparkle-three">
-          ✦
-        </div>
-
-      </div>
-
     </div>
 
   </div>
 </section>
-
-
+      
 {/* ================= PROJECT OUTCOME STRIP ================= */}
 
 <div className="project-outcome-strip">
@@ -1897,84 +1849,8 @@ function App() {
 
   </div>
 </section>
-{/* ================= HOW IT WORKS ================= */}
 
-<section className="section how-section">
-  <div className="container">
 
-    <div className="section-heading centered">
-
-      <div className="section-tag">
-        How the Program Works
-      </div>
-
-      <h2>
-        പഠനം
-        <span> എങ്ങനെ Skill ആയി മാറും?</span>
-      </h2>
-
-      <p>
-        ഓരോ concept-ഉം പഠിച്ച്, practice ചെയ്ത്, real-world projects
-        വഴി apply ചെയ്യുന്നതാണ് ഈ program-ന്റെ learning approach.
-      </p>
-
-    </div>
-
-    <div className="how-grid">
-
-      <div>
-        <span>01</span>
-
-        <h3>
-          Learn
-        </h3>
-
-        <p>
-          Excel + AI concepts step-by-step ആയി ലളിതമായി മനസ്സിലാക്കുക.
-        </p>
-      </div>
-
-      <div>
-        <span>02</span>
-
-        <h3>
-          Practice
-        </h3>
-
-        <p>
-          Hands-on tasks ചെയ്ത് പഠിച്ച concepts practical ആയി ഉപയോഗിക്കുക.
-        </p>
-      </div>
-
-      <div>
-        <span>03</span>
-
-        <h3>
-          Build
-        </h3>
-
-        <p>
-          പഠിച്ച skills ഉപയോഗിച്ച് real-world Excel projects build ചെയ്യുക.
-        </p>
-      </div>
-
-      <div>
-        <span>04</span>
-
-        <h3>
-          Apply
-        </h3>
-
-        <p>
-          Workplace tasks, reporting, analysis തുടങ്ങിയ scenarios-ൽ
-          skills confidently apply ചെയ്യാൻ തയ്യാറാകുക.
-        </p>
-      </div>
-
-    </div>
-
-  </div>
-</section>
 {/* ================= REVIEWS ================= */}
 <section className="section reviews-section" id="reviews">
   <div className="container">
