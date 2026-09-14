@@ -1,89 +1,58 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import logo from "./assets/QNAYDS_LOGO.png";
-import { FaWhatsapp } from "react-icons/fa";
 
 const EXCEL_COURSE_ID = 13;
-const API_URL = "http://localhost:3000";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 console.log("API_URL =", API_URL);
+
+const gridBg = {
+  backgroundImage:
+    "linear-gradient(to right, rgba(37,99,235,0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(37,99,235,0.07) 1px, transparent 1px)",
+  backgroundSize: "36px 36px",
+};
+
 const features = [
   {
-    icon: "🌱",
-    title: "Start from Zero",
-    text: "Excel ഒന്നും അറിയാത്തവർക്കും basics മുതൽ step-by-step ആയി confidence-ോടെ പഠിക്കാം.",
+    icon: "⚡",
+    title: "Excel + AI",
+    text: "Excel-നൊപ്പം AI ഉപയോഗിച്ച് വേഗത്തിലും എളുപ്പത്തിലും ജോലി ചെയ്യാൻ പഠിക്കാം.",
   },
   {
-    icon: "⚡",
-    title: "Level Up Your Excel",
-    text: "Formulas, functions, data analysis, dashboards എന്നിവ ഉപയോഗിച്ച് നിങ്ങളുടെ Excel skills next level-ലേക്ക് എത്തിക്കാം.",
+    icon: "📊",
+    title: "ഡാറ്റാ വിശകലനം",
+    text: "വലിയ അളവിലുള്ള ഡാറ്റ മനസ്സിലാക്കി ആവശ്യമായ വിവരങ്ങൾ കണ്ടെത്താൻ പഠിക്കാം.",
+  },
+  {
+    icon: "📈",
+    title: "റിപ്പോർട്ടുകളും ഡാഷ്ബോർഡുകളും",
+    text: "ജോലിസ്ഥലത്ത് ഉപയോഗിക്കുന്ന പ്രൊഫഷണൽ റിപ്പോർട്ടുകളും ഡാഷ്ബോർഡുകളും നിർമ്മിക്കാം.",
   },
   {
     icon: "🤖",
-    title: "Work Smarter with AI",
-    text: "AI ഉപയോഗിച്ച് formulas കണ്ടെത്താനും data മനസ്സിലാക്കാനും reports തയ്യാറാക്കാനും repetitive tasks എളുപ്പമാക്കാനും പഠിക്കാം.",
-  },
-  {
-    icon: "🚀",
-    title: "Go Beyond Excel",
-    text: "Advanced Excel + AI + Automation skills ഉപയോഗിച്ച് real workplace problems smart ആയി solve ചെയ്യാൻ പഠിക്കാം.",
+    title: "Automation",
+    text: "ആവർത്തിച്ച് ചെയ്യേണ്ട Excel ജോലികൾ എളുപ്പമാക്കാനും ഓട്ടോമേറ്റ് ചെയ്യാനും പഠിക്കാം.",
   },
 ];
+
 const learners = [
-  {
-    number: "01",
-    icon: "🌱",
-    title: "Excel Beginners",
-    text: "Zero മുതൽ Excel confidently പഠിച്ച് തുടങ്ങാം."
-  },
-  {
-    number: "02",
-    icon: "📈",
-    title: "Existing Excel Users",
-    text: "ഇപ്പോഴുള്ള Excel skills next level-ലേക്ക് എത്തിക്കാം."
-  },
-  {
-    number: "03",
-    icon: "⚡",
-    title: "Advanced Learners",
-    text: "Advanced Excel + AI ഉപയോഗിച്ച് smarter ആയി work ചെയ്യാം."
-  },
-  {
-    number: "04",
-    icon: "🎓",
-    title: "Freshers",
-    text: "Job-ready Excel + AI skills നേടി workplace-ready ആകാം."
-  },
-  {
-    number: "05",
-    icon: "💼",
-    title: "Office / MIS Professionals",
-    text: "Daily office work കൂടുതൽ fast & productive ആക്കാം."
-  },
-  {
-    number: "06",
-    icon: "📊",
-    title: "Data & Reporting Professionals",
-    text: "Data-യെ powerful reports & insights ആക്കി മാറ്റാം."
-  },
-  {
-    number: "07",
-    icon: "👥",
-    title: "HR & Accounts Professionals",
-    text: "Repetitive tasks Excel + AI ഉപയോഗിച്ച് smart ആക്കാം."
-  },
-  {
-    number: "08",
-    icon: "🚀",
-    title: "Freelancers & Business Owners",
-    text: "Data manage ചെയ്യാം, സമയം save ചെയ്യാം, smarter ആയി grow ചെയ്യാം."
-  }
+  "Freshers",
+  "ജോലി അന്വേഷിക്കുന്നവർ",
+  "Office / MIS ജീവനക്കാർ",
+  "HR മേഖലയിൽ ജോലി ചെയ്യുന്നവർ",
+  "Accounts മേഖലയിൽ ജോലി ചെയ്യുന്നവർ",
+  "Business ചെയ്യുന്നവർ",
+  "Freelancers",
 ];
+
 const skills = [
-  "Excel Basics",
-  "Formulas & Functions",
-  "Data Analysis",
-  "Reports & Dashboards",
-  "Excel + AI",
+  "Excel അടിസ്ഥാനങ്ങൾ",
+  "ഡാറ്റാ വിശകലനം",
+  "റിപ്പോർട്ടുകളും ഡാഷ്ബോർഡുകളും",
+  "Excel-ൽ AI ഉപയോഗം",
   "Automation",
+  "MIS റിപ്പോർട്ടിംഗ്",
+  "HR & Accounts ആവശ്യങ്ങൾ",
+  "പ്രായോഗിക Projects",
 ];
 
 const projects = [
@@ -114,137 +83,14 @@ const projects = [
   },
 ];
 
-const modules = [
-  {
-    number: "01",
-    title: "Excel Fundamentals",
-    duration: "3 Hours",
-    items: [
-      "Excel Interface & Navigation",
-      "Workbook & Worksheet Structure",
-      "Cells & Cell Referencing",
-      "Data Types (Text, Number, Date)",
-      "Formatting & Styles",
-      "Essential Keyboard Shortcuts",
-    ],
-    outcome: "Strong Excel foundation",
-  },
-  {
-    number: "03",
-    title: "Data Handling & Analysis",
-    duration: "4 Hours",
-    items: [
-      "Sorting & Filtering Data",
-      "Data Validation (Dropdown Lists)",
-      "Remove Duplicates",
-      "Text Functions (LEFT, RIGHT, MID, LEN)",
-      "Pivot Tables",
-      "Pivot Charts",
-    ],
-    outcome: "Used in Real-Time Office Work",
-  },
-  {
-    number: "04",
-    title: "Reports & Dashboards",
-    duration: "3 Hours",
-    items: [
-      "Chart Types (Column, Bar, Line, Pie)",
-      "Dynamic Charts",
-      "KPI Reports",
-      "Dashboard Design Principles",
-      "Professional Report Presentation",
-    ],
-    outcome: "Management-Level Reporting Skills",
-  },
-  {
-    number: "05",
-    title: "AI Tools with Excel",
-    duration: "5 Hours",
-    items: [
-      "Introduction to AI in Excel",
-      "ChatGPT for Excel",
-      "Formula generation",
-      "Error fixing",
-      "Data explanation",
-      "AI-assisted data cleaning",
-      "Smart analysis & insights",
-      "Prompt writing for Excel tasks",
-    ],
-    outcome: "Work Faster & Smarter Using AI",
-  },
-  {
-    number: "06",
-    title: "Automation & Job Preparation",
-    duration: "1 Hour",
-    items: [
-      "AI-assisted Excel automation",
-      "Monthly report automation",
-      "Resume Excel projects",
-      "Excel interview questions",
-      "Practical Excel test preparation",
-    ],
-    outcome: "Job-Ready Skill Development",
-  },
-  {
-    number: "08",
-    title: "Excel for MIS & Management Reporting",
-    duration: "",
-    items: [
-      "MIS report structure",
-      "Daily / Weekly / Monthly reports",
-      "Performance tracking sheets",
-      "KPI & scorecard creation",
-      "Management-ready report formats",
-    ],
-    outcome: "",
-  },
-  {
-    number: "09",
-    title: "Excel for HR & Accounts",
-    duration: "",
-    items: [
-      "HR attendance & leave tracker",
-      "Payroll basics using Excel",
-      "Incentive & salary calculation",
-      "Expense & budget tracking",
-      "Accounts summary sheets",
-    ],
-    outcome: "",
-  },
-  {
-    number: "10",
-    title: "Excel Automation with AI",
-    duration: "",
-    items: [
-      "Automating repetitive Excel tasks",
-      "AI-assisted formula automation",
-      "Monthly report auto-generation",
-      "Workflow optimization using AI prompts",
-    ],
-    outcome: "",
-  },
-  {
-    number: "12",
-    title: "Industry Projects & Case Studies",
-    duration: "",
-    items: [
-      "Real company data projects",
-      "Sales & business analysis project",
-      "HR / finance-based case studies",
-      "End-to-end Excel + AI project",
-    ],
-    outcome: "",
-  },
-];
-
 const workflow = [
-  "📌 Task — എന്താണ് ചെയ്യേണ്ടത് എന്ന് മനസ്സിലാക്കുക",
-  "🤖 AI Assist — ശരിയായ formula / approach കണ്ടെത്തുക",
-  "📊 Excel — Data & calculations work ചെയ്യുക",
-  "🔍 Verify — AI output ശരിയാണോ എന്ന് പരിശോധിക്കുക",
-  "💡 Analyze — Data-യിൽ നിന്ന് useful insights കണ്ടെത്തുക",
-  "📑 Report — Professional report/dashboard തയ്യാറാക്കുക",
-  "⚙️ Automate — വീണ്ടും വീണ്ടും ചെയ്യുന്ന work smart ആക്കുക",
+  "ജോലി / Task",
+  "AI സഹായം",
+  "Excel",
+  "പരിശോധിക്കുക",
+  "വിശകലനം ചെയ്യുക",
+  "റിപ്പോർട്ട് തയ്യാറാക്കുക",
+  "Automation",
 ];
 
 const roles = [
@@ -254,55 +100,82 @@ const roles = [
   "Accounts Executive",
   "Operations Executive",
 ];
+
 const faqs = [
   {
-    question: "Excel ഒന്നും അറിയാത്ത Beginner-ന് ഈ course പഠിക്കാനാകുമോ?",
+    question: "ഈ കോഴ്സ് ആർക്കാണ് അനുയോജ്യം?",
     answer:
-      "തീർച്ചയായും. Excel basics മുതൽ step-by-step ആയി പഠിപ്പിക്കുന്നതിനാൽ beginners-ന് zero level-ൽ നിന്ന് തുടങ്ങാം. ഓരോ concept-ഉം practical examples ഉപയോഗിച്ച് മനസ്സിലാക്കുന്ന രീതിയിലാണ് program ഒരുക്കിയിരിക്കുന്നത്.",
+      "Excel പഠിക്കാൻ ആഗ്രഹിക്കുന്ന beginners മുതൽ ജോലി ആവശ്യങ്ങൾക്ക് Excel കൂടുതൽ പ്രൊഫഷണലായി ഉപയോഗിക്കാൻ ആഗ്രഹിക്കുന്നവർ വരെ ഈ program പിന്തുടരാം.",
   },
-
   {
-    question: "Already Excel അറിയുന്നവർക്ക് ഈ course എന്തിന്?",
+    question: "Excel മാത്രം അറിയുന്നത് മതിയോ?",
     answer:
-      "Basic Excel അറിയുന്നവർക്ക് formulas, data analysis, dashboards, AI tools, automation തുടങ്ങിയ advanced skills പഠിച്ച് അവരുടെ existing Excel knowledge next level-ലേക്ക് upgrade ചെയ്യാം.",
+      "ഇന്നത്തെ ജോലികളിൽ Excel ഉപയോഗിക്കുന്നതിനൊപ്പം data analysis, reporting, dashboards, AI തുടങ്ങിയ practical skills അറിയുന്നത് കൂടുതൽ സഹായകരമാണ്.",
   },
-
   {
-    question: "Beginner മുതൽ Advanced വരെ എല്ലാം പഠിക്കുമോ?",
+    question: "AI ഉപയോഗിച്ചുള്ള Excel പഠിക്കുമോ?",
     answer:
-      "അതെ. Excel foundation മുതൽ formulas, functions, data analysis, professional reports, dashboards, Excel + AI, automation എന്നിവയിലേക്ക് step-by-step ആയി progress ചെയ്യാം.",
+      "അതെ. Excel workflows-ൽ AI എങ്ങനെ ഉപയോഗിക്കാം, formulas കണ്ടെത്താനും data work എളുപ്പമാക്കാനും AI എങ്ങനെ ഉപയോഗിക്കാം എന്നിവ program-ന്റെ ഭാഗമാണ്.",
   },
-
-  {
-    question: "Excel-നൊപ്പം AI എങ്ങനെ ഉപയോഗിക്കാമെന്ന് പഠിക്കുമോ?",
-    answer:
-      "അതെ. Formulas കണ്ടെത്താനും, data മനസ്സിലാക്കാനും, tasks simplify ചെയ്യാനും Excel workflows കൂടുതൽ smart ആക്കാനും AI എങ്ങനെ ഉപയോഗിക്കാം എന്ന് practical ആയി പഠിക്കാം.",
-  },
-
   {
     question: "Practical Projects ഉണ്ടാകുമോ?",
     answer:
-      "ഉണ്ട്. Sales Dashboard, HR Attendance, Expense Tracker, AI Formula Project, Automated MIS തുടങ്ങിയ real-world projects വഴി പഠിച്ച skills practice ചെയ്യാം.",
+      "അതെ. Sales Dashboard, HR Attendance, Expense Tracker, AI Formula Project, Automated MIS തുടങ്ങിയ practical projects ഉൾപ്പെടുത്തിയിട്ടുണ്ട്.",
   },
-
-  {
-    question: "ഈ skills job-ൽ എങ്ങനെ ഉപയോഗിക്കാം?",
-    answer:
-      "MIS, HR, Accounts, Operations, Reporting, Data Analysis തുടങ്ങിയ ജോലികളിൽ ഉപയോഗിക്കുന്ന practical Excel skills develop ചെയ്യാൻ program സഹായിക്കും. Daily repetitive work കൂടുതൽ fast, accurate, smart ആക്കാനും പഠിക്കാം.",
-  },
-
   {
     question: "Course പൂർത്തിയാക്കിയാൽ Certificate ലഭിക്കുമോ?",
     answer:
-      "അതെ. Program successfully complete ചെയ്യുന്ന learners-ന് course completion certificate ലഭിക്കും.",
+      "Program completion-നുമായി ബന്ധപ്പെട്ട certification section ഈ landing page-ൽ ഉൾപ്പെടുത്തിയിട്ടുണ്ട്.",
   },
 ];
+
+// shared style fragments
+const tag =
+  "inline-flex items-center rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1 text-xs font-semibold text-blue-700";
+const h2 =
+  "text-3xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-4xl";
+const lead = "mt-4 text-base leading-relaxed text-slate-600 sm:text-lg";
+const ctaPrimary =
+  "group inline-flex items-center justify-center gap-2 rounded-full bg-blue-600 px-7 py-3.5 text-base font-bold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-xl";
+const LIMITED_SEATS = 20;
+const OFFER_END_TIME = Date.now() + 1000 * 60 * 60 * 18 + 1000 * 60 * 10;
+
+const getTimeLeft = (endTime) => {
+  const distance = Math.max(endTime - Date.now(), 0);
+
+  const hours = Math.floor(distance / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  return { hours, minutes, seconds };
+};
+
 function App() {
   const [showEnrollment, setShowEnrollment] = useState(false);
   const [showPaymentSuccess, setShowPaymentSuccess] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(() => getTimeLeft(OFFER_END_TIME));
+  const [showFloatingCta, setShowFloatingCta] = useState(false);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(getTimeLeft(OFFER_END_TIME));
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowFloatingCta(window.scrollY > 180);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const openEnrollment = (e) => {
-
     e.preventDefault();
     setShowEnrollment(true);
   };
@@ -310,24 +183,33 @@ function App() {
   const closeEnrollment = () => {
     setShowEnrollment(false);
   };
+
   if (showPaymentSuccess) {
     return (
-      <div className="payment-success-page">
-        <div className="payment-success-card">
-          <div className="success-icon">✓</div>
+      <div className="flex min-h-screen items-center justify-center bg-slate-50 px-4 py-16">
+        <div className="w-full max-w-md rounded-3xl border border-slate-200 bg-white p-8 text-center shadow-xl">
+          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-3xl font-bold text-emerald-600">
+            ✓
+          </div>
 
-          <h1>Payment Successful!</h1>
+          <h1 className="mt-6 text-2xl font-extrabold text-slate-900">
+            Payment Successful!
+          </h1>
 
-          <p className="success-message">
+          <p className="mt-2 text-slate-600">
             Thank you for enrolling in the Excel Using AI Course.
           </p>
 
-          <div className="email-box">
-            <div className="email-icon">✉</div>
+          <div className="mt-6 flex items-start gap-3 rounded-2xl border border-blue-100 bg-blue-50 p-4 text-left">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-blue-600 text-white">
+              ✉
+            </div>
 
             <div>
-              <h3>Check your email</h3>
-              <p>
+              <h3 className="text-sm font-bold text-slate-900">
+                Check your email
+              </h3>
+              <p className="mt-1 text-sm text-slate-600">
                 Please check your email for the activation link and course
                 access details.
               </p>
@@ -335,7 +217,7 @@ function App() {
           </div>
 
           <button
-            className="whatsapp-button"
+            className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-emerald-600 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-emerald-500/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-emerald-700"
             onClick={() => {
               window.open(
                 "https://chat.whatsapp.com/E9J1e6cdldY4mOyoX6gbzn",
@@ -347,7 +229,7 @@ function App() {
           </button>
 
           <button
-            className="back-button"
+            className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition-colors duration-300 hover:bg-slate-50"
             onClick={() => setShowPaymentSuccess(false)}
           >
             ← Back to Landing Page
@@ -356,1952 +238,1402 @@ function App() {
       </div>
     );
   }
+
   return (
-    <div className="app">
+    <div className="app min-h-screen bg-white text-slate-900 antialiased">
       {/* ================= NAVBAR ================= */}
-
-      <header className="fixed inset-x-0 top-0 z-[9999] px-4 pt-4 sm:px-6">
-        <nav className="mx-auto flex h-[72px] max-w-7xl items-center justify-between rounded-2xl border border-slate-200 bg-white/90 px-5 shadow-xl backdrop-blur-md sm:px-7">
-          <a href="#home" className="flex shrink-0 items-center">
-            <img
-              src={logo}
-              alt="QNAYDS"
-              className="block h-11 w-auto max-w-[150px] object-contain sm:h-12"
-            />
-          </a>
-
-          <button
-            type="button"
-            onClick={openEnrollment}
-            className="cta-pulse group inline-flex items-center gap-2 rounded-full bg-blue-600 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-xl sm:px-6 sm:text-base"
-          >
-            Enroll Now
-            <span className="text-base transition-transform duration-300 group-hover:translate-x-1">
-              →
-            </span>
-          </button>
-        </nav>
-      </header>
 
       {/* ================= HERO ================= */}
 
-<main>
-  <section className="hero" id="home">
-    <div className="hero-glow"></div>
-
-    <div className="container hero-grid">
-      <div className="hero-content">
-
-        <div className="eyebrow">
-          ✦ Beginner മുതൽ Advanced വരെ — Excel + AI
-        </div>
-
-        <h1>
-          Excel പഠിക്കാൻ ബുദ്ധിമുട്ടാണോ?
-          <br />
-          <span>AI ഉപയോഗിച്ച് ഇനി Smart ആയി Work ചെയ്യാം!</span>
-        </h1>
-
-        <p className="hero-text">
-          Basics മുതൽ Advanced Excel + AI വരെ പഠിച്ച്, repetitive work കുറച്ച് productivity കൂട്ടാം. Real-world projects-ലൂടെ job-ready Excel skills സ്വന്തമാക്കാം.
-        </p>
-
-        <div className="hero-actions">
-          <button
-            type="button"
-            onClick={openEnrollment}
-            className="cta-pulse group inline-flex items-center gap-2 rounded-full bg-blue-600 px-7 py-3.5 text-base font-bold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 hover:shadow-xl"
-          >
-            Start Learning Now
-            <span className="text-xl transition-transform duration-300 group-hover:translate-x-1">
-              →
-            </span>
-          </button>
-
-          <a
-            href="#learn"
-            className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-7 py-3.5 text-base font-semibold text-slate-800 transition-all duration-300 hover:border-slate-400 hover:bg-slate-50"
-          >
-            What Will You Learn?
-          </a>
-        </div>
-
-        <div className="hero-points">
-          <span>✓ Beginner Friendly</span>
-          <span>✓ Advanced Skills</span>
-          <span>✓ Excel + AI</span>
-        </div>
-
-      </div>
-
-      {/* Excel Preview */}
-
-      <div className="hero-visual">
-        <div className="excel-window">
-          <div className="excel-top">
-            <div className="window-dots">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-
-            <div className="excel-title">Sales_Report.xlsx</div>
-
-            <div className="ai-badge">✦ AI</div>
-          </div>
-
-          <div className="excel-toolbar">
-            <span>Home</span>
-            <span>Insert</span>
-            <span>Data</span>
-            <span>Review</span>
-          </div>
-
-          <div className="formula-bar">
-            <span>fx</span>
-            <strong>=SUM(C2:C6)</strong>
-          </div>
-
-          <div className="spreadsheet">
-            <div className="sheet-row sheet-header">
-              <div>Product</div>
-              <div>Units</div>
-              <div>Revenue</div>
-              <div>Growth</div>
-            </div>
-
-            <div className="sheet-row">
-              <div>Laptop Pro</div>
-              <div>128</div>
-              <div>₹1,53,600</div>
-              <div>+18.4%</div>
-            </div>
-
-            <div className="sheet-row">
-              <div>Monitor</div>
-              <div>94</div>
-              <div>₹82,300</div>
-              <div>+12.8%</div>
-            </div>
-
-            <div className="sheet-row">
-              <div>Keyboard</div>
-              <div>216</div>
-              <div>₹43,200</div>
-              <div>+24.1%</div>
-            </div>
-
-            <div className="sheet-row">
-              <div>Mouse</div>
-              <div>187</div>
-              <div>₹28,050</div>
-              <div>+9.7%</div>
-            </div>
-          </div>
-        </div>
-
-        <div className="ai-card">
-          <div className="ai-card-icon">✦</div>
-
-          <div>
-            <strong>AI സഹായം</strong>
-
-            <p>“ഈ data-യിൽ ഏറ്റവും കൂടുതൽ വളർച്ച ഏത് product-നാണ്?”</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-{/* ================= VIDEO SECTION ================= */}
-
-<section className="video-section">
-  <div className="container">
-
-    <div className="video-heading">
-      <div className="section-tag">
-        ഈ Course-ൽ എന്താണ് പഠിക്കുന്നത്?
-      </div>
-
-      <h2>
-        Excel പഠിക്കുക മാത്രമല്ല.
-        <br />
-        <span>Excel ഉപയോഗിച്ച് Work ചെയ്യാൻ പഠിക്കൂ.</span>
-      </h2>
-
-      <p>
-        Basic formulas മുതൽ Data Analysis, Reports, Dashboards, AI,
-        Automation വരെ step-by-step ആയി പഠിക്കാം. പഠിച്ച ഓരോ skill-ഉം
-        real-world projects വഴി practice ചെയ്ത് workplace-ൽ ഉപയോഗിക്കാൻ
-        തയ്യാറാകൂ.
-      </p>
-    </div>
-
-    <div className="course-video">
-
-      <div className="video-frame">
-        <video
-          src="/Excel.mp4"
-          poster="/excel-thumbnail.jpg"
-          controls
-          playsInline
-          
+      <main>
+        <section
+          className="relative overflow-hidden bg-slate-50 pb-20 pt-16 sm:pb-28 sm:pt-20"
+          id="home"
         >
-          Your browser does not support the video tag.
-        </video>
-      </div>
+          <div
+            className="pointer-events-none absolute inset-0"
+            style={gridBg}
+          ></div>
+          <div className="pointer-events-none absolute -top-24 left-1/2 h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-blue-400/20 blur-3xl"></div>
 
-      <div className="video-points">
+          <div className="relative mx-auto flex max-w-3xl flex-col items-center px-4 text-center sm:px-6">
+            <img
+              src={logo}
+              alt="QNAYDS"
+              className="mb-8 h-10 w-auto max-w-[140px] object-contain sm:h-12"
+            />
 
-        <div>
-          <span>✓</span>
-          Step-by-step Practical Learning
-        </div>
+            <div className="mt-2 flex flex-wrap items-center justify-center gap-3 rounded-full border border-orange-200 bg-orange-50 px-4 py-2 text-xs font-bold text-orange-700 sm:text-sm">
+              <span>🔥 Limited Offer</span>
+              <span className="hidden h-4 w-px bg-orange-300 sm:block"></span>
+              <span>Only {LIMITED_SEATS} seats available</span>
+            </div>
 
-        <div>
-          <span>✓</span>
-          Excel + AI Workplace Skills
-        </div>
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-3 rounded-2xl border border-blue-200 bg-white/80 px-4 py-3 shadow-sm backdrop-blur-sm">
+              <div className="flex items-center gap-2 text-sm font-semibold text-slate-700">
+                <span className="text-blue-600">⏳</span>
+                Offer ends in
+              </div>
 
-        <div>
-          <span>✓</span>
-          Real-world Projects &amp; Practice
-        </div>
+              <div className="flex items-center gap-2 text-sm font-bold text-slate-900">
+                <span className="rounded-lg bg-slate-900 px-2 py-1 text-white">
+                  {String(timeLeft.hours).padStart(2, "0")}
+                </span>
+                <span>:</span>
+                <span className="rounded-lg bg-slate-900 px-2 py-1 text-white">
+                  {String(timeLeft.minutes).padStart(2, "0")}
+                </span>
+                <span>:</span>
+                <span className="rounded-lg bg-slate-900 px-2 py-1 text-white">
+                  {String(timeLeft.seconds).padStart(2, "0")}
+                </span>
+              </div>
+            </div>
 
-      </div>
+            <div className={tag + " mt-6"}>
+              ✦ ജോലി നേടാൻ സഹായിക്കുന്ന പ്രായോഗിക Excel + AI പഠനം
+            </div>
 
-    </div>
-  </div>
-</section>
-{/* ================= COURSE VALUE STACK ================= */}
+            <h1 className="mt-5 text-4xl font-extrabold leading-[1.1] tracking-tight text-slate-900 sm:text-5xl lg:text-[3.25rem]">
+              Excel + AI
+              <br />
+              <span className="text-blue-600">നിങ്ങളുടെ Career</span>
+              <br />
+              അടുത്ത ഘട്ടത്തിലേക്ക്.
+            </h1>
 
-<section className="value-section">
-  <div className="value-card">
+            <p className="mt-5 max-w-xl text-lg leading-relaxed text-slate-600">
+              Excel വെറും ഒരു spreadsheet skill ആയി മാത്രം പഠിക്കേണ്ടതില്ല.
+              Data, Reports, Dashboards, AI, Automation എന്നിവ പ്രായോഗികമായി
+              പഠിച്ച് ജോലി ചെയ്യാൻ തയ്യാറാകൂ.
+            </p>
 
-    <div className="save-badge">
-      SAVE ₹3,501
-    </div>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+              <button
+                type="button"
+                onClick={openEnrollment}
+                className={ctaPrimary}
+              >
+                Enroll Now
+                <span className="text-xl transition-transform duration-300 group-hover:translate-x-1">
+                  →
+                </span>
+              </button>
 
-    <h2>
-      നിങ്ങൾക്ക് ലഭിക്കുന്നത്:
-    </h2>
+              <a
+                href="#learn"
+                className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-7 py-3.5 text-base font-semibold text-slate-800 transition-all duration-300 hover:border-slate-400 hover:bg-slate-50"
+              >
+                കൂടുതൽ അറിയാം
+              </a>
+            </div>
 
-    <div className="value-list">
-      <div>✓ Excel + AI Practical Skills</div>
-      <div>✓ Real-world Excel Projects</div>
-      <div>✓ Data Analysis & Dashboards</div>
-      <div>✓ AI-powered Excel Workflows</div>
-      <div>✓ Job-oriented Workplace Skills</div>
-      <div>✓ Course Completion Certificate</div>
-    </div>
+            <div className="mt-7 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-medium text-slate-600">
+              <span>✓ പ്രായോഗിക പഠനം</span>
+              <span>✓ Job-oriented</span>
+              <span>✓ AI ഉപയോഗിച്ച് Excel</span>
+            </div>
+          </div>
+        </section>
 
-    <div className="value-price">
-      <span>TODAY</span>
+        {/* ================= VIDEO SECTION ================= */}
 
-      <div className="regular-price">
-        REGULAR PRICE <del>₹5,000</del>
-      </div>
+        <section className="bg-white py-20 sm:py-28">
+          <div className="mx-auto max-w-5xl px-4 text-center sm:px-6">
+            <div className={tag}>കോഴ്സിനെക്കുറിച്ച് അറിയാം</div>
 
-      <strong>₹1,499</strong>
-    </div>
+            <h2 className={h2 + " mt-4"}>
+              Excel + AI
+              <br />
+              <span className="text-blue-600">
+                എങ്ങനെ പഠിക്കാം എന്ന് കാണാം.
+              </span>
+            </h2>
 
-    {/* MAIN ENROLL BUTTON */}
+            <p className={lead + " mx-auto max-w-2xl"}>
+              Excel + AI പഠനത്തിന്റെ പ്രധാന ഭാഗങ്ങളും പ്രായോഗിക പരിശീലനവും ഈ
+              വീഡിയോയിലൂടെ പരിചയപ്പെടാം.
+            </p>
 
-    <button
-      type="button"
-      onClick={openEnrollment}
-      className="cta-pulse group inline-flex w-full items-center justify-between gap-4 rounded-full bg-blue-600 px-6 py-4 text-left text-base font-extrabold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-xl"
-    >
-      <span>YES, I WANT TO LEARN EXCEL + AI</span>
+            <div className="mt-12">
+              <div className="relative mx-auto aspect-video max-w-3xl overflow-hidden rounded-3xl bg-slate-900 shadow-2xl">
+                <div className="flex h-full w-full flex-col items-center justify-center text-center text-white">
+                  <h3 className="text-lg font-bold">കോഴ്സ് വീഡിയോ</h3>
+                  <p className="mt-2 text-sm text-slate-300">
+                    വീഡിയോ ഉടൻ ഇവിടെ ലഭ്യമാകും
+                  </p>
+                </div>
 
-      <span className="text-2xl transition-transform duration-300 group-hover:translate-x-1">
-        →
-      </span>
-    </button>
+                <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/90 text-2xl text-blue-600 shadow-lg">
+                    ▶
+                  </div>
+                </div>
+              </div>
 
-    <div className="value-trust">
-      <span>✓ Instant Access</span>
-      <span>✓ Practical Learning</span>
-      <span>✓ Beginner Friendly</span>
-    </div>
+              <div className="mx-auto mt-8 flex max-w-3xl flex-wrap justify-center gap-x-8 gap-y-3 text-sm font-medium text-slate-600">
+                <div className="flex items-center gap-2">
+                  <span className="text-emerald-600">✓</span>
+                  Excel പ്രായോഗിക പരിശീലനം
+                </div>
 
-  </div>
-</section>
+                <div className="flex items-center gap-2">
+                  <span className="text-emerald-600">✓</span>
+                  AI ഉപയോഗിച്ചുള്ള പഠനം
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <span className="text-emerald-600">✓</span>
+                  Real-world Projects
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ================= COURSE VALUE STACK ================= */}
+
+        <section className="bg-slate-50 py-20 sm:py-28">
+          <div className="relative mx-auto max-w-2xl rounded-3xl border border-slate-200 bg-white p-8 shadow-xl sm:p-10">
+            <div className="absolute -top-3 right-8 rounded-full bg-amber-400 px-4 py-1.5 text-xs font-extrabold text-amber-950 shadow">
+              SAVE ₹3,501
+            </div>
+
+            <h2 className="text-2xl font-extrabold text-slate-900">
+              Course Value Stack:
+            </h2>
+
+            <div className="mt-6 space-y-3">
+              {[
+                "Excel + AI Practical Learning",
+                "Real-world Excel Projects",
+                "AI-assisted Excel Workflows",
+                "Data Analysis & Dashboards",
+                "Job-oriented Excel Skills",
+                "Certification",
+              ].map((item) => (
+                <div
+                  key={item}
+                  className="flex items-center gap-2.5 text-sm font-medium text-slate-700"
+                >
+                  <span className="text-emerald-600">✓</span>
+                  {item}
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8 flex items-end justify-between border-t border-dashed border-slate-200 pt-6">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wide text-slate-400">
+                  TODAY
+                </span>
+                <div className="mt-1 text-sm text-slate-400">
+                  REGULAR PRICE <del>₹5,000</del>
+                </div>
+              </div>
+
+              <strong className="text-4xl font-extrabold text-blue-600">
+                ₹1,499
+              </strong>
+            </div>
+
+            <button
+              type="button"
+              onClick={openEnrollment}
+              className="mt-6 group inline-flex w-full items-center justify-between gap-4 rounded-full bg-blue-600 px-6 py-4 text-left text-base font-extrabold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-xl"
+            >
+              <span>START LEARNING EXCEL + AI TODAY</span>
+              <span className="text-2xl transition-transform duration-300 group-hover:translate-x-1">
+                →
+              </span>
+            </button>
+
+            <div className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-1.5 text-xs font-semibold text-slate-500">
+              <span>✓ Instant Access</span>
+              <span>✓ Practical Learning</span>
+              <span>✓ Beginner Friendly</span>
+            </div>
+          </div>
+        </section>
 
         {/* ================= TRUST ================= */}
 
-<section className="trust-section">
-  <div className="container trust-inner">
+        <section className="bg-blue-600 py-10">
+          <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 px-4 text-center sm:flex-row sm:text-left">
+            <div className="flex flex-col">
+              <span className="text-3xl font-extrabold text-white">2,000+</span>
+              <span className="text-sm font-medium text-blue-100">
+                ടീമുകൾ Excel ഉപയോഗിക്കുന്ന മേഖലകൾ
+              </span>
+            </div>
 
-    <div>
-      <span className="trust-number">Excel + AI</span>
+            <div className="hidden h-10 w-px bg-blue-400 sm:block"></div>
 
-      <span className="trust-label">
-        ഇന്നത്തെ Workplace-ന് ആവശ്യമായ Skills
-      </span>
-    </div>
-
-    <div className="trust-divider"></div>
-
-    <p>
-      Excel-ൽ formulas മാത്രം പഠിക്കാതെ, Data Analysis, Reports,
-      Dashboards, AI, Automation എന്നിവ real-world work-ൽ ഉപയോഗിക്കാൻ
-      പഠിക്കാം.
-    </p>
-
-  </div>
-</section>
-
-    {/* ================= INTRO ================= */}
-
-<section className="intro-modern" id="learn">
-  <div className="intro-modern-container">
-
-    {/* LEFT CONTENT */}
-    <div className="intro-copy">
-
-      <div className="intro-label">
-        ✦ Excel + AI
-      </div>
-
-      <h2>
-        Excel പഠിക്കൂ.
-        <br />
-        <span>Skill Upgrade ചെയ്യൂ.</span>
-      </h2>
-
-      <p>
-        Excel basics മുതൽ advanced formulas, data analysis,
-        professional reports, dashboards, AI & automation വരെ
-        practical ആയി step-by-step പഠിക്കാം.
-      </p>
-
-      {/* 3 CARDS */}
-      <div className="intro-highlights">
-
-        <div className="intro-highlight">
-          <div className="intro-number">01</div>
-          <div>
-            <strong>Learn</strong>
-            <small>Excel Basics</small>
+            <p className="text-sm font-medium text-blue-50">
+              Office-ൽ ദിവസേന ഉപയോഗിക്കുന്ന spreadsheet skills കൂടുതൽ
+              കാര്യക്ഷമമായി പഠിക്കാം.
+            </p>
           </div>
-        </div>
+        </section>
 
-        <div className="intro-highlight">
-          <div className="intro-number purple">02</div>
-          <div>
-            <strong>Build</strong>
-            <small>Real-world Skills</small>
+        {/* ================= REVIEWS ================= */}
+
+        <section className="bg-white py-20 sm:py-28" id="reviews">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
+            <div className="mx-auto max-w-2xl text-center">
+              <div className={tag}>Learner Feedback</div>
+
+              <h2 className={h2 + " mt-4"}>
+                Excel + AI
+                <br />
+                <span className="text-blue-600">
+                  പഠനത്തെക്കുറിച്ചുള്ള അഭിപ്രായങ്ങൾ.
+                </span>
+              </h2>
+
+              <p className={lead}>
+                Practical learning experience-നെ അടിസ്ഥാനമാക്കിയുള്ള sample
+                feedback.
+              </p>
+            </div>
+
+            <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {[
+                {
+                  initial: "A",
+                  name: "Arun K.",
+                  sub: "Sample Learner",
+                  text: "Excel formulas മാത്രം പഠിക്കുന്നതിന് പകരം AI ഉപയോഗിച്ച് എങ്ങനെ faster ആയി work ചെയ്യാം എന്നത് മനസ്സിലാക്കാൻ ഈ learning approach സഹായിക്കുന്നു.",
+                },
+                {
+                  initial: "S",
+                  name: "Shahana M.",
+                  text: "Reports, dashboards, data analysis എന്നിവ practical ആയി പഠിക്കാമെന്നത് വളരെ useful ആയി തോന്നി. Office work-ന് directly apply ചെയ്യാൻ കഴിയുന്ന രീതിയിലാണ്.",
+                },
+                {
+                  initial: "R",
+                  name: "Rahul P.",
+                  text: "ChatGPT ഉപയോഗിച്ച് Excel formulas കണ്ടെത്താനും repetitive tasks എളുപ്പമാക്കാനും പഠിച്ചത് വളരെ interesting ആയിരുന്നു.",
+                },
+              ].map((review) => (
+                <div
+                  key={review.name}
+                  className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-sm font-bold text-blue-600">
+                      {review.initial}
+                    </div>
+
+                    <div>
+                      <strong className="block text-sm font-bold text-slate-900">
+                        {review.name}
+                      </strong>
+                      {review.sub && (
+                        <span className="text-xs text-slate-400">
+                          {review.sub}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="mt-3 text-amber-400">★★★★★</div>
+
+                  <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                    "{review.text}"
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        </section>
 
-        <div className="intro-highlight">
-          <div className="intro-number green">03</div>
-          <div>
-            <strong>Upgrade</strong>
-            <small>Excel + AI</small>
+        {/* ================= WHO IS THIS FOR ================= */}
+
+        <section className="bg-slate-50 py-20 sm:py-28">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
+            <div className="mx-auto max-w-2xl text-center">
+              <div className={tag}>ആർക്കുവേണ്ടി?</div>
+
+              <h2 className={h2 + " mt-4"}>
+                ഈ പഠനം
+                <br />
+                <span className="text-blue-600">നിങ്ങൾക്കുള്ളതാണോ?</span>
+              </h2>
+
+              <p className={lead}>
+                Excel ഉപയോഗിച്ച് നിങ്ങളുടെ ജോലി skills മെച്ചപ്പെടുത്താൻ
+                ആഗ്രഹിക്കുന്നവർക്ക്.
+              </p>
+            </div>
+
+            <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {learners.map((learner) => (
+                <div
+                  key={learner}
+                  className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"
+                >
+                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-xs font-bold text-emerald-600">
+                    ✓
+                  </span>
+
+                  <div>
+                    <h3 className="text-base font-bold text-slate-900">
+                      {learner}
+                    </h3>
+                    <p className="mt-1 text-sm text-slate-500">
+                      നിങ്ങളുടെ ജോലി ആവശ്യങ്ങൾക്ക് Excel skills കൂടുതൽ
+                      ശക്തമാക്കാം.
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        </section>
 
-      </div>
-    </div>
+        {/* ================= PROBLEM ================= */}
 
-    {/* RIGHT EXCEL + AI VISUAL */}
-    <div className="intro-visual">
+        <section className="bg-white py-20 sm:py-28">
+          <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-14 px-4 sm:px-6 lg:grid-cols-2">
+            <div>
+              <div className={tag}>ഇന്നത്തെ വെല്ലുവിളി</div>
 
-      <div className="intro-orbit orbit-1"></div>
-      <div className="intro-orbit orbit-2"></div>
+              <h2 className={h2 + " mt-4"}>
+                Basic Excel മാത്രം
+                <br />
+                <span className="text-blue-600">എപ്പോഴും മതിയാകില്ല.</span>
+              </h2>
 
-      {/* Excel */}
-      <div className="excel-logo-box">
-        <div className="excel-logo-inner">
-          <span>X</span>
-        </div>
-      </div>
+              <p className={lead}>
+                Data കൂടുമ്പോഴും reports കൂടുതൽ complex ആകുമ്പോഴും spreadsheet-ൽ
+                കൂടുതൽ സമയം ചെലവഴിക്കേണ്ടി വരാം.
+              </p>
 
-      {/* AI */}
-      <div className="ai-logo-box">
-        <span>AI</span>
+              <div className="mt-6 space-y-3">
+                {[
+                  "Reports തയ്യാറാക്കാൻ കൂടുതൽ സമയം",
+                  "Data മനസ്സിലാക്കാൻ ബുദ്ധിമുട്ട്",
+                  "Repetitive Excel work",
+                  "Interview-ready skills കുറവ്",
+                ].map((item, i) => (
+                  <div
+                    key={item}
+                    className="flex items-center gap-3 text-sm font-medium text-slate-700"
+                  >
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded bg-slate-100 text-xs font-bold text-slate-500">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
 
-        <i className="ai-node node-1"></i>
-        <i className="ai-node node-2"></i>
-        <i className="ai-node node-3"></i>
-        <i className="ai-node node-4"></i>
-      </div>
-
-      {/* Floating mini cards */}
-      <div className="floating-card chart-card">
-        <span>▥</span>
-      </div>
-
-      <div className="floating-card formula-card">
-        <small>fx</small>
-        <strong>=SUM(C2:C6)</strong>
-      </div>
-
-      <div className="floating-card graph-card">
-        <span>◢</span>
-      </div>
-
-      <div className="intro-spark spark-a">✦</div>
-      <div className="intro-spark spark-b">✦</div>
-
-    </div>
-
-  </div>
-</section>    
-
-{/* ================= WHO IS THIS FOR ================= */}
-
-<section className="section audience-section">
-  <div className="container">
-
-    <div className="section-heading">
-      <div className="section-tag">ആർക്കുവേണ്ടി?</div>
-
-      <h2>
-        നിങ്ങളുടെ Level ഏതായാലും,
-        <br />
-        <span>Next Level ഇവിടെ തുടങ്ങാം.</span>
-      </h2>
-
-      <p>
-        Excel-ൽ ഒരു Beginner ആണെങ്കിലും, already Excel ഉപയോഗിക്കുന്ന
-        professional ആണെങ്കിലും, Excel + AI skills ഉപയോഗിച്ച് കൂടുതൽ
-        confidently, quickly & professionally work ചെയ്യാൻ പഠിക്കാം.
-      </p>
-    </div>
-
-    <div className="audience-grid">
-  {learners.map((learner) => (
-    <div className="audience-card" key={learner.number}>
-
-      <span className="card-number">
-        {learner.number}
-      </span>
-
-      <span className="check-icon">✓</span>
-
-      <div className="audience-icon">
-        {learner.icon}
-      </div>
-
-      <h3>
-        {learner.title}
-      </h3>
-
-      <p>
-        {learner.text}
-      </p>
-
-    </div>
-  ))}
-</div>
-
-</div>
-</section>
-{/* ================= PROBLEM ================= */}
-
-<section className="section problem-section">
-  <div className="container problem-grid">
-
-    <div className="problem-content">
-
-      <div className="section-tag">
-        നിങ്ങൾക്കും ഇതിൽ ഏതെങ്കിലും പരിചിതമാണോ?
-      </div>
-
-      <h2>
-        Excel അറിയാം...
-        <br />
-        <span>പക്ഷേ Work ചെയ്യുമ്പോൾ?</span>
-      </h2>
-
-      <p>
-        Excel-ൽ basic formulas അറിയുന്നതുകൊണ്ട് മാത്രം daily work
-        എളുപ്പമാകണമെന്നില്ല. Data കൂടുമ്പോൾ, reports വരുമ്പോൾ,
-        repetitive tasks കൂടുമ്പോൾ കൂടുതൽ സമയം പോകാം.
-      </p>
-
-      <div className="problem-list">
-
-        <div>
-          <span>01</span>
-          Reports തയ്യാറാക്കാൻ മണിക്കൂറുകൾ ചെലവാകുന്നു
-        </div>
-
-        <div>
-          <span>02</span>
-          വലിയ Data നോക്കുമ്പോൾ എന്ത് ചെയ്യണമെന്ന് confusion
-        </div>
-
-        <div>
-          <span>03</span>
-          ഒരേ Excel tasks വീണ്ടും വീണ്ടും ചെയ്യേണ്ടി വരുന്നു
-        </div>
-
-        <div>
-          <span>04</span>
-          Practical Excel skills-ൽ confidence കുറവാണ്
-        </div>
-
-      </div>
-
-    </div>
-
-    <div className="problem-visual">
-
-      <div className="stat-card">
-        <span>Data</span>
-        <strong>12,840</strong>
-        <small>Rows to Analyze</small>
-      </div>
-
-      <div className="stat-card active">
-        <span>Reports</span>
-        <strong>24</strong>
-        <small>This Month</small>
-      </div>
-
-      <div className="stat-card">
-        <span>Tasks</span>
-        <strong>68%</strong>
-        <small>Repeated Work</small>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-{/* ================= FEATURES ================= */}
-
-<section className="section features-section" id="features">
-  <div className="container">
-
-    <div className="section-heading centered">
-
-      <div className="section-tag">
-        നിങ്ങൾ പഠിക്കുന്നത്
-      </div>
-
-      <h2>
-        ഒരു Course.
-        <br />
-        <span>Multiple Workplace Skills.</span>
-      </h2>
-
-      <p>
-        Excel + AI ഉപയോഗിച്ച് daily work കൂടുതൽ fast, accurate &
-        professional ആക്കാൻ ആവശ്യമായ practical skills step-by-step ആയി
-        പഠിക്കാം.
-      </p>
-
-    </div>
-
-    <div className="features-grid">
-      {features.map((feature) => (
-        <div className="feature-card" key={feature.title}>
-
-          <div className="feature-icon">
-            {feature.icon}
+            <div className="grid grid-cols-3 gap-4">
+              {[
+                { label: "Data", value: "12,840", sub: "Rows", active: false },
+                {
+                  label: "Reports",
+                  value: "24",
+                  sub: "This Month",
+                  active: true,
+                },
+                {
+                  label: "Tasks",
+                  value: "68%",
+                  sub: "Repeated Work",
+                  active: false,
+                },
+              ].map((stat) => (
+                <div
+                  key={stat.label}
+                  className={
+                    "flex flex-col rounded-2xl border p-4 text-center shadow-sm " +
+                    (stat.active
+                      ? "border-blue-600 bg-blue-600 text-white"
+                      : "border-slate-200 bg-white text-slate-900")
+                  }
+                >
+                  <span
+                    className={
+                      "text-xs font-semibold " +
+                      (stat.active ? "text-blue-100" : "text-slate-400")
+                    }
+                  >
+                    {stat.label}
+                  </span>
+                  <strong className="mt-3 text-2xl font-extrabold">
+                    {stat.value}
+                  </strong>
+                  <small
+                    className={
+                      "mt-1 text-[11px] " +
+                      (stat.active ? "text-blue-100" : "text-slate-400")
+                    }
+                  >
+                    {stat.sub}
+                  </small>
+                </div>
+              ))}
+            </div>
           </div>
-
-          <h3>{feature.title}</h3>
-
-          <p>{feature.text}</p>
-
-          <span className="feature-arrow">
-            ↗
-          </span>
-
-        </div>
-      ))}
-    </div>
-
-  </div>
-</section>
-{/* ================= SKILLS ================= */}
-
-<section className="section skills-section" id="learn">
-  <div className="container skills-grid">
-
-    <div className="skills-heading">
-
-      <div className="section-tag">
-        Course Skills
-      </div>
-
-      <h2>
-        Excel-ൽ നിന്ന്
-        <span> Workplace-ready Skills-ലേക്ക്.</span>
-      </h2>
-
-      <p>
-        Basic Excel മുതൽ Data Analysis, Reports, Dashboards, AI,
-        Automation എന്നിവ വരെ step-by-step ആയി പഠിച്ച്, real-world
-        work-ൽ ഉപയോഗിക്കാൻ കഴിയുന്ന practical skillset build ചെയ്യാം.
-      </p>
-
-    </div>
-
-    <div className="skills-list">
-      {skills.map((skill, index) => (
-        <div className="skill-item" key={skill}>
-
-          <span>
-            {String(index + 1).padStart(2, "0")}
-          </span>
-
-          <strong>{skill}</strong>
-
-          <i>✓</i>
-
-        </div>
-      ))}
-    </div>
-
-  </div>
-</section>
-{/* ================= COURSE STRUCTURE / MODULES ================= */}
-
-<section className="modules-section" id="modules">
-  <div className="modules-container">
-
-    <div className="modules-heading">
-      <div className="section-tag">
-        Course Structure
-      </div>
-
-      <h2>
-        Basic Excel മുതൽ
-        <br />
-        <span>Workplace Skills വരെ.</span>
-      </h2>
-
-      <p>
-        Excel + AI പഠനം step-by-step ആയി മുന്നോട്ട് കൊണ്ടുപോകുന്ന രീതിയിൽ
-        practical modules, real-world tasks, projects എന്നിവയിലൂടെ
-        പഠിക്കാം.
-      </p>
-    </div>
-
-    <div className="modules-grid">
-
-      <div className="module-card">
-        <div className="module-icon">📊</div>
-
-        <span className="module-number">MODULE 01</span>
-
-        <h3>Excel Fundamentals</h3>
-
-        <ul className="module-topics">
-          <li>Excel Interface & Navigation</li>
-          <li>Workbook & Worksheet Structure</li>
-          <li>Cells & Cell Referencing</li>
-          <li>Data Types & Formatting</li>
-          <li>Essential Keyboard Shortcuts</li>
-        </ul>
-
-        <div className="module-outcome">
-          Outcome: <strong>Strong Excel Foundation</strong>
-        </div>
-      </div>
-
-      <div className="module-card">
-        <div className="module-icon">📈</div>
-
-        <span className="module-number">MODULE 02</span>
-
-        <h3>Data Handling & Analysis</h3>
-
-        <ul className="module-topics">
-          <li>Sorting & Filtering Data</li>
-          <li>Data Validation</li>
-          <li>Remove Duplicates</li>
-          <li>Text Functions</li>
-          <li>Pivot Tables & Charts</li>
-        </ul>
-
-        <div className="module-outcome">
-          Outcome: <strong>Turn Data into Useful Insights</strong>
-        </div>
-      </div>
-
-      <div className="module-card">
-        <div className="module-icon">📊</div>
-
-        <span className="module-number">MODULE 03</span>
-
-        <h3>Reports & Dashboards</h3>
-
-        <ul className="module-topics">
-          <li>Chart Types</li>
-          <li>Dynamic Charts</li>
-          <li>KPI Reports</li>
-          <li>Dashboard Design</li>
-          <li>Professional Reporting</li>
-        </ul>
-
-        <div className="module-outcome">
-          Outcome: <strong>Build Professional Reports</strong>
-        </div>
-      </div>
-
-      <div className="module-card featured">
-        <div className="module-icon">✦</div>
-
-        <span className="module-number">MODULE 04</span>
-
-        <h3>AI Tools with Excel</h3>
-
-        <ul className="module-topics">
-          <li>Introduction to AI in Excel</li>
-          <li>ChatGPT for Excel</li>
-          <li>Formula Generation</li>
-          <li>Error Fixing</li>
-          <li>AI-assisted Data Cleaning</li>
-          <li>Smart Analysis & Insights</li>
-        </ul>
-
-        <div className="module-outcome">
-          Outcome: <strong>Work Smarter with Excel + AI</strong>
-        </div>
-      </div>
-
-      <div className="module-card">
-        <div className="module-icon">⚙</div>
-
-        <span className="module-number">MODULE 05</span>
-
-        <h3>Automation with AI</h3>
-
-        <ul className="module-topics">
-          <li>Automating Repetitive Tasks</li>
-          <li>AI-assisted Formula Automation</li>
-          <li>Monthly Report Generation</li>
-          <li>Workflow Optimization</li>
-        </ul>
-
-        <div className="module-outcome">
-          Outcome: <strong>Reduce Repetitive Excel Work</strong>
-        </div>
-      </div>
-
-      <div className="module-card">
-        <div className="module-icon">💼</div>
-
-        <span className="module-number">MODULE 06</span>
-
-        <h3>MIS, HR & Accounts</h3>
-
-        <ul className="module-topics">
-          <li>MIS Report Structure</li>
-          <li>Daily / Weekly / Monthly Reports</li>
-          <li>HR Attendance & Leave Tracker</li>
-          <li>Payroll Basics</li>
-          <li>Expense & Budget Tracking</li>
-        </ul>
-
-        <div className="module-outcome">
-          Outcome: <strong>Apply Excel to Office Work</strong>
-        </div>
-      </div>
-
-    </div>
-
-    <div className="modules-bottom">
-      <p>
-        <strong>Job-Ready Learning:</strong>{" "}
-        Real Office Tasks • Practical Projects • Excel + AI
-      </p>
-    </div>
-
-  </div>
-</section>
-{/* ================= LEARNING PATH ================= */}
-
-<section className="section path-section">
-  <div className="container">
-
-    <div className="section-heading centered">
-      <div className="section-tag">
-        Practical Learning Path
-      </div>
-
-      <h2>
-        പഠിക്കുക.
-        <span> Practice ചെയ്യുക.</span>
-        <br />
-        Skill ആയി മാറ്റുക.
-      </h2>
-
-      <p>
-        പഠിച്ച concepts വെറും theory ആയി നിർത്താതെ, practice ചെയ്ത്
-        real-world projects വഴി practical Excel + AI skills ആയി
-        build ചെയ്യാം.
-      </p>
-    </div>
-
-    <div className="path">
-      <div className="path-line"></div>
-
-      <div className="path-item">
-        <span>01</span>
-        <strong>പഠിക്കുക</strong>
-        <p>Excel + AI concepts മനസ്സിലാക്കുക</p>
-      </div>
-
-      <div className="path-item">
-        <span>02</span>
-        <strong>Practice ചെയ്യുക</strong>
-        <p>Real-world tasks ചെയ്ത് പഠിക്കുക</p>
-      </div>
-
-      <div className="path-item">
-        <span>03</span>
-        <strong>Build ചെയ്യുക</strong>
-        <p>Practical Excel projects നിർമ്മിക്കുക</p>
-      </div>
-
-      <div className="path-item">
-        <span>04</span>
-        <strong>Apply ചെയ്യുക</strong>
-        <p>Workplace scenarios-ൽ skills ഉപയോഗിക്കുക</p>
-      </div>
-
-      <div className="path-item">
-        <span>05</span>
-        <strong>Demonstrate ചെയ്യുക</strong>
-        <p>നിങ്ങളുടെ practical skills confidently കാണിക്കുക</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-{/* ================= OFFICE SKILLS ================= */}
-
-<section className="section office-section">
-  <div className="container office-grid">
-
-    <div className="office-visual">
-      <div className="office-card">
-
-        <div className="office-header">
-          <span>Today's Work</span>
-          <span>Excel + AI</span>
-        </div>
-
-        <div className="office-task">
-          <span>✓</span>
-          Sales Data Analyze ചെയ്യുക
-        </div>
-
-        <div className="office-task">
-          <span>✓</span>
-          Monthly Report തയ്യാറാക്കുക
-        </div>
-
-        <div className="office-task">
-          <span>✓</span>
-          Dashboard Update ചെയ്യുക
-        </div>
-
-        <div className="office-task">
-          <span>✓</span>
-          MIS Report തയ്യാറാക്കുക
-        </div>
-
-      </div>
-    </div>
-
-    <div className="office-content">
-
-      <div className="section-tag">
-        Real Office Skills
-      </div>
-
-      <h2>
-        പഠിച്ച Excel skills
-        <span> യഥാർത്ഥ Work-ൽ ഉപയോഗിക്കാം.</span>
-      </h2>
-
-      <p>
-        Sales reports, data analysis, dashboards, MIS reports തുടങ്ങിയ
-        real-world office tasks Excel + AI ഉപയോഗിച്ച് കൂടുതൽ efficiently
-        ചെയ്യാൻ പഠിക്കാം. Theory മാത്രം അല്ല — പഠിക്കുന്ന skills practical
-        work-ലേക്ക് connect ചെയ്യുകയാണ് ലക്ഷ്യം.
-      </p>
-
-      <a href="#projects" className="text-link">
-        Projects കാണാം →
-      </a>
-
-    </div>
-
-  </div>
-</section>
-
-{/* ================= PROJECTS ================= */}
-
-<section className="section projects-section" id="projects">
-  <div className="container">
-
-    <div className="section-heading">
-      <div className="section-tag">
-        Practical Projects
-      </div>
-
-      <h2>
-        പഠിച്ച Skills
-        <br />
-        <span>Real Projects ആയി Build ചെയ്യാം.</span>
-      </h2>
-
-      <p>
-        Theory മാത്രം പഠിച്ച് നിർത്തില്ല. Excel + AI ഉപയോഗിച്ച്
-        real-world workplace scenarios അടിസ്ഥാനമാക്കിയുള്ള projects
-        build ചെയ്ത് practical experience നേടാം.
-      </p>
-    </div>
-
-    <div className="projects-grid">
-
-      {projects.map((project) => (
-        <div className="project-card" key={project.number}>
-
-          <span className="project-number">
-            {project.number}
-          </span>
-
-          <div className="project-icon">
-            ▦
+        </section>
+
+        {/* ================= FEATURES ================= */}
+
+        <section className="bg-slate-50 py-20 sm:py-28" id="features">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
+            <div className="mx-auto max-w-2xl text-center">
+              <div className={tag}>നിങ്ങൾ പഠിക്കുന്നത്</div>
+
+              <h2 className={h2 + " mt-4"}>
+                Excel-നെ
+                <br />
+                <span className="text-blue-600">കൂടുതൽ ശക്തമാക്കാം.</span>
+              </h2>
+
+              <p className={lead}>
+                Excel + AI ഉപയോഗിച്ച് modern workplace-ന് ആവശ്യമായ skills
+                step-by-step ആയി പഠിക്കാം.
+              </p>
+            </div>
+
+            <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {features.map((feature) => (
+                <div
+                  key={feature.title}
+                  className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg"
+                >
+                  <div className="text-3xl">{feature.icon}</div>
+                  <h3 className="mt-4 text-base font-bold text-slate-900">
+                    {feature.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-500">
+                    {feature.text}
+                  </p>
+                  <span className="absolute right-5 top-5 text-slate-300 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-blue-500">
+                    ↗
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
+        </section>
 
-          <h3>{project.title}</h3>
+        {/* ================= SKILLS ================= */}
 
-          <p>{project.text}</p>
+        <section className="bg-white py-20 sm:py-28" id="learn">
+          <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-14 px-4 sm:px-6 lg:grid-cols-2">
+            <div>
+              <div className={tag}>Course Skills</div>
 
-          <span className="project-link">
-            Build this Project →
-          </span>
+              <h2 className={h2 + " mt-4"}>
+                ഒരു
+                <span className="text-blue-600"> complete Excel skillset.</span>
+              </h2>
 
-        </div>
-      ))}
+              <p className={lead}>
+                Basic മുതൽ advanced practical workflows വരെ പഠിക്കാൻ കഴിയുന്ന
+                രീതിയിലാണ് learning path.
+              </p>
+            </div>
 
-    </div>
+            <div className="divide-y divide-slate-100 rounded-2xl border border-slate-200 bg-white shadow-sm">
+              {skills.map((skill, index) => (
+                <div key={skill} className="flex items-center gap-4 px-5 py-4">
+                  <span className="font-mono text-xs font-semibold text-slate-400">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
 
-  </div>
-</section>
-      
-{/* ================= PROJECT OUTCOME STRIP ================= */}
+                  <strong className="flex-1 text-sm font-semibold text-slate-800">
+                    {skill}
+                  </strong>
 
-<div className="project-outcome-strip">
-
-  <div className="project-outcome-heading">
-    <span>✦ After This Course</span>
-
-    <h3>
-      Learn. Build. <strong>Work Smarter.</strong>
-    </h3>
-  </div>
-
-  <div className="project-outcome-items">
-
-    <div>
-      <b>01</b>
-      <span>Excel Skills</span>
-    </div>
-
-    <div>
-      <b>02</b>
-      <span>Real Projects</span>
-    </div>
-
-    <div>
-      <b>03</b>
-      <span>AI Workflows</span>
-    </div>
-
-    <div>
-      <b>04</b>
-      <span>Workplace Ready</span>
-    </div>
-
-  </div>
-
-</div>
-
-
-{/* ================= EXCEL + AI MINI HIGHLIGHTS ================= */}
-
-<div className="excel-ai-highlights">
-
-  <div className="excel-ai-highlight">
-
-    <span className="highlight-icon">
-      ✓
-    </span>
-
-    <div>
-      <strong>Learn Faster</strong>
-      <small>Practical Excel Skills</small>
-    </div>
-
-  </div>
-
-
-  <div className="excel-ai-highlight">
-
-    <span className="highlight-icon">
-      ✦
-    </span>
-
-    <div>
-      <strong>Work Smarter</strong>
-      <small>Excel + AI Workflow</small>
-    </div>
-
-  </div>
-
-
-  <div className="excel-ai-highlight">
-
-    <span className="highlight-icon">
-      ⚡
-    </span>
-
-    <div>
-      <strong>Save Time</strong>
-      <small>Smart Automation</small>
-    </div>
-
-  </div>
-
-</div>
-{/* ================= AI WORKFLOW ================= */}
-
-<section className="section workflow-section">
-  <div className="container">
-
-    <div className="section-heading centered">
-
-      <div className="section-tag">
-        Excel + AI Workflow
-      </div>
-
-      <h2>
-        Excel-നൊപ്പം
-        <br />
-        <span>AI ഉപയോഗിച്ച് Smart ആയി Work ചെയ്യൂ.</span>
-      </h2>
-
-      <p>
-        Repetitive tasks കുറയ്ക്കാനും formulas, data, reports എന്നിവയിൽ
-        AI-യുടെ സഹായം ഉപയോഗിക്കാനും പഠിക്കാം. നിങ്ങളുടെ existing Excel
-        workflow കൂടുതൽ fast & efficient ആക്കുകയാണ് ലക്ഷ്യം.
-      </p>
-
-    </div>
-
-    <div className="workflow">
-      {workflow.map((item, index) => (
-        <div className="workflow-item" key={item}>
-
-          <div className="workflow-number">
-            {index + 1}
+                  <i className="not-italic text-emerald-600">✓</i>
+                </div>
+              ))}
+            </div>
           </div>
+        </section>
 
-          <strong>{item}</strong>
+        {/* ================= COURSE STRUCTURE / MODULES ================= */}
 
-          {index !== workflow.length - 1 && (
-            <span className="workflow-arrow">
-              →
-            </span>
-          )}
+        <section className="bg-slate-900 py-20 sm:py-28" id="modules">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
+            <div className="mx-auto max-w-2xl text-center">
+              <div className="inline-flex items-center rounded-full border border-blue-400/30 bg-blue-500/10 px-3.5 py-1 text-xs font-semibold text-blue-300">
+                Course Structure
+              </div>
 
-        </div>
-      ))}
-    </div>
+              <h2 className="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl">
+                What You'll <span className="text-blue-400">Learn</span>
+              </h2>
 
-  </div>
-</section>
-{/* ================= MIDDLE ENROLL CTA ================= */}
+              <p className="mt-4 text-base leading-relaxed text-slate-400 sm:text-lg">
+                Excel + AI ഉപയോഗിച്ച് job-ready practical skills step-by-step
+                ആയി പഠിക്കാം.
+              </p>
+            </div>
 
-<section className="middle-cta-modern">
-  <div className="middle-cta-container">
+            <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {[
+                {
+                  icon: "📊",
+                  num: "MODULE 01",
+                  title: "Excel Fundamentals",
+                  topics: [
+                    "Excel Interface & Navigation",
+                    "Workbook & Worksheet Structure",
+                    "Cells & Cell Referencing",
+                    "Data Types & Formatting",
+                    "Essential Keyboard Shortcuts",
+                  ],
+                  outcome: "Strong Excel foundation",
+                  featured: false,
+                },
+                {
+                  icon: "📈",
+                  num: "MODULE 02",
+                  title: "Data Handling & Analysis",
+                  topics: [
+                    "Sorting & Filtering Data",
+                    "Data Validation",
+                    "Remove Duplicates",
+                    "Text Functions",
+                    "Pivot Tables & Charts",
+                  ],
+                  featured: false,
+                },
+                {
+                  icon: "📊",
+                  num: "MODULE 03",
+                  title: "Reports & Dashboards",
+                  topics: [
+                    "Chart Types",
+                    "Dynamic Charts",
+                    "KPI Reports",
+                    "Dashboard Design",
+                    "Professional Reporting",
+                  ],
+                  featured: false,
+                },
+                {
+                  icon: "✦",
+                  num: "MODULE 04",
+                  title: "AI Tools with Excel",
+                  topics: [
+                    "Introduction to AI in Excel",
+                    "ChatGPT for Excel",
+                    "Formula Generation",
+                    "Error Fixing",
+                    "AI-assisted Data Cleaning",
+                    "Smart Analysis & Insights",
+                  ],
+                  featured: true,
+                },
+                {
+                  icon: "⚙",
+                  num: "MODULE 05",
+                  title: "Automation with AI",
+                  topics: [
+                    "Automating Repetitive Tasks",
+                    "AI-assisted Formula Automation",
+                    "Monthly Report Generation",
+                    "Workflow Optimization",
+                  ],
+                  featured: false,
+                },
+                {
+                  icon: "💼",
+                  num: "MODULE 06",
+                  title: "MIS, HR & Accounts",
+                  topics: [
+                    "MIS Report Structure",
+                    "Daily / Weekly / Monthly Reports",
+                    "HR Attendance & Leave Tracker",
+                    "Payroll Basics",
+                    "Expense & Budget Tracking",
+                  ],
+                  featured: false,
+                },
+              ].map((mod) => (
+                <div
+                  key={mod.num}
+                  className={
+                    "rounded-2xl border p-6 " +
+                    (mod.featured
+                      ? "border-blue-500 bg-blue-500/10"
+                      : "border-slate-700 bg-slate-800/60")
+                  }
+                >
+                  <div className="text-2xl">{mod.icon}</div>
 
-    {/* LEFT */}
-    <div className="middle-cta-content">
+                  <span className="mt-3 block font-mono text-[11px] font-semibold tracking-wide text-blue-400">
+                    {mod.num}
+                  </span>
 
-      <div className="middle-cta-eyebrow">
-        ✦ Beginner → Advanced
-      </div>
+                  <h3 className="mt-1 text-lg font-bold text-white">
+                    {mod.title}
+                  </h3>
 
-      <h2>
-        Excel + AI
-        <br />
-        <span>Skills that move you forward.</span>
-      </h2>
+                  <ul className="mt-4 space-y-2">
+                    {mod.topics.map((t) => (
+                      <li
+                        key={t}
+                        className="flex items-start gap-2 text-sm text-slate-300"
+                      >
+                        <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-blue-400"></span>
+                        {t}
+                      </li>
+                    ))}
+                  </ul>
 
-      <p>
-        Basics മുതൽ Advanced Excel + AI വരെ
-        practical ആയി പഠിക്കാം.
-      </p>
+                  {mod.outcome && (
+                    <div className="mt-5 border-t border-slate-700 pt-4 text-xs text-slate-400">
+                      Outcome:{" "}
+                      <strong className="text-slate-200">{mod.outcome}</strong>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
 
-      <button
-        type="button"
-        onClick={openEnrollment}
-        className="middle-cta-button"
-      >
-        <span>START LEARNING — ₹1,499</span>
-        <span>→</span>
-      </button>
+            <div className="mt-12 rounded-2xl border border-slate-700 bg-slate-800/60 px-6 py-4 text-center">
+              <p className="text-sm font-medium text-slate-300">
+                <strong className="text-white">Job-Ready Learning:</strong> Real
+                Office Tasks • Practical Projects • Excel + AI
+              </p>
+            </div>
+          </div>
+        </section>
 
-      <div className="middle-cta-steps">
-        <span>Learn</span>
-        <i>•</i>
-        <span>Practice</span>
-        <i>•</i>
-        <span>Build</span>
-        <i>•</i>
-        <span>Go Advanced</span>
-      </div>
+        {/* ================= LEARNING PATH ================= */}
 
-    </div>
+        <section className="bg-white py-20 sm:py-28">
+          <div className="mx-auto max-w-5xl px-4 text-center sm:px-6">
+            <div className={tag}>Job-ready Skill Path</div>
 
-    {/* RIGHT VISUAL */}
-    <div className="middle-cta-visual">
+            <h2 className={h2 + " mt-4"}>
+              പഠിക്കുക.
+              <span className="text-blue-600"> പരിശീലിക്കുക.</span>
+              <br />
+              Build ചെയ്യുക.
+            </h2>
 
-      <div className="cta-glow"></div>
+            <div className="relative mt-14 grid grid-cols-1 gap-8 sm:grid-cols-5">
+              <div className="absolute left-0 right-0 top-5 hidden h-px bg-slate-200 sm:block"></div>
 
-      <div className="cta-excel">
-        <span>X</span>
-      </div>
+              {[
+                ["01", "പഠിക്കുക", "Concepts മനസ്സിലാക്കുക"],
+                ["02", "പരിശീലിക്കുക", "Practical tasks ചെയ്യുക"],
+                ["03", "Build ചെയ്യുക", "Real projects നിർമ്മിക്കുക"],
+                ["04", "തയ്യാറാകുക", "Interview skills മെച്ചപ്പെടുത്തുക"],
+                ["05", "Demonstrate ചെയ്യുക", "നിങ്ങളുടെ skills തെളിയിക്കുക"],
+              ].map(([num, title, desc]) => (
+                <div key={num} className="relative flex flex-col items-center">
+                  <span className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-sm font-bold text-white">
+                    {num}
+                  </span>
+                  <strong className="mt-4 text-sm font-bold text-slate-900">
+                    {title}
+                  </strong>
+                  <p className="mt-1 text-xs text-slate-500">{desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
-      <div className="cta-ai">
-        <span>AI</span>
-      </div>
+        {/* ================= OFFICE SKILLS ================= */}
 
-      <div className="cta-floating cta-formula">
-        <small>fx</small>
-        <strong>=SUM(C2:C6)</strong>
-      </div>
+        <section className="bg-slate-50 py-20 sm:py-28">
+          <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-14 px-4 sm:px-6 lg:grid-cols-2">
+            <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+              <div className="flex items-center justify-between border-b border-slate-200 bg-slate-50 px-5 py-3 text-xs font-semibold text-slate-500">
+                <span>Today's Work</span>
+                <span className="text-blue-600">Excel + AI</span>
+              </div>
 
-      <div className="cta-floating cta-data">
-        <span>▥</span>
-        <small>Smart Data</small>
-      </div>
+              <div className="space-y-3 p-5">
+                {[
+                  "Sales Report തയ്യാറാക്കുക",
+                  "Monthly Data പരിശോധിക്കുക",
+                  "Dashboard Update ചെയ്യുക",
+                  "MIS Report തയ്യാറാക്കുക",
+                ].map((task) => (
+                  <div
+                    key={task}
+                    className="flex items-center gap-3 rounded-xl bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700"
+                  >
+                    <span className="text-emerald-600">✓</span>
+                    {task}
+                  </div>
+                ))}
+              </div>
+            </div>
 
-      <div className="cta-spark spark-1">✦</div>
-      <div className="cta-spark spark-2">✦</div>
+            <div>
+              <div className={tag}>Real Office Skills</div>
 
-    </div>
+              <h2 className={h2 + " mt-4"}>
+                പഠിക്കുന്നത്
+                <span className="text-blue-600"> യഥാർത്ഥ ജോലിയിൽ </span>
+                ഉപയോഗിക്കാം.
+              </h2>
 
-  </div>
-</section>
-{/* ================= CAREER ================= */}
+              <p className={lead}>
+                Course-ൽ പഠിക്കുന്ന concepts practical office tasks-ലേക്ക്
+                connect ചെയ്യാൻ കഴിയുന്ന രീതിയിലാണ് learning experience.
+              </p>
 
-<section className="section career-section">
-  <div className="container">
+              <a
+                href="#projects"
+                className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-blue-600 hover:text-blue-700"
+              >
+                Projects കാണാം →
+              </a>
+            </div>
+          </div>
+        </section>
 
-    <div className="career-box">
+        {/* ================= PROJECTS ================= */}
 
-      <div className="section-tag">
-        Career Connection
-      </div>
+        <section className="bg-white py-20 sm:py-28" id="projects">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
+            <div className="mx-auto max-w-2xl text-center">
+              <div className={tag}>Practical Projects</div>
 
-      <h2>
-        ഒരു Excel skill.
-        <br />
-        <span>Multiple Career Paths.</span>
-      </h2>
+              <h2 className={h2 + " mt-4"}>
+                പഠിച്ചതെല്ലാം
+                <br />
+                <span className="text-blue-600">Projects ആയി മാറ്റാം.</span>
+              </h2>
 
-      <p>
-        Excel + AI skills വിവിധ office, MIS, HR, accounts, operations,
-        reporting, data-related roles-ൽ daily work ചെയ്യാൻ ഉപയോഗിക്കാം.
-        നിങ്ങളുടെ career path അനുസരിച്ച് ഈ skills practical advantage
-        നൽകും.
-      </p>
+              <p className={lead}>
+                Theory മാത്രം അല്ല. നിങ്ങളുടെ skills ഉപയോഗിച്ച് practical
+                spreadsheet projects നിർമ്മിക്കാം.
+              </p>
+            </div>
 
-      <div className="roles-grid">
-        {roles.map((role, index) => (
-          <div className="role-card" key={role}>
+            <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {projects.map((project) => (
+                <div
+                  key={project.number}
+                  className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-xs font-semibold text-slate-400">
+                      {project.number}
+                    </span>
+                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 text-blue-600">
+                      ▦
+                    </div>
+                  </div>
 
-            <span>
-              0{index + 1}
+                  <h3 className="mt-4 text-base font-bold text-slate-900">
+                    {project.title}
+                  </h3>
+
+                  <p className="mt-2 text-sm leading-relaxed text-slate-500">
+                    {project.text}
+                  </p>
+
+                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-blue-600 transition-transform duration-300 group-hover:translate-x-1">
+                    Project →
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ================= AI WORKFLOW ================= */}
+
+        <section className="bg-slate-50 py-20 sm:py-28">
+          <div className="mx-auto max-w-6xl px-4 text-center sm:px-6">
+            <div className={tag}>Excel + AI Workflow</div>
+
+            <h2 className={h2 + " mt-4"}>
+              AI-യെ നിങ്ങളുടെ
+              <br />
+              <span className="text-blue-600">
+                Excel workflow-ന്റെ ഭാഗമാക്കൂ.
+              </span>
+            </h2>
+
+            <div className="mt-12 flex flex-wrap items-center justify-center gap-3">
+              {workflow.map((item, index) => (
+                <React.Fragment key={item}>
+                  <div className="flex flex-col items-center gap-2 rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-sm">
+                    <div className="flex h-7 w-7 items-center justify-center rounded-full bg-blue-600 text-xs font-bold text-white">
+                      {index + 1}
+                    </div>
+                    <strong className="text-xs font-semibold text-slate-700">
+                      {item}
+                    </strong>
+                  </div>
+
+                  {index !== workflow.length - 1 && (
+                    <span className="text-slate-300">→</span>
+                  )}
+                </React.Fragment>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ================= MIDDLE ENROLL CTA ================= */}
+
+        <section className="bg-blue-600 py-16 sm:py-20">
+          <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 px-4 text-center">
+            <span className="text-xs font-bold uppercase tracking-wide text-blue-200">
+              Ready to Start?
             </span>
 
-            <strong>{role}</strong>
+            <h2 className="text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl">
+              Excel + AI
+              <span className="text-blue-200">
+                {" "}
+                പഠനം ഇന്ന് തന്നെ ആരംഭിക്കൂ.
+              </span>
+            </h2>
 
-            <i>↗</i>
+            <button
+              type="button"
+              className="group mt-2 inline-flex items-center gap-3 rounded-full bg-white px-6 py-4 text-base font-extrabold text-blue-600 shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl sm:px-8"
+              onClick={openEnrollment}
+            >
+              <span>ENROLL NOW — ₹1,499</span>
+              <span className="text-xl transition-transform duration-300 group-hover:translate-x-1">
+                →
+              </span>
+            </button>
 
+            <p className="text-sm text-blue-100">
+              Practical Learning • Real Projects • Career-focused Skills
+            </p>
           </div>
-        ))}
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-{/* ================= INTERVIEW ================= */}
-
-<section className="section interview-section">
-  <div className="container interview-grid">
-
-    <div>
-      <div className="section-tag">
-        Interview Preparation
-      </div>
-
-      <h2>
-        Skill പഠിക്കുന്നതിനൊപ്പം
-        <span> Interview confidence-ഉം build ചെയ്യൂ.</span>
-      </h2>
-
-      <p>
-        Excel-related questions, formula-based tasks, data analysis,
-        reporting തുടങ്ങിയ practical scenarios practice ചെയ്ത്
-        interview-ൽ നിങ്ങളുടെ Excel skills കൂടുതൽ confidently
-        demonstrate ചെയ്യാൻ തയ്യാറാകൂ.
-      </p>
-    </div>
-
-    <div className="interview-list">
-
-      <div>
-        <span>✓</span>
-        Excel Practical Questions
-      </div>
-
-      <div>
-        <span>✓</span>
-        Formula & Function Tasks
-      </div>
-
-      <div>
-        <span>✓</span>
-        Data Analysis Challenges
-      </div>
-
-      <div>
-        <span>✓</span>
-        Reporting & Dashboard Tasks
-      </div>
-
-      <div>
-        <span>✓</span>
-        Real-world Workplace Scenarios
-      </div>
-
-    </div>
-
-  </div>
-</section>
-{/* ================= WHY DIFFERENT ================= */}
-
-<section className="section different-section">
-  <div className="container">
-
-    <div className="section-heading centered">
-
-      <div className="section-tag">
-        എന്തുകൊണ്ട് ഈ Program?
-      </div>
-
-      <h2>
-        Excel പഠിക്കുന്നതിൽ നിന്ന്
-        <br />
-        <span>Excel ഉപയോഗിക്കാൻ പഠിക്കുന്നതിലേക്ക്.</span>
-      </h2>
-
-      <p>
-        Videos മാത്രം കണ്ടു concepts പഠിക്കുന്നതല്ല. Learn → Practice →
-        Build → Apply എന്ന approach വഴി practical Excel + AI skills
-        develop ചെയ്യുകയാണ് ലക്ഷ്യം.
-      </p>
-
-    </div>
-
-    <div className="different-grid">
-
-      <div className="different-card">
-        <span>01</span>
-
-        <h3>Learn by Doing</h3>
-
-        <p>
-          Real-world Excel tasks ഉപയോഗിച്ച് concepts പഠിക്കുകയും
-          practice ചെയ്യുകയും ചെയ്യാം.
-        </p>
-      </div>
-
-      <div className="different-card">
-        <span>02</span>
-
-        <h3>Excel + AI</h3>
-
-        <p>
-          Formulas, data, reports തുടങ്ങിയ workflows-ൽ AI എങ്ങനെ
-          smart ആയി ഉപയോഗിക്കാം എന്ന് പഠിക്കാം.
-        </p>
-      </div>
-
-      <div className="different-card">
-        <span>03</span>
-
-        <h3>Real Projects</h3>
-
-        <p>
-          പഠിച്ച skills വെറും theory ആയി നിർത്താതെ practical projects
-          വഴി ഉപയോഗിച്ച് build ചെയ്യാം.
-        </p>
-      </div>
-
-      <div className="different-card">
-        <span>04</span>
-
-        <h3>Workplace Focus</h3>
-
-        <p>
-          Office, MIS, HR, Accounts, Operations തുടങ്ങിയ work scenarios
-          മനസ്സിലാക്കി skills apply ചെയ്യാൻ പഠിക്കാം.
-        </p>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-{/* ================= OUTCOMES ================= */}
-
-<section className="section outcomes-section">
-  <div className="container outcomes-grid">
-
-    <div>
-
-      <div className="section-tag">
-        Course Outcomes
-      </div>
-
-      <h2>
-        Course കഴിഞ്ഞാൽ
-        <span> Excel ഉപയോഗിച്ച് കൂടുതൽ confidently work ചെയ്യാം.</span>
-      </h2>
-
-      <p>
-        പഠിച്ച concepts practical tasks-ലേക്ക് apply ചെയ്ത്, daily
-        workplace-ൽ വരുന്ന data, reports, dashboards, analysis,
-        AI-assisted workflows എന്നിവ കൂടുതൽ efficiently handle ചെയ്യാൻ
-        കഴിയുന്ന രീതിയിൽ നിങ്ങളുടെ Excel skillset develop ചെയ്യാം.
-      </p>
-
-    </div>
-
-    <div className="outcomes-list">
-
-      <div>
-        ✓ Excel data clean & organize ചെയ്യാം
-      </div>
-
-      <div>
-        ✓ Formulas & functions confidently ഉപയോഗിക്കാം
-      </div>
-
-      <div>
-        ✓ Large data analyze ചെയ്ത് useful insights കണ്ടെത്താം
-      </div>
-
-      <div>
-        ✓ Professional reports തയ്യാറാക്കാം
-      </div>
-
-      <div>
-        ✓ Interactive dashboards build ചെയ്യാം
-      </div>
-
-      <div>
-        ✓ Excel tasks-ൽ AI assistance ഉപയോഗിക്കാം
-      </div>
-
-      <div>
-        ✓ Repetitive tasks കൂടുതൽ efficiently handle ചെയ്യാം
-      </div>
-
-      <div>
-        ✓ Real-world Excel projects build ചെയ്യാം
-      </div>
-
-    </div>
-
-  </div>
-</section>
-{/* ================= CERTIFICATE ================= */}
-
-<section className="section certificate-section">
-  <div className="container certificate-box">
-
-    <div className="certificate-content">
-
-      <div className="section-tag">
-        Certification
-      </div>
-
-      <h2>
-        പഠിക്കുക.
-        <br />
-        <span>Complete ചെയ്യുക. Certificate നേടുക.</span>
-      </h2>
-
-      <p>
-        Program പൂർത്തിയാക്കുന്ന learners-ന് Excel + AI practical learning
-        complete ചെയ്തതിന്റെ Certificate ലഭിക്കും. നിങ്ങളുടെ പഠനം
-        document ചെയ്യാനും skills confidently present ചെയ്യാനും ഇത്
-        സഹായിക്കും.
-      </p>
-        <div className="certificate-points">
-
-  <div className="certificate-point certificate-point-blue">
-    <div className="certificate-point-icon">
-      🎓
-    </div>
-
-    <div className="certificate-point-content">
-      <strong>Course Completion</strong>
-      <span>
-        Your learning journey gets official recognition.
-      </span>
-    </div>
-  </div>
-
-
-  <div className="certificate-point certificate-point-purple">
-    <div className="certificate-point-icon">
-      ✦
-    </div>
-
-    <div className="certificate-point-content">
-      <strong>Excel + AI Learning</strong>
-      <span>
-        Build practical skills for the future.
-      </span>
-    </div>
-  </div>
-
-
-  <div className="certificate-point certificate-point-green">
-    <div className="certificate-point-icon">
-      📈
-    </div>
-
-    <div className="certificate-point-content">
-      <strong>Practical Skills</strong>
-      <span>
-        Learn, practice and apply in real scenarios.
-      </span>
-    </div>
-  </div>
-
-</div>
-      
-      <button
-        type="button"
-        onClick={openEnrollment}
-        className="cta-pulse group inline-flex items-center gap-2 rounded-full bg-blue-600 px-7 py-3.5 text-base font-bold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 hover:shadow-xl"
-      >
-        Get Started
-        <span className="text-xl transition-transform duration-300 group-hover:translate-x-1">
-          →
-        </span>
-      </button>
-
-    </div>
-
-    <div className="certificate-preview">
-
-      <div className="certificate-inner">
-
-        <span className="certificate-star">
-          ✦
-        </span>
-
-        <small>
-          CERTIFICATE OF COMPLETION
-        </small>
-
-        <h3>
-          Excel + AI
-        </h3>
-
-        <p>
-          Practical Excel & AI Learning
-        </p>
-
-        <div className="certificate-line"></div>
-
-        <span>
-          Learner Name
-        </span>
-
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-
-{/* ================= REVIEWS ================= */}
-<section className="section reviews-section" id="reviews">
-  <div className="container">
-
-    <div className="section-heading centered">
-
-      <div className="section-tag">
-        Learning Experience
-      </div>
-
-      <h2>
-        Learn Smart.
-        <br />
-        <span>Grow from Beginner to Advanced.</span>
-      </h2>
-
-      <p>
-        Learn. Practice. Apply. Level up your Excel + AI skills.
-      </p>
-
-    </div>
-
-    <div className="reviews-grid">
-
-      {/* REVIEW 1 */}
-      <div className="review-card">
-
-        <div className="review-top">
-          <div className="review-avatar">
-            AK
+        </section>
+
+        {/* ================= CAREER ================= */}
+
+        <section className="bg-white py-20 sm:py-28">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6">
+            <div className="text-center">
+              <div className={tag}>Career Connection</div>
+
+              <h2 className={h2 + " mt-4"}>
+                Excel skills
+                <br />
+                <span className="text-blue-600">ഏത് ജോലികളിൽ ഉപയോഗിക്കാം?</span>
+              </h2>
+
+              <p className={lead + " mx-auto max-w-2xl"}>
+                വിവിധ office, operations, HR, accounts, MIS, data-related
+                roles-ൽ Excel ഒരു പ്രധാന skill ആണ്.
+              </p>
+            </div>
+
+            <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
+              {roles.map((role) => (
+                <div
+                  key={role}
+                  className="group flex flex-col items-start gap-3 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg"
+                >
+                  <strong className="text-sm font-bold text-slate-900">
+                    {role}
+                  </strong>
+                  <i className="not-italic text-slate-300 transition-colors duration-300 group-hover:text-blue-500">
+                    ↗
+                  </i>
+                </div>
+              ))}
+            </div>
           </div>
+        </section>
 
-          <div>
-            <strong>Arun Kumar</strong>
-            <span>Excel Beginner</span>
+        {/* ================= INTERVIEW ================= */}
+
+        <section className="bg-slate-50 py-20 sm:py-28">
+          <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-14 px-4 sm:px-6 lg:grid-cols-2">
+            <div>
+              <div className={tag}>Interview Preparation</div>
+
+              <h2 className={h2 + " mt-4"}>
+                Skill പഠിക്കുന്നതിനൊപ്പം
+                <span className="text-blue-600"> Interview-നും തയ്യാറാകൂ.</span>
+              </h2>
+
+              <p className={lead}>
+                Excel-related interview questions, practical tasks, data
+                handling എന്നിവയെ നേരിടാൻ ആവശ്യമായ confidence വികസിപ്പിക്കാം.
+              </p>
+            </div>
+
+            <div className="space-y-3">
+              {[
+                "Excel Practical Questions",
+                "Formula-based Tasks",
+                "Data Analysis Tasks",
+                "Reporting Tasks",
+                "Workplace Scenarios",
+              ].map((item) => (
+                <div
+                  key={item}
+                  className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-5 py-3.5 text-sm font-semibold text-slate-700 shadow-sm"
+                >
+                  <span className="text-emerald-600">✓</span>
+                  {item}
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        </section>
 
-        <div className="review-stars">
-          ★★★★★
-        </div>
+        {/* ================= WHY DIFFERENT ================= */}
 
-        <p>
-          “Excel ഒന്നും അറിയാതെ തുടങ്ങിയെങ്കിലും basics വളരെ easy ആയി
-          മനസ്സിലാക്കാൻ കഴിഞ്ഞു. ഇപ്പോൾ Excel ചെയ്യുമ്പോൾ confidence കൂടുതലാണ്.”
-        </p>
+        <section className="bg-white py-20 sm:py-28">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
+            <div className="mx-auto max-w-2xl text-center">
+              <div className={tag}>എന്തുകൊണ്ട് ഈ Program?</div>
 
-        <span className="review-label">
-          Beginner Friendly
-        </span>
+              <h2 className={h2 + " mt-4"}>
+                പഠനം മാത്രമല്ല.
+                <br />
+                <span className="text-blue-600">പ്രായോഗിക Skill Building.</span>
+              </h2>
+            </div>
 
-      </div>
-
-
-      {/* REVIEW 2 */}
-      <div className="review-card">
-
-        <div className="review-top">
-          <div className="review-avatar">
-            SM
+            <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {[
+                [
+                  "പ്രായോഗിക സമീപനം",
+                  "Real-world Excel tasks-നോട് ബന്ധിപ്പിച്ചുള്ള പഠനം.",
+                ],
+                [
+                  "AI Integration",
+                  "Excel workflow-ൽ AI എങ്ങനെ ഉപയോഗിക്കാം എന്ന് പഠിക്കുക.",
+                ],
+                [
+                  "Projects",
+                  "പഠിച്ച skills practical projects വഴി ഉപയോഗിക്കുക.",
+                ],
+                [
+                  "Career Focus",
+                  "Job-related skills വികസിപ്പിക്കുന്നതിൽ ശ്രദ്ധ.",
+                ],
+              ].map(([title, text]) => (
+                <div
+                  key={title}
+                  className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+                >
+                  <h3 className="text-base font-bold text-slate-900">
+                    {title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-500">
+                    {text}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
+        </section>
 
-          <div>
-            <strong>Swetha Menon</strong>
-            <span>Office Professional</span>
+        {/* ================= OUTCOMES ================= */}
+
+        <section className="bg-slate-50 py-20 sm:py-28">
+          <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-14 px-4 sm:px-6 lg:grid-cols-2">
+            <div>
+              <div className={tag}>Course Outcomes</div>
+
+              <h2 className={h2 + " mt-4"}>
+                Course കഴിഞ്ഞാൽ
+                <span className="text-blue-600">
+                  {" "}
+                  നിങ്ങൾക്ക് ചെയ്യാൻ കഴിയുന്നത്.
+                </span>
+              </h2>
+
+              <p className={lead}>
+                Excel ഉപയോഗിച്ച് കൂടുതൽ confidence-ോടെ data, reports,
+                dashboards, AI-assisted workflows എന്നിവ കൈകാര്യം ചെയ്യാൻ
+                കഴിയുന്ന രീതിയിലേക്ക് വളരുക.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              {[
+                "Excel data ക്രമീകരിക്കുക",
+                "Formulas ഉപയോഗിക്കുക",
+                "Data വിശകലനം ചെയ്യുക",
+                "Reports തയ്യാറാക്കുക",
+                "Dashboards നിർമ്മിക്കുക",
+                "AI സഹായം ഉപയോഗിക്കുക",
+                "Repetitive work കുറയ്ക്കുക",
+                "Practical projects നിർമ്മിക്കുക",
+              ].map((item) => (
+                <div
+                  key={item}
+                  className="flex items-center gap-2.5 rounded-xl bg-white px-4 py-3 text-sm font-medium text-slate-700 shadow-sm"
+                >
+                  <span className="text-emerald-600">✓</span>
+                  {item}
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        </section>
 
-        <div className="review-stars">
-          ★★★★★
-        </div>
+        {/* ================= CERTIFICATE ================= */}
 
-        <p>
-          “Formulas മാത്രം പഠിക്കുന്ന course അല്ല. Reports, dashboards,
-          data work എല്ലാം practical ആയി ചെയ്യാൻ പഠിച്ചത് really useful ആയി.”
-        </p>
+        <section className="bg-white py-20 sm:py-28">
+          <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-14 rounded-3xl bg-slate-900 px-6 py-14 sm:px-10 lg:grid-cols-2">
+            <div>
+              <div className="inline-flex items-center rounded-full border border-blue-400/30 bg-blue-500/10 px-3.5 py-1 text-xs font-semibold text-blue-300">
+                Certification
+              </div>
 
-        <span className="review-label">
-          Practical Learning
-        </span>
+              <h2 className="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl">
+                പഠനം പൂർത്തിയാക്കിയതിന്
+                <span className="text-blue-400"> ഒരു Certificate.</span>
+              </h2>
 
-      </div>
+              <p className="mt-4 text-base leading-relaxed text-slate-400">
+                Program പൂർത്തിയാക്കിയ ശേഷം certification ലഭിക്കുന്ന രീതിയിലാണ്
+                ഈ section ഒരുക്കിയിരിക്കുന്നത്.
+              </p>
 
+              <button
+                type="button"
+                onClick={openEnrollment}
+                className={ctaPrimary + " mt-6"}
+              >
+                Enroll Now
+                <span className="text-xl transition-transform duration-300 group-hover:translate-x-1">
+                  →
+                </span>
+              </button>
+            </div>
 
-      {/* REVIEW 3 */}
-      <div className="review-card">
+            <div className="flex justify-center">
+              <div className="relative w-full max-w-sm rounded-2xl border-2 border-blue-400/40 bg-slate-800 p-8 text-center">
+                <span className="text-2xl text-blue-400">✦</span>
 
-        <div className="review-top">
-          <div className="review-avatar">
-            RN
+                <small className="mt-3 block text-[11px] font-bold tracking-wide text-slate-400">
+                  CERTIFICATE OF COMPLETION
+                </small>
+
+                <h3 className="mt-3 text-2xl font-extrabold text-white">
+                  Excel + AI
+                </h3>
+
+                <p className="mt-1 text-sm text-slate-400">
+                  പ്രായോഗിക Excel & AI പഠനം
+                </p>
+
+                <div className="mx-auto mt-6 h-px w-32 bg-slate-600"></div>
+
+                <span className="mt-2 block text-xs text-slate-500">
+                  വിദ്യാർത്ഥിയുടെ പേര്
+                </span>
+              </div>
+            </div>
           </div>
+        </section>
 
-          <div>
-            <strong>Rahul Nair</strong>
-            <span>Advanced Learner</span>
+        {/* ================= HOW IT WORKS ================= */}
+
+        <section className="bg-slate-50 py-20 sm:py-28">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <div className="mx-auto max-w-2xl text-center">
+              <div className={tag}>How the Program Works</div>
+
+              <h2 className={h2 + " mt-4"}>
+                പഠനം
+                <span className="text-blue-600"> എങ്ങനെ നടക്കും?</span>
+              </h2>
+            </div>
+
+            <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+              {[
+                ["01", "പഠിക്കുക", "Concepts ലളിതമായി മനസ്സിലാക്കുക."],
+                [
+                  "02",
+                  "Practice ചെയ്യുക",
+                  "Hands-on tasks ഉപയോഗിച്ച് പരിശീലിക്കുക.",
+                ],
+                [
+                  "03",
+                  "Project നിർമ്മിക്കുക",
+                  "പഠിച്ച skills ഉപയോഗിച്ച് project ചെയ്യുക.",
+                ],
+                [
+                  "04",
+                  "Career-ന് തയ്യാറാകുക",
+                  "Interview-നും workplace tasks-നും തയ്യാറാകുക.",
+                ],
+              ].map(([num, title, text]) => (
+                <div key={num}>
+                  <span className="text-sm font-bold text-blue-600">{num}</span>
+                  <h3 className="mt-2 text-base font-bold text-slate-900">
+                    {title}
+                  </h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-slate-500">
+                    {text}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        </section>
 
-        <div className="review-stars">
-          ★★★★★
-        </div>
+        {/* ================= FAQ ================= */}
 
-        <p>
-          “Excel + AI combination ആണ് ഏറ്റവും interesting ആയത്.
-          Repetitive tasks smart ആയി ചെയ്യാനും time save ചെയ്യാനും പഠിച്ചു.”
-        </p>
+        <section className="bg-slate-50 py-20 sm:py-28" id="faq">
+          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 px-4 sm:px-6 lg:grid-cols-[minmax(0,320px)_1fr]">
+            <div>
+              <div className={tag}>FAQ</div>
 
-        <span className="review-label">
-          Excel + AI
-        </span>
+              <h2 className={h2 + " mt-4"}>Frequently Asked Questions</h2>
 
-      </div>
+              <p className={lead}>
+                Program-നെക്കുറിച്ച് അറിയേണ്ട പ്രധാന കാര്യങ്ങൾ.
+              </p>
+            </div>
 
-    </div>
+            <div className="space-y-3">
+              {faqs.map((faq, index) => (
+                <details
+                  key={faq.question}
+                  className="group rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-sm open:shadow-md"
+                >
+                  <summary className="flex cursor-pointer list-none items-center gap-4 text-sm font-bold text-slate-900 marker:content-none">
+                    <span className="font-mono text-xs font-semibold text-slate-400">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
 
-  </div>
-</section>
-{/* ================= FAQ ================= */}
+                    <strong className="flex-1 font-bold">{faq.question}</strong>
 
-<section className="section faq-section" id="faq">
-  <div className="container faq-grid">
+                    <i className="not-italic text-lg text-slate-400 transition-transform duration-300 group-open:rotate-45">
+                      +
+                    </i>
+                  </summary>
 
-    <div className="faq-heading">
+                  <p className="mt-3 pl-9 text-sm leading-relaxed text-slate-600">
+                    {faq.answer}
+                  </p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
 
-      <div className="section-tag">
-        FAQ
-      </div>
+        {/* ================= FINAL CTA ================= */}
 
-      <h2>
-        Program-നെക്കുറിച്ച്
-        <span> അറിയേണ്ട കാര്യങ്ങൾ.</span>
-      </h2>
-
-      <p>
-        Course, learning approach, access, certificate, practical projects
-        എന്നിവയെക്കുറിച്ചുള്ള പ്രധാന ചോദ്യങ്ങളുടെ ഉത്തരങ്ങൾ ഇവിടെ കാണാം.
-      </p>
-
-    </div>
-
-    <div className="faq-list">
-
-      {faqs.map((faq, index) => (
-        <details
-          className="faq-item"
-          key={faq.question}
+        <section
+          className="relative overflow-hidden bg-slate-900 py-20 sm:py-28"
+          id="enroll"
         >
-          <summary>
+          <div className="pointer-events-none absolute -top-24 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-blue-600/30 blur-3xl"></div>
 
-            <span>
-              {String(index + 1).padStart(2, "0")}
-            </span>
+          <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6">
+            <div className="inline-flex items-center rounded-full border border-blue-400/30 bg-blue-500/10 px-3.5 py-1 text-xs font-semibold text-blue-300">
+              നിങ്ങളുടെ അടുത്ത ഘട്ടം
+            </div>
 
-            <strong>
-              {faq.question}
-            </strong>
+            <h2 className="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl">
+              Excel Skill
+              <br />
+              <span className="text-blue-400">ഇന്ന് തന്നെ Upgrade ചെയ്യൂ.</span>
+            </h2>
 
-            <i>
-              +
-            </i>
+            <p className="mt-4 text-base leading-relaxed text-slate-400">
+              Excel + AI skills പ്രായോഗികമായി പഠിച്ച് നിങ്ങളുടെ career-ന് കൂടുതൽ
+              ശക്തമായ skillset നിർമ്മിക്കൂ.
+            </p>
 
-          </summary>
+            <button
+              type="button"
+              onClick={openEnrollment}
+              className={ctaPrimary + " mt-7"}
+            >
+              <span>ഇപ്പോൾ പഠനം ആരംഭിക്കൂ</span>
+              <span className="text-xl transition-transform duration-300 group-hover:translate-x-1">
+                →
+              </span>
+            </button>
 
-          <p>
-            {faq.answer}
-          </p>
+            <div className="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-medium text-slate-400">
+              <span>✓ Practical Learning</span>
+              <span>✓ Excel + AI</span>
+              <span>✓ Career-focused</span>
+            </div>
+          </div>
+        </section>
 
-        </details>
-      ))}
+        {/* ================= CHECKOUT ================= */}
 
-    </div>
+        <section className="bg-white py-20 sm:py-28" id="checkout">
+          <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-14 px-4 sm:px-6 lg:grid-cols-2">
+            <div>
+              <div className={tag}>Enrollment</div>
 
-  </div>
-</section>
-{/* ================= FINAL CTA ================= */}
+              <h2 className={h2 + " mt-4"}>
+                Your learning journey starts today.
+              </h2>
 
-<section className="final-cta" id="enroll">
-  <div className="final-glow"></div>
+              <p className={lead}>
+                Excel + AI practical learning program-ൽ ചേരാൻ താഴെയുള്ള option
+                ഉപയോഗിക്കുക.
+              </p>
 
-  <div className="container final-content">
+              <div className="mt-6 grid grid-cols-2 gap-3">
+                {[
+                  "Excel + AI Learning",
+                  "Practical Projects",
+                  "Job-oriented Skills",
+                  "Certification",
+                ].map((item) => (
+                  <div
+                    key={item}
+                    className="flex items-center gap-2 text-sm font-medium text-slate-700"
+                  >
+                    <span className="text-emerald-600">✓</span>
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
 
-    <div className="section-tag">
-      Ready to Upgrade?
-    </div>
+            <div className="rounded-3xl border border-slate-200 bg-white p-7 shadow-xl">
+              <div className="flex items-center justify-between text-sm font-semibold text-slate-500">
+                <span>Excel + AI Program</span>
+                <span className="text-emerald-600">🔒 Secure</span>
+              </div>
 
-    <h2>
-      Excel + AI
-      <br />
-      <span>നിങ്ങളുടെ അടുത്ത Skill Upgrade ആക്കൂ.</span>
-    </h2>
+              <div className="mt-6 border-t border-dashed border-slate-200 pt-6">
+                <small className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+                  Program Access
+                </small>
+                <strong className="mt-1 block text-3xl font-extrabold text-blue-600">
+                  ₹1,499
+                </strong>
+              </div>
 
-    <p>
-      Excel വെറും ഒരു basic skill ആയി നിർത്താതെ, Data Analysis,
-      Reports, Dashboards, AI, Automation എന്നിവ practical ആയി പഠിച്ച്
-      workplace-ൽ confidently apply ചെയ്യാൻ ഇന്ന് തന്നെ തുടങ്ങൂ.
-    </p>
+              <button
+                type="button"
+                onClick={openEnrollment}
+                className={ctaPrimary + " mt-6 w-full"}
+              >
+                Enroll Now
+                <span className="text-xl transition-transform duration-300 group-hover:translate-x-1">
+                  →
+                </span>
+              </button>
 
-    <button
-      type="button"
-      onClick={openEnrollment}
-      className="cta-pulse group inline-flex items-center justify-center gap-3 rounded-full bg-blue-600 px-7 py-4 text-base font-bold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 hover:shadow-xl"
-    >
-      <span>START LEARNING — ₹1,499</span>
+              <p className="mt-4 text-center text-xs text-slate-400">
+                Your learning journey starts today.
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
 
-      <span className="text-xl transition-transform duration-300 group-hover:translate-x-1">
-        →
-      </span>
-    </button>
+      {/* ================= FOOTER ================= */}
 
-    <div className="final-points">
-      <span>✓ Practical Learning</span>
-      <span>✓ Real-world Projects</span>
-      <span>✓ Excel + AI Skills</span>
-      <span>✓ Certificate</span>
-    </div>
+      <footer className="border-t border-slate-200 bg-slate-50 pb-24 pt-12 sm:pb-12">
+        <div className="mx-auto flex max-w-7xl flex-col items-center gap-6 px-4 text-center sm:flex-row sm:justify-between sm:text-left">
+          <div className="flex flex-col items-center gap-3 sm:items-start">
+            <a href="#home" className="flex items-center">
+              <img
+                src={logo}
+                alt="QNAYDS"
+                className="block h-10 w-auto max-w-[130px] object-contain"
+              />
+            </a>
 
-  </div>
-</section>
-{/* ================= CHECKOUT ================= */}
+            <p className="max-w-xs text-sm text-slate-500">
+              Excel + AI ഉപയോഗിച്ച് practical, career-focused skills പഠിക്കാം.
+            </p>
+          </div>
 
-<section className="checkout-section" id="checkout">
-  <div className="container checkout-grid">
-
-    <div className="checkout-info">
-
-      <div className="section-tag">
-        Enrollment
-      </div>
-
-      <h2>
-        <span>
-          നിങ്ങളുടെ Excel + AI learning journey ഇന്ന് തന്നെ തുടങ്ങൂ.
-        </span>
-      </h2>
-
-      <p>
-        Practical Excel + AI skills പഠിച്ച്, real-world projects
-        practice ചെയ്ത്, workplace-ൽ apply ചെയ്യാൻ കഴിയുന്ന skillset
-        build ചെയ്യാനുള്ള അടുത്ത step ഇവിടെ നിന്ന് ആരംഭിക്കാം.
-      </p>
-
-      <div className="checkout-benefits">
-
-        <div>
-          ✓ Excel + AI Practical Learning
+          <div className="flex gap-6 text-sm font-medium text-slate-600">
+            <a href="#features" className="hover:text-blue-600">
+              Features
+            </a>
+            <a href="#learn" className="hover:text-blue-600">
+              Learn
+            </a>
+            <a href="#projects" className="hover:text-blue-600">
+              Projects
+            </a>
+            <a href="#faq" className="hover:text-blue-600">
+              FAQ
+            </a>
+          </div>
         </div>
 
-        <div>
-          ✓ Real-world Projects
+        <div className="mx-auto mt-8 flex max-w-7xl flex-col items-center gap-2 border-t border-slate-200 px-4 pt-6 text-center text-xs text-slate-400 sm:flex-row sm:justify-between sm:text-left">
+          <span>© 2026 Excel AI. എല്ലാ അവകാശങ്ങളും സംരക്ഷിച്ചിരിക്കുന്നു.</span>
+          <span>Excel + AI Learning Program</span>
         </div>
+      </footer>
 
-        <div>
-          ✓ Data Analysis & Dashboards
-        </div>
-
-        <div>
-          ✓ Job-oriented Workplace Skills
-        </div>
-
-        <div>
-          ✓ Course Completion Certificate
-        </div>
-
-      </div>
-
-    </div>
-
-    <div className="checkout-card">
-
-      <div className="checkout-top">
-
-        <span>
-          Excel + AI Program
-        </span>
-
-        <span className="secure">
-          🔒 Secure
-        </span>
-
-      </div>
-
-      <div className="price">
-
-        <small>
-          Full Program Access
-        </small>
-
-        <strong>
-          ₹1,499
-        </strong>
-
-        <span>
-          One-time payment
-        </span>
-
-      </div>
-
-      <button
-        type="button"
-        onClick={openEnrollment}
-        className="cta-pulse group inline-flex items-center justify-center gap-3 rounded-full bg-blue-600 px-7 py-3.5 text-base font-bold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 hover:shadow-xl"
-      >
-        <span>
-          ENROLL NOW — ₹1,499
-        </span>
-
-        <span className="text-xl transition-transform duration-300 group-hover:translate-x-1">
-          →
-        </span>
-      </button>
-
-      <p className="checkout-note">
-        Start learning Excel + AI today.
-      </p>
-
-    </div>
-
-  </div>
-</section>
-</main>
-{/* ================= FOOTER ================= */}
-
-<footer className="footer">
-  <div className="container footer-inner">
-
-    <div className="footer-brand">
-
-      <a href="#home" className="flex items-center">
-        <img
-          src={logo}
-          alt="QNAYDS"
-          className="block h-10 w-auto max-w-[130px] object-contain"
-        />
-      </a>
-
-      <p>
-        Excel + AI ഉപയോഗിച്ച് practical skills പഠിച്ച്,
-        workplace-ൽ കൂടുതൽ smart & confident ആയി work ചെയ്യാൻ തയ്യാറാകൂ.
-      </p>
-
-    </div>
-
-    <div className="footer-links">
-
-      <a href="#features">
-        Features
-      </a>
-
-      <a href="#learn">
-        Skills
-      </a>
-
-      <a href="#projects">
-        Projects
-      </a>
-
-      <a href="#faq">
-        FAQ
-      </a>
-
-      <a href="#enroll">
-        Enroll
-      </a>
-
-    </div>
-
-  </div>
-
-  <div className="container footer-bottom">
-
-    <span>
-      © 2026 Excel AI. എല്ലാ അവകാശങ്ങളും സംരക്ഷിച്ചിരിക്കുന്നു.
-    </span>
-
-    <span>
-      Excel + AI Learning Program
-    </span>
-
-  </div>
-</footer>
-{/* ================= FLOATING WHATSAPP ================= */}
-<a
-  href="https://wa.me/919074871204"
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="Join WhatsApp Group"
-  style={{
-    position: "fixed",
-    right: "20px",
-    bottom: "95px",
-    width: "58px",
-    height: "58px",
-    borderRadius: "50%",
-    backgroundColor: "#25D366",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    zIndex: 100000,
-    boxShadow: "0 5px 15px rgba(0,0,0,0.25)",
-    textDecoration: "none",
-  }}
->
-  <FaWhatsapp
-    style={{
-      color: "#fff",
-      fontSize: "34px",
-    }}
-  />
-</a>
       {/* ================= STICKY CTA ================= */}
 
-      <div className="sticky-cta">
-        <div>
-          <strong>Your Excel + AI Journey</strong>
+      {showFloatingCta && (
+        <div className="fixed inset-x-4 bottom-4 z-[9998] rounded-2xl border border-blue-200 bg-white/95 px-4 py-3 shadow-[0_-4px_20px_rgba(0,0,0,0.08)] backdrop-blur-md">
+          <div className="flex items-center justify-between gap-3">
+            <div className="flex flex-col leading-tight">
+              <strong className="text-xs font-bold text-slate-900">
+                Limited offer • {LIMITED_SEATS} seats left
+              </strong>
+              <span className="text-[11px] text-slate-500">
+                Offer ends soon
+              </span>
+            </div>
 
-          <span>Starts today</span>
+            <button
+              type="button"
+              onClick={openEnrollment}
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-blue-600 px-4 py-2.5 text-xs font-bold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:bg-blue-700"
+            >
+              Enroll Now
+              <span className="text-base">→</span>
+            </button>
+          </div>
         </div>
-
-        <button
-          type="button"
-          onClick={openEnrollment}
-          className="cta-pulse inline-flex items-center justify-center gap-2 rounded-full bg-blue-600 px-4 py-2.5 text-xs font-bold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-xl sm:text-sm"
-        >
-          Enroll Now
-          <span className="text-base">→</span>
-        </button>
-      </div>
+      )}
 
       {/* =========================================================
           ENROLLMENT MODAL
           ========================================================= */}
 
       {showEnrollment && (
-        <div className="enrollment-overlay" onClick={closeEnrollment}>
+        <div
+          className="fixed inset-0 z-[10000] flex items-center justify-center overflow-y-auto bg-slate-900/60 p-4 backdrop-blur-sm"
+          onClick={closeEnrollment}
+        >
           <div
-            className="enrollment-modal"
+            className="w-full max-w-md rounded-3xl border border-slate-200 bg-white shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             {/* MODAL HEADER */}
 
-            <div className="enrollment-header">
+            <div className="flex items-start justify-between border-b border-slate-100 px-6 py-5">
               <div>
-                <h2>Complete Your Enrollment</h2>
-
-                <p>Enter your details to continue securely.</p>
+                <h2 className="text-lg font-extrabold text-slate-900">
+                  Complete Your Enrollment
+                </h2>
+                <p className="mt-1 text-sm text-slate-500">
+                  Enter your details to continue securely.
+                </p>
               </div>
 
               <button
                 type="button"
-                className="enrollment-close"
+                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xl text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-700"
                 onClick={closeEnrollment}
                 aria-label="Close"
               >
@@ -2311,24 +1643,29 @@ function App() {
 
             {/* MODAL BODY */}
 
-            <div className="enrollment-body">
+            <div className="px-6 py-6">
               {/* COURSE PRICE BOX */}
 
-              <div className="enrollment-product">
+              <div className="flex items-center justify-between rounded-2xl border border-blue-100 bg-blue-50 px-5 py-4">
                 <div>
-                  <strong>Excel + AI Practical Program</strong>
-
-                  <del>₹5,000</del>
-
-                  <div className="enrollment-price">₹1,499</div>
+                  <strong className="block text-sm font-bold text-slate-900">
+                    Excel + AI Practical Program
+                  </strong>
+                  <del className="text-xs text-slate-400">₹5,000</del>
+                  <div className="mt-1 text-xl font-extrabold text-blue-600">
+                    ₹1,499
+                  </div>
                 </div>
 
-                <span className="enrollment-save">Save ₹3,501</span>
+                <span className="rounded-full bg-amber-400 px-3 py-1 text-xs font-bold text-amber-950">
+                  Save ₹3,501
+                </span>
               </div>
 
               {/* FORM */}
 
               <form
+                className="mt-6 space-y-4"
                 onSubmit={async (e) => {
                   e.preventDefault();
 
@@ -2458,48 +1795,48 @@ function App() {
                   }
                 }}
               >
-                <div className="input-wrap">
-                  <span>♙</span>
-
+                <div className="flex items-center gap-3 rounded-xl border border-slate-200 px-4 py-3 focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-100">
+                  <span className="text-slate-400">♙</span>
                   <input
                     type="text"
                     name="name"
                     placeholder="Full Name"
                     required
+                    className="w-full border-0 p-0 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-0"
                   />
                 </div>
 
-                <div className="input-wrap">
-                  <span>✉</span>
-
+                <div className="flex items-center gap-3 rounded-xl border border-slate-200 px-4 py-3 focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-100">
+                  <span className="text-slate-400">✉</span>
                   <input
                     type="email"
                     name="email"
                     placeholder="Email Address"
                     required
+                    className="w-full border-0 p-0 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-0"
                   />
                 </div>
 
-                <div className="input-wrap">
-                  <span>⌕</span>
-
+                <div className="flex items-center gap-3 rounded-xl border border-slate-200 px-4 py-3 focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-100">
+                  <span className="text-slate-400">⌕</span>
                   <input
                     type="tel"
                     name="phone"
                     placeholder="Phone Number"
                     required
+                    className="w-full border-0 p-0 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-0"
                   />
                 </div>
 
                 {/* SECURE CHECKOUT */}
 
-                <div className="secure-box">
-                  <div className="secure-title">
+                <div className="rounded-xl bg-slate-50 p-4">
+                  <div className="flex items-center gap-2 text-sm font-bold text-slate-800">
                     🛡️
                     <strong>Secure Checkout</strong>
                   </div>
 
-                  <p>
+                  <p className="mt-1.5 text-xs leading-relaxed text-slate-500">
                     Secure payment via Razorpay. After payment, we'll send an
                     activation email to your inbox.
                   </p>
@@ -2507,7 +1844,7 @@ function App() {
 
                 {/* ACTION BUTTONS */}
 
-                <div className="enrollment-actions">
+                <div className="grid grid-cols-2 gap-3 pt-1">
                   <button
                     type="button"
                     className="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm font-bold text-slate-700 transition-all duration-300 hover:bg-slate-50"
@@ -2518,7 +1855,7 @@ function App() {
 
                   <button
                     type="submit"
-                    className="cta-pulse inline-flex items-center justify-center rounded-xl bg-blue-600 px-4 py-3 text-sm font-bold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:bg-blue-700"
+                    className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-4 py-3 text-sm font-bold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:bg-blue-700"
                   >
                     Continue to Payment
                   </button>
