@@ -369,14 +369,15 @@ select {
   width: 100%;
   margin: 0 auto;
 }
+/* ================= VIDEO BOX ================= */
 
-/* VIDEO BOX */
 .video-frame {
   position: relative;
 
-  /* Screenshot പോലെ outer box */
-  width: 510px;
-  height: 600px;
+  /* Portrait video */
+  width: 360px;
+  aspect-ratio: 9 / 16;
+  height: auto;
 
   margin: 0 auto;
 
@@ -394,18 +395,19 @@ select {
   box-shadow: 0 30px 80px rgba(7, 21, 45, 0.16);
 }
 
-/* ACTUAL VIDEO */
+
+/* ================= ACTUAL VIDEO ================= */
+
 .video-frame video {
   display: block;
 
-  /* Portrait video full height */
+  width: 100%;
   height: 100%;
-  width: auto;
 
-  /* Never crop */
   max-width: 100%;
   max-height: 100%;
 
+  /* Full video - no cropping */
   object-fit: contain;
   object-position: center center;
 
@@ -413,29 +415,39 @@ select {
   padding: 0;
 }
 
+
 /* ================= MOBILE ================= */
 
 @media (max-width: 600px) {
 
   .video-section {
-    padding: 50px 0;
+    padding: 40px 0;
   }
 
   .video-frame {
-    width: 92vw;
-    height: 560px;
-    border-radius: 20px;
+    width: 72vw;
+    max-width: 280px;
+
+    height: auto;
+    aspect-ratio: 9 / 16;
+
+    border-radius: 18px;
+
+    box-shadow: 0 20px 50px rgba(7, 21, 45, 0.14);
   }
 
   .video-frame video {
+    width: 100%;
     height: 100%;
-    width: auto;
+
     max-width: 100%;
     max-height: 100%;
-    object-fit: contain;
-  }
-}
 
+    object-fit: contain;
+    object-position: center center;
+  }
+
+}
 /* ================= VIDEO POINTS ================= */
 
 .video-points {
@@ -8431,5 +8443,36 @@ body {
 
   .value-price strong {
     font-size: 36px;
+  }
+}
+/* ================= FLOATING WHATSAPP ================= */
+
+.whatsapp-float {
+  position: fixed;
+  right: 20px;
+  bottom: 95px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background-color: #25D366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100000;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+  text-decoration: none;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .whatsapp-float {
+    right: 15px;
+    bottom: 80px;
+    width: 52px;
+    height: 52px;
+  }
+
+  .whatsapp-float svg {
+    font-size: 30px !important;
   }
 }

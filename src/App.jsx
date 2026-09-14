@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import logo from "./assets/QNAYDS_LOGO.png";
+import { FaWhatsapp } from "react-icons/fa";
 
 const EXCEL_COURSE_ID = 13;
 const API_URL = "http://localhost:3000";
@@ -2231,6 +2232,35 @@ function App() {
 
   </div>
 </footer>
+{/* ================= FLOATING WHATSAPP ================= */}
+<a
+  href="https://wa.me/919074871204"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Join WhatsApp Group"
+  style={{
+    position: "fixed",
+    right: "20px",
+    bottom: "95px",
+    width: "58px",
+    height: "58px",
+    borderRadius: "50%",
+    backgroundColor: "#25D366",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 100000,
+    boxShadow: "0 5px 15px rgba(0,0,0,0.25)",
+    textDecoration: "none",
+  }}
+>
+  <FaWhatsapp
+    style={{
+      color: "#fff",
+      fontSize: "34px",
+    }}
+  />
+</a>
       {/* ================= STICKY CTA ================= */}
 
       <div className="sticky-cta">
