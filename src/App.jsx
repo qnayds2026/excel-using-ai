@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import logo from "./assets/QNAYDS_LOGO.png";
 import courseVideo from "./assets/Excel.mp4";
+import excelThumbnail from "../public/excel-thumbnail.webp";
 
 const EXCEL_COURSE_ID = 13;
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
@@ -186,11 +187,10 @@ function App() {
     setShowEnrollment(false);
   };
   const whatsappMessage =
-  "Hi QNAYDS Team, I would like to know more about the Excel Using AI Course.";
+    "Hi QNAYDS Team, I would like to know more about the Excel Using AI Course.";
 
-const whatsappUrl =
-  `https://api.whatsapp.com/send/?phone=919074871204&text=${encodeURIComponent(
-    whatsappMessage
+  const whatsappUrl = `https://api.whatsapp.com/send/?phone=919074871204&text=${encodeURIComponent(
+    whatsappMessage,
   )}&type=phone_number&app_absent=0`;
 
   if (showPaymentSuccess) {
@@ -365,17 +365,18 @@ const whatsappUrl =
             </p>
 
             <div className="mt-12">
-              <div className="relative mx-auto max-w-3xl overflow-hidden rounded-3xl bg-black shadow-2xl">
-            <video
-              className="block w-full h-auto"
-              controls
-              playsInline
-              preload="metadata"
-            >
-              <source src={courseVideo} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>  
+              <div className="mx-auto w-fit max-w-full overflow-hidden rounded-3xl shadow-2xl">
+                <video
+                  className="block h-[500px] w-auto max-w-full rounded-3xl object-contain sm:h-[600px] md:h-[650px]"
+                  controls
+                  playsInline
+                  poster={excelThumbnail}
+                  preload="metadata"
+                >
+                  <source src={courseVideo} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
 
               <div className="mx-auto mt-8 flex max-w-3xl flex-wrap justify-center gap-x-8 gap-y-3 text-sm font-medium text-slate-600">
                 <div className="flex items-center gap-2">
@@ -520,6 +521,23 @@ const whatsappUrl =
                   initial: "R",
                   name: "Rahul P.",
                   text: "ChatGPT ഉപയോഗിച്ച് Excel formulas കണ്ടെത്താനും repetitive tasks എളുപ്പമാക്കാനും പഠിച്ചത് വളരെ interesting ആയിരുന്നു.",
+                },
+                {
+                  initial: "M",
+                  name: "Midhun P.",
+                  text: "Excel-ൽ basic knowledge ഉണ്ടായിരുന്നെങ്കിലും advanced reports എങ്ങനെ തയ്യാറാക്കണം എന്ന് അറിയില്ലായിരുന്നു. Practical examples വഴി കാര്യങ്ങൾ വളരെ എളുപ്പത്തിൽ മനസ്സിലാക്കാൻ കഴിഞ്ഞു.",
+                },
+
+                {
+                  initial: "N",
+                  name: "Nimisha K.",
+                  text: "AI ഉപയോഗിച്ച് Excel work കൂടുതൽ എളുപ്പമാക്കാൻ കഴിയുമെന്ന് ഈ course വഴി മനസ്സിലായി. Especially formulas, data analysis എന്നിവ പഠിച്ചത് വളരെ helpful ആയിരുന്നു.",
+                },
+
+                {
+                  initial: "V",
+                  name: "Vishnu R.",
+                  text: "Office-ൽ ദിവസവും ചെയ്യുന്ന Excel tasks കുറച്ച് സമയം കൊണ്ട് ചെയ്യാൻ കഴിയുന്ന രീതിയിലുള്ള practical skills ആണ് ഇവിടെ പഠിച്ചത്. Course വളരെ useful ആയി തോന്നി.",
                 },
               ].map((review) => (
                 <div
@@ -680,83 +698,6 @@ const whatsappUrl =
                   >
                     {stat.sub}
                   </small>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ================= FEATURES ================= */}
-
-        <section className="bg-slate-50 py-20 sm:py-28" id="features">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6">
-            <div className="mx-auto max-w-2xl text-center">
-              <div className={tag}>നിങ്ങൾ പഠിക്കുന്നത്</div>
-
-              <h2 className={h2 + " mt-4"}>
-                Excel-നെ
-                <br />
-                <span className="text-blue-600">കൂടുതൽ ശക്തമാക്കാം.</span>
-              </h2>
-
-              <p className={lead}>
-                Excel + AI ഉപയോഗിച്ച് modern workplace-ന് ആവശ്യമായ skills
-                step-by-step ആയി പഠിക്കാം.
-              </p>
-            </div>
-
-            <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-              {features.map((feature) => (
-                <div
-                  key={feature.title}
-                  className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg"
-                >
-                  <div className="text-3xl">{feature.icon}</div>
-                  <h3 className="mt-4 text-base font-bold text-slate-900">
-                    {feature.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-500">
-                    {feature.text}
-                  </p>
-                  <span className="absolute right-5 top-5 text-slate-300 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-blue-500">
-                    ↗
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ================= SKILLS ================= */}
-
-        <section className="bg-white py-20 sm:py-28" id="learn">
-          <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-14 px-4 sm:px-6 lg:grid-cols-2">
-            <div>
-              <div className={tag}>Course Skills</div>
-
-              <h2 className={h2 + " mt-4"}>
-                ഒരു
-                <span className="text-blue-600"> complete Excel skillset.</span>
-              </h2>
-
-              <p className={lead}>
-                Basic മുതൽ advanced practical workflows വരെ പഠിക്കാൻ കഴിയുന്ന
-                രീതിയിലാണ് learning path.
-              </p>
-            </div>
-
-            <div className="divide-y divide-slate-100 rounded-2xl border border-slate-200 bg-white shadow-sm">
-              {skills.map((skill, index) => (
-                <div key={skill} className="flex items-center gap-4 px-5 py-4">
-                  <span className="font-mono text-xs font-semibold text-slate-400">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-
-                  <strong className="flex-1 text-sm font-semibold text-slate-800">
-                    {skill}
-                  </strong>
-
-                  <i className="not-italic text-emerald-600">✓</i>
                 </div>
               ))}
             </div>
@@ -1613,26 +1554,24 @@ const whatsappUrl =
       )}
       {/* ================= WHATSAPP FLOATING ================= */}
 
+      {/* WHATSAPP FLOATING BUTTON */}
 
-
-{/* WHATSAPP FLOATING BUTTON */}
-
-<a
-  href={whatsappUrl}
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="Contact QNAYDS on WhatsApp"
-  className="fixed bottom-[110px] right-5 z-[9996] flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-xl transition-all duration-300 hover:scale-105 sm:right-6"
->
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 32 32"
-    className="h-8 w-8 fill-current"
-    aria-hidden="true"
-  >
-    <path d="M16 3C8.82 3 3 8.82 3 16c0 2.29.59 4.44 1.7 6.3L3 29l6.9-1.65A12.94 12.94 0 0 0 16 29c7.18 0 13-5.82 13-13S23.18 3 16 3Zm0 23.7c-2.08 0-4.11-.56-5.88-1.62l-.42-.25-4.1.98.98-4-.27-.43A10.67 10.67 0 1 1 16 26.7Zm5.86-7.98c-.32-.16-1.89-.93-2.18-1.04-.29-.11-.5-.16-.71.16-.21.32-.81 1.04-.99 1.25-.18.21-.36.24-.68.08-.32-.16-1.35-.5-2.58-1.59-.95-.85-1.59-1.9-1.77-2.22-.18-.32-.02-.49.14-.65.14-.14.32-.36.47-.54.16-.18.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.71-1.71-.97-2.34-.26-.62-.52-.54-.71-.55h-.61c-.21 0-.55.08-.84.4-.29.32-1.1 1.08-1.1 2.63s1.13 3.05 1.29 3.26c.16.21 2.22 3.39 5.38 4.76.75.32 1.34.51 1.8.65.76.24 1.45.21 2 .13.61-.09 1.89-.77 2.16-1.51.27-.74.27-1.38.19-1.51-.08-.13-.29-.21-.61-.37Z" />
-  </svg>
-</a>
+      <a
+        href={whatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Contact QNAYDS on WhatsApp"
+        className="fixed bottom-[110px] right-5 z-[9996] flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-xl transition-all duration-300 hover:scale-105 sm:right-6"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 32 32"
+          className="h-8 w-8 fill-current"
+          aria-hidden="true"
+        >
+          <path d="M16 3C8.82 3 3 8.82 3 16c0 2.29.59 4.44 1.7 6.3L3 29l6.9-1.65A12.94 12.94 0 0 0 16 29c7.18 0 13-5.82 13-13S23.18 3 16 3Zm0 23.7c-2.08 0-4.11-.56-5.88-1.62l-.42-.25-4.1.98.98-4-.27-.43A10.67 10.67 0 1 1 16 26.7Zm5.86-7.98c-.32-.16-1.89-.93-2.18-1.04-.29-.11-.5-.16-.71.16-.21.32-.81 1.04-.99 1.25-.18.21-.36.24-.68.08-.32-.16-1.35-.5-2.58-1.59-.95-.85-1.59-1.9-1.77-2.22-.18-.32-.02-.49.14-.65.14-.14.32-.36.47-.54.16-.18.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.71-1.71-.97-2.34-.26-.62-.52-.54-.71-.55h-.61c-.21 0-.55.08-.84.4-.29.32-1.1 1.08-1.1 2.63s1.13 3.05 1.29 3.26c.16.21 2.22 3.39 5.38 4.76.75.32 1.34.51 1.8.65.76.24 1.45.21 2 .13.61-.09 1.89-.77 2.16-1.51.27-.74.27-1.38.19-1.51-.08-.13-.29-.21-.61-.37Z" />
+        </svg>
+      </a>
 
       {/* =========================================================
           ENROLLMENT MODAL
