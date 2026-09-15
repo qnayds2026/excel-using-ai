@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import logo from "./assets/QNAYDS_LOGO.png";
 import courseVideo from "./assets/Excel.mp4";
+import excelThumbnail from "../public/excel-thumbnail.webp";
 
 const EXCEL_COURSE_ID = 13;
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
@@ -186,11 +187,10 @@ function App() {
     setShowEnrollment(false);
   };
   const whatsappMessage =
-  "Hi QNAYDS Team, I would like to know more about the Excel Using AI Course.";
+    "Hi QNAYDS Team, I would like to know more about the Excel Using AI Course.";
 
-const whatsappUrl =
-  `https://api.whatsapp.com/send/?phone=919074871204&text=${encodeURIComponent(
-    whatsappMessage
+  const whatsappUrl = `https://api.whatsapp.com/send/?phone=919074871204&text=${encodeURIComponent(
+    whatsappMessage,
   )}&type=phone_number&app_absent=0`;
 
   if (showPaymentSuccess) {
@@ -252,135 +252,131 @@ const whatsappUrl =
     <div className="app min-h-screen bg-white text-slate-900 antialiased">
       {/* ================= NAVBAR ================= */}
       {/* ================= HERO ================= */}
-<main>
-<section
-  className="relative overflow-hidden bg-slate-50 pb-16 pt-12 sm:pb-24 sm:pt-16"
-  id="home"
->
-  {/* Background Grid */}
-  <div
-    className="pointer-events-none absolute inset-0"
-    style={gridBg}
-  />
+      <main>
+        <section
+          className="relative overflow-hidden bg-slate-50 pb-16 pt-12 sm:pb-24 sm:pt-16"
+          id="home"
+        >
+          {/* Background Grid */}
+          <div
+            className="pointer-events-none absolute inset-0"
+            style={gridBg}
+          />
 
-  {/* Background Glow */}
-  <div className="pointer-events-none absolute -top-24 left-1/2 h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-blue-400/20 blur-3xl" />
+          {/* Background Glow */}
+          <div className="pointer-events-none absolute -top-24 left-1/2 h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-blue-400/20 blur-3xl" />
 
-  <div className="relative mx-auto flex max-w-5xl flex-col items-center px-4 text-center sm:px-6">
+          <div className="relative mx-auto flex max-w-5xl flex-col items-center px-4 text-center sm:px-6">
+            {/* Logo */}
+            <img
+              src={logo}
+              alt="QNAYDS"
+              className="mb-8 h-10 w-auto max-w-[140px] object-contain sm:h-12"
+            />
 
-    {/* Logo */}
-    <img
-      src={logo}
-      alt="QNAYDS"
-      className="mb-8 h-10 w-auto max-w-[140px] object-contain sm:h-12"
-    />
+            {/* Limited Offer */}
+            <div className="inline-flex flex-wrap items-center justify-center gap-3 rounded-full border border-orange-200 bg-orange-50 px-5 py-2.5 text-sm font-bold text-orange-700 shadow-sm">
+              <span>🔥 Limited Offer</span>
 
-    {/* Limited Offer */}
-    <div className="inline-flex flex-wrap items-center justify-center gap-3 rounded-full border border-orange-200 bg-orange-50 px-5 py-2.5 text-sm font-bold text-orange-700 shadow-sm">
-      <span>🔥 Limited Offer</span>
+              <span className="hidden h-5 w-px bg-orange-300 sm:block" />
 
-      <span className="hidden h-5 w-px bg-orange-300 sm:block" />
+              <span>Only {LIMITED_SEATS} seats available</span>
+            </div>
 
-      <span>Only {LIMITED_SEATS} seats available</span>
-    </div>
+            {/* Countdown */}
+            <div className="mt-4 flex items-center justify-center gap-3 rounded-2xl border border-blue-200 bg-white px-5 py-3 shadow-md">
+              <div className="flex items-center gap-2 text-sm font-semibold text-slate-700">
+                <span className="text-lg">⏳</span>
+                <span>Offer ends in</span>
+              </div>
 
-    {/* Countdown */}
-    <div className="mt-4 flex items-center justify-center gap-3 rounded-2xl border border-blue-200 bg-white px-5 py-3 shadow-md">
-      <div className="flex items-center gap-2 text-sm font-semibold text-slate-700">
-        <span className="text-lg">⏳</span>
-        <span>Offer ends in</span>
-      </div>
+              <div className="flex items-center gap-2 text-sm font-bold">
+                <span className="rounded-lg bg-slate-900 px-2.5 py-1.5 text-white">
+                  {String(timeLeft.hours).padStart(2, "0")}
+                </span>
 
-      <div className="flex items-center gap-2 text-sm font-bold">
-        <span className="rounded-lg bg-slate-900 px-2.5 py-1.5 text-white">
-          {String(timeLeft.hours).padStart(2, "0")}
-        </span>
+                <span className="text-slate-700">:</span>
 
-        <span className="text-slate-700">:</span>
+                <span className="rounded-lg bg-slate-900 px-2.5 py-1.5 text-white">
+                  {String(timeLeft.minutes).padStart(2, "0")}
+                </span>
 
-        <span className="rounded-lg bg-slate-900 px-2.5 py-1.5 text-white">
-          {String(timeLeft.minutes).padStart(2, "0")}
-        </span>
+                <span className="text-slate-700">:</span>
 
-        <span className="text-slate-700">:</span>
+                <span className="rounded-lg bg-slate-900 px-2.5 py-1.5 text-white">
+                  {String(timeLeft.seconds).padStart(2, "0")}
+                </span>
+              </div>
+            </div>
 
-        <span className="rounded-lg bg-slate-900 px-2.5 py-1.5 text-white">
-          {String(timeLeft.seconds).padStart(2, "0")}
-        </span>
-      </div>
-    </div>
+            {/* Tag */}
+            <div className={tag + " mt-6"}>
+              ✦ ജോലി നേടാൻ സഹായിക്കുന്ന പ്രായോഗിക Excel + AI പഠനം
+            </div>
 
-    {/* Tag */}
-    <div className={tag + " mt-6"}>
-      ✦ ജോലി നേടാൻ സഹായിക്കുന്ന പ്രായോഗിക Excel + AI പഠനം
-    </div>
+            {/* Main Heading */}
+            <h1 className="mt-6 max-w-3xl px-2 text-3xl font-extrabold leading-[1.18] tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+              <span className="block">Excel Using AI</span>
 
-    {/* Main Heading */}
-    <h1 className="mt-6 max-w-3xl px-2 text-3xl font-extrabold leading-[1.18] tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
-  <span className="block">Excel Using AI</span>
+              <span className="mt-1 block text-blue-600">
+                മാസ്റ്റർ ചെയ്യാൻ ആഗ്രഹമുണ്ടോ?
+              </span>
 
-  <span className="mt-1 block text-blue-600">
-    മാസ്റ്റർ ചെയ്യാൻ ആഗ്രഹമുണ്ടോ?
-  </span>
+              <span className="mt-1 block">വർക്ക് 10x സ്മാർട്ടാക്കണോ?</span>
+            </h1>
 
-  <span className="mt-1 block">
-    വർക്ക് 10x സ്മാർട്ടാക്കണോ?
-  </span>
-</h1>
+            {/* Description */}
+            <p className="mt-7 max-w-xl px-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+              {" "}
+              Hours എടുക്കുന്ന Excel വർക്കുകൾ Minutes-ൽ തീർക്കാം.
+              <br className="hidden sm:block" />
+              AI ഉപയോഗിച്ച് നിങ്ങളുടെ Daily Work സ്മാർട്ടാക്കൂ!
+            </p>
 
-    {/* Description */}
-      <p className="mt-7 max-w-xl px-4 text-base leading-relaxed text-slate-600 sm:text-lg">      Hours എടുക്കുന്ന Excel വർക്കുകൾ Minutes-ൽ തീർക്കാം.
-      <br className="hidden sm:block" />
-      AI ഉപയോഗിച്ച് നിങ്ങളുടെ Daily Work സ്മാർട്ടാക്കൂ!
-    </p>
+            {/* CTA Buttons */}
+            <div className="mt-8 flex w-full max-w-md flex-col items-center justify-center gap-3 sm:max-w-none sm:flex-row">
+              {/* Enroll */}
+              <button
+                type="button"
+                onClick={openEnrollment}
+                className="group inline-flex w-full items-center justify-center gap-3 rounded-full bg-blue-600 px-8 py-4 text-base font-extrabold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 hover:shadow-xl animate-[pulse_1.5s_ease-in-out_infinite] sm:w-auto"
+              >
+                Enroll Now
+                <span className="text-xl transition-transform duration-300 group-hover:translate-x-1">
+                  →
+                </span>
+              </button>
 
-    {/* CTA Buttons */}
-    <div className="mt-8 flex w-full max-w-md flex-col items-center justify-center gap-3 sm:max-w-none sm:flex-row">
-      {/* Enroll */}
-      <button
-        type="button"
-        onClick={openEnrollment}
-        className="group inline-flex w-full items-center justify-center gap-3 rounded-full bg-blue-600 px-8 py-4 text-base font-extrabold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 hover:shadow-xl animate-[pulse_1.5s_ease-in-out_infinite] sm:w-auto"
-      >
-        Enroll Now
+              {/* Learn More */}
+              <a
+                href="#learn"
+                className="inline-flex w-full items-center justify-center rounded-full border border-slate-300 bg-white px-8 py-4 text-base font-semibold text-slate-800 transition-all duration-300 hover:-translate-y-0.5 hover:border-blue-300 hover:bg-blue-50 sm:w-auto"
+              >
+                കൂടുതൽ അറിയാം
+              </a>
+            </div>
 
-        <span className="text-xl transition-transform duration-300 group-hover:translate-x-1">
-          →
-        </span>
-      </button>
+            {/* Benefits */}
+            <div className="mt-7 flex flex-wrap justify-center gap-x-7 gap-y-3 text-sm font-medium text-slate-600">
+              <span>
+                <span className="mr-2 text-emerald-500">✓</span>
+                പ്രായോഗിക പഠനം
+              </span>
 
-      {/* Learn More */}
-      <a
-        href="#learn"
-        className="inline-flex w-full items-center justify-center rounded-full border border-slate-300 bg-white px-8 py-4 text-base font-semibold text-slate-800 transition-all duration-300 hover:-translate-y-0.5 hover:border-blue-300 hover:bg-blue-50 sm:w-auto"
-      >
-        കൂടുതൽ അറിയാം
-      </a>
+              <span>
+                <span className="mr-2 text-emerald-500">✓</span>
+                Job-oriented
+              </span>
 
-    </div>
+              <span>
+                <span className="mr-2 text-emerald-500">✓</span>
+                AI ഉപയോഗിച്ച് Excel
+              </span>
+            </div>
+          </div>
+        </section>
 
-    {/* Benefits */}
-    <div className="mt-7 flex flex-wrap justify-center gap-x-7 gap-y-3 text-sm font-medium text-slate-600">
-      <span>
-        <span className="mr-2 text-emerald-500">✓</span>
-        പ്രായോഗിക പഠനം
-      </span>
-
-      <span>
-        <span className="mr-2 text-emerald-500">✓</span>
-        Job-oriented
-      </span>
-
-      <span>
-        <span className="mr-2 text-emerald-500">✓</span>
-        AI ഉപയോഗിച്ച് Excel
-      </span>
-    </div>
-
-  </div>
-</section>
-
-              {/* ================= VIDEO SECTION ================= */}
+        {/* ================= VIDEO SECTION ================= */}
 
         <section className="bg-white py-20 sm:py-28">
           <div className="mx-auto max-w-5xl px-4 text-center sm:px-6">
@@ -400,17 +396,18 @@ const whatsappUrl =
             </p>
 
             <div className="mt-12">
-              <div className="relative mx-auto max-w-3xl overflow-hidden rounded-3xl bg-black shadow-2xl">
-            <video
-              className="block w-full h-auto"
-              controls
-              playsInline
-              preload="metadata"
-            >
-              <source src={courseVideo} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>  
+              <div className="mx-auto w-fit max-w-full overflow-hidden rounded-3xl shadow-2xl">
+                <video
+                  className="block h-[500px] w-auto max-w-full rounded-3xl object-contain sm:h-[600px] md:h-[650px]"
+                  controls
+                  playsInline
+                  poster={excelThumbnail}
+                  preload="metadata"
+                >
+                  <source src={courseVideo} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
 
               <div className="mx-auto mt-8 flex max-w-3xl flex-wrap justify-center gap-x-8 gap-y-3 text-sm font-medium text-slate-600">
                 <div className="flex items-center gap-2">
@@ -464,32 +461,30 @@ const whatsappUrl =
             </div>
 
             <div className="mt-8 flex items-end justify-between border-t border-dashed border-slate-200 pt-6">
-  
-  {/* Regular Price */}
-  <div>
-    <span className="text-base font-bold uppercase tracking-wide text-slate-500">
-      REGULAR PRICE
-    </span>
+              {/* Regular Price */}
+              <div>
+                <span className="text-base font-bold uppercase tracking-wide text-slate-500">
+                  REGULAR PRICE
+                </span>
 
-    <div className="mt-1">
-       <del className="text-5xl font-extrabold text-slate-900 sm:text-6xl"> 
-        ₹5,000
-      </del>
-    </div>
-  </div>
+                <div className="mt-1">
+                  <del className="text-5xl font-extrabold text-slate-900 sm:text-6xl">
+                    ₹5,000
+                  </del>
+                </div>
+              </div>
 
-  {/* Today's Price */}
-  <div className="text-right">
-    <span className="text-base font-bold uppercase tracking-wide text-slate-400">
-      TODAY
-    </span>
+              {/* Today's Price */}
+              <div className="text-right">
+                <span className="text-base font-bold uppercase tracking-wide text-slate-400">
+                  TODAY
+                </span>
 
-    <strong className="mt-1 block text-4xl font-extrabold text-blue-600 sm:text-5xl">
-      ₹1,499
-    </strong>
-  </div>
-
-</div>
+                <strong className="mt-1 block text-4xl font-extrabold text-blue-600 sm:text-5xl">
+                  ₹1,499
+                </strong>
+              </div>
+            </div>
 
             <button
               type="button"
@@ -510,31 +505,26 @@ const whatsappUrl =
           </div>
         </section>
 
-       
         {/* ================= TRUST ================= */}
 
-<section className="bg-blue-900 py-10">
-  <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 px-4 text-center sm:flex-row sm:text-left">
-    
-    <div className="flex flex-col">
-      <span className="text-3xl font-extrabold text-white">
-        2,000+
-      </span>
+        <section className="bg-blue-900 py-10">
+          <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 px-4 text-center sm:flex-row sm:text-left">
+            <div className="flex flex-col">
+              <span className="text-3xl font-extrabold text-white">2,000+</span>
 
-      <span className="text-sm font-medium text-blue-100">
-        ടീമുകൾ Excel ഉപയോഗിക്കുന്ന മേഖലകൾ
-      </span>
-    </div>
+              <span className="text-sm font-medium text-blue-100">
+                ടീമുകൾ Excel ഉപയോഗിക്കുന്ന മേഖലകൾ
+              </span>
+            </div>
 
-    <div className="hidden h-10 w-px bg-blue-400 sm:block"></div>
+            <div className="hidden h-10 w-px bg-blue-400 sm:block"></div>
 
-    <p className="text-sm font-medium text-blue-50">
-      Office-ൽ ദിവസേന ഉപയോഗിക്കുന്ന spreadsheet skills കൂടുതൽ
-      കാര്യക്ഷമമായി പഠിക്കാം.
-    </p>
-
-  </div>
-</section>
+            <p className="text-sm font-medium text-blue-50">
+              Office-ൽ ദിവസേന ഉപയോഗിക്കുന്ന spreadsheet skills കൂടുതൽ
+              കാര്യക്ഷമമായി പഠിക്കാം.
+            </p>
+          </div>
+        </section>
         {/* ================= REVIEWS ================= */}
 
         <section className="bg-white py-20 sm:py-28" id="reviews">
@@ -573,6 +563,23 @@ const whatsappUrl =
                   initial: "R",
                   name: "Rahul P.",
                   text: "ChatGPT ഉപയോഗിച്ച് Excel formulas കണ്ടെത്താനും repetitive tasks എളുപ്പമാക്കാനും പഠിച്ചത് വളരെ interesting ആയിരുന്നു.",
+                },
+                {
+                  initial: "M",
+                  name: "Midhun P.",
+                  text: "Excel-ൽ basic knowledge ഉണ്ടായിരുന്നെങ്കിലും advanced reports എങ്ങനെ തയ്യാറാക്കണം എന്ന് അറിയില്ലായിരുന്നു. Practical examples വഴി കാര്യങ്ങൾ വളരെ എളുപ്പത്തിൽ മനസ്സിലാക്കാൻ കഴിഞ്ഞു.",
+                },
+
+                {
+                  initial: "N",
+                  name: "Nimisha K.",
+                  text: "AI ഉപയോഗിച്ച് Excel work കൂടുതൽ എളുപ്പമാക്കാൻ കഴിയുമെന്ന് ഈ course വഴി മനസ്സിലായി. Especially formulas, data analysis എന്നിവ പഠിച്ചത് വളരെ helpful ആയിരുന്നു.",
+                },
+
+                {
+                  initial: "V",
+                  name: "Vishnu R.",
+                  text: "Office-ൽ ദിവസവും ചെയ്യുന്ന Excel tasks കുറച്ച് സമയം കൊണ്ട് ചെയ്യാൻ കഴിയുന്ന രീതിയിലുള്ള practical skills ആണ് ഇവിടെ പഠിച്ചത്. Course വളരെ useful ആയി തോന്നി.",
                 },
               ].map((review) => (
                 <div
@@ -739,83 +746,6 @@ const whatsappUrl =
           </div>
         </section>
 
-        {/* ================= FEATURES ================= */}
-
-        <section className="bg-slate-50 py-20 sm:py-28" id="features">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6">
-            <div className="mx-auto max-w-2xl text-center">
-              <div className={tag}>നിങ്ങൾ പഠിക്കുന്നത്</div>
-
-              <h2 className={h2 + " mt-4"}>
-                Excel-നെ
-                <br />
-                <span className="text-blue-600">കൂടുതൽ ശക്തമാക്കാം.</span>
-              </h2>
-
-              <p className={lead}>
-                Excel + AI ഉപയോഗിച്ച് modern workplace-ന് ആവശ്യമായ skills
-                step-by-step ആയി പഠിക്കാം.
-              </p>
-            </div>
-
-            <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-              {features.map((feature) => (
-                <div
-                  key={feature.title}
-                  className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg"
-                >
-                  <div className="text-3xl">{feature.icon}</div>
-                  <h3 className="mt-4 text-base font-bold text-slate-900">
-                    {feature.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-500">
-                    {feature.text}
-                  </p>
-                  <span className="absolute right-5 top-5 text-slate-300 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-blue-500">
-                    ↗
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ================= SKILLS ================= */}
-
-        <section className="bg-white py-20 sm:py-28" id="learn">
-          <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-14 px-4 sm:px-6 lg:grid-cols-2">
-            <div>
-              <div className={tag}>Course Skills</div>
-
-              <h2 className={h2 + " mt-4"}>
-                ഒരു
-                <span className="text-blue-600"> complete Excel skillset.</span>
-              </h2>
-
-              <p className={lead}>
-                Basic മുതൽ advanced practical workflows വരെ പഠിക്കാൻ കഴിയുന്ന
-                രീതിയിലാണ് learning path.
-              </p>
-            </div>
-
-            <div className="divide-y divide-slate-100 rounded-2xl border border-slate-200 bg-white shadow-sm">
-              {skills.map((skill, index) => (
-                <div key={skill} className="flex items-center gap-4 px-5 py-4">
-                  <span className="font-mono text-xs font-semibold text-slate-400">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-
-                  <strong className="flex-1 text-sm font-semibold text-slate-800">
-                    {skill}
-                  </strong>
-
-                  <i className="not-italic text-emerald-600">✓</i>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* ================= COURSE STRUCTURE / MODULES ================= */}
 
         <section className="bg-slate-900 py-20 sm:py-28" id="modules">
@@ -948,7 +878,6 @@ const whatsappUrl =
                     ))}
                   </ul>
 
-
                   {mod.outcome && (
                     <div className="mt-5 border-t border-slate-700 pt-4 text-xs text-slate-400">
                       Outcome:{" "}
@@ -1001,58 +930,6 @@ const whatsappUrl =
                   <p className="mt-1 text-xs text-slate-500">{desc}</p>
                 </div>
               ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ================= OFFICE SKILLS ================= */}
-
-        <section className="bg-slate-50 py-20 sm:py-28">
-          <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-14 px-4 sm:px-6 lg:grid-cols-2">
-            <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-              <div className="flex items-center justify-between border-b border-slate-200 bg-slate-50 px-5 py-3 text-xs font-semibold text-slate-500">
-                <span>Today's Work</span>
-                <span className="text-blue-600">Excel + AI</span>
-              </div>
-
-              <div className="space-y-3 p-5">
-                {[
-                  "Sales Report തയ്യാറാക്കുക",
-                  "Monthly Data പരിശോധിക്കുക",
-                  "Dashboard Update ചെയ്യുക",
-                  "MIS Report തയ്യാറാക്കുക",
-                ].map((task) => (
-                  <div
-                    key={task}
-                    className="flex items-center gap-3 rounded-xl bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700"
-                  >
-                    <span className="text-emerald-600">✓</span>
-                    {task}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <div className={tag}>Real Office Skills</div>
-
-              <h2 className={h2 + " mt-4"}>
-                പഠിക്കുന്നത്
-                <span className="text-blue-600"> യഥാർത്ഥ ജോലിയിൽ </span>
-                ഉപയോഗിക്കാം.
-              </h2>
-
-              <p className={lead}>
-                Course-ൽ പഠിക്കുന്ന concepts practical office tasks-ലേക്ക്
-                connect ചെയ്യാൻ കഴിയുന്ന രീതിയിലാണ് learning experience.
-              </p>
-
-              <a
-                href="#projects"
-                className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-blue-600 hover:text-blue-700"
-              >
-                Projects കാണാം →
-              </a>
             </div>
           </div>
         </section>
@@ -1213,138 +1090,6 @@ const whatsappUrl =
           </div>
         </section>
 
-        {/* ================= INTERVIEW ================= */}
-
-        <section className="bg-slate-50 py-20 sm:py-28">
-          <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-14 px-4 sm:px-6 lg:grid-cols-2">
-            <div>
-              <div className={tag}>Interview Preparation</div>
-
-              <h2 className={h2 + " mt-4"}>
-                Skill പഠിക്കുന്നതിനൊപ്പം
-                <span className="text-blue-600"> Interview-നും തയ്യാറാകൂ.</span>
-              </h2>
-
-              <p className={lead}>
-                Excel-related interview questions, practical tasks, data
-                handling എന്നിവയെ നേരിടാൻ ആവശ്യമായ confidence വികസിപ്പിക്കാം.
-              </p>
-            </div>
-
-            <div className="space-y-3">
-              {[
-                "Excel Practical Questions",
-                "Formula-based Tasks",
-                "Data Analysis Tasks",
-                "Reporting Tasks",
-                "Workplace Scenarios",
-              ].map((item) => (
-                <div
-                  key={item}
-                  className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-5 py-3.5 text-sm font-semibold text-slate-700 shadow-sm"
-                >
-                  <span className="text-emerald-600">✓</span>
-                  {item}
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ================= WHY DIFFERENT ================= */}
-
-        <section className="bg-white py-20 sm:py-28">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6">
-            <div className="mx-auto max-w-2xl text-center">
-              <div className={tag}>എന്തുകൊണ്ട് ഈ Program?</div>
-
-              <h2 className={h2 + " mt-4"}>
-                പഠനം മാത്രമല്ല.
-                <br />
-                <span className="text-blue-600">പ്രായോഗിക Skill Building.</span>
-              </h2>
-            </div>
-
-            <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-              {[
-                [
-                  "പ്രായോഗിക സമീപനം",
-                  "Real-world Excel tasks-നോട് ബന്ധിപ്പിച്ചുള്ള പഠനം.",
-                ],
-                [
-                  "AI Integration",
-                  "Excel workflow-ൽ AI എങ്ങനെ ഉപയോഗിക്കാം എന്ന് പഠിക്കുക.",
-                ],
-                [
-                  "Projects",
-                  "പഠിച്ച skills practical projects വഴി ഉപയോഗിക്കുക.",
-                ],
-                [
-                  "Career Focus",
-                  "Job-related skills വികസിപ്പിക്കുന്നതിൽ ശ്രദ്ധ.",
-                ],
-              ].map(([title, text]) => (
-                <div
-                  key={title}
-                  className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
-                >
-                  <h3 className="text-base font-bold text-slate-900">
-                    {title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-500">
-                    {text}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ================= OUTCOMES ================= */}
-
-        <section className="bg-slate-50 py-20 sm:py-28">
-          <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-14 px-4 sm:px-6 lg:grid-cols-2">
-            <div>
-              <div className={tag}>Course Outcomes</div>
-
-              <h2 className={h2 + " mt-4"}>
-                Course കഴിഞ്ഞാൽ
-                <span className="text-blue-600">
-                  {" "}
-                  നിങ്ങൾക്ക് ചെയ്യാൻ കഴിയുന്നത്.
-                </span>
-              </h2>
-
-              <p className={lead}>
-                Excel ഉപയോഗിച്ച് കൂടുതൽ confidence-ോടെ data, reports,
-                dashboards, AI-assisted workflows എന്നിവ കൈകാര്യം ചെയ്യാൻ
-                കഴിയുന്ന രീതിയിലേക്ക് വളരുക.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-              {[
-                "Excel data ക്രമീകരിക്കുക",
-                "Formulas ഉപയോഗിക്കുക",
-                "Data വിശകലനം ചെയ്യുക",
-                "Reports തയ്യാറാക്കുക",
-                "Dashboards നിർമ്മിക്കുക",
-                "AI സഹായം ഉപയോഗിക്കുക",
-                "Repetitive work കുറയ്ക്കുക",
-                "Practical projects നിർമ്മിക്കുക",
-              ].map((item) => (
-                <div
-                  key={item}
-                  className="flex items-center gap-2.5 rounded-xl bg-white px-4 py-3 text-sm font-medium text-slate-700 shadow-sm"
-                >
-                  <span className="text-emerald-600">✓</span>
-                  {item}
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* ================= CERTIFICATE ================= */}
 
         <section className="bg-white py-20 sm:py-28">
@@ -1398,52 +1143,6 @@ const whatsappUrl =
                   വിദ്യാർത്ഥിയുടെ പേര്
                 </span>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ================= HOW IT WORKS ================= */}
-
-        <section className="bg-slate-50 py-20 sm:py-28">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <div className="mx-auto max-w-2xl text-center">
-              <div className={tag}>How the Program Works</div>
-
-              <h2 className={h2 + " mt-4"}>
-                പഠനം
-                <span className="text-blue-600"> എങ്ങനെ നടക്കും?</span>
-              </h2>
-            </div>
-
-            <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-              {[
-                ["01", "പഠിക്കുക", "Concepts ലളിതമായി മനസ്സിലാക്കുക."],
-                [
-                  "02",
-                  "Practice ചെയ്യുക",
-                  "Hands-on tasks ഉപയോഗിച്ച് പരിശീലിക്കുക.",
-                ],
-                [
-                  "03",
-                  "Project നിർമ്മിക്കുക",
-                  "പഠിച്ച skills ഉപയോഗിച്ച് project ചെയ്യുക.",
-                ],
-                [
-                  "04",
-                  "Career-ന് തയ്യാറാകുക",
-                  "Interview-നും workplace tasks-നും തയ്യാറാകുക.",
-                ],
-              ].map(([num, title, text]) => (
-                <div key={num}>
-                  <span className="text-sm font-bold text-blue-600">{num}</span>
-                  <h3 className="mt-2 text-base font-bold text-slate-900">
-                    {title}
-                  </h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-slate-500">
-                    {text}
-                  </p>
-                </div>
-              ))}
             </div>
           </div>
         </section>
@@ -1571,36 +1270,31 @@ const whatsappUrl =
                 <span>Excel + AI Program</span>
                 <span className="text-emerald-600">🔒 Secure</span>
               </div>
-                  <div className="mt-8 border-t border-dashed border-slate-200 pt-6">
+              <div className="mt-8 border-t border-dashed border-slate-200 pt-6">
+                <div className="flex items-end justify-between">
+                  {/* Regular Price */}
+                  <div>
+                    <div className="text-sm font-bold uppercase tracking-wide text-slate-500">
+                      REGULAR PRICE
+                    </div>
 
-  <div className="flex items-end justify-between">
+                    <div className="mt-2 text-4xl font-extrabold text-slate-900 sm:text-5xl">
+                      <del>₹5,000</del>
+                    </div>
+                  </div>
 
-    {/* Regular Price */}
-    <div>
-      <div className="text-sm font-bold uppercase tracking-wide text-slate-500">
-        REGULAR PRICE
-      </div>
+                  {/* Today's Price */}
+                  <div className="text-right">
+                    <div className="text-sm font-bold uppercase tracking-wide text-slate-500">
+                      TODAY
+                    </div>
 
-      <div className="mt-2 text-4xl font-extrabold text-slate-900 sm:text-5xl">
-        <del>₹5,000</del>
-      </div>
-    </div>
-
-    {/* Today's Price */}
-    <div className="text-right">
-      <div className="text-sm font-bold uppercase tracking-wide text-slate-500">
-        TODAY
-      </div>
-
-      <div className="mt-2 text-4xl font-extrabold text-blue-600 sm:text-5xl">
-        ₹1,499
-      </div>
-    </div>
-
-  </div>
-
-</div>
-              
+                    <div className="mt-2 text-4xl font-extrabold text-blue-600 sm:text-5xl">
+                      ₹1,499
+                    </div>
+                  </div>
+                </div>
+              </div>
 
               <button
                 type="button"
@@ -1663,9 +1357,9 @@ const whatsappUrl =
 
       {/* ================= STICKY CTA ================= */}
 
-{showFloatingCta && (
-  <div
-    className="
+      {showFloatingCta && (
+        <div
+          className="
       fixed inset-x-3 bottom-3 z-[9998]
       rounded-xl border border-blue-200
       bg-white/95
@@ -1675,28 +1369,26 @@ const whatsappUrl =
       sm:inset-x-4 sm:bottom-4
       sm:rounded-2xl sm:px-5 sm:py-3
     "
-  >
-    <div className="flex flex-col gap-2.5 sm:flex-row sm:items-center sm:justify-between sm:gap-5">
+        >
+          <div className="flex flex-col gap-2.5 sm:flex-row sm:items-center sm:justify-between sm:gap-5">
+            {/* ================= PRICE + ENROLL ================= */}
+            <div className="flex items-center justify-between gap-3 sm:order-2 sm:w-auto sm:justify-end sm:gap-5">
+              {/* PRICE */}
+              <div className="flex items-center gap-1.5 sm:flex-col sm:items-end sm:gap-0">
+                <del className="text-base font-bold text-blackS sm:text-lg">
+                  ₹5,000
+                </del>
 
-      {/* ================= PRICE + ENROLL ================= */}
-      <div className="flex items-center justify-between gap-3 sm:order-2 sm:w-auto sm:justify-end sm:gap-5">
+                <strong className="text-lg font-extrabold text-blue-600 sm:text-2xl">
+                  ₹1,499
+                </strong>
+              </div>
 
-        {/* PRICE */}
-        <div className="flex items-center gap-1.5 sm:flex-col sm:items-end sm:gap-0">
-          <del className="text-base font-bold text-blackS sm:text-lg">
-            ₹5,000
-          </del>
-
-          <strong className="text-lg font-extrabold text-blue-600 sm:text-2xl">
-            ₹1,499
-          </strong>
-        </div>
-
-        {/* ENROLL BUTTON */}
-        <button
-          type="button"
-          onClick={openEnrollment}
-          className="
+              {/* ENROLL BUTTON */}
+              <button
+                type="button"
+                onClick={openEnrollment}
+                className="
             inline-flex shrink-0
             items-center justify-center
             gap-1.5
@@ -1711,76 +1403,67 @@ const whatsappUrl =
             sm:px-6 sm:py-3
             sm:text-sm
           "
-        >
-          Enroll Now
-          <span className="text-sm sm:text-lg">→</span>
-        </button>
+              >
+                Enroll Now
+                <span className="text-sm sm:text-lg">→</span>
+              </button>
+            </div>
 
-      </div>
+            {/* ================= OFFER + COUNTDOWN ================= */}
+            <div className="flex min-w-0 items-center justify-between gap-2 sm:order-1 sm:justify-start sm:gap-5">
+              {/* LIMITED OFFER */}
+              <strong className="whitespace-nowrap text-[10px] font-bold text-slate-900 sm:text-sm">
+                Limited offer • {LIMITED_SEATS} seats left
+              </strong>
 
-      {/* ================= OFFER + COUNTDOWN ================= */}
-      <div className="flex min-w-0 items-center justify-between gap-2 sm:order-1 sm:justify-start sm:gap-5">
+              {/* COUNTDOWN */}
+              <div className="flex shrink-0 items-center gap-1">
+                <span className="text-sm sm:text-lg">⏳</span>
 
-        {/* LIMITED OFFER */}
-        <strong className="whitespace-nowrap text-[10px] font-bold text-slate-900 sm:text-sm">
-          Limited offer • {LIMITED_SEATS} seats left
-        </strong>
+                <span className="whitespace-nowrap text-[10px] font-semibold text-slate-600 sm:text-xs">
+                  Offer ends in
+                </span>
 
-        {/* COUNTDOWN */}
-        <div className="flex shrink-0 items-center gap-1">
-          <span className="text-sm sm:text-lg">⏳</span>
+                <span className="rounded-md bg-slate-900 px-1.5 py-1 text-[10px] font-bold text-white sm:px-2.5 sm:py-1.5 sm:text-xs">
+                  {String(timeLeft.hours).padStart(2, "0")}
+                </span>
 
-          <span className="whitespace-nowrap text-[10px] font-semibold text-slate-600 sm:text-xs">
-            Offer ends in
-          </span>
+                <span className="text-[10px] font-bold text-slate-500">:</span>
 
-          <span className="rounded-md bg-slate-900 px-1.5 py-1 text-[10px] font-bold text-white sm:px-2.5 sm:py-1.5 sm:text-xs">
-            {String(timeLeft.hours).padStart(2, "0")}
-          </span>
+                <span className="rounded-md bg-slate-900 px-1.5 py-1 text-[10px] font-bold text-white sm:px-2.5 sm:py-1.5 sm:text-xs">
+                  {String(timeLeft.minutes).padStart(2, "0")}
+                </span>
 
-          <span className="text-[10px] font-bold text-slate-500">
-            :
-          </span>
+                <span className="text-[10px] font-bold text-slate-500">:</span>
 
-          <span className="rounded-md bg-slate-900 px-1.5 py-1 text-[10px] font-bold text-white sm:px-2.5 sm:py-1.5 sm:text-xs">
-            {String(timeLeft.minutes).padStart(2, "0")}
-          </span>
-
-          <span className="text-[10px] font-bold text-slate-500">
-            :
-          </span>
-
-          <span className="rounded-md bg-slate-900 px-1.5 py-1 text-[10px] font-bold text-white sm:px-2.5 sm:py-1.5 sm:text-xs">
-            {String(timeLeft.seconds).padStart(2, "0")}
-          </span>
+                <span className="rounded-md bg-slate-900 px-1.5 py-1 text-[10px] font-bold text-white sm:px-2.5 sm:py-1.5 sm:text-xs">
+                  {String(timeLeft.seconds).padStart(2, "0")}
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
-
-      </div>
-    </div>
-  </div>
-)}
+      )}
       {/* ================= WHATSAPP FLOATING ================= */}
 
+      {/* WHATSAPP FLOATING BUTTON */}
 
-
-{/* WHATSAPP FLOATING BUTTON */}
-
-<a
-  href={whatsappUrl}
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="Contact QNAYDS on WhatsApp"
-  className="fixed bottom-[110px] right-5 z-[9996] flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-xl transition-all duration-300 hover:scale-105 sm:right-6"
->
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 32 32"
-    className="h-8 w-8 fill-current"
-    aria-hidden="true"
-  >
-    <path d="M16 3C8.82 3 3 8.82 3 16c0 2.29.59 4.44 1.7 6.3L3 29l6.9-1.65A12.94 12.94 0 0 0 16 29c7.18 0 13-5.82 13-13S23.18 3 16 3Zm0 23.7c-2.08 0-4.11-.56-5.88-1.62l-.42-.25-4.1.98.98-4-.27-.43A10.67 10.67 0 1 1 16 26.7Zm5.86-7.98c-.32-.16-1.89-.93-2.18-1.04-.29-.11-.5-.16-.71.16-.21.32-.81 1.04-.99 1.25-.18.21-.36.24-.68.08-.32-.16-1.35-.5-2.58-1.59-.95-.85-1.59-1.9-1.77-2.22-.18-.32-.02-.49.14-.65.14-.14.32-.36.47-.54.16-.18.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.71-1.71-.97-2.34-.26-.62-.52-.54-.71-.55h-.61c-.21 0-.55.08-.84.4-.29.32-1.1 1.08-1.1 2.63s1.13 3.05 1.29 3.26c.16.21 2.22 3.39 5.38 4.76.75.32 1.34.51 1.8.65.76.24 1.45.21 2 .13.61-.09 1.89-.77 2.16-1.51.27-.74.27-1.38.19-1.51-.08-.13-.29-.21-.61-.37Z" />
-  </svg>
-</a>
+      <a
+        href={whatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Contact QNAYDS on WhatsApp"
+        className="fixed bottom-[110px] right-5 z-[9996] flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-xl transition-all duration-300 hover:scale-105 sm:right-6"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 32 32"
+          className="h-8 w-8 fill-current"
+          aria-hidden="true"
+        >
+          <path d="M16 3C8.82 3 3 8.82 3 16c0 2.29.59 4.44 1.7 6.3L3 29l6.9-1.65A12.94 12.94 0 0 0 16 29c7.18 0 13-5.82 13-13S23.18 3 16 3Zm0 23.7c-2.08 0-4.11-.56-5.88-1.62l-.42-.25-4.1.98.98-4-.27-.43A10.67 10.67 0 1 1 16 26.7Zm5.86-7.98c-.32-.16-1.89-.93-2.18-1.04-.29-.11-.5-.16-.71.16-.21.32-.81 1.04-.99 1.25-.18.21-.36.24-.68.08-.32-.16-1.35-.5-2.58-1.59-.95-.85-1.59-1.9-1.77-2.22-.18-.32-.02-.49.14-.65.14-.14.32-.36.47-.54.16-.18.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.71-1.71-.97-2.34-.26-.62-.52-.54-.71-.55h-.61c-.21 0-.55.08-.84.4-.29.32-1.1 1.08-1.1 2.63s1.13 3.05 1.29 3.26c.16.21 2.22 3.39 5.38 4.76.75.32 1.34.51 1.8.65.76.24 1.45.21 2 .13.61-.09 1.89-.77 2.16-1.51.27-.74.27-1.38.19-1.51-.08-.13-.29-.21-.61-.37Z" />
+        </svg>
+      </a>
 
       {/* =========================================================
           ENROLLMENT MODAL
