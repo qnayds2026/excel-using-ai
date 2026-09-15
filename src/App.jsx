@@ -137,7 +137,7 @@ const h2 =
   "text-3xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-4xl";
 const lead = "mt-4 text-base leading-relaxed text-slate-600 sm:text-lg";
 const ctaPrimary =
-  "group inline-flex items-center justify-center gap-2 rounded-full bg-blue-600 px-7 py-3.5 text-base font-bold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-xl";
+  "group inline-flex items-center justify-center gap-2 rounded-full bg-blue-600 px-7 py-3.5 text-base font-bold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-xl animate-pulse";
 const LIMITED_SEATS = 20;
 const OFFER_END_TIME = Date.now() + 1000 * 60 * 60 * 18 + 1000 * 60 * 10;
 
@@ -210,7 +210,7 @@ const whatsappUrl =
           </p>
 
           <div className="mt-6 flex items-start gap-3 rounded-2xl border border-blue-100 bg-blue-50 p-4 text-left">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-blue-600 text-white">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-blue-900 text-white">
               ✉
             </div>
 
@@ -251,101 +251,136 @@ const whatsappUrl =
   return (
     <div className="app min-h-screen bg-white text-slate-900 antialiased">
       {/* ================= NAVBAR ================= */}
-
       {/* ================= HERO ================= */}
+<main>
+<section
+  className="relative overflow-hidden bg-slate-50 pb-16 pt-12 sm:pb-24 sm:pt-16"
+  id="home"
+>
+  {/* Background Grid */}
+  <div
+    className="pointer-events-none absolute inset-0"
+    style={gridBg}
+  />
 
-      <main>
-        <section
-          className="relative overflow-hidden bg-slate-50 pb-20 pt-16 sm:pb-28 sm:pt-20"
-          id="home"
-        >
-          <div
-            className="pointer-events-none absolute inset-0"
-            style={gridBg}
-          ></div>
-          <div className="pointer-events-none absolute -top-24 left-1/2 h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-blue-400/20 blur-3xl"></div>
+  {/* Background Glow */}
+  <div className="pointer-events-none absolute -top-24 left-1/2 h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-blue-400/20 blur-3xl" />
 
-          <div className="relative mx-auto flex max-w-3xl flex-col items-center px-4 text-center sm:px-6">
-            <img
-              src={logo}
-              alt="QNAYDS"
-              className="mb-8 h-10 w-auto max-w-[140px] object-contain sm:h-12"
-            />
+  <div className="relative mx-auto flex max-w-5xl flex-col items-center px-4 text-center sm:px-6">
 
-            <div className="mt-2 flex flex-wrap items-center justify-center gap-3 rounded-full border border-orange-200 bg-orange-50 px-4 py-2 text-xs font-bold text-orange-700 sm:text-sm">
-              <span>🔥 Limited Offer</span>
-              <span className="hidden h-4 w-px bg-orange-300 sm:block"></span>
-              <span>Only {LIMITED_SEATS} seats available</span>
-            </div>
+    {/* Logo */}
+    <img
+      src={logo}
+      alt="QNAYDS"
+      className="mb-8 h-10 w-auto max-w-[140px] object-contain sm:h-12"
+    />
 
-            <div className="mt-4 flex flex-wrap items-center justify-center gap-3 rounded-2xl border border-blue-200 bg-white/80 px-4 py-3 shadow-sm backdrop-blur-sm">
-              <div className="flex items-center gap-2 text-sm font-semibold text-slate-700">
-                <span className="text-blue-600">⏳</span>
-                Offer ends in
-              </div>
+    {/* Limited Offer */}
+    <div className="inline-flex flex-wrap items-center justify-center gap-3 rounded-full border border-orange-200 bg-orange-50 px-5 py-2.5 text-sm font-bold text-orange-700 shadow-sm">
+      <span>🔥 Limited Offer</span>
 
-              <div className="flex items-center gap-2 text-sm font-bold text-slate-900">
-                <span className="rounded-lg bg-slate-900 px-2 py-1 text-white">
-                  {String(timeLeft.hours).padStart(2, "0")}
-                </span>
-                <span>:</span>
-                <span className="rounded-lg bg-slate-900 px-2 py-1 text-white">
-                  {String(timeLeft.minutes).padStart(2, "0")}
-                </span>
-                <span>:</span>
-                <span className="rounded-lg bg-slate-900 px-2 py-1 text-white">
-                  {String(timeLeft.seconds).padStart(2, "0")}
-                </span>
-              </div>
-            </div>
+      <span className="hidden h-5 w-px bg-orange-300 sm:block" />
 
-            <div className={tag + " mt-6"}>
-              ✦ ജോലി നേടാൻ സഹായിക്കുന്ന പ്രായോഗിക Excel + AI പഠനം
-            </div>
+      <span>Only {LIMITED_SEATS} seats available</span>
+    </div>
 
-            <h1 className="mt-5 text-4xl font-extrabold leading-[1.1] tracking-tight text-slate-900 sm:text-5xl lg:text-[3.25rem]">
-              Excel + AI
-              <br />
-              <span className="text-blue-600">നിങ്ങളുടെ Career</span>
-              <br />
-              അടുത്ത ഘട്ടത്തിലേക്ക്.
-            </h1>
+    {/* Countdown */}
+    <div className="mt-4 flex items-center justify-center gap-3 rounded-2xl border border-blue-200 bg-white px-5 py-3 shadow-md">
+      <div className="flex items-center gap-2 text-sm font-semibold text-slate-700">
+        <span className="text-lg">⏳</span>
+        <span>Offer ends in</span>
+      </div>
 
-            <p className="mt-5 max-w-xl text-lg leading-relaxed text-slate-600">
-              Excel വെറും ഒരു spreadsheet skill ആയി മാത്രം പഠിക്കേണ്ടതില്ല.
-              Data, Reports, Dashboards, AI, Automation എന്നിവ പ്രായോഗികമായി
-              പഠിച്ച് ജോലി ചെയ്യാൻ തയ്യാറാകൂ.
-            </p>
+      <div className="flex items-center gap-2 text-sm font-bold">
+        <span className="rounded-lg bg-slate-900 px-2.5 py-1.5 text-white">
+          {String(timeLeft.hours).padStart(2, "0")}
+        </span>
 
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-              <button
-                type="button"
-                onClick={openEnrollment}
-                className={ctaPrimary}
-              >
-                Enroll Now
-                <span className="text-xl transition-transform duration-300 group-hover:translate-x-1">
-                  →
-                </span>
-              </button>
+        <span className="text-slate-700">:</span>
 
-              <a
-                href="#learn"
-                className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-7 py-3.5 text-base font-semibold text-slate-800 transition-all duration-300 hover:border-slate-400 hover:bg-slate-50"
-              >
-                കൂടുതൽ അറിയാം
-              </a>
-            </div>
+        <span className="rounded-lg bg-slate-900 px-2.5 py-1.5 text-white">
+          {String(timeLeft.minutes).padStart(2, "0")}
+        </span>
 
-            <div className="mt-7 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-medium text-slate-600">
-              <span>✓ പ്രായോഗിക പഠനം</span>
-              <span>✓ Job-oriented</span>
-              <span>✓ AI ഉപയോഗിച്ച് Excel</span>
-            </div>
-          </div>
-        </section>
+        <span className="text-slate-700">:</span>
 
-        {/* ================= VIDEO SECTION ================= */}
+        <span className="rounded-lg bg-slate-900 px-2.5 py-1.5 text-white">
+          {String(timeLeft.seconds).padStart(2, "0")}
+        </span>
+      </div>
+    </div>
+
+    {/* Tag */}
+    <div className={tag + " mt-6"}>
+      ✦ ജോലി നേടാൻ സഹായിക്കുന്ന പ്രായോഗിക Excel + AI പഠനം
+    </div>
+
+    {/* Main Heading */}
+    <h1 className="mt-6 max-w-3xl px-2 text-3xl font-extrabold leading-[1.18] tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+  <span className="block">Excel Using AI</span>
+
+  <span className="mt-1 block text-blue-600">
+    മാസ്റ്റർ ചെയ്യാൻ ആഗ്രഹമുണ്ടോ?
+  </span>
+
+  <span className="mt-1 block">
+    വർക്ക് 10x സ്മാർട്ടാക്കണോ?
+  </span>
+</h1>
+
+    {/* Description */}
+      <p className="mt-7 max-w-xl px-4 text-base leading-relaxed text-slate-600 sm:text-lg">      Hours എടുക്കുന്ന Excel വർക്കുകൾ Minutes-ൽ തീർക്കാം.
+      <br className="hidden sm:block" />
+      AI ഉപയോഗിച്ച് നിങ്ങളുടെ Daily Work സ്മാർട്ടാക്കൂ!
+    </p>
+
+    {/* CTA Buttons */}
+    <div className="mt-8 flex w-full max-w-md flex-col items-center justify-center gap-3 sm:max-w-none sm:flex-row">
+      {/* Enroll */}
+      <button
+        type="button"
+        onClick={openEnrollment}
+        className="group inline-flex w-full items-center justify-center gap-3 rounded-full bg-blue-600 px-8 py-4 text-base font-extrabold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 hover:shadow-xl animate-[pulse_1.5s_ease-in-out_infinite] sm:w-auto"
+      >
+        Enroll Now
+
+        <span className="text-xl transition-transform duration-300 group-hover:translate-x-1">
+          →
+        </span>
+      </button>
+
+      {/* Learn More */}
+      <a
+        href="#learn"
+        className="inline-flex w-full items-center justify-center rounded-full border border-slate-300 bg-white px-8 py-4 text-base font-semibold text-slate-800 transition-all duration-300 hover:-translate-y-0.5 hover:border-blue-300 hover:bg-blue-50 sm:w-auto"
+      >
+        കൂടുതൽ അറിയാം
+      </a>
+
+    </div>
+
+    {/* Benefits */}
+    <div className="mt-7 flex flex-wrap justify-center gap-x-7 gap-y-3 text-sm font-medium text-slate-600">
+      <span>
+        <span className="mr-2 text-emerald-500">✓</span>
+        പ്രായോഗിക പഠനം
+      </span>
+
+      <span>
+        <span className="mr-2 text-emerald-500">✓</span>
+        Job-oriented
+      </span>
+
+      <span>
+        <span className="mr-2 text-emerald-500">✓</span>
+        AI ഉപയോഗിച്ച് Excel
+      </span>
+    </div>
+
+  </div>
+</section>
+
+              {/* ================= VIDEO SECTION ================= */}
 
         <section className="bg-white py-20 sm:py-28">
           <div className="mx-auto max-w-5xl px-4 text-center sm:px-6">
@@ -429,24 +464,37 @@ const whatsappUrl =
             </div>
 
             <div className="mt-8 flex items-end justify-between border-t border-dashed border-slate-200 pt-6">
-              <div>
-                <span className="text-xs font-bold uppercase tracking-wide text-slate-400">
-                  TODAY
-                </span>
-                <div className="mt-1 text-sm text-slate-400">
-                  REGULAR PRICE <del>₹5,000</del>
-                </div>
-              </div>
+  
+  {/* Regular Price */}
+  <div>
+    <span className="text-base font-bold uppercase tracking-wide text-slate-500">
+      REGULAR PRICE
+    </span>
 
-              <strong className="text-4xl font-extrabold text-blue-600">
-                ₹1,499
-              </strong>
-            </div>
+    <div className="mt-1">
+       <del className="text-5xl font-extrabold text-slate-900 sm:text-6xl"> 
+        ₹5,000
+      </del>
+    </div>
+  </div>
+
+  {/* Today's Price */}
+  <div className="text-right">
+    <span className="text-base font-bold uppercase tracking-wide text-slate-400">
+      TODAY
+    </span>
+
+    <strong className="mt-1 block text-4xl font-extrabold text-blue-600 sm:text-5xl">
+      ₹1,499
+    </strong>
+  </div>
+
+</div>
 
             <button
               type="button"
               onClick={openEnrollment}
-              className="mt-6 group inline-flex w-full items-center justify-between gap-4 rounded-full bg-blue-600 px-6 py-4 text-left text-base font-extrabold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-xl"
+              className="mt-6 group inline-flex w-full items-center justify-between gap-4 rounded-full bg-blue-600 px-6 py-4 text-left text-base font-extrabold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-xl animate-pulse"
             >
               <span>START LEARNING EXCEL + AI TODAY</span>
               <span className="text-2xl transition-transform duration-300 group-hover:translate-x-1">
@@ -462,26 +510,31 @@ const whatsappUrl =
           </div>
         </section>
 
+       
         {/* ================= TRUST ================= */}
 
-        <section className="bg-blue-600 py-10">
-          <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 px-4 text-center sm:flex-row sm:text-left">
-            <div className="flex flex-col">
-              <span className="text-3xl font-extrabold text-white">2,000+</span>
-              <span className="text-sm font-medium text-blue-100">
-                ടീമുകൾ Excel ഉപയോഗിക്കുന്ന മേഖലകൾ
-              </span>
-            </div>
+<section className="bg-blue-900 py-10">
+  <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 px-4 text-center sm:flex-row sm:text-left">
+    
+    <div className="flex flex-col">
+      <span className="text-3xl font-extrabold text-white">
+        2,000+
+      </span>
 
-            <div className="hidden h-10 w-px bg-blue-400 sm:block"></div>
+      <span className="text-sm font-medium text-blue-100">
+        ടീമുകൾ Excel ഉപയോഗിക്കുന്ന മേഖലകൾ
+      </span>
+    </div>
 
-            <p className="text-sm font-medium text-blue-50">
-              Office-ൽ ദിവസേന ഉപയോഗിക്കുന്ന spreadsheet skills കൂടുതൽ
-              കാര്യക്ഷമമായി പഠിക്കാം.
-            </p>
-          </div>
-        </section>
+    <div className="hidden h-10 w-px bg-blue-400 sm:block"></div>
 
+    <p className="text-sm font-medium text-blue-50">
+      Office-ൽ ദിവസേന ഉപയോഗിക്കുന്ന spreadsheet skills കൂടുതൽ
+      കാര്യക്ഷമമായി പഠിക്കാം.
+    </p>
+
+  </div>
+</section>
         {/* ================= REVIEWS ================= */}
 
         <section className="bg-white py-20 sm:py-28" id="reviews">
@@ -895,6 +948,7 @@ const whatsappUrl =
                     ))}
                   </ul>
 
+
                   {mod.outcome && (
                     <div className="mt-5 border-t border-slate-700 pt-4 text-xs text-slate-400">
                       Outcome:{" "}
@@ -1107,7 +1161,7 @@ const whatsappUrl =
 
             <button
               type="button"
-              className="group mt-2 inline-flex items-center gap-3 rounded-full bg-white px-6 py-4 text-base font-extrabold text-blue-600 shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl sm:px-8"
+              className="group mt-2 inline-flex items-center gap-3 rounded-full bg-white px-6 py-4 text-base font-extrabold text-blue-600 shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl sm:px-8 animate-[pulse_0.8s_ease-in-out_infinite]"
               onClick={openEnrollment}
             >
               <span>ENROLL NOW — ₹1,499</span>
@@ -1517,15 +1571,36 @@ const whatsappUrl =
                 <span>Excel + AI Program</span>
                 <span className="text-emerald-600">🔒 Secure</span>
               </div>
+                  <div className="mt-8 border-t border-dashed border-slate-200 pt-6">
 
-              <div className="mt-6 border-t border-dashed border-slate-200 pt-6">
-                <small className="text-xs font-semibold uppercase tracking-wide text-slate-400">
-                  Program Access
-                </small>
-                <strong className="mt-1 block text-3xl font-extrabold text-blue-600">
-                  ₹1,499
-                </strong>
-              </div>
+  <div className="flex items-end justify-between">
+
+    {/* Regular Price */}
+    <div>
+      <div className="text-sm font-bold uppercase tracking-wide text-slate-500">
+        REGULAR PRICE
+      </div>
+
+      <div className="mt-2 text-4xl font-extrabold text-slate-900 sm:text-5xl">
+        <del>₹5,000</del>
+      </div>
+    </div>
+
+    {/* Today's Price */}
+    <div className="text-right">
+      <div className="text-sm font-bold uppercase tracking-wide text-slate-500">
+        TODAY
+      </div>
+
+      <div className="mt-2 text-4xl font-extrabold text-blue-600 sm:text-5xl">
+        ₹1,499
+      </div>
+    </div>
+
+  </div>
+
+</div>
+              
 
               <button
                 type="button"
@@ -1588,29 +1663,102 @@ const whatsappUrl =
 
       {/* ================= STICKY CTA ================= */}
 
-      {showFloatingCta && (
-        <div className="fixed inset-x-4 bottom-4 z-[9998] rounded-2xl border border-blue-200 bg-white/95 px-4 py-3 shadow-[0_-4px_20px_rgba(0,0,0,0.08)] backdrop-blur-md">
-          <div className="flex items-center justify-between gap-3">
-            <div className="flex flex-col leading-tight">
-              <strong className="text-xs font-bold text-slate-900">
-                Limited offer • {LIMITED_SEATS} seats left
-              </strong>
-              <span className="text-[11px] text-slate-500">
-                Offer ends soon
-              </span>
-            </div>
+{showFloatingCta && (
+  <div
+    className="
+      fixed inset-x-3 bottom-3 z-[9998]
+      rounded-xl border border-blue-200
+      bg-white/95
+      px-3 py-2.5
+      shadow-[0_-3px_15px_rgba(0,0,0,0.08)]
+      backdrop-blur-md
+      sm:inset-x-4 sm:bottom-4
+      sm:rounded-2xl sm:px-5 sm:py-3
+    "
+  >
+    <div className="flex flex-col gap-2.5 sm:flex-row sm:items-center sm:justify-between sm:gap-5">
 
-            <button
-              type="button"
-              onClick={openEnrollment}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-blue-600 px-4 py-2.5 text-xs font-bold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:bg-blue-700"
-            >
-              Enroll Now
-              <span className="text-base">→</span>
-            </button>
-          </div>
+      {/* ================= PRICE + ENROLL ================= */}
+      <div className="flex items-center justify-between gap-3 sm:order-2 sm:w-auto sm:justify-end sm:gap-5">
+
+        {/* PRICE */}
+        <div className="flex items-center gap-1.5 sm:flex-col sm:items-end sm:gap-0">
+          <del className="text-base font-bold text-blackS sm:text-lg">
+            ₹5,000
+          </del>
+
+          <strong className="text-lg font-extrabold text-blue-600 sm:text-2xl">
+            ₹1,499
+          </strong>
         </div>
-      )}
+
+        {/* ENROLL BUTTON */}
+        <button
+          type="button"
+          onClick={openEnrollment}
+          className="
+            inline-flex shrink-0
+            items-center justify-center
+            gap-1.5
+            rounded-full
+            bg-blue-600
+            px-4 py-2.5
+            text-[11px] font-extrabold text-white
+            shadow-md shadow-blue-500/25
+            transition-all duration-300
+            hover:bg-blue-700
+            animate-[pulse_1s_ease-in-out_infinite]
+            sm:px-6 sm:py-3
+            sm:text-sm
+          "
+        >
+          Enroll Now
+          <span className="text-sm sm:text-lg">→</span>
+        </button>
+
+      </div>
+
+      {/* ================= OFFER + COUNTDOWN ================= */}
+      <div className="flex min-w-0 items-center justify-between gap-2 sm:order-1 sm:justify-start sm:gap-5">
+
+        {/* LIMITED OFFER */}
+        <strong className="whitespace-nowrap text-[10px] font-bold text-slate-900 sm:text-sm">
+          Limited offer • {LIMITED_SEATS} seats left
+        </strong>
+
+        {/* COUNTDOWN */}
+        <div className="flex shrink-0 items-center gap-1">
+          <span className="text-sm sm:text-lg">⏳</span>
+
+          <span className="whitespace-nowrap text-[10px] font-semibold text-slate-600 sm:text-xs">
+            Offer ends in
+          </span>
+
+          <span className="rounded-md bg-slate-900 px-1.5 py-1 text-[10px] font-bold text-white sm:px-2.5 sm:py-1.5 sm:text-xs">
+            {String(timeLeft.hours).padStart(2, "0")}
+          </span>
+
+          <span className="text-[10px] font-bold text-slate-500">
+            :
+          </span>
+
+          <span className="rounded-md bg-slate-900 px-1.5 py-1 text-[10px] font-bold text-white sm:px-2.5 sm:py-1.5 sm:text-xs">
+            {String(timeLeft.minutes).padStart(2, "0")}
+          </span>
+
+          <span className="text-[10px] font-bold text-slate-500">
+            :
+          </span>
+
+          <span className="rounded-md bg-slate-900 px-1.5 py-1 text-[10px] font-bold text-white sm:px-2.5 sm:py-1.5 sm:text-xs">
+            {String(timeLeft.seconds).padStart(2, "0")}
+          </span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+)}
       {/* ================= WHATSAPP FLOATING ================= */}
 
 
