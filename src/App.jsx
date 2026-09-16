@@ -3,6 +3,7 @@ import logo from "./assets/QNAYDS_LOGO.png";
 import mentorPhoto from "./assets/mentor.jpeg";
 import courseVideo from "./assets/Excel.mp4";
 import excelThumbnail from "./assets/thumbnail.png.jpeg";
+import EnrollmentFlow from "./components/EnrollmentFlow";
 const EXCEL_COURSE_ID = 13;
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 console.log("API_URL =", API_URL);
@@ -1439,6 +1440,8 @@ function App() {
           </div>
         </section>
       </main>
+
+      <EnrollmentFlow onEnroll={openEnrollment} whatsappUrl={whatsappUrl} />
 
       {/* ================= FOOTER ================= */}
 
