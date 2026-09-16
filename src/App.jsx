@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import logo from "./assets/QNAYDS_LOGO.png";
 import courseVideo from "./assets/Excel.mp4";
 import excelThumbnail from "../public/excel-thumbnail.webp";
+import EnrollmentFlow from "./components/EnrollmentFlow";
 
 const EXCEL_COURSE_ID = 13;
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
@@ -1314,6 +1315,8 @@ function App() {
           </div>
         </section>
       </main>
+
+      <EnrollmentFlow onEnroll={openEnrollment} whatsappUrl={whatsappUrl} />
 
       {/* ================= FOOTER ================= */}
 
