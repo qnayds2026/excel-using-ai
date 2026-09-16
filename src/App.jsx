@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import logo from "./assets/QNAYDS_LOGO.png";
 import mentorPhoto from "./assets/mentor.jpeg";
 import courseVideo from "./assets/Excel.mp4";
-import excelThumbnail from "../public/excel-thumbnail.webp";
-
+import excelThumbnail from "./assets/thumbnail.png.jpeg";
 const EXCEL_COURSE_ID = 13;
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 console.log("API_URL =", API_URL);
@@ -38,13 +37,34 @@ const features = [
 ];
 
 const learners = [
-  "Freshers",
-  "ജോലി അന്വേഷിക്കുന്നവർ",
-  "Office / MIS ജീവനക്കാർ",
-  "HR മേഖലയിൽ ജോലി ചെയ്യുന്നവർ",
-  "Accounts മേഖലയിൽ ജോലി ചെയ്യുന്നവർ",
-  "Business ചെയ്യുന്നവർ",
-  "Freelancers",
+  {
+    title: "Freshers",
+    text: "Excel basics മുതൽ practical workplace skills വരെ പഠിച്ച് career തുടങ്ങാൻ തയ്യാറാകാം.",
+  },
+  {
+    title: "ജോലി അന്വേഷിക്കുന്നവർ",
+    text: "Job-ൽ ആവശ്യമായ Excel, reporting, data analysis skills പഠിച്ച് interview confidence വർധിപ്പിക്കാം.",
+  },
+  {
+    title: "Office / MIS ജീവനക്കാർ",
+    text: "Daily reports, MIS, dashboards, data handling എന്നിവ കൂടുതൽ വേഗത്തിലും smart ആയും ചെയ്യാം.",
+  },
+  {
+    title: "HR മേഖലയിൽ ജോലി ചെയ്യുന്നവർ",
+    text: "Attendance, employee data, leave tracking, HR reports എന്നിവ Excel + AI ഉപയോഗിച്ച് എളുപ്പമാക്കാം.",
+  },
+  {
+    title: "Accounts മേഖലയിൽ ജോലി ചെയ്യുന്നവർ",
+    text: "Expenses, calculations, financial data, reports എന്നിവ കൂടുതൽ കൃത്യമായും efficient ആയും manage ചെയ്യാം.",
+  },
+  {
+    title: "Business ചെയ്യുന്നവർ",
+    text: "Sales, expenses, business data എന്നിവ analyze ചെയ്ത് better reports and decisions എടുക്കാൻ പഠിക്കാം.",
+  },
+  {
+    title: "Freelancers",
+    text: "Clients-നായി professional Excel reports, dashboards, data work എന്നിവ confidently ചെയ്യാൻ കഴിയും.",
+  },
 ];
 
 const skills = [
@@ -387,13 +407,12 @@ function App() {
               Excel + AI
               <br />
               <span className="text-blue-600">
-                എങ്ങനെ പഠിക്കാം എന്ന് കാണാം.
+                എങ്ങനെ പഠിക്കാം എന്ന് നോക്കാം.
               </span>
             </h2>
 
             <p className={lead + " mx-auto max-w-2xl"}>
-              Excel + AI പഠനത്തിന്റെ പ്രധാന ഭാഗങ്ങളും പ്രായോഗിക പരിശീലനവും ഈ
-              വീഡിയോയിലൂടെ പരിചയപ്പെടാം.
+              കരിയറിൽ മാറ്റങ്ങൾ കൊണ്ടുവരാൻ Excel + AI എങ്ങനെ പഠിക്കാമെന്ന് ഈ വീഡിയോയിലൂടെ മനസ്സിലാക്കാം.
             </p>
 
             <div className="mt-12">
@@ -742,7 +761,7 @@ function App() {
             <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {learners.map((learner) => (
                 <div
-                  key={learner}
+                  key={learner.title}
                   className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"
                 >
                   <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-xs font-bold text-emerald-600">
@@ -751,12 +770,12 @@ function App() {
 
                   <div>
                     <h3 className="text-base font-bold text-slate-900">
-                      {learner}
+                      {learner.title}
                     </h3>
-                    <p className="mt-1 text-sm text-slate-500">
-                      നിങ്ങളുടെ ജോലി ആവശ്യങ്ങൾക്ക് Excel skills കൂടുതൽ
-                      ശക്തമാക്കാം.
+                    <p className="mt-1 text-sm leading-relaxed text-slate-500">
+                      {learner.text}
                     </p>
+                    
                   </div>
                 </div>
               ))}
