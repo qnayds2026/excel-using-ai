@@ -255,6 +255,10 @@ function App() {
           <button
             className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-emerald-600 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-emerald-500/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-emerald-700"
             onClick={() => {
+              trackMetaEvent("Contact", {
+                content_name: "WhatsApp Group",
+              });
+
               window.open(
                 "https://chat.whatsapp.com/E9J1e6cdldY4mOyoX6gbzn",
                 "_blank",
