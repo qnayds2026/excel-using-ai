@@ -174,6 +174,11 @@ const getTimeLeft = (endTime) => {
   return { hours, minutes, seconds };
 };
 
+const trackMetaEvent = (eventName, params = {}) => {
+  if (typeof window !== "undefined" && typeof window.fbq === "function") {
+    window.fbq("track", eventName, params);
+  }
+};
 function App() {
   const [showEnrollment, setShowEnrollment] = useState(false);
   const [showPaymentSuccess, setShowPaymentSuccess] = useState(false);
@@ -1749,7 +1754,10 @@ function App() {
                                 "Payment verification failed",
                             );
                           }
-
+                          trackMetaEvent("Purchase", {
+                            value: order.amount / 100,
+                            currency: order.currency || "INR",
+                          });
                           setShowEnrollment(false);
                           setShowPaymentSuccess(true);
                         } catch (error) {
@@ -1774,7 +1782,10 @@ function App() {
                           "Payment failed. Please try again.",
                       );
                     });
-
+                  trackMetaEvent("InitiateCheckout", {
+                    value: order.amount / 100,
+                    currency: order.currency || "INR",
+                  });
                     razorpay.open();
                   } catch (error) {
                     console.error("Payment Error:", error);
