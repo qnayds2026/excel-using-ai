@@ -194,6 +194,7 @@ function App() {
   const [showPaymentSuccess, setShowPaymentSuccess] = useState(false);
   const [timeLeft, setTimeLeft] = useState(() => getTimeLeft(OFFER_END_TIME));
   const [showFloatingCta, setShowFloatingCta] = useState(false);
+  const [videoStarted, setVideoStarted] = useState(false);
   const [showWhatsappPopup, setShowWhatsappPopup] = useState(true);
 
   useEffect(() => {
@@ -1127,33 +1128,31 @@ function App() {
           </div>
           {/* ================= PROJECTS ENROLL CTA ================= */}
 
-            <div className="mx-auto mt-10 max-w-5xl px-4">
-              <div className="rounded-3xl border border-blue-200 bg-slate-950 px-6 py-8 text-center shadow-lg sm:px-10">
-
-                <div className="inline-flex items-center rounded-full border border-blue-500/40 px-4 py-1.5 text-sm font-semibold text-blue-400">
-                  Limited Offer
-                </div>
-
-                <h3 className="mt-4 text-2xl font-extrabold text-white sm:text-3xl">
-                  Enroll Now &{" "}
-                  <span className="text-blue-500">Upgrade Your Skills</span>
-                </h3>
-
-                <p className="mt-3 text-sm text-slate-300 sm:text-base">
-                  Take the next step towards a better career with Excel + AI.
-                </p>
-
-                <button
-                    type="button"
-                    onClick={openEnrollment}
-                    className="mt-6 inline-flex items-center gap-2 rounded-full bg-blue-600 px-8 py-3.5 text-base font-bold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 animate-[pulse_1.2s_ease-in-out_infinite]"
-                  >
-                    Enroll Now
-                  <span className="text-lg">→</span>
-                </button>
-
+          <div className="mx-auto mt-10 max-w-5xl px-4">
+            <div className="rounded-3xl border border-blue-200 bg-slate-950 px-6 py-8 text-center shadow-lg sm:px-10">
+              <div className="inline-flex items-center rounded-full border border-blue-500/40 px-4 py-1.5 text-sm font-semibold text-blue-400">
+                Limited Offer
               </div>
+
+              <h3 className="mt-4 text-2xl font-extrabold text-white sm:text-3xl">
+                Enroll Now &{" "}
+                <span className="text-blue-500">Upgrade Your Skills</span>
+              </h3>
+
+              <p className="mt-3 text-sm text-slate-300 sm:text-base">
+                Take the next step towards a better career with Excel + AI.
+              </p>
+
+              <button
+                type="button"
+                onClick={openEnrollment}
+                className="mt-6 inline-flex items-center gap-2 rounded-full bg-blue-600 px-8 py-3.5 text-base font-bold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 animate-[pulse_1.2s_ease-in-out_infinite]"
+              >
+                Enroll Now
+                <span className="text-lg">→</span>
+              </button>
             </div>
+          </div>
         </section>
 
         {/* ================= AI WORKFLOW ================= */}
@@ -1822,10 +1821,10 @@ function App() {
                           "Payment failed. Please try again.",
                       );
                     });
-                  trackMetaEvent("InitiateCheckout", {
-                    value: order.amount / 100,
-                    currency: order.currency || "INR",
-                  });
+                    trackMetaEvent("InitiateCheckout", {
+                      value: order.amount / 100,
+                      currency: order.currency || "INR",
+                    });
                     razorpay.open();
                   } catch (error) {
                     console.error("Payment Error:", error);
