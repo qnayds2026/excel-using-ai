@@ -131,21 +131,31 @@ const faqs = [
     answer:
       "Excel പഠിക്കാൻ ആഗ്രഹിക്കുന്ന beginners മുതൽ ജോലി ആവശ്യങ്ങൾക്ക് Excel കൂടുതൽ പ്രൊഫഷണലായി ഉപയോഗിക്കാൻ ആഗ്രഹിക്കുന്നവർ വരെ ഈ program പിന്തുടരാം.",
   },
+
   {
     question: "Excel മാത്രം അറിയുന്നത് മതിയോ?",
     answer:
       "ഇന്നത്തെ ജോലികളിൽ Excel ഉപയോഗിക്കുന്നതിനൊപ്പം data analysis, reporting, dashboards, AI തുടങ്ങിയ practical skills അറിയുന്നത് കൂടുതൽ സഹായകരമാണ്.",
   },
+
   {
     question: "AI ഉപയോഗിച്ചുള്ള Excel പഠിക്കുമോ?",
     answer:
       "അതെ. Excel workflows-ൽ AI എങ്ങനെ ഉപയോഗിക്കാം, formulas കണ്ടെത്താനും data work എളുപ്പമാക്കാനും AI എങ്ങനെ ഉപയോഗിക്കാം എന്നിവ program-ന്റെ ഭാഗമാണ്.",
   },
+
   {
     question: "Practical Projects ഉണ്ടാകുമോ?",
     answer:
       "അതെ. Sales Dashboard, HR Attendance, Expense Tracker, AI Formula Project, Automated MIS തുടങ്ങിയ practical projects ഉൾപ്പെടുത്തിയിട്ടുണ്ട്.",
   },
+
+  {
+    question: "ഈ കോഴ്സ് പഠിക്കാൻ ലാപ്ടോപ്പ് നിർബന്ധമാണോ?",
+    answer:
+      "അല്ല, ലാപ്ടോപ്പ് നിർബന്ധമില്ല. Mobile Phone, Tablet, Laptop, Desktop എന്നിവയിൽ എല്ലാം course access ചെയ്യാം. Internet connection ഉണ്ടെങ്കിൽ നിങ്ങൾക്ക് സൗകര്യമുള്ള ഏത് device-ലും പഠിക്കാം.",
+  },
+
   {
     question: "Course പൂർത്തിയാക്കിയാൽ Certificate ലഭിക്കുമോ?",
     answer:
@@ -174,6 +184,11 @@ const getTimeLeft = (endTime) => {
   return { hours, minutes, seconds };
 };
 
+const trackMetaEvent = (eventName, params = {}) => {
+  if (typeof window !== "undefined" && typeof window.fbq === "function") {
+    window.fbq("track", eventName, params);
+  }
+};
 function App() {
   const [showEnrollment, setShowEnrollment] = useState(false);
   const [showPaymentSuccess, setShowPaymentSuccess] = useState(false);
@@ -250,6 +265,10 @@ function App() {
           <button
             className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-emerald-600 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-emerald-500/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-emerald-700"
             onClick={() => {
+              trackMetaEvent("Contact", {
+                content_name: "WhatsApp Group",
+              });
+
               window.open(
                 "https://chat.whatsapp.com/E9J1e6cdldY4mOyoX6gbzn",
                 "_blank",
@@ -1009,6 +1028,14 @@ function App() {
                 Office Tasks • Practical Projects • Excel + AI
               </p>
             </div>
+            <div className="mt-6 flex justify-center">
+              <button
+                onClick={() => setShowEnrollment(true)}
+                className="animate-pulse rounded-xl bg-blue-600 px-8 py-3 text-base font-bold text-white shadow-lg transition hover:bg-blue-700 hover:-translate-y-0.5"
+              >
+                Enroll Now →
+              </button>
+            </div>
           </div>
         </section>
 
@@ -1098,6 +1125,35 @@ function App() {
               ))}
             </div>
           </div>
+          {/* ================= PROJECTS ENROLL CTA ================= */}
+
+            <div className="mx-auto mt-10 max-w-5xl px-4">
+              <div className="rounded-3xl border border-blue-200 bg-slate-950 px-6 py-8 text-center shadow-lg sm:px-10">
+
+                <div className="inline-flex items-center rounded-full border border-blue-500/40 px-4 py-1.5 text-sm font-semibold text-blue-400">
+                  Limited Offer
+                </div>
+
+                <h3 className="mt-4 text-2xl font-extrabold text-white sm:text-3xl">
+                  Enroll Now &{" "}
+                  <span className="text-blue-500">Upgrade Your Skills</span>
+                </h3>
+
+                <p className="mt-3 text-sm text-slate-300 sm:text-base">
+                  Take the next step towards a better career with Excel + AI.
+                </p>
+
+                <button
+                    type="button"
+                    onClick={openEnrollment}
+                    className="mt-6 inline-flex items-center gap-2 rounded-full bg-blue-600 px-8 py-3.5 text-base font-bold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 animate-[pulse_1.2s_ease-in-out_infinite]"
+                  >
+                    Enroll Now
+                  <span className="text-lg">→</span>
+                </button>
+
+              </div>
+            </div>
         </section>
 
         {/* ================= AI WORKFLOW ================= */}
@@ -1738,7 +1794,10 @@ function App() {
                                 "Payment verification failed",
                             );
                           }
-
+                          trackMetaEvent("Purchase", {
+                            value: order.amount / 100,
+                            currency: order.currency || "INR",
+                          });
                           setShowEnrollment(false);
                           setShowPaymentSuccess(true);
                         } catch (error) {
@@ -1763,7 +1822,10 @@ function App() {
                           "Payment failed. Please try again.",
                       );
                     });
-
+                  trackMetaEvent("InitiateCheckout", {
+                    value: order.amount / 100,
+                    currency: order.currency || "INR",
+                  });
                     razorpay.open();
                   } catch (error) {
                     console.error("Payment Error:", error);
