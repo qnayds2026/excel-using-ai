@@ -413,7 +413,8 @@ function App() {
             </h2>
 
             <p className={lead + " mx-auto max-w-2xl"}>
-              കരിയറിൽ മാറ്റങ്ങൾ കൊണ്ടുവരാൻ Excel + AI എങ്ങനെ പഠിക്കാമെന്ന് ഈ വീഡിയോയിലൂടെ മനസ്സിലാക്കാം.
+              കരിയറിൽ മാറ്റങ്ങൾ കൊണ്ടുവരാൻ Excel + AI എങ്ങനെ പഠിക്കാമെന്ന് ഈ
+              വീഡിയോയിലൂടെ മനസ്സിലാക്കാം.
             </p>
 
             <div className="mt-12">
@@ -548,109 +549,98 @@ function App() {
         </section>
         {/* ================= MEET YOUR MENTOR ================= */}
 
-<section className="bg-slate-50 py-20 sm:py-28">
-  <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <section className="bg-slate-50 py-20 sm:py-28">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            {/* Section Heading */}
+            <div className="mx-auto max-w-2xl text-center">
+              <div className={tag}>Meet Your Mentor</div>
 
-    {/* Section Heading */}
-    <div className="mx-auto max-w-2xl text-center">
-      <div className={tag}>Meet Your Mentor</div>
+              <h2 className={h2 + " mt-4"}>
+                Learn From Someone
+                <br />
+                <span className="text-blue-600">
+                  Who Understands Your Journey.
+                </span>
+              </h2>
 
-      <h2 className={h2 + " mt-4"}>
-        Learn From Someone
-        <br />
-        <span className="text-blue-600">
-          Who Understands Your Journey.
-        </span>
-      </h2>
-
-      <p className={lead}>
-        Practical Excel + AI skills പഠിക്കാൻ നിങ്ങളെ step-by-step ആയി guide
-        ചെയ്യുന്ന mentor.
-      </p>
-    </div>
-
-    {/* Mentor Card */}
-    <div className="mt-12 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl">
-
-      <div className="grid grid-cols-1 items-center gap-10 p-7 sm:p-10 lg:grid-cols-[280px_1fr] lg:gap-14">
-
-        {/* Mentor Photo */}
-        <div className="flex justify-center">
-          <div className="relative">
-
-            <div className="absolute inset-0 rounded-full bg-blue-600/20 blur-xl"></div>
-
-            <div className="relative h-56 w-56 overflow-hidden rounded-full border-4 border-blue-500 bg-white p-1 shadow-xl sm:h-64 sm:w-64">
-              <img
-                src={mentorPhoto}
-                alt="Excel + AI Mentor"
-                className="h-full w-full rounded-full object-cover"
-              />
+              <p className={lead}>
+                Practical Excel + AI skills പഠിക്കാൻ നിങ്ങളെ step-by-step ആയി
+                guide ചെയ്യുന്ന mentor.
+              </p>
             </div>
 
+            {/* Mentor Card */}
+            <div className="mt-12 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl">
+              <div className="grid grid-cols-1 items-center gap-10 p-7 sm:p-10 lg:grid-cols-[280px_1fr] lg:gap-14">
+                {/* Mentor Photo */}
+                <div className="flex justify-center">
+                  <div className="relative">
+                    <div className="absolute inset-0 rounded-full bg-blue-600/20 blur-xl"></div>
+
+                    <div className="relative h-56 w-56 overflow-hidden rounded-full border-4 border-blue-500 bg-white p-1 shadow-xl sm:h-64 sm:w-64">
+                      <img
+                        src={mentorPhoto}
+                        alt="Excel + AI Mentor"
+                        className="h-full w-full rounded-full object-cover"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Mentor Details */}
+                <div className="text-center lg:text-left">
+                  <h3 className="text-3xl font-extrabold text-slate-900 sm:text-4xl">
+                    Midhun
+                  </h3>
+
+                  <p className="mt-2 text-lg font-bold text-blue-600">
+                    Excel + AI Trainer
+                  </p>
+
+                  {/* Highlights */}
+                  <div className="mt-7 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                    <div className="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4">
+                      <span className="text-xl">🏆</span>
+                      <span className="text-sm font-bold text-slate-700">
+                        Excel & AI Expert
+                      </span>
+                    </div>
+
+                    <div className="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4">
+                      <span className="text-xl">📊</span>
+                      <span className="text-sm font-bold text-slate-700">
+                        Practical Training
+                      </span>
+                    </div>
+
+                    <div className="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4">
+                      <span className="text-xl">👥</span>
+                      <span className="text-sm font-bold text-slate-700">
+                        Learner-focused Teaching
+                      </span>
+                    </div>
+
+                    <div className="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4">
+                      <span className="text-xl">💼</span>
+                      <span className="text-sm font-bold text-slate-700">
+                        Real-world Skills
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Mentor Message */}
+                  <div className="mt-7 rounded-2xl border-l-4 border-blue-600 bg-blue-50 p-5 text-left">
+                    <p className="text-sm italic leading-relaxed text-slate-700 sm:text-base">
+                      "Excel formulas മാത്രം പഠിപ്പിക്കുകയല്ല — real-world
+                      work-ൽ Excel + AI എങ്ങനെ smart ആയി ഉപയോഗിക്കാം എന്നതാണ് ഈ
+                      program-ന്റെ focus."
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-
-        {/* Mentor Details */}
-        <div className="text-center lg:text-left">
-
-          <h3 className="text-3xl font-extrabold text-slate-900 sm:text-4xl">
-            Midhun
-          </h3>
-
-          <p className="mt-2 text-lg font-bold text-blue-600">
-            Excel + AI Trainer
-          </p>
-
-          {/* Highlights */}
-          <div className="mt-7 grid grid-cols-1 gap-3 sm:grid-cols-2">
-
-            <div className="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4">
-              <span className="text-xl">🏆</span>
-              <span className="text-sm font-bold text-slate-700">
-                Excel & AI Expert
-              </span>
-            </div>
-
-            <div className="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4">
-              <span className="text-xl">📊</span>
-              <span className="text-sm font-bold text-slate-700">
-                Practical Training
-              </span>
-            </div>
-
-            <div className="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4">
-              <span className="text-xl">👥</span>
-              <span className="text-sm font-bold text-slate-700">
-                Learner-focused Teaching
-              </span>
-            </div>
-
-            <div className="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4">
-              <span className="text-xl">💼</span>
-              <span className="text-sm font-bold text-slate-700">
-                Real-world Skills
-              </span>
-            </div>
-
-          </div>
-
-          {/* Mentor Message */}
-          <div className="mt-7 rounded-2xl border-l-4 border-blue-600 bg-blue-50 p-5 text-left">
-
-            <p className="text-sm italic leading-relaxed text-slate-700 sm:text-base">
-              "Excel formulas മാത്രം പഠിപ്പിക്കുകയല്ല —
-              real-world work-ൽ Excel + AI എങ്ങനെ smart ആയി ഉപയോഗിക്കാം
-              എന്നതാണ് ഈ program-ന്റെ focus."
-            </p>
-
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+        </section>
         {/* ================= REVIEWS ================= */}
 
         <section className="bg-white py-20 sm:py-28" id="reviews">
@@ -776,7 +766,6 @@ function App() {
                     <p className="mt-1 text-sm leading-relaxed text-slate-500">
                       {learner.text}
                     </p>
-                    
                   </div>
                 </div>
               ))}
