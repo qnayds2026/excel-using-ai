@@ -193,6 +193,7 @@ function App() {
   const [showPaymentSuccess, setShowPaymentSuccess] = useState(false);
   const [timeLeft, setTimeLeft] = useState(() => getTimeLeft(OFFER_END_TIME));
   const [showFloatingCta, setShowFloatingCta] = useState(false);
+  const [videoStarted, setVideoStarted] = useState(false);
   const [showWhatsappPopup, setShowWhatsappPopup] = useState(true);
 
   useEffect(() => {
@@ -431,7 +432,8 @@ function App() {
             </h2>
 
             <p className={lead + " mx-auto max-w-2xl"}>
-              കരിയറിൽ മാറ്റങ്ങൾ കൊണ്ടുവരാൻ Excel + AI എങ്ങനെ പഠിക്കാമെന്ന് ഈ വീഡിയോയിലൂടെ മനസ്സിലാക്കാം.
+              കരിയറിൽ മാറ്റങ്ങൾ കൊണ്ടുവരാൻ Excel + AI എങ്ങനെ പഠിക്കാമെന്ന് ഈ
+              വീഡിയോയിലൂടെ മനസ്സിലാക്കാം.
             </p>
 
             <div className="mt-12">
@@ -566,109 +568,98 @@ function App() {
         </section>
         {/* ================= MEET YOUR MENTOR ================= */}
 
-<section className="bg-slate-50 py-20 sm:py-28">
-  <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <section className="bg-slate-50 py-20 sm:py-28">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            {/* Section Heading */}
+            <div className="mx-auto max-w-2xl text-center">
+              <div className={tag}>Meet Your Mentor</div>
 
-    {/* Section Heading */}
-    <div className="mx-auto max-w-2xl text-center">
-      <div className={tag}>Meet Your Mentor</div>
+              <h2 className={h2 + " mt-4"}>
+                Learn From Someone
+                <br />
+                <span className="text-blue-600">
+                  Who Understands Your Journey.
+                </span>
+              </h2>
 
-      <h2 className={h2 + " mt-4"}>
-        Learn From Someone
-        <br />
-        <span className="text-blue-600">
-          Who Understands Your Journey.
-        </span>
-      </h2>
-
-      <p className={lead}>
-        Practical Excel + AI skills പഠിക്കാൻ നിങ്ങളെ step-by-step ആയി guide
-        ചെയ്യുന്ന mentor.
-      </p>
-    </div>
-
-    {/* Mentor Card */}
-    <div className="mt-12 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl">
-
-      <div className="grid grid-cols-1 items-center gap-10 p-7 sm:p-10 lg:grid-cols-[280px_1fr] lg:gap-14">
-
-        {/* Mentor Photo */}
-        <div className="flex justify-center">
-          <div className="relative">
-
-            <div className="absolute inset-0 rounded-full bg-blue-600/20 blur-xl"></div>
-
-            <div className="relative h-56 w-56 overflow-hidden rounded-full border-4 border-blue-500 bg-white p-1 shadow-xl sm:h-64 sm:w-64">
-              <img
-                src={mentorPhoto}
-                alt="Excel + AI Mentor"
-                className="h-full w-full rounded-full object-cover"
-              />
+              <p className={lead}>
+                Practical Excel + AI skills പഠിക്കാൻ നിങ്ങളെ step-by-step ആയി
+                guide ചെയ്യുന്ന mentor.
+              </p>
             </div>
 
+            {/* Mentor Card */}
+            <div className="mt-12 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl">
+              <div className="grid grid-cols-1 items-center gap-10 p-7 sm:p-10 lg:grid-cols-[280px_1fr] lg:gap-14">
+                {/* Mentor Photo */}
+                <div className="flex justify-center">
+                  <div className="relative">
+                    <div className="absolute inset-0 rounded-full bg-blue-600/20 blur-xl"></div>
+
+                    <div className="relative h-56 w-56 overflow-hidden rounded-full border-4 border-blue-500 bg-white p-1 shadow-xl sm:h-64 sm:w-64">
+                      <img
+                        src={mentorPhoto}
+                        alt="Excel + AI Mentor"
+                        className="h-full w-full rounded-full object-cover"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Mentor Details */}
+                <div className="text-center lg:text-left">
+                  <h3 className="text-3xl font-extrabold text-slate-900 sm:text-4xl">
+                    Midhun
+                  </h3>
+
+                  <p className="mt-2 text-lg font-bold text-blue-600">
+                    Excel + AI Trainer
+                  </p>
+
+                  {/* Highlights */}
+                  <div className="mt-7 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                    <div className="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4">
+                      <span className="text-xl">🏆</span>
+                      <span className="text-sm font-bold text-slate-700">
+                        Excel & AI Expert
+                      </span>
+                    </div>
+
+                    <div className="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4">
+                      <span className="text-xl">📊</span>
+                      <span className="text-sm font-bold text-slate-700">
+                        Practical Training
+                      </span>
+                    </div>
+
+                    <div className="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4">
+                      <span className="text-xl">👥</span>
+                      <span className="text-sm font-bold text-slate-700">
+                        Learner-focused Teaching
+                      </span>
+                    </div>
+
+                    <div className="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4">
+                      <span className="text-xl">💼</span>
+                      <span className="text-sm font-bold text-slate-700">
+                        Real-world Skills
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Mentor Message */}
+                  <div className="mt-7 rounded-2xl border-l-4 border-blue-600 bg-blue-50 p-5 text-left">
+                    <p className="text-sm italic leading-relaxed text-slate-700 sm:text-base">
+                      "Excel formulas മാത്രം പഠിപ്പിക്കുകയല്ല — real-world
+                      work-ൽ Excel + AI എങ്ങനെ smart ആയി ഉപയോഗിക്കാം എന്നതാണ് ഈ
+                      program-ന്റെ focus."
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-
-        {/* Mentor Details */}
-        <div className="text-center lg:text-left">
-
-          <h3 className="text-3xl font-extrabold text-slate-900 sm:text-4xl">
-            Midhun
-          </h3>
-
-          <p className="mt-2 text-lg font-bold text-blue-600">
-            Excel + AI Trainer
-          </p>
-
-          {/* Highlights */}
-          <div className="mt-7 grid grid-cols-1 gap-3 sm:grid-cols-2">
-
-            <div className="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4">
-              <span className="text-xl">🏆</span>
-              <span className="text-sm font-bold text-slate-700">
-                Excel & AI Expert
-              </span>
-            </div>
-
-            <div className="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4">
-              <span className="text-xl">📊</span>
-              <span className="text-sm font-bold text-slate-700">
-                Practical Training
-              </span>
-            </div>
-
-            <div className="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4">
-              <span className="text-xl">👥</span>
-              <span className="text-sm font-bold text-slate-700">
-                Learner-focused Teaching
-              </span>
-            </div>
-
-            <div className="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4">
-              <span className="text-xl">💼</span>
-              <span className="text-sm font-bold text-slate-700">
-                Real-world Skills
-              </span>
-            </div>
-
-          </div>
-
-          {/* Mentor Message */}
-          <div className="mt-7 rounded-2xl border-l-4 border-blue-600 bg-blue-50 p-5 text-left">
-
-            <p className="text-sm italic leading-relaxed text-slate-700 sm:text-base">
-              "Excel formulas മാത്രം പഠിപ്പിക്കുകയല്ല —
-              real-world work-ൽ Excel + AI എങ്ങനെ smart ആയി ഉപയോഗിക്കാം
-              എന്നതാണ് ഈ program-ന്റെ focus."
-            </p>
-
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+        </section>
         {/* ================= REVIEWS ================= */}
 
         <section className="bg-white py-20 sm:py-28" id="reviews">
@@ -794,7 +785,6 @@ function App() {
                     <p className="mt-1 text-sm leading-relaxed text-slate-500">
                       {learner.text}
                     </p>
-                    
                   </div>
                 </div>
               ))}
@@ -1137,33 +1127,31 @@ function App() {
           </div>
           {/* ================= PROJECTS ENROLL CTA ================= */}
 
-            <div className="mx-auto mt-10 max-w-5xl px-4">
-              <div className="rounded-3xl border border-blue-200 bg-slate-950 px-6 py-8 text-center shadow-lg sm:px-10">
-
-                <div className="inline-flex items-center rounded-full border border-blue-500/40 px-4 py-1.5 text-sm font-semibold text-blue-400">
-                  Limited Offer
-                </div>
-
-                <h3 className="mt-4 text-2xl font-extrabold text-white sm:text-3xl">
-                  Enroll Now &{" "}
-                  <span className="text-blue-500">Upgrade Your Skills</span>
-                </h3>
-
-                <p className="mt-3 text-sm text-slate-300 sm:text-base">
-                  Take the next step towards a better career with Excel + AI.
-                </p>
-
-                <button
-                    type="button"
-                    onClick={openEnrollment}
-                    className="mt-6 inline-flex items-center gap-2 rounded-full bg-blue-600 px-8 py-3.5 text-base font-bold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 animate-[pulse_1.2s_ease-in-out_infinite]"
-                  >
-                    Enroll Now
-                  <span className="text-lg">→</span>
-                </button>
-
+          <div className="mx-auto mt-10 max-w-5xl px-4">
+            <div className="rounded-3xl border border-blue-200 bg-slate-950 px-6 py-8 text-center shadow-lg sm:px-10">
+              <div className="inline-flex items-center rounded-full border border-blue-500/40 px-4 py-1.5 text-sm font-semibold text-blue-400">
+                Limited Offer
               </div>
+
+              <h3 className="mt-4 text-2xl font-extrabold text-white sm:text-3xl">
+                Enroll Now &{" "}
+                <span className="text-blue-500">Upgrade Your Skills</span>
+              </h3>
+
+              <p className="mt-3 text-sm text-slate-300 sm:text-base">
+                Take the next step towards a better career with Excel + AI.
+              </p>
+
+              <button
+                type="button"
+                onClick={openEnrollment}
+                className="mt-6 inline-flex items-center gap-2 rounded-full bg-blue-600 px-8 py-3.5 text-base font-bold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 animate-[pulse_1.2s_ease-in-out_infinite]"
+              >
+                Enroll Now
+                <span className="text-lg">→</span>
+              </button>
             </div>
+          </div>
         </section>
 
         {/* ================= AI WORKFLOW ================= */}
@@ -1832,10 +1820,10 @@ function App() {
                           "Payment failed. Please try again.",
                       );
                     });
-                  trackMetaEvent("InitiateCheckout", {
-                    value: order.amount / 100,
-                    currency: order.currency || "INR",
-                  });
+                    trackMetaEvent("InitiateCheckout", {
+                      value: order.amount / 100,
+                      currency: order.currency || "INR",
+                    });
                     razorpay.open();
                   } catch (error) {
                     console.error("Payment Error:", error);
