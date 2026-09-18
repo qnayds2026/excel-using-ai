@@ -131,21 +131,31 @@ const faqs = [
     answer:
       "Excel പഠിക്കാൻ ആഗ്രഹിക്കുന്ന beginners മുതൽ ജോലി ആവശ്യങ്ങൾക്ക് Excel കൂടുതൽ പ്രൊഫഷണലായി ഉപയോഗിക്കാൻ ആഗ്രഹിക്കുന്നവർ വരെ ഈ program പിന്തുടരാം.",
   },
+
   {
     question: "Excel മാത്രം അറിയുന്നത് മതിയോ?",
     answer:
       "ഇന്നത്തെ ജോലികളിൽ Excel ഉപയോഗിക്കുന്നതിനൊപ്പം data analysis, reporting, dashboards, AI തുടങ്ങിയ practical skills അറിയുന്നത് കൂടുതൽ സഹായകരമാണ്.",
   },
+
   {
     question: "AI ഉപയോഗിച്ചുള്ള Excel പഠിക്കുമോ?",
     answer:
       "അതെ. Excel workflows-ൽ AI എങ്ങനെ ഉപയോഗിക്കാം, formulas കണ്ടെത്താനും data work എളുപ്പമാക്കാനും AI എങ്ങനെ ഉപയോഗിക്കാം എന്നിവ program-ന്റെ ഭാഗമാണ്.",
   },
+
   {
     question: "Practical Projects ഉണ്ടാകുമോ?",
     answer:
       "അതെ. Sales Dashboard, HR Attendance, Expense Tracker, AI Formula Project, Automated MIS തുടങ്ങിയ practical projects ഉൾപ്പെടുത്തിയിട്ടുണ്ട്.",
   },
+
+  {
+    question: "ഈ കോഴ്സ് പഠിക്കാൻ ലാപ്ടോപ്പ് നിർബന്ധമാണോ?",
+    answer:
+      "അല്ല, ലാപ്ടോപ്പ് നിർബന്ധമില്ല. Mobile Phone, Tablet, Laptop, Desktop എന്നിവയിൽ എല്ലാം course access ചെയ്യാം. Internet connection ഉണ്ടെങ്കിൽ നിങ്ങൾക്ക് സൗകര്യമുള്ള ഏത് device-ലും പഠിക്കാം.",
+  },
+
   {
     question: "Course പൂർത്തിയാക്കിയാൽ Certificate ലഭിക്കുമോ?",
     answer:
@@ -1145,11 +1155,11 @@ function App() {
                 </p>
 
                 <button
-                  type="button"
-                  onClick={openEnrollment}
-                  className="mt-6 inline-flex items-center gap-2 rounded-full bg-blue-600 px-8 py-3.5 text-base font-bold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700"
-                >
-                  Enroll Now
+                    type="button"
+                    onClick={openEnrollment}
+                    className="mt-6 inline-flex items-center gap-2 rounded-full bg-blue-600 px-8 py-3.5 text-base font-bold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 animate-[pulse_1.2s_ease-in-out_infinite]"
+                  >
+                    Enroll Now
                   <span className="text-lg">→</span>
                 </button>
 
