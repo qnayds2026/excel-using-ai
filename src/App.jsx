@@ -6,7 +6,6 @@ import excelThumbnail from "./assets/thumbnail.png.jpeg";
 import EnrollmentFlow from "./components/EnrollmentFlow";
 const EXCEL_COURSE_ID = 13;
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
-console.log("API_URL =", API_URL);
 
 const gridBg = {
   backgroundImage:
@@ -1726,7 +1725,7 @@ function App() {
 
                     // 1. Create Razorpay order
                     const response = await fetch(
-                      `${API_URL}/api/landing/create-order`,
+                      `${API_URL}/landing/create-order`,
                       {
                         method: "POST",
                         headers: {
@@ -1778,7 +1777,7 @@ function App() {
                         try {
                           // 3. Verify payment in backend
                           const verifyResponse = await fetch(
-                            `${API_URL}/api/payments/verify`,
+                            `${API_URL}/payments/verify`,
                             {
                               method: "POST",
                               headers: {
