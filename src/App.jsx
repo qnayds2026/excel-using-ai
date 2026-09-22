@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import logo from "./assets/QNAYDS_LOGO.png";
-import mentorPhoto from "./assets/mentor.jpeg";
+import mentorPhoto from "./assets/mentor.webp";
 import courseVideo from "./assets/Excel.mp4";
 import excelThumbnail from "./assets/thumbnail.png.jpeg";
 import EnrollmentFlow from "./components/EnrollmentFlow";
@@ -602,7 +602,7 @@ function App() {
               <img
                 src={mentorPhoto}
                 alt="Excel + AI Mentor"
-                className="h-full w-full rounded-full object-cover"
+                className="h-full w-full rounded-full object-cover object-[center_20%]"
               />
             </div>
 
