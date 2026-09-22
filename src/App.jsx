@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import logo from "./assets/QNAYDS_LOGO.png";
-import mentorPhoto from "./assets/mentor.jpeg";
+import mentorPhoto from "./assets/mentor.webp";
 import courseVideo from "./assets/Excel.mp4";
 import excelThumbnail from "./assets/excel-thumbnail.webp";
 import EnrollmentFlow from "./components/EnrollmentFlow";
@@ -582,10 +582,37 @@ function App() {
                 </span>
               </h2>
 
-              <p className={lead}>
-                Practical Excel + AI skills പഠിക്കാൻ നിങ്ങളെ step-by-step ആയി
-                guide ചെയ്യുന്ന mentor.
-              </p>
+      <h2 className={h2 + " mt-4"}>
+        Learn From Someone
+        <br />
+        <span className="text-blue-600">
+          Who Understands Your Journey.
+        </span>
+      </h2>
+
+      <p className={lead}>
+        Practical Excel + AI skills പഠിക്കാൻ നിങ്ങളെ step-by-step ആയി guide
+        ചെയ്യുന്ന mentor.
+      </p>
+    </div>
+
+    {/* Mentor Card */}
+    <div className="mt-12 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl">
+
+      <div className="grid grid-cols-1 items-center gap-10 p-7 sm:p-10 lg:grid-cols-[280px_1fr] lg:gap-14">
+
+        {/* Mentor Photo */}
+        <div className="flex justify-center">
+          <div className="relative">
+
+            <div className="absolute inset-0 rounded-full bg-blue-600/20 blur-xl"></div>
+
+            <div className="relative h-56 w-56 overflow-hidden rounded-full border-4 border-blue-500 bg-white p-1 shadow-xl sm:h-64 sm:w-64">
+              <img
+                src={mentorPhoto}
+                alt="Excel + AI Mentor"
+                className="h-full w-full rounded-full object-cover object-[center_20%]"
+              />
             </div>
 
             {/* Mentor Card */}
