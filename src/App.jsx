@@ -223,9 +223,18 @@ function App() {
   const [showPaymentSuccess, setShowPaymentSuccess] = useState(false);
   const [timeLeft, setTimeLeft] = useState(() => getTimeLeft(OFFER_END_TIME));
   const [showFloatingCta, setShowFloatingCta] = useState(false);
+  const [videoStarted, setVideoStarted] = useState(false);
   const [activePolicyModal, setActivePolicyModal] = useState(null); // 'terms' | 'privacy' | 'refund' | 'contact' | null
 
   const footerRef = useRef(null);
+  const videoRef = useRef(null);
+
+  const handlePlayVideo = () => {
+    setVideoStarted(true);
+    if (videoRef.current) {
+      videoRef.current.play();
+    }
+  };
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -332,20 +341,20 @@ function App() {
 
   return (
     <div className="app min-h-screen bg-white text-slate-900 antialiased">
-      {/* ================= 1. FIRST SCREEN (HERO) ================= */}
+      {/* ================= 1. FIRST SCREEN (HERO - SECTION 2) ================= */}
       <section
-        className="relative overflow-hidden bg-slate-50 pb-14 pt-6 sm:pb-20 sm:pt-8"
+        className="relative overflow-hidden bg-slate-50 pb-8 pt-4 sm:pb-14 sm:pt-6"
         id="home"
       >
         <div
           className="pointer-events-none absolute inset-0"
           style={gridBg}
         />
-        <div className="pointer-events-none absolute -top-24 left-1/2 h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-blue-400/20 blur-3xl" />
+        <div className="pointer-events-none absolute -top-24 left-1/2 h-[26rem] w-[26rem] -translate-x-1/2 rounded-full bg-blue-400/20 blur-3xl" />
 
         <div className="relative mx-auto flex max-w-4xl flex-col items-center px-4 text-center sm:px-6">
-          {/* SLIM BANNER: REAL END DATE / COUNTDOWN ONLY */}
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50/90 px-4 py-1.5 text-xs font-bold text-orange-800 shadow-sm sm:text-sm">
+          {/* 1. ONE SLIM BANNER: REAL END DATE / COUNTDOWN ONLY */}
+          <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50/90 px-3.5 py-1 text-xs font-bold text-orange-800 shadow-sm sm:mb-4 sm:px-4 sm:py-1.5 sm:text-sm">
             <span>🔥 പരിമിതകാല ഓഫർ</span>
             <span className="h-3 w-px bg-orange-300" />
             <span className="text-slate-700">ഓഫർ അവസാനിക്കാൻ ബാക്കി:</span>
@@ -356,115 +365,141 @@ function App() {
             </span>
           </div>
 
-          {/* LOGO (SMALL) */}
+          {/* 2. LOGO (SMALL) */}
           <img
             src={logo}
             alt="QNAYDS"
-            className="mb-5 h-8 w-auto max-w-[120px] object-contain sm:h-10"
+            className="mb-3 h-7 w-auto max-w-[110px] object-contain sm:mb-4 sm:h-9"
           />
 
-          {/* TAG ABOVE HEADLINE */}
-          <div className={tag}>
+          {/* TAG ABOVE HEADLINE (SLIM) */}
+          <div className="inline-flex items-center rounded-full border border-blue-200 bg-blue-50 px-3 py-0.5 text-[11px] font-semibold text-blue-700 sm:text-xs sm:px-3.5 sm:py-1">
             ✦ ജോലിയിൽ ഉപയോഗിക്കാവുന്ന പ്രായോഗിക Excel + AI പഠനം
           </div>
 
-          {/* HEADLINE IN MALAYALAM (2 LINES) */}
-          <h1 className="mt-5 max-w-3xl text-2xl font-extrabold leading-[1.25] tracking-tight text-slate-900 sm:text-4xl lg:text-[42px]">
-            AI ഉപയോഗിച്ച് Excel പഠിക്കാൻ ആഗ്രഹമുണ്ടോ?{" "}
-            <span className="text-blue-600 block sm:inline">
+          {/* 3. HEADLINE IN MALAYALAM, SMALLER, 2 LINES */}
+          <h1 className="mt-3 max-w-3xl text-2xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
+            <span>AI ഉപയോഗിച്ച് Excel പഠിക്കാൻ ആഗ്രഹമുണ്ടോ?</span>
+            <span className="block text-blue-600 sm:mt-1">
               ജോലി എളുപ്പത്തിലും വേഗത്തിലും ചെയ്യാം.
             </span>
           </h1>
 
-          {/* ONE SHORT LINE IN SIMPLE MALAYALAM */}
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
+          {/* 4. ONE SHORT LINE IN SIMPLE MALAYALAM */}
+          <p className="mt-2.5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base">
             മണിക്കൂറുകൾ എടുക്കുന്ന Excel ജോലികൾ AI ഉപയോഗിച്ച് വളരെ കുറഞ്ഞ
             സമയത്തിൽ ചെയ്യാൻ പഠിക്കാം.
           </p>
 
-          {/* BUTTONS */}
-          <div className="mt-7 flex w-full max-w-md flex-col items-center justify-center gap-3 sm:max-w-none sm:flex-row">
+          {/* 5. SOLID DARK BUTTON: ₹1,499-ന് ഇപ്പോൾ ചേരൂ */}
+          <div className="mt-4 flex w-full max-w-sm flex-col items-center justify-center">
             <button
               type="button"
               onClick={openEnrollment}
-              className="group inline-flex w-full items-center justify-center gap-3 rounded-full bg-slate-900 px-8 py-4 text-base font-extrabold text-white shadow-xl shadow-slate-900/25 transition-all duration-300 hover:-translate-y-1 hover:bg-slate-800 sm:w-auto"
+              className="group inline-flex w-full items-center justify-center gap-2.5 rounded-full bg-slate-900 px-8 py-3.5 text-base font-extrabold text-white shadow-xl shadow-slate-900/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-slate-800"
             >
               <span>₹1,499-ന് ഇപ്പോൾ ചേരൂ</span>
               <span className="text-xl transition-transform duration-300 group-hover:translate-x-1">
                 →
               </span>
             </button>
-
-            <a
-              href="#modules"
-              className="inline-flex w-full items-center justify-center rounded-full border border-slate-300 bg-white px-7 py-4 text-base font-semibold text-slate-800 transition-all duration-300 hover:-translate-y-0.5 hover:border-blue-300 hover:bg-blue-50 sm:w-auto"
-            >
-              കൂടുതൽ അറിയാം
-            </a>
           </div>
 
-          {/* TICKS */}
-          <div className="mt-5 flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs font-semibold text-slate-600 sm:text-sm">
-            <span>
-              <span className="mr-1.5 text-emerald-500 font-bold">✓</span>
-              പ്രായോഗിക പഠനം
-            </span>
-            <span>
-              <span className="mr-1.5 text-emerald-500 font-bold">✓</span>
-              ജോലിക്ക് ഉപകരിക്കുന്നത്
-            </span>
-            <span>
-              <span className="mr-1.5 text-emerald-500 font-bold">✓</span>
-              AI ഉപയോഗിച്ച് Excel
-            </span>
-          </div>
-
-          {/* FACTS LINE (NEW TRUST ITEM) */}
-          <div className="mt-4 rounded-xl border border-blue-100 bg-blue-50/80 px-4 py-2 text-xs font-medium text-slate-700 sm:text-sm">
+          {/* 6. FACTS LINE: LIVE/RECORDED • HOURS • CERTIFICATE */}
+          <div className="mt-3.5 flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1 rounded-xl border border-blue-100 bg-blue-50/80 px-3.5 py-1.5 text-xs font-semibold text-slate-700 sm:text-sm">
             <span>റെക്കോർഡ് ചെയ്ത ക്ലാസുകൾ</span>
-            <span className="mx-2 text-blue-300">•</span>
-            <span>10+ മണിക്കൂർ പരിശീലനം</span>
-            <span className="mx-2 text-blue-300">•</span>
+            <span className="text-blue-300">•</span>
+            <span>10+ മണിക്കൂർ</span>
+            <span className="text-blue-300">•</span>
             <span>ലൈഫ് ടൈം ആക്സസ്</span>
-            <span className="mx-2 text-blue-300">•</span>
-            <span className="font-semibold text-blue-900">സർട്ടിഫിക്കറ്റ്</span>
+            <span className="text-blue-300">•</span>
+            <span className="font-bold text-blue-900">സർട്ടിഫിക്കറ്റ്</span>
+          </div>
+
+          {/* TICKS (COMPACT) */}
+          <div className="mt-2.5 flex flex-wrap justify-center gap-x-5 gap-y-1 text-xs font-medium text-slate-500">
+            <span>✓ പ്രായോഗിക പഠനം</span>
+            <span>✓ ജോലിക്ക് ഉപകരിക്കുന്നത്</span>
+            <span>✓ AI ഉപയോഗിച്ച് Excel</span>
           </div>
         </div>
       </section>
 
       {/* ================= 2. VIDEO RIGHT BELOW ================= */}
-      <section className="bg-white py-14 sm:py-20" id="video">
+      <section className="bg-white pt-4 pb-14 sm:pt-6 sm:pb-20" id="video">
         <div className="mx-auto max-w-5xl px-4 text-center sm:px-6">
           <div className={tag}>കോഴ്സിനെക്കുറിച്ച് അറിയാം</div>
 
-          <h2 className={h2 + " mt-4"}>
+          <h2 className="mt-3 text-2xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-3xl">
             Excel + AI{" "}
             <span className="text-blue-600">
               എങ്ങനെ പഠിക്കാം എന്ന് നോക്കാം.
             </span>
           </h2>
 
-          <p className={lead + " mx-auto max-w-2xl"}>
+          <p className="mx-auto mt-2 max-w-2xl text-xs sm:text-sm leading-relaxed text-slate-600">
             കരിയറിൽ മാറ്റങ്ങൾ കൊണ്ടുവരാൻ Excel + AI എങ്ങനെ പഠിക്കാമെന്ന് ഈ
             വീഡിയോയിലൂടെ മനസ്സിലാക്കാം.
           </p>
 
-          <div className="mt-10">
-            <div className="mx-auto w-fit max-w-full overflow-hidden rounded-3xl shadow-2xl border border-slate-200">
+          <div className="mt-7">
+            <div className="relative mx-auto w-fit max-w-full overflow-hidden rounded-3xl shadow-2xl border border-slate-200 bg-slate-950 group">
               <video
-                className="block h-[420px] w-auto max-w-full rounded-3xl object-contain sm:h-[540px] md:h-[600px]"
-                controls
+                ref={videoRef}
+                className="block h-[400px] w-auto max-w-full rounded-3xl object-contain sm:h-[520px] md:h-[580px]"
+                controls={videoStarted}
                 playsInline
                 poster={excelThumbnail}
                 preload="metadata"
+                onPlay={() => setVideoStarted(true)}
               >
                 <source src={courseVideo} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
+
+              {/* MALAYALAM VIDEO COVER OVERLAY (Fixes "2:48" vs "0:48" checklist issue) */}
+              {!videoStarted && (
+                <div
+                  onClick={handlePlayVideo}
+                  className="absolute inset-0 flex flex-col justify-between p-4 sm:p-6 bg-gradient-to-t from-slate-950/85 via-transparent to-slate-950/50 rounded-3xl cursor-pointer transition-all duration-300 hover:bg-slate-950/40"
+                >
+                  {/* Top Malayalam Badge */}
+                  <div className="flex justify-between items-center">
+                    <span className="rounded-full bg-slate-900/90 border border-white/20 px-3 py-1 text-xs font-bold text-white shadow backdrop-blur-md">
+                      ✦ Excel + AI കോഴ്സ് ആമുഖം
+                    </span>
+                  </div>
+
+                  {/* Center Play Button */}
+                  <div className="flex flex-col items-center justify-center gap-2">
+                    <div className="flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full bg-blue-600 text-white shadow-2xl shadow-blue-500/50 transition-all duration-300 group-hover:scale-110 group-hover:bg-blue-500">
+                      <svg
+                        className="h-8 w-8 sm:h-10 sm:w-10 translate-x-0.5 fill-current"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </div>
+                    <span className="rounded-full bg-slate-900/80 px-3.5 py-1 text-xs font-bold text-white backdrop-blur-sm">
+                      വീഡിയോ കാണാം
+                    </span>
+                  </div>
+
+                  {/* Bottom: Malayalam label and actual 0:48 duration */}
+                  <div className="flex justify-between items-end">
+                    <span className="rounded-md bg-blue-600/90 px-2 py-0.5 text-[11px] font-bold text-white">
+                      48 സെക്കൻഡ് ആമുഖം
+                    </span>
+                    <span className="rounded-md bg-slate-950 border border-white/20 px-2.5 py-1 font-mono text-xs font-bold text-white shadow-md">
+                      0:48
+                    </span>
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* UNDER VIDEO CAPTION (MALAYALAM) */}
-            <div className="mx-auto mt-6 flex max-w-3xl flex-wrap justify-center gap-x-7 gap-y-2 text-sm font-semibold text-slate-700">
+            <div className="mx-auto mt-5 flex max-w-3xl flex-wrap justify-center gap-x-7 gap-y-2 text-sm font-semibold text-slate-700">
               <div className="flex items-center gap-1.5">
                 <span className="text-emerald-600">✓</span>
                 പ്രായോഗിക പരിശീലനം
