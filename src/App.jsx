@@ -74,74 +74,74 @@ const todayChallenges = [
 
 const modules = [
   {
-    num: "MODULE 01",
+    num: "മൊഡ്യൂൾ 01",
     title: "Excel അടിസ്ഥാനങ്ങൾ",
     topics: [
-      "Excel Interface & Navigation",
-      "Workbook & Worksheet Structure",
-      "Cells & Cell Referencing",
-      "Data Types & Formatting",
-      "Essential Keyboard Shortcuts",
+      "Excel ഇന്റർഫേസും നാവിഗേഷനും",
+      "വർക്ക്ബുക്ക് & വർക്ക്ഷീറ്റ് ഘടന",
+      "സെല്ലുകളും സെൽ റഫറൻസിംഗും",
+      "ഡാറ്റ ടൈപ്പുകളും ഫോർമാറ്റിംഗും",
+      "പ്രധാന കീബോർഡ് ഷോർട്ട്കട്ടുകൾ",
     ],
     outcome: "ശക്തമായ Excel അടിത്തറ",
   },
   {
-    num: "MODULE 02",
+    num: "മൊഡ്യൂൾ 02",
     title: "ഡാറ്റ കൈകാര്യവും വിശകലനവും",
     topics: [
-      "Sorting & Filtering Data",
-      "Data Validation & Cleaning",
-      "Remove Duplicates",
-      "Text & Lookup Functions",
+      "ഡാറ്റ സോർട്ടിംഗും ഫിൽട്ടറിംഗും",
+      "ഡാറ്റ വാലിഡേഷനും ക്ലീനിംഗും",
+      "ഡ്യൂപ്ലിക്കേറ്റുകൾ നീക്കം ചെയ്യൽ",
+      "ടെക്സ്റ്റ് & ലുക്ക്അപ്പ് ഫംഗ്ഷനുകൾ",
       "Pivot Tables & Charts",
     ],
     outcome: "ഡാറ്റ ക്രമീകരിക്കാനും വിശകലനം ചെയ്യാനും കഴിയും",
   },
   {
-    num: "MODULE 03",
+    num: "മൊഡ്യൂൾ 03",
     title: "റിപ്പോർട്ടുകളും ഡാഷ്ബോർഡുകളും",
     topics: [
-      "Chart Types & Visualizations",
-      "Dynamic Charts for Presentation",
-      "KPI Reporting Formats",
-      "Interactive Dashboard Design",
-      "Professional Layouts",
+      "വിവിധതരം ചാർട്ടുകൾ & വിഷ്വലൈസേഷൻ",
+      "ഡൈനാമിക് പ്രസന്റേഷൻ ചാർട്ടുകൾ",
+      "KPI റിപ്പോർട്ടിംഗ് ഫോർമാറ്റുകൾ",
+      "ഇന്ററാക്ടീവ് ഡാഷ്ബോർഡ് ഡിസൈൻ",
+      "പ്രൊഫഷണൽ റിപ്പോർട്ട് ലേഔട്ടുകൾ",
     ],
     outcome: "ചാർട്ടുകളും ഡാഷ്ബോർഡുകളും ഉണ്ടാക്കാൻ കഴിയും",
   },
   {
-    num: "MODULE 04",
+    num: "മൊഡ്യൂൾ 04",
     title: "Excel-ൽ AI ടൂളുകൾ",
     topics: [
-      "Introduction to AI in Excel",
-      "ChatGPT for Complex Excel Formulas",
-      "Instant Formula Generation",
-      "Error Troubleshooting with AI",
-      "Smart Data Insights",
+      "Excel-ൽ AI-യുടെ ആമുഖം",
+      "സങ്കീർണ്ണ ഫോർമുലകൾക്കായി ChatGPT",
+      "തൽക്ഷണ ഫോർമുല ജനറേഷൻ",
+      "AI ഉപയോഗിച്ച് തെറ്റുകൾ തിരുത്തൽ",
+      "സ്മാർട്ട് ഡാറ്റ ഇൻസൈറ്റുകൾ",
     ],
     outcome: "ChatGPT ഉപയോഗിച്ച് ഫോർമുലകൾ കണ്ടെത്താനും തെറ്റുകൾ തിരുത്താനും കഴിയും",
     featured: true,
   },
   {
-    num: "MODULE 05",
+    num: "മൊഡ്യൂൾ 05",
     title: "AI ഉപയോഗിച്ചുള്ള ഓട്ടോമേഷൻ",
     topics: [
-      "Automating Repetitive Spreadsheet Tasks",
-      "AI-assisted Formula Automation",
-      "Monthly Report Generation",
-      "Daily Workflow Optimization",
+      "ആവർത്തിച്ചുള്ള ജോലികൾ ഓട്ടോമേറ്റ് ചെയ്യൽ",
+      "AI ഫോർമുല ഓട്ടോമേഷൻ",
+      "പ്രതിമാസ റിപ്പോർട്ട് ജനറേഷൻ",
+      "ദിവസേനയുള്ള വർക്ക്ഫ്ലോ ലളിതമാക്കൽ",
     ],
     outcome: "ആവർത്തിച്ചുള്ള ജോലികൾ എളുപ്പമാക്കാം",
   },
   {
-    num: "MODULE 06",
+    num: "മൊഡ്യൂൾ 06",
     title: "MIS, HR & അക്കൗണ്ട്സ്",
     topics: [
-      "MIS Report Structure & Standards",
-      "Daily / Weekly / Monthly Reports",
-      "HR Attendance & Leave Trackers",
-      "Payroll & Basic Calculations",
-      "Expense & Budget Trackers",
+      "MIS റിപ്പോർട്ട് ഘടനയും മാനദണ്ഡങ്ങളും",
+      "ദിവസേന / പ്രതിവാര / പ്രതിമാസ റിപ്പോർട്ടുകൾ",
+      "HR ഹാജർ & ലീവ് ട്രാക്കറുകൾ",
+      "പേറോൾ അടിസ്ഥാന കണക്കുകൂട്ടലുകൾ",
+      "ചെലവ് & ബജറ്റ് ട്രാക്കിംഗ്",
     ],
     outcome: "ജോലിക്ക് ആവശ്യമായ റിപ്പോർട്ടുകൾ തയ്യാറാക്കാം",
   },
@@ -827,7 +827,7 @@ function App() {
                 >
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-xs font-bold text-blue-400">
-                      PROJECT {project.number}
+                      പ്രോജക്ട് {project.number}
                     </span>
                     <span className="text-lg">📊</span>
                   </div>
@@ -1414,10 +1414,10 @@ function App() {
             <div className="flex items-start justify-between border-b border-slate-100 px-6 py-5">
               <div>
                 <h2 className="text-lg font-extrabold text-slate-900">
-                  Complete Your Enrollment
+                  എൻറോൾമെന്റ് പൂർത്തിയാക്കൂ
                 </h2>
                 <p className="mt-1 text-sm text-slate-500">
-                  Enter your details to continue securely.
+                  തുടരുന്നതിനായി നിങ്ങളുടെ വിവരങ്ങൾ നൽകുക.
                 </p>
               </div>
 
@@ -1437,7 +1437,7 @@ function App() {
               <div className="flex items-center justify-between rounded-2xl border border-blue-100 bg-blue-50 px-5 py-4">
                 <div>
                   <strong className="block text-sm font-bold text-slate-900">
-                    Excel + AI Practical Program
+                    Excel + AI പ്രായോഗിക കോഴ്സ്
                   </strong>
                   <del className="text-xs text-slate-400">₹5,000</del>
                   <div className="mt-1 text-xl font-extrabold text-blue-600">
@@ -1446,7 +1446,7 @@ function App() {
                 </div>
 
                 <span className="rounded-full bg-amber-400 px-3 py-1 text-xs font-bold text-amber-950">
-                  Save ₹3,501
+                  ₹3,501 ലാഭം
                 </span>
               </div>
 
@@ -1582,7 +1582,7 @@ function App() {
                   <input
                     type="text"
                     name="name"
-                    placeholder="Full Name"
+                    placeholder="പൂർണ്ണമായ പേര് (Full Name)"
                     required
                     className="w-full border-0 p-0 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-0"
                   />
@@ -1593,7 +1593,7 @@ function App() {
                   <input
                     type="email"
                     name="email"
-                    placeholder="Email Address"
+                    placeholder="ഇമെയിൽ വിലാസം (Email)"
                     required
                     className="w-full border-0 p-0 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-0"
                   />
@@ -1604,7 +1604,7 @@ function App() {
                   <input
                     type="tel"
                     name="phone"
-                    placeholder="Phone Number"
+                    placeholder="ഫോൺ നമ്പർ (WhatsApp Number)"
                     required
                     className="w-full border-0 p-0 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-0"
                   />
@@ -1614,11 +1614,11 @@ function App() {
                 <div className="rounded-xl bg-slate-50 p-4">
                   <div className="flex items-center gap-2 text-sm font-bold text-slate-800">
                     <span>🛡️</span>
-                    <strong>Secure Checkout</strong>
+                    <strong>സുരക്ഷിത പേയ്മെന്റ് (Secure Checkout)</strong>
                   </div>
                   <p className="mt-1.5 text-xs leading-relaxed text-slate-500">
-                    Secure payment via Razorpay. After payment, we'll send an
-                    activation email to your inbox.
+                    Razorpay വഴി 100% സുരക്ഷിതമായ പേയ്മെന്റ്. പേയ്മെന്റിന് ശേഷം
+                    ആക്റ്റിവേഷൻ ലിങ്ക് നിങ്ങളുടെ ഇമെയിലിൽ എത്തും.
                   </p>
                 </div>
 
@@ -1629,14 +1629,14 @@ function App() {
                     className="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm font-bold text-slate-700 transition-all duration-300 hover:bg-slate-50"
                     onClick={closeEnrollment}
                   >
-                    Cancel
+                    ക്യാൻസൽ
                   </button>
 
                   <button
                     type="submit"
                     className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-4 py-3 text-sm font-bold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:bg-blue-700"
                   >
-                    Continue to Payment
+                    ₹1,499 അടയ്ക്കാം →
                   </button>
                 </div>
               </form>
