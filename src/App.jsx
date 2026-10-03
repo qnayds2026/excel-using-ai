@@ -207,6 +207,11 @@ const faqs = [
       "അതെ. കോഴ്സ് പൂർത്തിയാക്കുമ്പോൾ നിങ്ങളുടെ റെസ്യൂമെയിലും LinkedIn-ലും ചേർക്കാവുന്ന QNAYDS നൽകുന്ന വെരിഫൈഡ് കോഴ്സ് സർട്ടിഫിക്കറ്റ് ലഭിക്കുന്നതാണ്.",
   },
   {
+    question: "റീഫണ്ട് ലഭിക്കുമോ?",
+    answer:
+      "തൽക്ഷണ ആക്സസ് ലഭിക്കുന്ന ഡിജിറ്റൽ കോഴ്സ് ആയതിനാൽ സാധാരണയായി റീഫണ്ട് അനുവദിക്കാറില്ല. എന്നാൽ സാങ്കേതിക തടസ്സങ്ങളോ പേയ്മെന്റ് പ്രശ്നങ്ങളോ ഉണ്ടായാൽ ഞങ്ങളുടെ സപ്പോർട്ട് ടീം ഉടൻ പരിശോധിച്ച് പരിഹാരം കാണുന്നതാണ്.",
+  },
+  {
     question: "സംശയം വന്നാൽ ആരോട് ചോദിക്കും?",
     answer:
       "പഠനത്തിനിടയിൽ സംശയങ്ങൾ ഉണ്ടായാൽ ഞങ്ങളുടെ WhatsApp സപ്പോർട്ട് ടീമുമായി നേരിട്ട് ബന്ധപ്പെടാം. ഞങ്ങളുടെ മെന്റർമാർ നിങ്ങൾക്ക് ആവശ്യമായ സഹായം നൽകും.",
@@ -1193,7 +1198,7 @@ function App() {
 
           {/* Bottom Copyright line */}
           <div className="mt-10 border-t border-slate-200 pt-6 text-center text-xs text-slate-500">
-            <p>© 2026 QNAYDS ACADEMY. എല്ലാ അവകാശങ്ങളും സംരക്ഷിതം.</p>
+            <p>© 2026 QNAYDS ACADEMY. All rights reserved.</p>
           </div>
         </div>
       </footer>
@@ -1208,7 +1213,8 @@ function App() {
                 🔥 പരിമിതകാല ഓഫർ
               </span>
               <div className="flex items-center gap-1.5 text-xs text-slate-600">
-                <span>ബാക്കി:</span>
+                <span className="hidden sm:inline">ഓഫർ അവസാനിക്കാൻ ബാക്കി:</span>
+                <span className="sm:hidden">ബാക്കി:</span>
                 <span className="rounded bg-slate-900 px-2 py-1 font-mono font-bold text-white">
                   {String(timeLeft.hours).padStart(2, "0")}:
                   {String(timeLeft.minutes).padStart(2, "0")}:
@@ -1247,7 +1253,9 @@ function App() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat on WhatsApp"
-        className="fixed bottom-20 right-4 z-[9997] flex h-13 w-13 items-center justify-center rounded-full bg-[#25D366] text-white shadow-xl transition-all duration-300 hover:scale-110 sm:bottom-6 sm:right-6"
+        className={`fixed right-4 sm:right-6 z-[9999] flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-2xl transition-all duration-300 hover:scale-110 ${
+          showFloatingCta ? "bottom-24 sm:bottom-24" : "bottom-6 sm:bottom-6"
+        }`}
       >
         <svg
           className="h-7 w-7 fill-current"
