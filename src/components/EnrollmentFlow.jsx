@@ -25,7 +25,7 @@ const steps = [
 
 const EnrollmentFlow = ({ onEnroll, whatsappUrl }) => {
   return (
-    <section className="bg-slate-50 py-20 sm:py-28" id="how-to-enroll">
+    <section className="bg-slate-50 py-16 sm:py-24" id="how-to-enroll">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         {/* Section Header */}
         <div className="mx-auto max-w-2xl text-center">
@@ -39,20 +39,20 @@ const EnrollmentFlow = ({ onEnroll, whatsappUrl }) => {
             <span className="text-blue-600">പഠനം തുടങ്ങാം.</span>
           </h2>
 
-          <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+          <p className="mt-3 text-sm leading-relaxed text-slate-600 sm:mt-4 sm:text-base md:text-lg">
             സങ്കീർണ്ണമായ ഒന്നുമില്ല — 1 മിനിറ്റിൽ ചേർന്ന് പഠനം ആരംഭിക്കാം.
           </p>
         </div>
 
         {/* 3 Step Cards */}
-        <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="mt-10 sm:mt-14 grid grid-cols-1 gap-5 md:grid-cols-3 sm:gap-6">
           {steps.map((step) => {
             const Icon = step.icon;
 
             return (
               <div
                 key={step.num}
-                className="group relative flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg"
+                className="group relative flex h-full flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg"
               >
                 <div>
                   {/* Top Bar: Icon & Step Number */}
@@ -83,7 +83,7 @@ const EnrollmentFlow = ({ onEnroll, whatsappUrl }) => {
         </div>
 
         {/* Reassurance & Actions Bar */}
-        <div className="mt-12 flex flex-col items-center justify-between gap-5 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:flex-row">
+        <div className="mt-10 sm:mt-12 flex flex-col items-center justify-between gap-5 rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 shadow-sm sm:flex-row text-center sm:text-left">
           <div className="flex items-center gap-2.5 text-sm font-semibold text-slate-700">
             <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-xs font-bold text-emerald-600">
               ✓
