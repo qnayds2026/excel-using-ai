@@ -6,23 +6,20 @@ const steps = [
   {
     num: "01",
     icon: CreditCard,
-    title: "എൻറോൾ & പേയ്‌മെന്റ്",
-    eng: "Enroll & Pay",
-    desc: "പേരും നമ്പറും നൽകി GPay, PhonePe അല്ലെങ്കിൽ Cards വഴി സുരക്ഷിതമായി ഫീസ് അടയ്ക്കുക.",
+    title: "എൻറോൾ & പേയ്മെന്റ്",
+    desc: "പേരും ഫോൺ നമ്പറും നൽകി GPay, PhonePe അല്ലെങ്കിൽ കാർഡ് വഴി സുരക്ഷിതമായി ഫീസ് അടയ്ക്കുക.",
   },
   {
     num: "02",
     icon: MailCheck,
     title: "ലോഗിൻ ലിങ്ക് ലഭിക്കുന്നു",
-    eng: "Instant Access Link",
-    desc: "പേയ്‌മെന്റ് കഴിഞ്ഞ ഉടൻ തന്നെ Email വഴി ലോഗിൻ ലിങ്ക് തൽക്ഷണം എത്തും.",
+    desc: "പേയ്മെന്റ് കഴിഞ്ഞ ഉടൻ ഇമെയിൽ വഴി ലോഗിൻ ലിങ്ക് എത്തും. ഇമെയിൽ കിട്ടിയില്ലെങ്കിൽ WhatsApp-ൽ ഞങ്ങളെ അറിയിക്കൂ.",
   },
   {
     num: "03",
     icon: GraduationCap,
     title: "പഠനം ആരംഭിക്കാം!",
-    eng: "Start Learning",
-    desc: "Password നൽകി ലോഗിൻ ചെയ്ത് ഫോണിലോ ലാപ്ടോപ്പിലോ ക്ലാസുകൾ കണ്ടുതുടങ്ങാം.",
+    desc: "പാസ്‌വേഡ് നൽകി ലോഗിൻ ചെയ്ത് ഫോണിലോ ലാപ്ടോപ്പിലോ ക്ലാസുകൾ കണ്ടുതുടങ്ങാം.",
   },
 ];
 
@@ -33,17 +30,17 @@ const EnrollmentFlow = ({ onEnroll, whatsappUrl }) => {
         {/* Section Header */}
         <div className="mx-auto max-w-2xl text-center">
           <div className="inline-flex items-center rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1 text-xs font-semibold text-blue-700">
-            How to Enroll
+            എങ്ങനെ ചേരാം?
           </div>
 
           <h2 className="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-4xl">
-            Start Learning in{" "}
-            <br className="hidden sm:inline" />
-            <span className="text-blue-600">3 Simple Steps.</span>
+            3 ലളിതമായ ഘട്ടങ്ങളിൽ
+            <br className="hidden sm:inline" />{" "}
+            <span className="text-blue-600">പഠനം തുടങ്ങാം.</span>
           </h2>
 
           <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
-            സങ്കീർണ്ണമായ ഒന്നുമില്ല — 1 മിനിറ്റിൽ എൻറോൾ ചെയ്ത് പഠനം ആരംഭിക്കാം.
+            സങ്കീർണ്ണമായ ഒന്നുമില്ല — 1 മിനിറ്റിൽ ചേർന്ന് പഠനം ആരംഭിക്കാം.
           </p>
         </div>
 
@@ -71,11 +68,7 @@ const EnrollmentFlow = ({ onEnroll, whatsappUrl }) => {
 
                   {/* Text Content */}
                   <div className="mt-5">
-                    <span className="text-xs font-semibold text-blue-600">
-                      {step.eng}
-                    </span>
-
-                    <h3 className="mt-1.5 text-lg font-bold text-slate-900">
+                    <h3 className="text-lg font-bold text-slate-900">
                       {step.title}
                     </h3>
 
@@ -95,7 +88,7 @@ const EnrollmentFlow = ({ onEnroll, whatsappUrl }) => {
             <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-xs font-bold text-emerald-600">
               ✓
             </span>
-            <span>100% സുരക്ഷിത പേയ്‌മെന്റ് • Instant Access</span>
+            <span>100% സുരക്ഷിത പേയ്മെന്റ് • ഉടൻ ആക്സസ്</span>
           </div>
 
           <div className="flex w-full flex-col items-center gap-3 sm:w-auto sm:flex-row">
@@ -105,7 +98,7 @@ const EnrollmentFlow = ({ onEnroll, whatsappUrl }) => {
                 onClick={onEnroll}
                 className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-blue-600 px-7 py-3.5 text-base font-bold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-xl animate-pulse sm:w-auto"
               >
-                <span>ഇപ്പോൾ Enroll ചെയ്യാം</span>
+                <span>₹1,499-ന് ഇപ്പോൾ ചേരൂ</span>
                 <span className="text-lg transition-transform duration-300 group-hover:translate-x-1">
                   →
                 </span>
