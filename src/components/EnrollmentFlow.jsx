@@ -25,7 +25,7 @@ const steps = [
 
 const EnrollmentFlow = ({ onEnroll, whatsappUrl }) => {
   return (
-    <section className="bg-slate-50 py-20 sm:py-28" id="how-to-enroll">
+    <section className="bg-slate-50 py-16 sm:py-24" id="how-to-enroll">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         {/* Section Header */}
         <div className="mx-auto max-w-2xl text-center">
@@ -69,11 +69,7 @@ const EnrollmentFlow = ({ onEnroll, whatsappUrl }) => {
 
                   {/* Text Content */}
                   <div className="mt-5">
-                    <span className="text-xs font-semibold text-blue-600">
-                      {step.eng}
-                    </span>
-
-                    <h3 className="mt-1.5 text-lg font-bold text-slate-900">
+                    <h3 className="text-lg font-bold text-slate-900">
                       {step.title}
                     </h3>
 
