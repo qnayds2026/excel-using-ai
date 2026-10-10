@@ -188,6 +188,194 @@ const trackMetaEvent = (eventName, params = {}) => {
     window.fbq("track", eventName, params);
   }
 };
+
+const learners = [
+  {
+    title: "Freshers",
+    text: "Excel Basics മുതൽ practical job skills വരെ പഠിച്ച് നിങ്ങളുടെ Career ആരംഭിക്കാം.",
+  },
+  {
+    title: "Job Seekers",
+    text: "ജോലിക്ക് ആവശ്യമായ Excel, Reporting, Data Analysis Skills പഠിച്ച് Interview-ൽ കൂടുതൽ ആത്മവിശ്വാസത്തോടെ പങ്കെടുക്കാം.",
+  },
+  {
+    title: "Office / MIS Professionals",
+    text: "ദിവസേനയുള്ള Reports, MIS, Dashboards, Data കൈകാര്യം എന്നിവ കൂടുതൽ വേഗത്തിൽ ചെയ്യാം.",
+  },
+  {
+    title: "HR Professionals",
+    text: "Attendance, ജീവനക്കാരുടെ Data, Leave Tracking, HR Reports എന്നിവ Excel + AI ഉപയോഗിച്ച് എളുപ്പമാക്കാം.",
+  },
+  {
+    title: "Accounts Professionals",
+    text: "Expenses, കണക്കുകൂട്ടലുകൾ, സാമ്പത്തിക Data, Reports എന്നിവ കൂടുതൽ കൃത്യമായി ചെയ്യാം.",
+  },
+  {
+    title: "Business Owners",
+    text: "Sales, Expenses, Business Data എന്നിവ Analyze ചെയ്ത് മികച്ച തീരുമാനങ്ങൾ എടുക്കാം.",
+  },
+];
+
+const todayChallenges = [
+  "Reports തയ്യാറാക്കാൻ കൂടുതൽ സമയം ചെലവാകുന്നു",
+  "Data മനസ്സിലാക്കാൻ ബുദ്ധിമുട്ട്",
+  "Repeated Excel Tasks",
+  "Interview-ന് ആവശ്യമായ കഴിവുകളുടെ കുറവ്",
+];
+
+
+const modules = [
+  {
+    num: "Module 01",
+    title: "Excel Fundamentals",
+    topics: [
+      "Excel Interface & Navigation",
+      "Workbook & Worksheet Structure",
+      "Cells & Cell Referencing",
+      "Data Types & Formatting",
+      "Essential Keyboard Shortcuts",
+    ],
+    outcome: "Build a Strong Excel Foundation",
+  },
+  {
+    num: "Module 02",
+    title: "Data Handling & Analysis",
+    topics: [
+      "Data Sorting & Filtering",
+      "Data Validation & Cleaning",
+      "Duplicate Removal",
+      "Text & Lookup Functions",
+      "Pivot Tables & Charts",
+    ],
+    outcome: "Organize Data & Perform Analysis",
+  },
+  {
+    num: "Module 03",
+    title: "Reports & Dashboards",
+    topics: [
+      "Charts & Data Visualization",
+      "Dynamic Presentation Charts",
+      "KPI Reporting Formats",
+      "Interactive Dashboard Design",
+      "Professional Report Layouts",
+    ],
+    outcome: "Create Professional Charts & Dashboards",
+  },
+  {
+    num: "Module 04",
+    title: "AI Tools in Excel",
+    topics: [
+      "Introduction to AI in Excel",
+      "Using ChatGPT for Complex Formulas",
+      "Instant Formula Generation",
+      "Error Correction Using AI",
+      "Smart Data Insights",
+    ],
+    outcome: "Generate Formulas & Fix Errors Using AI",
+    featured: true,
+  },
+  {
+    num: "Module 05",
+    title: "AI-Powered Automation",
+    topics: [
+      "Repeated Task Automation",
+      "AI Formula Automation",
+      "Monthly Report Generation",
+      "Daily Workflow Automation",
+    ],
+    outcome: "Automate Repetitive Tasks",
+  },
+  {
+    num: "Module 06",
+    title: "MIS, HR & Accounts",
+    topics: [
+      "MIS Reporting Structure & Standards",
+      "Daily / Weekly / Monthly Reports",
+      "HR Attendance & Leave Trackers",
+      "Payroll Calculations",
+      "Expense & Budget Tracking",
+    ],
+    outcome: "Create Job-Ready Reports",
+  },
+];
+
+
+const projects = [
+  {
+    number: "01",
+    title: "Sales Dashboard",
+    text: "Sales Data ഉപയോഗിച്ച് Management-നായി ഒരു Professional Interactive Dashboard തയ്യാറാക്കാം.",
+  },
+  {
+    number: "02",
+    title: "HR Attendance Report",
+    text: "Employee Attendance, Leave Data എന്നിവ ഉപയോഗിച്ച് Automated Report തയ്യാറാക്കാം.",
+  },
+  {
+    number: "03",
+    title: "Expense Tracker",
+    text: "Office Expenses track ചെയ്യാനും നിരീക്ഷിക്കാനും ഒരു Expense Tracker നിർമ്മിക്കാം.",
+  },
+  {
+    number: "04",
+    title: "AI Formula Project",
+    text: "ChatGPT ഉപയോഗിച്ച് Excel Formulas കണ്ടെത്താനും മനസ്സിലാക്കാനും പ്രായോഗികമായി പഠിക്കാം.",
+  },
+  {
+    number: "05",
+    title: "Automated MIS",
+    text: "Daily MIS Reporting എളുപ്പമാക്കാനും ആവശ്യമായ Reports automate ചെയ്യാനും പഠിക്കാം.",
+  },
+];
+
+const faqs = [
+  {
+    question: "ആർക്കാണ് ഈ Course അനുയോജ്യം?",
+    answer:
+      "Excel പഠിക്കാൻ ആഗ്രഹിക്കുന്ന Beginners മുതൽ Excel കൂടുതൽ Professional ആയി ഉപയോഗിക്കാൻ ആഗ്രഹിക്കുന്ന Office Staff, Freshers, Job Seekers, HR, Accounts Professionals എന്നിവർക്ക് ഈ Course അനുയോജ്യമാണ്.",
+  },
+  {
+    question: "Excel അറിയാത്തവർക്ക് ഈ Course പഠിക്കാനാകുമോ?",
+    answer:
+      "തീർച്ചയായും. Excel Basics മുതൽ Step by Step ആയി പഠിപ്പിക്കുന്നു. Beginners-ന് എളുപ്പത്തിൽ മനസ്സിലാകുന്ന ലളിതമായ മലയാളത്തിലാണ് Classes.",
+  },
+  {
+    question: "Classes Live ആണോ, Recorded ആണോ?",
+    answer:
+      "ഇത് Recorded Classes ആണ്. നിങ്ങൾക്ക് സൗകര്യമുള്ള സമയത്ത് Mobile അല്ലെങ്കിൽ Laptop ഉപയോഗിച്ച് പഠിക്കാം.",
+  },
+  {
+    question: "Course എത്ര മണിക്കൂർ ദൈർഘ്യമുള്ളതാണ്? Access എത്ര കാലം ലഭിക്കും?",
+    answer:
+      "10+ Hours ദൈർഘ്യമുള്ള practical training ഇതിൽ ഉൾപ്പെടുന്നു. Enroll ചെയ്യുന്നവർക്ക് Course-ലേക്ക് Lifetime Access ലഭിക്കും.",
+  },
+  {
+    question: "AI Tools സൗജന്യമാണോ?",
+    answer:
+      "അതെ. പഠനത്തിനായി ChatGPT-യുടെ സൗജന്യ പതിപ്പ് എങ്ങനെ ഫലപ്രദമായി ഉപയോഗിക്കാം എന്നാണ് പ്രധാനമായും പഠിപ്പിക്കുന്നത്. ഇതിനായി അധിക Expenses ആവശ്യമില്ല.",
+  },
+  {
+    question: "Course പൂർത്തിയാക്കിയാൽ Certificate ലഭിക്കുമോ?",
+    answer:
+      "അതെ. Course വിജയകരമായി പൂർത്തിയാക്കിയാൽ Resume, LinkedIn Profile എന്നിവയിൽ ചേർക്കാവുന്ന QNAYDS Verified Certificate ലഭിക്കും.",
+  },
+  {
+    question: "Refund ലഭിക്കുമോ?",
+    answer:
+      "ഇത് Instant Access ലഭിക്കുന്ന Digital Course ആയതിനാൽ സാധാരണയായി Refund അനുവദിക്കാറില്ല. Technical Issues അല്ലെങ്കിൽ Payment Problems ഉണ്ടായാൽ ഞങ്ങളുടെ Support Team പരിശോധിച്ച് പരിഹാരം നൽകും.",
+  },
+  {
+    question: "സംശയം വന്നാൽ ആരോട് ചോദിക്കും?",
+    answer:
+      "പഠനത്തിനിടയിൽ Questions ഉണ്ടായാൽ ഞങ്ങളുടെ WhatsApp Support ടീമുമായി നേരിട്ട് ബന്ധപ്പെടാം. ഞങ്ങളുടെ Mentors നിങ്ങൾക്ക് ആവശ്യമായ സഹായം നൽകും.",
+  },
+  {
+    question: "ഏതെല്ലാം Payment Methods ലഭ്യമാണ്?",
+    answer:
+      "Google Pay, PhonePe, Paytm, Debit/Credit Cards, Net Banking എന്നിവ വഴി Secure ആയി Payment നടത്താം.",
+  },
+];
+
 function App() {
   const [showEnrollment, setShowEnrollment] = useState(false);
   const [showPaymentSuccess, setShowPaymentSuccess] = useState(false);
@@ -243,7 +431,7 @@ function App() {
           </h1>
 
           <p className="mt-2 text-slate-600">
-            Thank you for enrolling in the Excel Using AI Course.
+            Excel Using AI Course-ൽ Enroll ചെയ്തതിന് നന്ദി!
           </p>
 
           <div className="mt-6 flex items-start gap-3 rounded-2xl border border-blue-100 bg-blue-50 p-4 text-left">
@@ -256,8 +444,8 @@ function App() {
                 Check your email
               </h3>
               <p className="mt-1 text-sm text-slate-600">
-                Please check your email for the activation link and course
-                access details.
+                course Access വിവരങ്ങളും Activation ലിങ്കും നിങ്ങളുടെ
+                Email-ലേക്ക് അയച്ചിട്ടുണ്ട്.
               </p>
             </div>
           </div>
@@ -291,96 +479,114 @@ function App() {
 
   return (
     <div className="app min-h-screen bg-white text-slate-900 antialiased">
-      {/* ================= NAVBAR ================= */}
-      {/* ================= HERO ================= */}
-      <main>
-        <section
-          className="relative overflow-hidden bg-slate-50 pb-16 pt-12 sm:pb-24 sm:pt-16"
-          id="home"
-        >
-          {/* Background Grid */}
-          <div
-            className="pointer-events-none absolute inset-0"
-            style={gridBg}
+      {/* ================= 1. FIRST SCREEN (HERO - SECTION 2) ================= */}
+      <section
+        className="relative overflow-hidden bg-slate-50 pb-8 pt-4 sm:pb-14 sm:pt-6"
+        id="home"
+      >
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={gridBg}
+        />
+        <div className="pointer-events-none absolute -top-24 left-1/2 h-[26rem] w-[26rem] -translate-x-1/2 rounded-full bg-blue-400/20 blur-3xl" />
+
+        <div className="relative mx-auto flex max-w-4xl flex-col items-center px-4 text-center sm:px-6">
+          {/* 1. ONE SLIM BANNER: REAL END DATE / COUNTDOWN ONLY */}
+          <div className="mb-3 inline-flex max-w-full flex-wrap items-center justify-center gap-1.5 rounded-full border border-orange-200 bg-orange-50/90 px-3 py-1 text-[11px] font-bold text-orange-800 shadow-sm sm:mb-4 sm:gap-2 sm:px-4 sm:py-1.5 sm:text-sm">
+            <span>🔥 Limited-Time Offer</span>
+            <span className="h-3 w-px bg-orange-300 hidden sm:inline" />
+            <span className="text-slate-700 hidden sm:inline">Offer Ends In:</span>
+            <span className="text-slate-700 sm:hidden">Time Left:</span>
+            <span className="font-mono font-extrabold text-orange-900">
+              {String(timeLeft.hours).padStart(2, "0")}:
+              {String(timeLeft.minutes).padStart(2, "0")}:
+              {String(timeLeft.seconds).padStart(2, "0")}
+            </span>
+          </div>
+
+          {/* 2. LOGO (SMALL) */}
+          <img
+            src={logo}
+            alt="QNAYDS"
+            className="mb-3 h-7 w-auto max-w-[110px] object-contain sm:mb-4 sm:h-9"
           />
 
-          {/* Background Glow */}
-          <div className="pointer-events-none absolute -top-24 left-1/2 h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-blue-400/20 blur-3xl" />
+          {/* TAG ABOVE HEADLINE (SLIM) */}
+          <div className="inline-flex max-w-full items-center justify-center text-center rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-[11px] font-semibold text-blue-700 sm:px-3.5 sm:text-xs">
+            ✦ Job-ൽ ഉപയോഗിക്കാവുന്ന Practical Excel + AI Training
+          </div>
 
-          <div className="relative mx-auto flex max-w-5xl flex-col items-center px-4 text-center sm:px-6">
-            {/* Logo */}
-            <img
-              src={logo}
-              alt="QNAYDS"
-              className="mb-8 h-10 w-auto max-w-[140px] object-contain sm:h-12"
-            />
+          {/* 3. HEADLINE IN MALAYALAM, SMALLER, 2 LINES */}
+          <h1 className="mt-3 max-w-3xl text-2xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
+            <span>AI ഉപയോഗിച്ച് Excel പഠിക്കാൻ ആഗ്രഹമുണ്ടോ?</span>
+            <span className="block text-blue-600 sm:mt-1">
+              ജോലികൾ കൂടുതൽ എളുപ്പത്തിലും വേഗത്തിലും ചെയ്യാം.
+            </span>
+          </h1>
 
-            {/* Limited Offer */}
-            <div className="inline-flex flex-wrap items-center justify-center gap-3 rounded-full border border-orange-200 bg-orange-50 px-5 py-2.5 text-sm font-bold text-orange-700 shadow-sm">
-              <span>🔥 Limited Offer</span>
+          {/* 4. ONE SHORT LINE IN SIMPLE MALAYALAM */}
+          <p className="mt-2.5 max-w-xl text-xs sm:text-sm leading-relaxed text-slate-600 sm:text-base">
+            Hours എടുക്കുന്ന Excel Tasks, AI ഉപയോഗിച്ച് കുറഞ്ഞ സമയത്തിൽ പൂർത്തിയാക്കാൻ പഠിക്കാം.
+          </p>
 
-              <span className="hidden h-5 w-px bg-orange-300 sm:block" />
-
-              <span>Only {LIMITED_SEATS} seats available</span>
-            </div>
-
-            {/* Countdown */}
-            <div className="mt-4 flex items-center justify-center gap-3 rounded-2xl border border-blue-200 bg-white px-5 py-3 shadow-md">
-              <div className="flex items-center gap-2 text-sm font-semibold text-slate-700">
-                <span className="text-lg">⏳</span>
-                <span>Offer ends in</span>
-              </div>
-
-              <div className="flex items-center gap-2 text-sm font-bold">
-                <span className="rounded-lg bg-slate-900 px-2.5 py-1.5 text-white">
-                  {String(timeLeft.hours).padStart(2, "0")}
-                </span>
-
-                <span className="text-slate-700">:</span>
-
-                <span className="rounded-lg bg-slate-900 px-2.5 py-1.5 text-white">
-                  {String(timeLeft.minutes).padStart(2, "0")}
-                </span>
-
-                <span className="text-slate-700">:</span>
-
-                <span className="rounded-lg bg-slate-900 px-2.5 py-1.5 text-white">
-                  {String(timeLeft.seconds).padStart(2, "0")}
-                </span>
-              </div>
-            </div>
-
-            {/* Tag */}
-            <div className={tag + " mt-6"}>
-              ✦ ജോലി നേടാൻ സഹായിക്കുന്ന പ്രായോഗിക Excel + AI പഠനം
-            </div>
-
-            {/* Main Heading */}
-            <h1 className="mt-6 max-w-3xl px-2 text-3xl font-extrabold leading-[1.18] tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
-              <span className="block">Excel Using AI</span>
-
-              <span className="mt-1 block text-blue-600">
-                മാസ്റ്റർ ചെയ്യാൻ ആഗ്രഹമുണ്ടോ?
+          {/* 5. SOLID DARK BUTTON: Enroll Now – ₹1,499 */}
+          <div className="mt-4 flex w-full max-w-sm flex-col items-center justify-center px-2 sm:px-0">
+            <button
+              type="button"
+              onClick={openEnrollment}
+              className="group inline-flex w-full items-center justify-center gap-2.5 rounded-full bg-slate-900 px-6 py-3.5 text-sm sm:text-base font-extrabold text-white shadow-xl shadow-slate-900/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-slate-800 sm:px-8"
+            >
+              <span>Enroll Now – ₹1,499</span>
+              <span className="text-lg sm:text-xl transition-transform duration-300 group-hover:translate-x-1">
+                →
               </span>
 
-              <span className="mt-1 block">വർക്ക് 10x സ്മാർട്ടാക്കണോ?</span>
-            </h1>
+          {/* 6. FACTS LINE: LIVE/RECORDED • HOURS • CERTIFICATE */}
+          <div className="mt-3.5 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-xl border border-blue-100 bg-blue-50/80 px-3 py-1.5 text-[11px] font-semibold text-slate-700 sm:gap-x-2.5 sm:px-3.5 sm:text-sm">
+            <span>Recorded Classes</span>
+            <span className="text-blue-300">•</span>
+            <span>10+ Hours</span>
+            <span className="text-blue-300">•</span>
+            <span>Lifetime Access</span>
+            <span className="text-blue-300">•</span>
+            <span className="font-bold text-blue-900">Certificate</span>
+          </div>
 
-            {/* Description */}
-            <p className="mt-7 max-w-xl px-4 text-base leading-relaxed text-slate-600 sm:text-lg">
-              {" "}
-              Hours എടുക്കുന്ന Excel വർക്കുകൾ Minutes-ൽ തീർക്കാം.
-              <br className="hidden sm:block" />
-              AI ഉപയോഗിച്ച് നിങ്ങളുടെ Daily Work സ്മാർട്ടാക്കൂ!
-            </p>
+          {/* TICKS (COMPACT) */}
+          <div className="mt-2.5 flex flex-wrap justify-center gap-x-4 gap-y-1 text-xs font-medium text-slate-500 sm:gap-x-5">
+            <span>✓ Practical Training</span>
+            <span>✓ Job-ready Skills</span>
+            <span>✓ AI ഉപയോഗിച്ച് Excel</span>
+          </div>
+        </div>
+      </section>
 
-            {/* CTA Buttons */}
-            <div className="mt-8 flex w-full max-w-md flex-col items-center justify-center gap-3 sm:max-w-none sm:flex-row">
-              {/* Enroll */}
-              <button
-                type="button"
-                onClick={openEnrollment}
-                className="group inline-flex w-full items-center justify-center gap-3 rounded-full bg-blue-600 px-8 py-4 text-base font-extrabold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 hover:shadow-xl animate-[pulse_1.5s_ease-in-out_infinite] sm:w-auto"
+      {/* ================= 2. VIDEO RIGHT BELOW ================= */}
+      <section className="bg-white pt-4 pb-14 sm:pt-6 sm:pb-20" id="video">
+        <div className="mx-auto max-w-5xl px-4 text-center sm:px-6">
+          <div className={tag}>About the Course</div>
+
+          <h2 className="mt-3 text-2xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-3xl">
+            Excel + AI{" "}
+            <span className="text-blue-600">
+              എങ്ങനെ പഠിക്കാമെന്ന് നോക്കാം.
+            </span>
+          </h2>
+
+          <p className="mx-auto mt-2 max-w-2xl text-xs sm:text-sm leading-relaxed text-slate-600">
+            Career വളർച്ചയ്ക്ക് Excel + AI എങ്ങനെ ഉപയോഗിക്കാമെന്ന് ഈ Video-യിലൂടെ മനസ്സിലാക്കാം.
+          </p>
+
+          <div className="mt-6 sm:mt-7">
+            <div className="relative mx-auto w-fit max-w-full overflow-hidden rounded-2xl sm:rounded-3xl shadow-2xl border border-slate-200 bg-slate-950 group">
+              <video
+                ref={videoRef}
+                className="block h-[380px] w-auto max-w-full rounded-2xl object-contain sm:h-[500px] md:h-[560px] sm:rounded-3xl"
+                controls={videoStarted}
+                playsInline
+                poster={excelThumbnail}
+                preload="metadata"
+                onPlay={() => setVideoStarted(true)}
               >
                 Enroll Now
                 <span className="text-xl transition-transform duration-300 group-hover:translate-x-1">
@@ -388,47 +594,75 @@ function App() {
                 </span>
               </button>
 
-              {/* Learn More */}
-              <a
-                href="#learn"
-                className="inline-flex w-full items-center justify-center rounded-full border border-slate-300 bg-white px-8 py-4 text-base font-semibold text-slate-800 transition-all duration-300 hover:-translate-y-0.5 hover:border-blue-300 hover:bg-blue-50 sm:w-auto"
-              >
-                കൂടുതൽ അറിയാം
-              </a>
+              {/* MALAYALAM VIDEO COVER OVERLAY (Fixes "2:48" vs "0:48" checklist issue) */}
+              {!videoStarted && (
+                <div
+                  onClick={handlePlayVideo}
+                  className="absolute inset-0 flex flex-col justify-between p-3.5 sm:p-6 bg-gradient-to-t from-slate-950/85 via-transparent to-slate-950/50 rounded-2xl sm:rounded-3xl cursor-pointer transition-all duration-300 hover:bg-slate-950/40"
+                >
+                  {/* Top Malayalam Badge */}
+                  <div className="flex justify-between items-center">
+                    <span className="rounded-full bg-slate-900/90 border border-white/20 px-2.5 py-1 sm:px-3 text-[11px] sm:text-xs font-bold text-white shadow backdrop-blur-md">
+                      ✦ Excel + AI course Introduction
+                    </span>
+                  </div>
+
+                  {/* Center Play Button */}
+                  <div className="flex flex-col items-center justify-center gap-2">
+                    <div className="flex h-14 w-14 sm:h-20 sm:w-20 items-center justify-center rounded-full bg-blue-600 text-white shadow-2xl shadow-blue-500/50 transition-all duration-300 group-hover:scale-110 group-hover:bg-blue-500">
+                      <svg
+                        className="h-7 w-7 sm:h-10 sm:w-10 translate-x-0.5 fill-current"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </div>
+                    <span className="rounded-full bg-slate-900/80 px-3 py-0.5 sm:px-3.5 sm:py-1 text-xs font-bold text-white backdrop-blur-sm">
+                      Video കാണാം
+                    </span>
+                  </div>
+
+                  {/* Bottom: Malayalam label and actual 0:48 duration */}
+                  <div className="flex justify-between items-end">
+                    <span className="rounded-md bg-blue-600/90 px-2 py-0.5 text-[10px] sm:text-[11px] font-bold text-white">
+                      48-Second Introduction
+                    </span>
+                    <span className="rounded-md bg-slate-950 border border-white/20 px-2 py-0.5 sm:px-2.5 sm:py-1 font-mono text-[11px] sm:text-xs font-bold text-white shadow-md">
+                      0:48
+                    </span>
+                  </div>
+                </div>
+              )}
             </div>
 
-            {/* Benefits */}
-            <div className="mt-7 flex flex-wrap justify-center gap-x-7 gap-y-3 text-sm font-medium text-slate-600">
-              <span>
-                <span className="mr-2 text-emerald-500">✓</span>
-                പ്രായോഗിക പഠനം
-              </span>
-
-              <span>
-                <span className="mr-2 text-emerald-500">✓</span>
-                Job-oriented
-              </span>
-
-              <span>
-                <span className="mr-2 text-emerald-500">✓</span>
-                AI ഉപയോഗിച്ച് Excel
-              </span>
+            {/* UNDER VIDEO CAPTION (MALAYALAM) */}
+            <div className="mx-auto mt-5 flex max-w-3xl flex-wrap justify-center gap-x-5 sm:gap-x-7 gap-y-2 text-xs sm:text-sm font-semibold text-slate-700">
+              <div className="flex items-center gap-1.5">
+                <span className="text-emerald-600">✓</span>
+                Practical Training
+              </div>
+              <div className="flex items-center gap-1.5">
+                <span className="text-emerald-600">✓</span>
+                AI-Assisted Learning
+              </div>
+              <div className="flex items-center gap-1.5">
+                <span className="text-emerald-600">✓</span>
+                Real-World Projects
+              </div>
             </div>
           </div>
         </section>
 
-        {/* ================= VIDEO SECTION ================= */}
+      {/* ================= 3. PRICE BOX (WITH FACTS) ================= */}
+      <section className="bg-slate-50 py-14 sm:py-24" id="pricing">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="relative mx-auto max-w-2xl rounded-3xl border border-slate-200 bg-white p-5 shadow-xl sm:p-8 md:p-10">
+            <div className="absolute -top-3.5 right-5 sm:right-8 rounded-full bg-amber-400 px-3.5 py-1 sm:px-4 sm:py-1.5 text-xs font-black text-amber-950 shadow-md">
+              ₹3,501 Savings
+            </div>
 
-        <section className="bg-white py-20 sm:py-28">
-          <div className="mx-auto max-w-5xl px-4 text-center sm:px-6">
-            <div className={tag}>കോഴ്സിനെക്കുറിച്ച് അറിയാം</div>
-
-            <h2 className={h2 + " mt-4"}>
-              Excel + AI
-              <br />
-              <span className="text-blue-600">
-                എങ്ങനെ പഠിക്കാം എന്ന് നോക്കാം.
-              </span>
+            <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900">
+              What You Will Get in This Course:
             </h2>
 
             <p className={lead + " mx-auto max-w-2xl"}>
@@ -484,12 +718,12 @@ function App() {
 
             <div className="mt-6 space-y-3">
               {[
-                "Excel + AI Practical Learning",
-                "Real-world Excel Projects",
-                "AI-assisted Excel Workflows",
+                "Practical Excel + AI Training",
+                "Real-World Excel Projects",
+                "AI-Powered Excel Workflows",
                 "Data Analysis & Dashboards",
-                "Job-oriented Excel Skills",
-                "Certification",
+                "Job-ready Excel Skills",
+                "Certificate on Completion",
               ].map((item) => (
                 <div
                   key={item}
@@ -501,11 +735,16 @@ function App() {
               ))}
             </div>
 
-            <div className="mt-8 flex items-end justify-between border-t border-dashed border-slate-200 pt-6">
-              {/* Regular Price */}
+            {/* FACTS LINE NEXT TO / ABOVE PRICE */}
+            <div className="mt-6 sm:mt-7 rounded-2xl border border-blue-100 bg-blue-50/70 p-3 sm:p-3.5 text-center text-xs font-semibold text-slate-700 sm:text-sm">
+              Recorded Classes • 10+ Hours • Lifetime Access •
+              Certificate
+            </div>
+
+            <div className="mt-6 flex flex-wrap items-end justify-between gap-3 border-t border-dashed border-slate-200 pt-6">
               <div>
-                <span className="text-base font-bold uppercase tracking-wide text-slate-500">
-                  REGULAR PRICE
+                <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-400">
+                  Regular Price
                 </span>
 
                 <div className="mt-1">
@@ -517,8 +756,8 @@ function App() {
 
               {/* Today's Price */}
               <div className="text-right">
-                <span className="text-base font-bold uppercase tracking-wide text-slate-400">
-                  TODAY
+                <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-emerald-600">
+                  Today’s Special Offer
                 </span>
 
                 <strong className="mt-1 block text-4xl font-extrabold text-blue-600 sm:text-5xl">
@@ -532,37 +771,33 @@ function App() {
               onClick={openEnrollment}
               className="mt-6 group inline-flex w-full items-center justify-between gap-4 rounded-full bg-blue-600 px-6 py-4 text-left text-base font-extrabold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-xl animate-pulse"
             >
-              <span>START LEARNING EXCEL + AI TODAY</span>
-              <span className="text-2xl transition-transform duration-300 group-hover:translate-x-1">
+              <span>Enroll Now – ₹1,499</span>
+              <span className="text-xl sm:text-2xl transition-transform duration-300 group-hover:translate-x-1">
                 →
               </span>
             </button>
 
-            <div className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-1.5 text-xs font-semibold text-slate-500">
+            <div className="mt-4 flex flex-wrap justify-center gap-x-4 gap-y-1.5 text-xs font-semibold text-slate-500 sm:gap-x-5">
               <span>✓ Instant Access</span>
-              <span>✓ Practical Learning</span>
-              <span>✓ Beginner Friendly</span>
+              <span>✓ Practical Training</span>
+              <span>✓ Beginner-Friendly</span>
             </div>
           </div>
         </section>
 
-        {/* ================= TRUST ================= */}
+      {/* ================= 4. WHO THIS IS FOR ================= */}
+      <section className="bg-white py-16 sm:py-24" id="who-is-this-for">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="mx-auto max-w-2xl text-center">
+            <div className={tag}>Who Is This For?</div>
 
-        <section className="bg-blue-900 py-10">
-          <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 px-4 text-center sm:flex-row sm:text-left">
-            <div className="flex flex-col">
-              <span className="text-3xl font-extrabold text-white">2,000+</span>
+            <h2 className={h2 + " mt-4"}>
+              ഈ course{" "}
+              <span className="text-blue-600">നിങ്ങൾക്കുള്ളതാണോ?</span>
+            </h2>
 
-              <span className="text-sm font-medium text-blue-100">
-                ടീമുകൾ Excel ഉപയോഗിക്കുന്ന മേഖലകൾ
-              </span>
-            </div>
-
-            <div className="hidden h-10 w-px bg-blue-400 sm:block"></div>
-
-            <p className="text-sm font-medium text-blue-50">
-              Office-ൽ ദിവസേന ഉപയോഗിക്കുന്ന spreadsheet skills കൂടുതൽ
-              കാര്യക്ഷമമായി പഠിക്കാം.
+            <p className={lead}>
+              Excel ഉപയോഗിച്ച് Work Skills മെച്ചപ്പെടുത്താൻ ആഗ്രഹിക്കുന്നവർക്ക്.
             </p>
           </div>
         </section>
@@ -689,18 +924,24 @@ function App() {
         </section>
         {/* ================= REVIEWS ================= */}
 
-        <section className="bg-white py-20 sm:py-28" id="reviews">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6">
-            <div className="mx-auto max-w-2xl text-center">
-              <div className={tag}>Learner Feedback</div>
+          {/* JOBS LINE & DISCLAIMER (ITEM 7 FIX) */}
+          <div className="mt-8 sm:mt-10 mx-auto max-w-4xl rounded-2xl border border-slate-200 bg-slate-50 p-4 sm:p-6 text-center">
+            <p className="text-xs sm:text-sm font-semibold text-slate-800 leading-relaxed">
+              Excel Skills Office, Operations, HR, Accounts, MIS, Data തുടങ്ങിയ മേഖലകളിൽ പ്രയോജനപ്പെടുന്നു.
+            </p>
+            <p className="mt-2 text-[11px] sm:text-xs text-slate-500 italic">
+              ശ്രദ്ധിക്കുക: ഈ Course ജോലി ഉറപ്പ് നൽകുന്നില്ല; ജോലിക്ക് ആവശ്യമായ
+              പ്രായോഗിക Skills കാര്യക്ഷമമായി പഠിപ്പിക്കുന്നു.
+            </p>
+          </div>
+        </div>
+      </section>
 
-              <h2 className={h2 + " mt-4"}>
-                Excel + AI
-                <br />
-                <span className="text-blue-600">
-                  പഠനത്തെക്കുറിച്ചുള്ള അഭിപ്രായങ്ങൾ.
-                </span>
-              </h2>
+      {/* ================= 5. TODAY'S CHALLENGE (PROBLEM) ================= */}
+      <section className="bg-slate-50 py-16 sm:py-24" id="challenge">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-12">
+          <div>
+            <div className={tag}>Today’s Challenges</div>
 
               <p className={lead}>
                 Practical learning experience-നെ അടിസ്ഥാനമാക്കിയുള്ള sample
@@ -708,29 +949,10 @@ function App() {
               </p>
             </div>
 
-            <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {[
-                {
-                  initial: "A",
-                  name: "Arun K.",
-                  sub: "Sample Learner",
-                  text: "Excel formulas മാത്രം പഠിക്കുന്നതിന് പകരം AI ഉപയോഗിച്ച് എങ്ങനെ faster ആയി work ചെയ്യാം എന്നത് മനസ്സിലാക്കാൻ ഈ learning approach സഹായിക്കുന്നു.",
-                },
-                {
-                  initial: "S",
-                  name: "Shahana M.",
-                  text: "Reports, dashboards, data analysis എന്നിവ practical ആയി പഠിക്കാമെന്നത് വളരെ useful ആയി തോന്നി. Office work-ന് directly apply ചെയ്യാൻ കഴിയുന്ന രീതിയിലാണ്.",
-                },
-                {
-                  initial: "R",
-                  name: "Rahul P.",
-                  text: "ChatGPT ഉപയോഗിച്ച് Excel formulas കണ്ടെത്താനും repetitive tasks എളുപ്പമാക്കാനും പഠിച്ചത് വളരെ interesting ആയിരുന്നു.",
-                },
-                {
-                  initial: "M",
-                  name: "Midhun P.",
-                  text: "Excel-ൽ basic knowledge ഉണ്ടായിരുന്നെങ്കിലും advanced reports എങ്ങനെ തയ്യാറാക്കണം എന്ന് അറിയില്ലായിരുന്നു. Practical examples വഴി കാര്യങ്ങൾ വളരെ എളുപ്പത്തിൽ മനസ്സിലാക്കാൻ കഴിഞ്ഞു.",
-                },
+            <p className={lead}>
+              Data കൂടുമ്പോഴും Reports സങ്കീർണ്ണമാകുമ്പോഴും
+              Spreadsheet Tasks-നായി കൂടുതൽ സമയം ചെലവഴിക്കേണ്ടി വരാം.
+            </p>
 
                 {
                   initial: "N",
@@ -776,23 +998,15 @@ function App() {
           </div>
         </section>
 
-        {/* ================= WHO IS THIS FOR ================= */}
-
-        <section className="bg-slate-50 py-20 sm:py-28">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6">
-            <div className="mx-auto max-w-2xl text-center">
-              <div className={tag}>ആർക്കുവേണ്ടി?</div>
-
-              <h2 className={h2 + " mt-4"}>
-                ഈ പഠനം
-                <br />
-                <span className="text-blue-600">നിങ്ങൾക്കുള്ളതാണോ?</span>
-              </h2>
-
-              <p className={lead}>
-                Excel ഉപയോഗിച്ച് നിങ്ങളുടെ ജോലി skills മെച്ചപ്പെടുത്താൻ
-                ആഗ്രഹിക്കുന്നവർക്ക്.
-              </p>
+          {/* NUMBER CARDS MARKED "Example Only" (AS PER DEVELOPER CHECKLIST C) */}
+          <div className="rounded-3xl border border-slate-200 bg-white p-4 sm:p-6 shadow-md">
+            <div className="mb-4 flex items-center justify-between">
+              <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-400">
+                Office Task Examples
+              </span>
+              <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-[10px] sm:text-[11px] font-semibold text-slate-500">
+                Example Only
+              </span>
             </div>
 
             <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -859,19 +1073,14 @@ function App() {
 
             <div className="grid grid-cols-3 gap-4">
               {[
-                { label: "Data", value: "12,840", sub: "Rows", active: false },
+                { label: "Data Volume", value: "10,000+", sub: "Rows" },
                 {
                   label: "Reports",
-                  value: "24",
-                  sub: "This Month",
-                  active: true,
+                  value: "20+",
+                  sub: "Monthly",
+                  highlight: true,
                 },
-                {
-                  label: "Tasks",
-                  value: "68%",
-                  sub: "Repeated Work",
-                  active: false,
-                },
+                { label: "Routine Task", value: "60%", sub: "Can be automated" },
               ].map((stat) => (
                 <div
                   key={stat.label}
@@ -904,122 +1113,43 @@ function App() {
                 </div>
               ))}
             </div>
+
+            <p className="mt-4 sm:mt-5 text-center text-xs leading-relaxed text-slate-500">
+              ഈ Challenges കൈകാര്യം ചെയ്ത് Excel Tasks വേഗത്തിൽ പൂർത്തിയാക്കാൻ AI സഹായിക്കുന്നു.
+            </p>
           </div>
         </section>
 
-        {/* ================= COURSE STRUCTURE / MODULES ================= */}
-
-        <section className="bg-slate-900 py-20 sm:py-28" id="modules">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6">
-            <div className="mx-auto max-w-2xl text-center">
-              <div className="inline-flex items-center rounded-full border border-blue-400/30 bg-blue-500/10 px-3.5 py-1 text-xs font-semibold text-blue-300">
-                Course Structure
-              </div>
-
-              <h2 className="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl">
-                What You'll <span className="text-blue-400">Learn</span>
-              </h2>
-
-              <p className="mt-4 text-base leading-relaxed text-slate-400 sm:text-lg">
-                Excel + AI ഉപയോഗിച്ച് job-ready practical skills step-by-step
-                ആയി പഠിക്കാം.
-              </p>
+      {/* ================= 6. WHAT YOU'LL LEARN + PRACTICAL PROJECTS ================= */}
+      <section className="bg-slate-900 py-16 sm:py-24 text-white" id="modules">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="mx-auto max-w-2xl text-center">
+            <div className="inline-flex items-center rounded-full border border-blue-400/30 bg-blue-500/10 px-3.5 py-1 text-xs font-semibold text-blue-300">
+              Course Syllabus
             </div>
 
-            <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {[
-                {
-                  icon: "📊",
-                  num: "MODULE 01",
-                  title: "Excel Fundamentals",
-                  topics: [
-                    "Excel Interface & Navigation",
-                    "Workbook & Worksheet Structure",
-                    "Cells & Cell Referencing",
-                    "Data Types & Formatting",
-                    "Essential Keyboard Shortcuts",
-                  ],
-                  outcome: "Strong Excel foundation",
-                  featured: false,
-                },
-                {
-                  icon: "📈",
-                  num: "MODULE 02",
-                  title: "Data Handling & Analysis",
-                  topics: [
-                    "Sorting & Filtering Data",
-                    "Data Validation",
-                    "Remove Duplicates",
-                    "Text Functions",
-                    "Pivot Tables & Charts",
-                  ],
-                  featured: false,
-                },
-                {
-                  icon: "📊",
-                  num: "MODULE 03",
-                  title: "Reports & Dashboards",
-                  topics: [
-                    "Chart Types",
-                    "Dynamic Charts",
-                    "KPI Reports",
-                    "Dashboard Design",
-                    "Professional Reporting",
-                  ],
-                  featured: false,
-                },
-                {
-                  icon: "✦",
-                  num: "MODULE 04",
-                  title: "AI Tools with Excel",
-                  topics: [
-                    "Introduction to AI in Excel",
-                    "ChatGPT for Excel",
-                    "Formula Generation",
-                    "Error Fixing",
-                    "AI-assisted Data Cleaning",
-                    "Smart Analysis & Insights",
-                  ],
-                  featured: true,
-                },
-                {
-                  icon: "⚙",
-                  num: "MODULE 05",
-                  title: "Automation with AI",
-                  topics: [
-                    "Automating Repetitive Tasks",
-                    "AI-assisted Formula Automation",
-                    "Monthly Report Generation",
-                    "Workflow Optimization",
-                  ],
-                  featured: false,
-                },
-                {
-                  icon: "💼",
-                  num: "MODULE 06",
-                  title: "MIS, HR & Accounts",
-                  topics: [
-                    "MIS Report Structure",
-                    "Daily / Weekly / Monthly Reports",
-                    "HR Attendance & Leave Tracker",
-                    "Payroll Basics",
-                    "Expense & Budget Tracking",
-                  ],
-                  featured: false,
-                },
-              ].map((mod) => (
-                <div
-                  key={mod.num}
-                  className={
-                    "rounded-2xl border p-6 " +
-                    (mod.featured
-                      ? "border-blue-500 bg-blue-500/10"
-                      : "border-slate-700 bg-slate-800/60")
-                  }
-                >
-                  <div className="text-2xl">{mod.icon}</div>
+            <h2 className="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl">
+              What You Will <span className="text-blue-400">Learn</span>
+            </h2>
 
-                  <span className="mt-3 block font-mono text-[11px] font-semibold tracking-wide text-blue-400">
+            <p className="mt-4 text-base leading-relaxed text-slate-400 sm:text-lg">
+              Excel + AI ഉപയോഗിച്ച് Job-ready Practical Skills Step by Step പഠിക്കാം.
+            </p>
+          </div>
+
+          <div className="mt-10 sm:mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 sm:gap-5">
+            {modules.map((mod) => (
+              <div
+                key={mod.num}
+                className={
+                  "rounded-2xl border p-5 sm:p-6 flex flex-col justify-between h-full " +
+                  (mod.featured
+                    ? "border-blue-500 bg-blue-950/40 ring-1 ring-blue-500"
+                    : "border-slate-800 bg-slate-800/60")
+                }
+              >
+                <div>
+                  <span className="font-mono text-[11px] font-bold tracking-wider text-blue-400">
                     {mod.num}
                   </span>
 
@@ -1046,25 +1176,44 @@ function App() {
                     </div>
                   )}
                 </div>
-              ))}
-            </div>
 
-            <div className="mt-12 rounded-2xl border border-slate-700 bg-slate-800/60 px-6 py-4 text-center">
-              <p className="text-sm font-medium text-slate-300">
-                <strong className="text-white">Job-Ready Learning:</strong> Real
-                Office Tasks • Practical Projects • Excel + AI
+                <div className="mt-6 border-t border-slate-700/80 pt-3 text-xs text-slate-400">
+                  <span className="text-blue-300 font-semibold">Outcome:</span>{" "}
+                  {mod.outcome}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* PRACTICAL PROJECTS SECTION (NO BROKEN "PROJECT ->" LINKS) */}
+          <div className="mt-16 sm:mt-20">
+            <div className="mx-auto max-w-2xl text-center">
+              <div className="inline-flex items-center rounded-full border border-blue-400/30 bg-blue-500/10 px-3.5 py-1 text-xs font-semibold text-blue-300">
+                Practical Projects
+              </div>
+
+              <h3 className="mt-4 text-2xl font-extrabold text-white sm:text-3xl">
+                പഠിച്ച കാര്യങ്ങൾ Projects ആയി പ്രയോഗിക്കാം.
+              </h3>
+
+              <p className="mt-3 text-sm text-slate-400 sm:text-base">
+                തിയറി മാത്രമല്ല. പഠിച്ച Skills ഉപയോഗിച്ച് Practical Spreadsheet Projects നിർമ്മിക്കാം.
               </p>
             </div>
-            <div className="mt-6 flex justify-center">
-              <button
-                onClick={() => setShowEnrollment(true)}
-                className="animate-pulse rounded-xl bg-blue-600 px-8 py-3 text-base font-bold text-white shadow-lg transition hover:bg-blue-700 hover:-translate-y-0.5"
-              >
-                Enroll Now →
-              </button>
-            </div>
-          </div>
-        </section>
+
+            <div className="mt-8 sm:mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 sm:gap-5">
+              {projects.map((project) => (
+                <div
+                  key={project.number}
+                  className="rounded-2xl border border-slate-800 bg-slate-800/40 p-5 sm:p-6 shadow-sm transition-all duration-300 hover:border-blue-400/50 hover:bg-slate-800/80 flex flex-col justify-between h-full"
+                >
+                  <div>
+                    <div className="flex items-center justify-between">
+                      <span className="font-mono text-xs font-bold text-blue-400">
+                        Project {project.number}
+                      </span>
+                      <span className="text-lg">📊</span>
+                    </div>
 
         {/* ================= LEARNING PATH ================= */}
 
@@ -1103,70 +1252,109 @@ function App() {
           </div>
         </section>
 
-        {/* ================= PROJECTS ================= */}
-
-        <section className="bg-white py-20 sm:py-28" id="projects">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6">
-            <div className="mx-auto max-w-2xl text-center">
-              <div className={tag}>Practical Projects</div>
+      {/* ================= 7. MEET YOUR MENTOR (WITH PROOF) ================= */}
+      <section className="bg-slate-50 py-16 sm:py-24" id="mentor">
+  <div className="mx-auto max-w-5xl px-4 sm:px-6">
+    <div className="mx-auto max-w-2xl text-center">
+      <div className={tag}>Meet Your Mentor</div>
 
               <h2 className={h2 + " mt-4"}>
-                പഠിച്ചതെല്ലാം
-                <br />
-                <span className="text-blue-600">Projects ആയി മാറ്റാം.</span>
+                Learn Excel + AI with{" "}
+                <span className="text-blue-600">the Right Mentor.</span>
               </h2>
 
-              <p className={lead}>
-                Theory മാത്രം അല്ല. നിങ്ങളുടെ skills ഉപയോഗിച്ച് practical
-                spreadsheet projects നിർമ്മിക്കാം.
-              </p>
-            </div>
+      <p className={lead}>
+        Excel + AI Practical Skills Step by Step പഠിപ്പിക്കുന്ന Mentor.
+      </p>
+    </div>
 
-            <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {projects.map((project) => (
-                <div
-                  key={project.number}
-                  className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="font-mono text-xs font-semibold text-slate-400">
-                      {project.number}
-                    </span>
-                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 text-blue-600">
-                      ▦
-                    </div>
+          <div className="mt-10 sm:mt-12 overflow-hidden rounded-3xl border border-slate-200 bg-white p-5 sm:p-8 md:p-10 shadow-xl">
+            <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-[240px_1fr] lg:grid-cols-[260px_1fr] sm:gap-12">
+              {/* Photo */}
+              <div className="flex justify-center">
+                <div className="relative">
+                  <div className="absolute inset-0 rounded-full bg-blue-600/20 blur-xl" />
+                  <div className="relative h-48 w-48 overflow-hidden rounded-full border-4 border-blue-500 bg-white p-1 shadow-xl sm:h-60 sm:w-60">
+                    <img
+                      src={mentorPhoto}
+                      alt="Midhun - Excel + AI Trainer"
+                      className="h-full w-full rounded-full object-cover object-[center_20%]"
+                    />
                   </div>
-
-                  <h3 className="mt-4 text-base font-bold text-slate-900">
-                    {project.title}
-                  </h3>
-
-                  <p className="mt-2 text-sm leading-relaxed text-slate-500">
-                    {project.text}
-                  </p>
-
-                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-blue-600 transition-transform duration-300 group-hover:translate-x-1">
-                    Project →
-                  </span>
                 </div>
-              ))}
-            </div>
-          </div>
-          {/* ================= PROJECTS ENROLL CTA ================= */}
-
-          <div className="mx-auto mt-10 max-w-5xl px-4">
-            <div className="rounded-3xl border border-blue-200 bg-slate-950 px-6 py-8 text-center shadow-lg sm:px-10">
-              <div className="inline-flex items-center rounded-full border border-blue-500/40 px-4 py-1.5 text-sm font-semibold text-blue-400">
-                Limited Offer
               </div>
 
-              <h3 className="mt-4 text-2xl font-extrabold text-white sm:text-3xl">
-                Enroll Now &{" "}
-                <span className="text-blue-500">Upgrade Your Skills</span>
-              </h3>
+              {/* Details & Proof */}
+              <div className="text-center md:text-left">
+                <h3 className="text-2xl font-extrabold text-slate-900 sm:text-3xl">
+                  Midhun 
+                </h3>
 
-              <p className="mt-3 text-sm text-slate-300 sm:text-base">
-                Take the next step towards a better career with Excel + AI.
+                <p className="mt-1 text-base font-bold text-blue-600">
+                  Excel + AI Trainer
+                </p>
+
+                {/* Proof Badges */}
+                <div className="mt-6 grid grid-cols-2 gap-2.5 sm:gap-3">
+                  <div className="flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 p-2.5 sm:gap-2.5 sm:p-3">
+                    <span className="text-base sm:text-lg">🏆</span>
+                    <span className="text-[11px] sm:text-sm font-bold text-slate-800 leading-tight">
+                      5+ Years of Experience
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 p-2.5 sm:gap-2.5 sm:p-3">
+                    <span className="text-base sm:text-lg">👥</span>
+                    <span className="text-[11px] sm:text-sm font-bold text-slate-800 leading-tight">
+                      2,000+ Learners Trained
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 p-2.5 sm:gap-2.5 sm:p-3">
+                    <span className="text-base sm:text-lg">📊</span>
+                    <span className="text-[11px] sm:text-sm font-bold text-slate-800 leading-tight">
+                      Practical Training
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 p-2.5 sm:gap-2.5 sm:p-3">
+                    <span className="text-base sm:text-lg">💼</span>
+                    <span className="text-[11px] sm:text-sm font-bold text-slate-800 leading-tight">
+                      Real-world Projects
+                    </span>
+                  </div>
+                </div>
+
+                {/* Quote */}
+                <div className="mt-6 rounded-2xl border-l-4 border-blue-600 bg-blue-50/70 p-3.5 sm:p-4 text-left">
+                  <p className="text-xs sm:text-sm italic leading-relaxed text-slate-700">
+                    "Excel Formulas മാത്രം പഠിപ്പിക്കുകയല്ല. യഥാർത്ഥ ജോലിയിൽ
+                    Excel-ഉം AI-യും എങ്ങനെ ബുദ്ധിപൂർവ്വം ഉപയോഗിക്കാം എന്നതാണ് ഈ
+                    course-ന്റെ ശ്രദ്ധ."
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= 8. CERTIFICATE ================= */}
+      <section className="bg-white py-16 sm:py-24" id="certificate">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="grid grid-cols-1 items-center gap-10 rounded-3xl bg-slate-900 px-5 py-10 text-white sm:px-10 sm:py-16 lg:grid-cols-2 lg:gap-12">
+            <div className="text-center lg:text-left flex flex-col items-center lg:items-start">
+              <div className="inline-flex items-center rounded-full border border-blue-400/30 bg-blue-500/10 px-3.5 py-1 text-xs font-semibold text-blue-300">
+                Certification
+              </div>
+
+              <h2 className="mt-4 text-2xl font-extrabold leading-tight tracking-tight text-white sm:text-3xl lg:text-4xl">
+                പഠനം പൂർത്തിയാക്കിയതിന്{" "}
+                <span className="text-blue-400">ഒരു Certificate.</span>
+              </h2>
+
+              <p className="mt-3 sm:mt-4 text-sm sm:text-base leading-relaxed text-slate-300">
+                Course വിജയകരമായി പൂർത്തിയാക്കിയാൽ QNAYDS Verified Certificate ലഭിക്കും. ഇത് Resume-ലും LinkedIn Profile-ലും ചേർക്കാം.
               </p>
 
               <button
@@ -1174,143 +1362,7 @@ function App() {
                 onClick={openEnrollment}
                 className="mt-6 inline-flex items-center gap-2 rounded-full bg-blue-600 px-8 py-3.5 text-base font-bold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 animate-[pulse_1.2s_ease-in-out_infinite]"
               >
-                Enroll Now
-                <span className="text-lg">→</span>
-              </button>
-            </div>
-          </div>
-        </section>
-
-        {/* ================= AI WORKFLOW ================= */}
-
-        <section className="bg-slate-50 py-20 sm:py-28">
-          <div className="mx-auto max-w-6xl px-4 text-center sm:px-6">
-            <div className={tag}>Excel + AI Workflow</div>
-
-            <h2 className={h2 + " mt-4"}>
-              AI-യെ നിങ്ങളുടെ
-              <br />
-              <span className="text-blue-600">
-                Excel workflow-ന്റെ ഭാഗമാക്കൂ.
-              </span>
-            </h2>
-
-            <div className="mt-12 flex flex-wrap items-center justify-center gap-3">
-              {workflow.map((item, index) => (
-                <React.Fragment key={item}>
-                  <div className="flex flex-col items-center gap-2 rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-sm">
-                    <div className="flex h-7 w-7 items-center justify-center rounded-full bg-blue-600 text-xs font-bold text-white">
-                      {index + 1}
-                    </div>
-                    <strong className="text-xs font-semibold text-slate-700">
-                      {item}
-                    </strong>
-                  </div>
-
-                  {index !== workflow.length - 1 && (
-                    <span className="text-slate-300">→</span>
-                  )}
-                </React.Fragment>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ================= MIDDLE ENROLL CTA ================= */}
-
-        <section className="bg-blue-600 py-16 sm:py-20">
-          <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 px-4 text-center">
-            <span className="text-xs font-bold uppercase tracking-wide text-blue-200">
-              Ready to Start?
-            </span>
-
-            <h2 className="text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl">
-              Excel + AI
-              <span className="text-blue-200">
-                {" "}
-                പഠനം ഇന്ന് തന്നെ ആരംഭിക്കൂ.
-              </span>
-            </h2>
-
-            <button
-              type="button"
-              className="group mt-2 inline-flex items-center gap-3 rounded-full bg-white px-6 py-4 text-base font-extrabold text-blue-600 shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl sm:px-8 animate-[pulse_0.8s_ease-in-out_infinite]"
-              onClick={openEnrollment}
-            >
-              <span>ENROLL NOW — ₹1,499</span>
-              <span className="text-xl transition-transform duration-300 group-hover:translate-x-1">
-                →
-              </span>
-            </button>
-
-            <p className="text-sm text-blue-100">
-              Practical Learning • Real Projects • Career-focused Skills
-            </p>
-          </div>
-        </section>
-
-        {/* ================= CAREER ================= */}
-
-        <section className="bg-white py-20 sm:py-28">
-          <div className="mx-auto max-w-5xl px-4 sm:px-6">
-            <div className="text-center">
-              <div className={tag}>Career Connection</div>
-
-              <h2 className={h2 + " mt-4"}>
-                Excel skills
-                <br />
-                <span className="text-blue-600">ഏത് ജോലികളിൽ ഉപയോഗിക്കാം?</span>
-              </h2>
-
-              <p className={lead + " mx-auto max-w-2xl"}>
-                വിവിധ office, operations, HR, accounts, MIS, data-related
-                roles-ൽ Excel ഒരു പ്രധാന skill ആണ്.
-              </p>
-            </div>
-
-            <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
-              {roles.map((role) => (
-                <div
-                  key={role}
-                  className="group flex flex-col items-start gap-3 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg"
-                >
-                  <strong className="text-sm font-bold text-slate-900">
-                    {role}
-                  </strong>
-                  <i className="not-italic text-slate-300 transition-colors duration-300 group-hover:text-blue-500">
-                    ↗
-                  </i>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ================= CERTIFICATE ================= */}
-
-        <section className="bg-white py-20 sm:py-28">
-          <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-14 rounded-3xl bg-slate-900 px-6 py-14 sm:px-10 lg:grid-cols-2">
-            <div>
-              <div className="inline-flex items-center rounded-full border border-blue-400/30 bg-blue-500/10 px-3.5 py-1 text-xs font-semibold text-blue-300">
-                Certification
-              </div>
-
-              <h2 className="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl">
-                പഠനം പൂർത്തിയാക്കിയതിന്
-                <span className="text-blue-400"> ഒരു Certificate.</span>
-              </h2>
-
-              <p className="mt-4 text-base leading-relaxed text-slate-400">
-                Program പൂർത്തിയാക്കിയ ശേഷം certification ലഭിക്കുന്ന രീതിയിലാണ്
-                ഈ section ഒരുക്കിയിരിക്കുന്നത്.
-              </p>
-
-              <button
-                type="button"
-                onClick={openEnrollment}
-                className={ctaPrimary + " mt-6"}
-              >
-                Enroll Now
+                <span>Enroll Now – ₹1,499</span>
                 <span className="text-xl transition-transform duration-300 group-hover:translate-x-1">
                   →
                 </span>
@@ -1329,8 +1381,8 @@ function App() {
                   Excel + AI
                 </h3>
 
-                <p className="mt-1 text-sm text-slate-400">
-                  പ്രായോഗിക Excel & AI പഠനം
+                <p className="mt-1 text-xs font-medium text-blue-300">
+                  Practical Excel & AI Training
                 </p>
 
                 <div className="mx-auto mt-6 h-px w-32 bg-slate-600"></div>
@@ -1339,132 +1391,228 @@ function App() {
                   വിദ്യാർത്ഥിയുടെ പേര്
                 </span>
               </div>
+
+              {/* Approved caption */}
+              <span className="mt-3 text-xs text-slate-400 font-medium">
+                Sample Certificate
+              </span>
             </div>
           </div>
         </section>
 
         {/* ================= FAQ ================= */}
 
-        <section className="bg-slate-50 py-20 sm:py-28" id="faq">
-          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 px-4 sm:px-6 lg:grid-cols-[minmax(0,320px)_1fr]">
-            <div>
-              <div className={tag}>FAQ</div>
+      {/* ================= 10. FAQ ================= */}
+      <section className="bg-white py-16 sm:py-24" id="faq">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 sm:gap-12 px-4 sm:px-6 lg:grid-cols-[minmax(0,320px)_1fr]">
+          <div>
+            <div className={tag}>Frequently Asked Questions</div>
 
-              <h2 className={h2 + " mt-4"}>Frequently Asked Questions</h2>
-
-              <p className={lead}>
-                Program-നെക്കുറിച്ച് അറിയേണ്ട പ്രധാന കാര്യങ്ങൾ.
-              </p>
-            </div>
-
-            <div className="space-y-3">
-              {faqs.map((faq, index) => (
-                <details
-                  key={faq.question}
-                  className="group rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-sm open:shadow-md"
-                >
-                  <summary className="flex cursor-pointer list-none items-center gap-4 text-sm font-bold text-slate-900 marker:content-none">
-                    <span className="font-mono text-xs font-semibold text-slate-400">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-
-                    <strong className="flex-1 font-bold">{faq.question}</strong>
-
-                    <i className="not-italic text-lg text-slate-400 transition-transform duration-300 group-open:rotate-45">
-                      +
-                    </i>
-                  </summary>
-
-                  <p className="mt-3 pl-9 text-sm leading-relaxed text-slate-600">
-                    {faq.answer}
-                  </p>
-                </details>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ================= FINAL CTA ================= */}
-
-        <section
-          className="relative overflow-hidden bg-slate-900 py-20 sm:py-28"
-          id="enroll"
-        >
-          <div className="pointer-events-none absolute -top-24 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-blue-600/30 blur-3xl"></div>
-
-          <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6">
-            <div className="inline-flex items-center rounded-full border border-blue-400/30 bg-blue-500/10 px-3.5 py-1 text-xs font-semibold text-blue-300">
-              നിങ്ങളുടെ അടുത്ത ഘട്ടം
-            </div>
-
-            <h2 className="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl">
-              Excel Skill
-              <br />
-              <span className="text-blue-400">ഇന്ന് തന്നെ Upgrade ചെയ്യൂ.</span>
+            <h2 className={h2 + " mt-4"}>
+              Frequently Asked Questions{" "}
+              <span className="text-blue-600">(FAQ)</span>
             </h2>
 
-            <p className="mt-4 text-base leading-relaxed text-slate-400">
-              Excel + AI skills പ്രായോഗികമായി പഠിച്ച് നിങ്ങളുടെ career-ന് കൂടുതൽ
-              ശക്തമായ skillset നിർമ്മിക്കൂ.
+            <p className={lead}>
+              Course-നെക്കുറിച്ച് അറിയേണ്ട പ്രധാന കാര്യങ്ങൾ.
             </p>
 
+            <div className="mt-6 rounded-2xl border border-blue-100 bg-blue-50 p-4 text-xs sm:text-sm text-slate-700">
+              <p className="font-semibold text-blue-900">Still Have Questions?</p>
+              <p className="mt-1 text-slate-600">
+                ഞങ്ങളുടെ WhatsApp Support Team-നെ നേരിട്ട് Contact ചെയ്യാം.
+              </p>
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 hover:underline"
+              >
+                💬 Ask on WhatsApp →
+              </a>
+            </div>
+          </div>
+
+          <div className="space-y-3">
+            {faqs.map((faq, index) => (
+              <details
+                key={faq.question}
+                className="group rounded-2xl border border-slate-200 bg-slate-50/50 px-4 py-3.5 sm:px-5 sm:py-4 shadow-sm transition-all open:bg-white open:shadow-md"
+              >
+                <summary className="flex cursor-pointer list-none items-center gap-3 sm:gap-4 text-sm font-bold text-slate-900 marker:content-none">
+                  <span className="font-mono text-xs font-bold text-blue-600">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+
+                  <strong className="flex-1 font-bold text-slate-900 text-sm sm:text-base leading-snug">
+                    {faq.question}
+                  </strong>
+
+                  <span className="text-xl text-slate-400 transition-transform duration-300 group-open:rotate-45 font-light">
+                    +
+                  </span>
+                </summary>
+
+                <p className="mt-3 pl-0 sm:pl-7 text-xs sm:text-sm leading-relaxed text-slate-600 border-t border-slate-100 pt-3">
+                  {faq.answer}
+                </p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ================= 11. ONE FINAL BUTTON + BAND ================= */}
+      <section className="bg-slate-900 py-16 sm:py-20 text-white text-center" id="final-cta">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6">
+          <div className="inline-flex items-center rounded-full border border-blue-400/30 bg-blue-500/10 px-3.5 py-1 text-xs font-semibold text-blue-300">
+            Ready to Get Started?
+          </div>
+
+          <h2 className="mt-4 text-2xl sm:text-3xl font-extrabold leading-tight text-white md:text-4xl">
+            Excel + AI പഠനം{" "}
+            <span className="text-blue-400">ഇന്നുതന്നെ ആരംഭിക്കൂ.</span>
+          </h2>
+
+          <p className="mx-auto mt-3 sm:mt-4 max-w-xl text-xs sm:text-sm leading-relaxed text-slate-400 md:text-base">
+            നിങ്ങളുടെ Learning Journey ഇന്ന് തുടങ്ങാം. Excel + AI Practical Course-ൽ ചേരാൻ താഴെയുള്ള Button ഉപയോഗിക്കുക.
+          </p>
+
+          <div className="mt-8 flex justify-center w-full max-w-sm mx-auto">
             <button
               type="button"
               onClick={openEnrollment}
               className={ctaPrimary + " mt-7"}
             >
-              <span>ഇപ്പോൾ പഠനം ആരംഭിക്കൂ</span>
+              <span>Enroll Now – ₹1,499</span>
               <span className="text-xl transition-transform duration-300 group-hover:translate-x-1">
                 →
               </span>
             </button>
 
-            <div className="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-medium text-slate-400">
-              <span>✓ Practical Learning</span>
-              <span>✓ Excel + AI</span>
-              <span>✓ Career-focused</span>
-            </div>
+          <div className="mt-6 flex flex-wrap justify-center gap-x-5 sm:gap-x-6 gap-y-2 text-xs font-medium text-slate-400">
+            <span>✓ Practical Training</span>
+            <span>✓ Real-World Projects</span>
+            <span>✓ Job-ready Skills</span>
           </div>
         </section>
 
-        {/* ================= CHECKOUT ================= */}
-
-        <section className="bg-white py-20 sm:py-28" id="checkout">
-          <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-14 px-4 sm:px-6 lg:grid-cols-2">
-            <div>
-              <div className={tag}>Enrollment</div>
-
-              <h2 className={h2 + " mt-4"}>
-                Your learning journey starts today.
-              </h2>
-
-              <p className={lead}>
-                Excel + AI practical learning program-ൽ ചേരാൻ താഴെയുള്ള option
-                ഉപയോഗിക്കുക.
+      {/* ================= 12. COMPLETE TRUST FOOTER ================= */}
+      <footer
+        ref={footerRef}
+        className="border-t border-slate-200 bg-slate-50 pb-28 pt-12 text-slate-700 sm:pb-16"
+      >
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          {/* Top section: Logo, description, and contact info */}
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:items-start">
+            {/* Column 1: Brand & Malayalam line */}
+            <div className="text-center md:text-left flex flex-col items-center md:items-start">
+              <a href="#home" className="inline-block">
+                <img
+                  src={logo}
+                  alt="QNAYDS"
+                  className="h-8 sm:h-9 w-auto max-w-[120px] object-contain"
+                />
+              </a>
+              <p className="mt-3 text-xs sm:text-sm leading-relaxed text-slate-600 max-w-sm">
+                Excel + AI ഉപയോഗിച്ച് Practical, Career-focused Skills പഠിക്കാം.
               </p>
 
-              <div className="mt-6 grid grid-cols-2 gap-3">
-                {[
-                  "Excel + AI Learning",
-                  "Practical Projects",
-                  "Job-oriented Skills",
-                  "Certification",
-                ].map((item) => (
-                  <div
-                    key={item}
-                    className="flex items-center gap-2 text-sm font-medium text-slate-700"
-                  >
-                    <span className="text-emerald-600">✓</span>
-                    {item}
-                  </div>
-                ))}
+            {/* Column 2: Quick Links & Policies */}
+            <div className="text-center md:text-left">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900">
+                Policies
+              </h4>
+              <div className="mt-3 flex flex-wrap justify-center gap-x-3.5 gap-y-2 text-xs font-medium text-slate-600 md:justify-start">
+                <button
+                  type="button"
+                  onClick={() => setActivePolicyModal("terms")}
+                  className="hover:text-blue-600 hover:underline"
+                >
+                  Terms & Conditions
+                </button>
+                <span className="text-slate-300">•</span>
+                <button
+                  type="button"
+                  onClick={() => setActivePolicyModal("privacy")}
+                  className="hover:text-blue-600 hover:underline"
+                >
+                  Privacy Policy
+                </button>
+                <span className="text-slate-300">•</span>
+                <button
+                  type="button"
+                  onClick={() => setActivePolicyModal("refund")}
+                  className="hover:text-blue-600 hover:underline"
+                >
+                  Refund Policy
+                </button>
+                <span className="text-slate-300">•</span>
+                <button
+                  type="button"
+                  onClick={() => setActivePolicyModal("contact")}
+                  className="hover:text-blue-600 hover:underline"
+                >
+                  Contact Us
+                </button>
               </div>
             </div>
 
-            <div className="rounded-3xl border border-slate-200 bg-white p-7 shadow-xl">
-              <div className="flex items-center justify-between text-sm font-semibold text-slate-500">
-                <span>Excel + AI Program</span>
-                <span className="text-emerald-600">🔒 Secure</span>
+            {/* Column 3: Contact Details (Trust Item 4) */}
+            <div className="text-center text-xs text-slate-600 md:text-left flex flex-col items-center md:items-start">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900">
+                Customer Support
+              </h4>
+              <ul className="mt-3 space-y-2">
+                <li>
+                  <a
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 font-semibold text-emerald-700 hover:underline"
+                  >
+                    <span>💬 WhatsApp:</span> +91 90748 71204
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="mailto:support@qnayds.in"
+                    className="inline-flex items-center gap-1.5 hover:text-blue-600 hover:underline"
+                  >
+                    <span>✉ Email:</span> support@qnayds.in
+                  </a>
+                </li>
+                <li className="text-slate-500">
+                  <span>📍 Address:</span> QNAYDS Academy, Kerala, India
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Bottom Copyright line */}
+          <div className="mt-10 border-t border-slate-200 pt-6 text-center text-xs text-slate-500">
+            <p>© 2026 QNAYDS ACADEMY. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+
+      {/* ================= 13. STICKY FLOATING CTA BAR ================= */}
+      {showFloatingCta && (
+        <div className="fixed inset-x-3 bottom-3 z-[9998] mx-auto max-w-4xl rounded-2xl border border-blue-200 bg-white/95 px-3.5 py-2.5 shadow-[0_-4px_20px_rgba(0,0,0,0.12)] backdrop-blur-md sm:bottom-4 sm:px-6 sm:py-3">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+            {/* Offer + Countdown (No fake 20 seats) */}
+            <div className="flex items-center justify-between gap-2 sm:justify-start sm:gap-4">
+              <span className="text-xs font-bold text-slate-900 shrink-0">
+                🔥 Limited-Time Offer
+              </span>
+              <div className="flex items-center gap-1.5 text-xs text-slate-600">
+                <span className="hidden sm:inline">Offer Ends In:</span>
+                <span className="sm:hidden text-[11px]">Time Left:</span>
+                <span className="rounded bg-slate-900 px-1.5 py-0.5 sm:px-2 sm:py-1 font-mono text-xs font-bold text-white">
+                  {String(timeLeft.hours).padStart(2, "0")}:
+                  {String(timeLeft.minutes).padStart(2, "0")}:
+                  {String(timeLeft.seconds).padStart(2, "0")}
+                </span>
               </div>
               <div className="mt-8 border-t border-dashed border-slate-200 pt-6">
                 <div className="flex items-end justify-between">
@@ -1497,10 +1645,8 @@ function App() {
                 onClick={openEnrollment}
                 className={ctaPrimary + " mt-6 w-full"}
               >
-                Enroll Now
-                <span className="text-xl transition-transform duration-300 group-hover:translate-x-1">
-                  →
-                </span>
+                <span>Enroll Now – ₹1,499</span>
+                <span>→</span>
               </button>
 
               <p className="mt-4 text-center text-xs text-slate-400">
@@ -1663,10 +1809,149 @@ function App() {
         </svg>
       </a>
 
-      {/* =========================================================
-          ENROLLMENT MODAL
-          ========================================================= */}
+      {/* ================= 15. POLICY MODALS ================= */}
+      {activePolicyModal && (
+        <div
+          className="fixed inset-0 z-[10001] flex items-center justify-center overflow-y-auto bg-slate-900/60 p-3 sm:p-4 backdrop-blur-sm"
+          onClick={() => setActivePolicyModal(null)}
+        >
+          <div
+            className="w-full max-w-lg rounded-2xl sm:rounded-3xl border border-slate-200 bg-white p-5 sm:p-6 shadow-2xl max-h-[85vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between border-b border-slate-100 pb-3.5 sm:pb-4">
+              <h3 className="text-base sm:text-lg font-bold text-slate-900">
+                {activePolicyModal === "privacy" && "Privacy Policy (Privacy Policy)"}
+                {activePolicyModal === "terms" && "Terms & Conditions (Terms & Conditions)"}
+                {activePolicyModal === "refund" && "Refund Policy (Refund Policy)"}
+                {activePolicyModal === "contact" && "Contact Us (Contact Us)"}
+              </h3>
+              <button
+                type="button"
+                className="h-8 w-8 rounded-full text-lg text-slate-400 hover:bg-slate-100 hover:text-slate-700 flex items-center justify-center"
+                onClick={() => setActivePolicyModal(null)}
+              >
+                ✕
+              </button>
+            </div>
 
+            <div className="mt-4 text-xs sm:text-sm leading-relaxed text-slate-600 space-y-3">
+              {activePolicyModal === "privacy" && (
+                <>
+                  <p>
+                    QNAYDS Academy-യിൽ നിങ്ങളുടെ സ്വകാര്യത ഞങ്ങൾ അതീവ പ്രാധാന്യത്തോടെ
+                    സംരക്ഷിക്കുന്നു.
+                  </p>
+                  <h4 className="font-bold text-slate-800">Information We Collect:</h4>
+                  <p>
+                    നിങ്ങൾ course-ൽ Enroll ചെയ്യുമ്പോൾ നൽകുന്ന പേര്, Email Address,
+                    Phone Number എന്നിവ course Access വിവരങ്ങൾ അയക്കാനും Support നൽകാനും
+                    മാത്രമാണ് ഉപയോഗിക്കുന്നത്.
+                  </p>
+                  <h4 className="font-bold text-slate-800">Payment Security:</h4>
+                  <p>
+                    എല്ലാ സാമ്പത്തിക ഇടപാടുകളും Secureമായ Razorpay Payment ഗേറ്റ്‌വേ
+                    വഴിയാണ് നടക്കുന്നത്. നിങ്ങളുടെ കാർഡ്, ബാങ്ക് വിവരങ്ങൾ ഞങ്ങൾ
+                    സൂക്ഷിക്കുന്നില്ല.
+                  </p>
+                  <h4 className="font-bold text-slate-800">Information Sharing:</h4>
+                  <p>
+                    ഞങ്ങൾ നിങ്ങളുടെ വ്യക്തിഗത വിവരങ്ങൾ യാതൊരു കാരണവശാലും മൂന്നാം
+                    കക്ഷികൾക്ക് വിൽക്കുകയോ കൈമാറുകയോ ചെയ്യില്ല.
+                  </p>
+                </>
+              )}
+
+              {activePolicyModal === "terms" && (
+                <>
+                  <p>
+                    Excel Using AI course-ൽ ചേരുന്നതിലൂടെ താഴെ പറയുന്ന
+                    നിബന്ധനകൾക്ക് നിങ്ങൾ സമ്മതം നൽകുന്നു:
+                  </p>
+                  <h4 className="font-bold text-slate-800">Usage Rights:</h4>
+                  <p>
+                    course കണ്ടന്റുകൾ, Videoകൾ, പ്രോജക്റ്റ് ഫയലുകൾ എന്നിവ വ്യക്തിഗത
+                    പഠന ആവശ്യങ്ങൾക്ക് മാത്രമുള്ളതാണ്. ഇത് അനധികൃതമായി പങ്കിടുകയോ
+                    പുനർSales നടത്തുകയോ ചെയ്യാൻ പാടില്ല.
+                  </p>
+                  <h4 className="font-bold text-slate-800">Access & Certificate:</h4>
+                  <p>
+                    വിജയകരമായി ഫീസ് അടയ്ക്കുന്ന Learnersക്ക് course-ലേക്ക് Lifetime
+                    ആക്സസും, പൂർത്തിയാക്കുമ്പോൾ QNAYDS സർട്ടിഫിക്കറ്റും ലഭിക്കുന്നതാണ്.
+                  </p>
+                </>
+              )}
+
+              {activePolicyModal === "refund" && (
+                <>
+                  <p>
+                    Excel Using AI Instantം Access ലഭിക്കുന്ന Digital ലേണിംഗ് കോഴ്സാണ്.
+                  </p>
+                  <h4 className="font-bold text-slate-800">Refund Policy:</h4>
+                  <p>
+                    Payment വിജയകരമായി പൂർത്തിയായ ഉടൻ തന്നെ Login വിവരങ്ങളും Digital
+                    കണ്ടന്റുകളിലേക്കുള്ള ആക്സസും ലഭിക്കുന്നതിനാൽ, Digital പ്രോഡക്റ്റുകൾക്ക്
+                    സാധാരണയായി Refund അനുവദിക്കുന്നതല്ല.
+                  </p>
+                  <h4 className="font-bold text-slate-800">Support & Help:</h4>
+                  <p>
+                    Technical തടസ്സങ്ങൾ മൂലമോ അബദ്ധത്തിലോ ഇരട്ടി Payment നടക്കുകയാണെങ്കിൽ
+                    support@qnayds.in അല്ലെങ്കിൽ WhatsApp വഴി ബന്ധപ്പെട്ടാൽ 24
+                    മണിക്കൂറിനകം പരിശോധിച്ച് പരിഹാരം കാണുന്നതാണ്.
+                  </p>
+                </>
+              )}
+
+              {activePolicyModal === "contact" && (
+                <>
+                  <p>
+                    Course അല്ലെങ്കിൽ Enrollment സംബന്ധിച്ച് എന്തെങ്കിലും
+                    സംശയങ്ങളുണ്ടെങ്കിൽ ഞങ്ങളെ ബന്ധപ്പെടാം:
+                  </p>
+                  <div className="rounded-xl bg-slate-50 p-4 space-y-2 border border-slate-100">
+                    <p>
+                      <strong>WhatsApp:</strong>{" "}
+                      <a
+                        href={whatsappUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-emerald-700 underline font-semibold"
+                      >
+                        +91 90748 71204
+                      </a>
+                    </p>
+                    <p>
+                      <strong>Email:</strong>{" "}
+                      <a
+                        href="mailto:support@qnayds.in"
+                        className="text-blue-600 underline font-semibold"
+                      >
+                        support@qnayds.in
+                      </a>
+                    </p>
+                    <p>
+                      <strong>Office Address:</strong> QNAYDS Academy, Kerala, India
+                    </p>
+                    <p className="text-xs text-slate-500">
+                      പ്രവർത്തന സമയം: തിങ്കൾ മുതൽ ശനി വരെ (രാവിലെ 9:00 - വൈകുന്നേരം 7:00)
+                    </p>
+                  </div>
+                </>
+              )}
+            </div>
+
+            <button
+              type="button"
+              className="mt-6 w-full rounded-full bg-slate-900 py-3 text-xs sm:text-sm font-bold text-white hover:bg-slate-800"
+              onClick={() => setActivePolicyModal(null)}
+            >
+              ശരി, മനസ്സിലായി
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* ================= 16. ENROLLMENT MODAL ================= */}
       {showEnrollment && (
         <div
           className="fixed inset-0 z-[10000] flex items-center justify-center overflow-y-auto bg-slate-900/60 p-4 backdrop-blur-sm"
@@ -1680,7 +1965,7 @@ function App() {
 
             <div className="flex items-start justify-between border-b border-slate-100 px-6 py-5">
               <div>
-                <h2 className="text-lg font-extrabold text-slate-900">
+                <h2 className="text-base sm:text-lg font-extrabold text-slate-900">
                   Complete Your Enrollment
                 </h2>
                 <p className="mt-1 text-sm text-slate-500">
@@ -1705,8 +1990,8 @@ function App() {
 
               <div className="flex items-center justify-between rounded-2xl border border-blue-100 bg-blue-50 px-5 py-4">
                 <div>
-                  <strong className="block text-sm font-bold text-slate-900">
-                    Excel + AI Practical Program
+                  <strong className="block text-xs sm:text-sm font-bold text-slate-900">
+                    Excel + AI Practical Course
                   </strong>
                   <del className="text-xs text-slate-400">₹5,000</del>
                   <div className="mt-1 text-xl font-extrabold text-blue-600">
@@ -1714,8 +1999,8 @@ function App() {
                   </div>
                 </div>
 
-                <span className="rounded-full bg-amber-400 px-3 py-1 text-xs font-bold text-amber-950">
-                  Save ₹3,501
+                <span className="rounded-full bg-amber-400 px-2.5 py-1 sm:px-3 text-xs font-bold text-amber-950">
+                  ₹3,501 Savings
                 </span>
               </div>
 
@@ -1863,7 +2148,7 @@ function App() {
                   <input
                     type="text"
                     name="name"
-                    placeholder="Full Name"
+                    placeholder="Full Name (Full Name)"
                     required
                     className="w-full border-0 p-0 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-0"
                   />
@@ -1874,7 +2159,7 @@ function App() {
                   <input
                     type="email"
                     name="email"
-                    placeholder="Email Address"
+                    placeholder="Email Address (Email)"
                     required
                     className="w-full border-0 p-0 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-0"
                   />
@@ -1885,23 +2170,21 @@ function App() {
                   <input
                     type="tel"
                     name="phone"
-                    placeholder="Phone Number"
+                    placeholder="Phone Number (WhatsApp Number)"
                     required
                     className="w-full border-0 p-0 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-0"
                   />
                 </div>
 
                 {/* SECURE CHECKOUT */}
-
-                <div className="rounded-xl bg-slate-50 p-4">
-                  <div className="flex items-center gap-2 text-sm font-bold text-slate-800">
-                    🛡️
-                    <strong>Secure Checkout</strong>
+                <div className="rounded-xl bg-slate-50 p-3.5 sm:p-4">
+                  <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-slate-800">
+                    <span>🛡️</span>
+                    <strong>Secure Payment (Secure Checkout)</strong>
                   </div>
-
-                  <p className="mt-1.5 text-xs leading-relaxed text-slate-500">
-                    Secure payment via Razorpay. After payment, we'll send an
-                    activation email to your inbox.
+                  <p className="mt-1.5 text-[11px] sm:text-xs leading-relaxed text-slate-500">
+                    Razorpay വഴി 100% Secureമായ Payment. Payment-ന് ശേഷം
+                    Activation ലിങ്ക് നിങ്ങളുടെ ഇമെയിലിൽ എത്തും.
                   </p>
                 </div>
 
